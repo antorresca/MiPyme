@@ -69,7 +69,7 @@ public class Venta extends JFrame {
 		IDCliente.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Vendedor");
-		lblNewLabel.setBounds(10, 11, 46, 14);
+		lblNewLabel.setBounds(10, 11, 267, 14);
 		panel.add(lblNewLabel);
 		
 		JTextArea ProductosVendidos = new JTextArea();
@@ -96,7 +96,7 @@ public class Venta extends JFrame {
 					JOptionPane.showMessageDialog(contentPane,"No dejar campos vacios","Error",JOptionPane.ERROR_MESSAGE);
 					System.out.print("Si");
 				}else {
-					MiPyme.ventas.newBill(Nombre,Cliente,Productos);
+					MiPyme.ventas.newBill(Productos,Nombre,Cliente);
 					MiPyme.ventas.printLastBill();
 				}
 				}

@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -95,6 +94,22 @@ public class Principal extends JFrame {
 		panel.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Agregar Usuario");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String usuario = "";
+				String contrasena = "";
+				usuario = (String) JOptionPane.showInputDialog(contentPane,"Ingrese su usuario");
+				contrasena = (String) JOptionPane.showInputDialog(contentPane,"Ingrese su contrasena");
+				if((usuario != null && contrasena != null) && (contrasena.length()==0||usuario.length()==0)) {
+					JOptionPane.showMessageDialog(contentPane,"No deje campo vacio","Error",JOptionPane.ERROR_MESSAGE);
+				}else {
+					MiPyme.Usuarios.addUser(usuario, contrasena);
+					JOptionPane.showMessageDialog(contentPane,"Creación exitosa","Exitoso",JOptionPane.INFORMATION_MESSAGE);
+				}
+												
+			}
+		});
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton_2.setBounds(207, 58, 207, 119);
 		panel.add(btnNewButton_2);

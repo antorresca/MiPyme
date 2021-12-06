@@ -30,6 +30,7 @@ public class Factura extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					System.out.print(Imprimir.Products);
 					Factura frame = new Factura(String.valueOf(Imprimir.Id),Imprimir.Date,Imprimir.Seller,Imprimir.Products,Imprimir.Costumer);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -93,7 +94,7 @@ public class Factura extends JFrame {
 		lblNewLabel_1_3.setBounds(10, 340, 46, 14);
 		panel.add(lblNewLabel_1_3);
 		
-		JLabel Productos = new JLabel(ProductosVendidos.replaceAll(" ,","\n"));
+		JLabel Productos = new JLabel(ProductosVendidos);
 		Productos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		Productos.setBounds(20, 365, 154, 84);
 		panel.add(Productos);

@@ -18,6 +18,7 @@ import javax.swing.UIManager;
 public class MiPyme {
 	
 	public static Bills ventas = new Bills();
+	public static Users Usuarios = new Users();
 
     /**
      * @param args the command line arguments
@@ -33,22 +34,6 @@ public class MiPyme {
         Sistema sistema=new Sistema();  //OBJETO DEL FORMULARIO 
         sistema.setExtendedState(MAXIMIZED_BOTH);//PARA ABRIR SIEMPRE EN VENTANA MAXIMIZADA
         sistema.setVisible(true);*/
-    	int i =0;
-    	long startTime = System.nanoTime();
-		while(i<=10) {
-			ventas.newBill(String.valueOf(i),"A"+String.valueOf(i), "C"+String.valueOf(i));
-			i++;
-		}
-		long endTime = System.nanoTime()-startTime;
-		System.out.println("Agregar "+String.valueOf(i)+" datos "+String.valueOf(endTime));
-    	startTime = System.nanoTime();
-		ventas.delBill((int) i/2);
-		endTime = System.nanoTime()-startTime;
-		System.out.println("Borrar el "+String.valueOf((int)i/2)+"avo elemento "+String.valueOf(endTime));
-		startTime = System.nanoTime();
-		ventas.delBill(i);
-		endTime = System.nanoTime()-startTime;
-		System.out.println("Borrar el "+String.valueOf(i)+"avo elemento "+String.valueOf(endTime));
     	Principal frame = new Principal();
 		frame.setVisible(true);
     }
