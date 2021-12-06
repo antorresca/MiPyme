@@ -31,7 +31,6 @@ public class MiPyme {
         sistema.setExtendedState(MAXIMIZED_BOTH);//PARA ABRIR SIEMPRE EN VENTANA MAXIMIZADA
         sistema.setVisible(true);
        
-        
     }
     
 }
