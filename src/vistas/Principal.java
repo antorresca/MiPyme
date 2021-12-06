@@ -23,6 +23,7 @@ public class Principal extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		int i = 0;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
