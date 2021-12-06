@@ -6,7 +6,8 @@
 package mipyme;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.UnsupportedLookAndFeelException;
-import vistas.Sistema;
+
+import vistas.Principal;
 
 import javax.swing.UIManager;
 
@@ -15,12 +16,14 @@ import javax.swing.UIManager;
  * @authors Sergio, Andres, Julian, Marco
  */
 public class MiPyme {
+	
+	public static Bills ventas = new Bills();
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
+        /*try {
             
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");//ESTA LINEA DA EL ESTILO PARA LOS FORMULARIOS.
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e){
@@ -29,8 +32,9 @@ public class MiPyme {
         }
         Sistema sistema=new Sistema();  //OBJETO DEL FORMULARIO 
         sistema.setExtendedState(MAXIMIZED_BOTH);//PARA ABRIR SIEMPRE EN VENTANA MAXIMIZADA
-        sistema.setVisible(true);
-       
+        sistema.setVisible(true);*/
+    	Principal frame = new Principal();
+		frame.setVisible(true);
     }
     
 }

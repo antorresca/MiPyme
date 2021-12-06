@@ -11,15 +11,15 @@ public class Bills{
 	static Bill Tail = null;
 	static int Consecutive = 0;
 
-	public void newBill(String products, String seller){
+	public void newBill(String products, String seller,String costumer){
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		String date = dtf.format(ZonedDateTime.now(ZoneId.of("America/Bogota")));
-		Bill Bill = new Bill(Consecutive, date, products, seller); 
+		Bill Bill = new Bill(Consecutive, date, products, seller,costumer); 
 		addBill(Bill);
 		Consecutive += 1;
 	}
 
-	public void addBill(Bill bill){
+	public static void addBill(Bill bill){
 		if(Head == null && Tail == null){
 			Head = bill;
 			Tail = bill;
@@ -30,10 +30,10 @@ public class Bills{
 		}
 	}
 
-	public static String delBill(int id) {
+	public static boolean delBill(int id) {
 		Bill Eliminar = findBill(id);
 		if(Eliminar == null){
-			return "Factura no encontrada";
+			return false;
 		}else{if(Eliminar == Head) {
 			Head = Eliminar.next;
 		}else {
@@ -51,11 +51,11 @@ public class Bills{
 		}
 		Eliminar.before = null;
 		Eliminar.next = null;
-		return "Eliminación completada";
+		return true;
 	}
 
 	public static Bill findBill(int id) {
-		if(id<Consecutive){
+		if(id<Consecutive && Head != null){
 			if(Head!= null && Head.Id == id){
 				return Head;
 			}else{
@@ -77,6 +77,12 @@ public class Bills{
 
 	public void printBill(int id) {
 		Bill Imprimir = findBill(id);
+		vistas.Factura.main(Imprimir);
+	}
+	
+	public void printLastBill() {
+		Bill Imprimir = findBill(Consecutive-1);
+		System.out.print(Imprimir.Costumer);
 		vistas.Factura.main(Imprimir);
 	}
 }
