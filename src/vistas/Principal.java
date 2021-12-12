@@ -21,12 +21,13 @@ public class Principal extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		int i = 0;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Principal frame = new Principal();
+					Principal frame = new Principal(MiPyme.ventana);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,11 +35,9 @@ public class Principal extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Principal() {
+	
+	
+	public Principal(JFrame ventanaIntroducida) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 263);
 		contentPane = new JPanel();
@@ -100,19 +99,75 @@ public class Principal extends JFrame {
 				String usuario = "";
 				String contrasena = "";
 				usuario = (String) JOptionPane.showInputDialog(contentPane,"Ingrese su usuario");
+				
+				if(usuario!=null) {
 				contrasena = (String) JOptionPane.showInputDialog(contentPane,"Ingrese su contrasena");
+				
+				if(contrasena!=null) {
 				if((usuario != null && contrasena != null) && (contrasena.length()==0||usuario.length()==0)) {
 					JOptionPane.showMessageDialog(contentPane,"No deje campo vacio","Error",JOptionPane.ERROR_MESSAGE);
 				}else {
 					MiPyme.Usuarios.addUser(usuario, contrasena);
 					JOptionPane.showMessageDialog(contentPane,"Creación exitosa","Exitoso",JOptionPane.INFORMATION_MESSAGE);
 				}
+				}
+				}
 												
 			}
 		});
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton_2.setBounds(207, 58, 207, 119);
+		btnNewButton_2.setBounds(207, 58, 207, 54);
 		panel.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Pedidos: "+MiPyme.pedidos.getTamaño());
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(MiPyme.pedidos.getTamaño() > 0) {
+					int n = JOptionPane.showConfirmDialog(contentPane, MiPyme.pedidos.getCabeza().getDato().getNo()+"\n"+
+                            MiPyme.pedidos.getCabeza().getDato().getNu()+"\n"+
+                            MiPyme.pedidos.getCabeza().getDato().getAr()+"\n\n"+
+                            "¿Terminar pedido?", "Pedidos", JOptionPane.YES_NO_OPTION);
+					
+					if(n==0) {
+						
+						MiPyme.pedidos.desencolar();
+						btnNewButton_3.setText("Pedidos: "+MiPyme.pedidos.getTamaño());
+					}
+					
+				}else {
+					
+					JOptionPane.showMessageDialog(contentPane,"No hay pedidos en cola","Exitoso",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
+				
+			}
+		});
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_3.setBounds(207, 123, 207, 54);
+		panel.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("Salir");
+		btnNewButton_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				int n = JOptionPane.showConfirmDialog(contentPane, "¿Seguro que desea salir?", "Confirmación", JOptionPane.YES_NO_OPTION);
+				
+				if(n==0) {
+					
+					ventanaIntroducida.setVisible(true);
+					dispose();
+				}
+				
+				
+			}
+		});
+		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_4.setBounds(150, 185, 100, 25);
+		panel.add(btnNewButton_4);
 	}
 
 }

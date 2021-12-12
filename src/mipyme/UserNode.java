@@ -1,6 +1,7 @@
 package mipyme;
 
 class UserNode{
+	
 	public User user;
 	public UserNode next;
 	public UserNode prev;

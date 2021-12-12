@@ -3,11 +3,13 @@ package mipyme;
 public class Users{
     UserNode head;
     UserNode tail;
+    
     int id=0;
     public Users(){
         this.head=null;
         this.tail=null;
     }
+    
     public void addUser(String userName, String pasword){
         User newUser = new User(++this.id, userName, pasword);
         UserNode newUserNode = new UserNode(newUser);
@@ -71,6 +73,17 @@ public class Users{
             copy = copy.next;
         }
         return null;
+    }
+    
+    public boolean verificarUsuarioYcontra(String usuario, String contra){
+        UserNode copy = this.head;
+        while(copy!=null){
+            if(copy.user.userName.equals(usuario) && copy.user.pasword.equals(contra)){
+                return true;
+            }
+            copy = copy.next;
+        }
+        return false;
     }
     
     public boolean userNameTaken(String userName){
