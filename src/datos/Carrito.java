@@ -1,8 +1,9 @@
 package datos;
 
 import estructuras.Lista_ref_simple;
+import interfaz.Ventana;
 
-public class Carrito {
+public class Carrito { //Se añadió funcion para obtener los productos
 	
 	private Lista_ref_simple<Producto> productos;
 	private Usuario usuario;
@@ -19,6 +20,8 @@ public class Carrito {
 		
 	}
 	
-	
+	public Lista_ref_simple<Producto> obtenerProductos() {
+		return productos; 
+	}	
 
 }

@@ -33,7 +33,7 @@ public class Ejecucion {
 		objeto.encolar(6);
 		objeto.desencolar();
 		
-		//objeto.imprimir();
+		objeto.imprimir();
 	
 		System.out.println();
 		
@@ -46,7 +46,7 @@ public class Ejecucion {
 		objeto2.pop();
 		objeto2.pop();
 		
-		//objeto2.imprimir();
+		objeto2.imprimir();
 		
         Lista_ref_simple<Integer> objeto5 = new Lista_ref_simple<Integer>();
 		
@@ -56,9 +56,9 @@ public class Ejecucion {
 		objeto5.agregar(4);
 		objeto5.agregar(5);
 		
-		//System.out.print(objeto5.encontrar(0).getDato());
+		System.out.print(objeto5.encontrar(0).getDato()+"\n");
 		
-		//objeto5.imprimir();
+		objeto5.imprimir();
 		
 		System.out.println();
 		
@@ -72,7 +72,7 @@ public class Ejecucion {
 		objeto3.push(4);
 		objeto3.pop();
 		
-		//objeto3.imprimir();
+		objeto3.imprimir();
 		
 		System.out.println();
 		
@@ -85,7 +85,7 @@ public class Ejecucion {
 		objeto4.desencolar();
 	
 		
-		//objeto4.imprimir();
+		objeto4.imprimir();
 		
 		System.out.println();
 		
@@ -95,9 +95,9 @@ public class Ejecucion {
 		objeto6.agregar(2);
 		objeto6.agregar(3);
 		objeto6.agregar(4);
-		objeto6.eliminar_en(3);
+		objeto6.eliminar_en(1);
 		
-		//objeto6.imprimir();
+		objeto6.imprimir();
 		
 		
 		//--------------------------------------------INSTANCIACIONES-----------------------------------------------------------
