@@ -107,7 +107,7 @@ public class Prueba {
 				 * Elemento de prueba
 				 */
 				
-				for(i=0; i<carro1.obtenerProductos().getTamaño();i++) { //Creacion de datos random para pruebas
+				for(i=0; i<carro1.obtenerProductos().getTamano();i++) { //Creacion de datos random para pruebas
 					modelo.addElement(carro1.obtenerProductos().encontrar(i).getDato().imprimir());
 					precio += carro1.obtenerProductos().encontrar(i).getDato().getPre();
 				}

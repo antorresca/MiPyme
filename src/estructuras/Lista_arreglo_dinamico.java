@@ -26,7 +26,7 @@ public class Lista_arreglo_dinamico<T> extends Metodos_pila_cola_arreglo_dinamic
     public T encontrar(int u) {
     	
     	
-    	if(u < this.getTamaño() && u > -1) {
+    	if(u < this.getTamano() && u > -1) {
     	   
     	   return this.getArreglo()[u];
     	   
@@ -42,37 +42,38 @@ public class Lista_arreglo_dinamico<T> extends Metodos_pila_cola_arreglo_dinamic
     public void agregar_despues_de(int u, T item) {
         
         
-        if(u < this.getTamaño() && u > -2 && this.getTamaño() != 0) {
+        if(u < this.getTamano() && u > -2 && this.getTamano() != 0) {
             
         	try {
         		
-      		  for(int i=0; i<this.getTamaño()-u-1; i++) {
+      		  for(int i=0; i<this.getTamano()-u-1; i++) {
       			
-      			  this.getArreglo()[this.getTamaño()-i] = this.getArreglo()[this.getTamaño()-1-i];
+      			  this.getArreglo()[this.getTamano()-i] = this.getArreglo()[this.getTamano()-1-i];
       		  }
       		  
       		  this.getArreglo()[u+1] = item;
       		  
       		} catch (ArrayIndexOutOfBoundsException e) {
       			
-                T[] arreglo2 = (T[]) new Object[this.getArreglo().length*2];
+                @SuppressWarnings("unchecked")
+				T[] arreglo2 = (T[]) new Object[this.getArreglo().length*2];
       			
-      			for(int i=0; i<this.getTamaño(); i++) {
+      			for(int i=0; i<this.getTamano(); i++) {
       				
       				arreglo2[i] = this.getArreglo()[i]; 
       			}
       			
       			this.setArreglo(arreglo2);
       			
-      			for(int i=0; i<this.getTamaño()-u-1; i++) {
+      			for(int i=0; i<this.getTamano()-u-1; i++) {
           			
-        			  this.getArreglo()[this.getTamaño()-i] = this.getArreglo()[this.getTamaño()-1-i];
+        			  this.getArreglo()[this.getTamano()-i] = this.getArreglo()[this.getTamano()-1-i];
         		}
       			
       			this.getArreglo()[u+1] = item;	
       		}
       		
-      		this.setTamaño(this.getTamaño()+1);
+      		this.setTamano(this.getTamano()+1);
     	   
         } else {
         	
@@ -83,15 +84,15 @@ public class Lista_arreglo_dinamico<T> extends Metodos_pila_cola_arreglo_dinamic
     public T eliminar_en(int u) {
 		
 		
-    	if(u < this.getTamaño() && u > -1) {
+    	if(u < this.getTamano() && u > -1) {
 			
     	  T retorno = this.getArreglo()[u];
     		
-		  for(int i=u; i<this.getTamaño()-1; i++) {
+		  for(int i=u; i<this.getTamano()-1; i++) {
 			  this.getArreglo()[i] = this.getArreglo()[i+1];
 		  }
 		  
-		  this.setTamaño(this.getTamaño()-1);
+		  this.setTamano(this.getTamano()-1);
 		  
 		  return retorno;
 		  

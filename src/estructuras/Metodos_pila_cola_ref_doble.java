@@ -4,14 +4,14 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
 	
 	private Nodo cabeza;
 	private Nodo cola;
-	private int tamaño;
+	private int tamano;
 	
 	
 	public Metodos_pila_cola_ref_doble() {
 		
 		cabeza = null;
 		cola = null;
-		tamaño = 0;
+		tamano = 0;
 	}
 	
 		protected void agregar_al_final(T item) {
@@ -27,7 +27,7 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
                n.anterior = this.cola;
                this.cola = this.cola.anterior;        
             }
-			tamaño++;
+			tamano++;
 		}
 		
 		protected void agregar_al_comienzo(T item) {
@@ -43,7 +43,7 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
 			  cola = n;
 			}
 			
-			tamaño++;
+			tamano++;
 		}
 		
 		protected void eliminar_al_comienzo() {
@@ -57,7 +57,7 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
                }else if(this.cabeza.siguiente!=null){
                   this.cabeza = this.cabeza.siguiente;
                }
-            tamaño--;
+            tamano--;
       
             }
 		}
@@ -80,7 +80,7 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
                  this.cola.siguiente = null;
                }
                
-               tamaño--;
+               tamano--;
              }	
 			
 		}
@@ -122,12 +122,12 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
 			this.cola = cola;
 		}
 
-		public int getTamaño() {
-			return tamaño;
+		public int getTamano() {
+			return tamano;
 		}
 
-		public void setTamaño(int tamaño) {
-			this.tamaño = tamaño;
+		public void setTamano(int tamaño) {
+			this.tamano = tamaño;
 		}
         /////////////////////////////////////
 	

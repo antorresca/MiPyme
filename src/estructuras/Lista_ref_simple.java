@@ -27,7 +27,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
     	
     	Nodo auxiliar = this.getCabeza();
     	
-    	if(u < this.getTamaño() && u > -1) {
+    	if(u < this.getTamano() && u > -1) {
     	
     	   for(int i=0; i<u; i++) {
   
@@ -51,10 +51,10 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
         
         Nodo nuevo_nodo = new Nodo(item);
         
-        if(u < this.getTamaño() && u > -2) {
+        if(u < this.getTamano() && u > -2) {
         
         	
-        	if(auxiliar != null && u != this.getTamaño()-1) {
+        	if(auxiliar != null && u != this.getTamano()-1) {
         		  
         	  if(u == -1) {
         		  
@@ -71,7 +71,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
     	      
     	      auxiliar.setSiguiente(nuevo_nodo);
     	      
-    	      this.setTamaño(this.getTamaño()+1);
+    	      this.setTamaño(this.getTamano()+1);
     	      
         	  }
     	   
@@ -92,7 +92,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
         Nodo auxiliar = this.getCabeza();
         
         
-        if(u < this.getTamaño() && u > -1) {
+        if(u < this.getTamano() && u > -1) {
         
         	
         	if(auxiliar != null) {
@@ -115,13 +115,13 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
     	   
     	         auxiliar.setSiguiente(auxiliar.getSiguiente().getSiguiente());
     	      
-    	         if(u == this.getTamaño()-1) {
+    	         if(u == this.getTamano()-1) {
     	    	  
     	    	   this.setCola(auxiliar);
     	    	  
     	         }
     	         
-    	         this.setTamaño(this.getTamaño()-1);
+    	         this.setTamaño(this.getTamano()-1);
     	         
     	         return nuevo_nodo2;
     	      

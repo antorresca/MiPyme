@@ -3,21 +3,21 @@ package estructuras;
 public abstract class Metodos_pila_cola_arreglo <T> {
 	
 	private T[] arreglo;
-	private int tamaño;
+	private int tamano;
 	
 	
-	public Metodos_pila_cola_arreglo(int tamaño_arreglo) {
+	public Metodos_pila_cola_arreglo(int tamano_arreglo) {
 		
-		arreglo = (T[]) new Object[tamaño_arreglo];
+		arreglo = (T[]) new Object[tamano_arreglo];
 		
-		tamaño = 0;
+		tamano = 0;
 	}
 	
 	
 	protected void agregar_al_final(T item) {
 
 		try {
-		  arreglo[tamaño++] = item;
+		  arreglo[tamano++] = item;
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("Arreglo lleno");
 		}
@@ -27,9 +27,9 @@ public abstract class Metodos_pila_cola_arreglo <T> {
 		
 		try {
 		
-		  for(int i=0; i<tamaño; i++) {
+		  for(int i=0; i<tamano; i++) {
 			
-			  arreglo[tamaño-i] = arreglo[tamaño-1-i];
+			  arreglo[tamano-i] = arreglo[tamano-1-i];
 			
 		  }
       arreglo[0] = item;
@@ -37,22 +37,22 @@ public abstract class Metodos_pila_cola_arreglo <T> {
 			System.out.println("Arreglo lleno");
 		}
 		
-		if(tamaño == 0) { arreglo[0]=item;}
+		if(tamano == 0) { arreglo[0]=item;}
 		
-		tamaño++;
+		tamano++;
 		
 	}
 	
 	protected void eliminar_al_comienzo() {
 		
 		
-		if(tamaño != 0) {
+		if(tamano != 0) {
 			
-		  for(int i=0; i<tamaño-1; i++) {
+		  for(int i=0; i<tamano-1; i++) {
 			  arreglo[i] = arreglo[i+1];
 		  }
 		  
-		  tamaño--;
+		  tamano--;
 		} else {
 			
 			System.out.println("No fue posible la eliminación, la "+this.getClass().getSimpleName()+" está vacía");
@@ -61,9 +61,9 @@ public abstract class Metodos_pila_cola_arreglo <T> {
 	
 	protected void eliminar_al_final() {
 		
-		if(tamaño != 0) {
+		if(tamano != 0) {
 			
-		   tamaño--;
+		   tamano--;
 	    } else {
 				
 		   System.out.println("No fue posible la eliminación, la "+this.getClass().getSimpleName()+" está vacía");
@@ -80,25 +80,25 @@ public abstract class Metodos_pila_cola_arreglo <T> {
 		this.arreglo = arreglo;
 	}
 
-	public int getTamaño() {
-		return tamaño;
+	public int getTamano() {
+		return tamano;
 	}
 
-	public void setTamaño(int tamaño) {
-		this.tamaño = tamaño;
+	public void setTamano(int tamano) {
+		this.tamano = tamano;
 	}
 	
     /////////////////////////////////////
 	
 	public void imprimir() {
 		
-		if(tamaño != 0) {
+		if(tamano != 0) {
 			
-			for(int i=0; i<tamaño-1; i++) {
+			for(int i=0; i<tamano-1; i++) {
 				System.out.print(arreglo[i]+", ");
 			}
 			
-		    System.out.println(arreglo[tamaño-1]);
+		    System.out.println(arreglo[tamano-1]);
 		} else {
 			
 			System.out.println(this.getClass().getSimpleName()+" vacía");

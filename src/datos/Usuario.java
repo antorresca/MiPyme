@@ -3,12 +3,12 @@ package datos;
 public class Usuario {
 	
 	private String usuario;
-	private String contraseña;
+	private String contrasena;
 	
-	public Usuario(String usuario, String contraseña) {
+	public Usuario(String usuario, String contrasena) {
 		
 		usuario = usuario;
-		contraseña = contraseña;
+		contrasena = contrasena;
 		
 	}
 

@@ -4,14 +4,14 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
 	
 	private Nodo cabeza;
 	private Nodo cola;
-	private int tamaño;
+	private int tamano;
 	
 	
 	public Metodos_pila_cola_ref_simple() {
 		
 		cabeza = null;
 		cola = null;
-		tamaño = 0;
+		tamano = 0;
 	}
 	
 			
@@ -30,7 +30,7 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
 				cola = n;
 			}
 			
-			tamaño++;
+			tamano++;
 			
 		}
 		
@@ -48,7 +48,7 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
 				cola = n;
 			}
 			
-			tamaño++;
+			tamano++;
 			
 		}
 		
@@ -59,7 +59,7 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
 			    cabeza = cabeza.siguiente;
 			    if(cabeza == null) {  cola = null; }
 			    
-			    tamaño--;
+			    tamano--;
 			    
 			}else {
 				
@@ -93,7 +93,7 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
 				cola = auxiliar;
 				}
 				
-				tamaño--;
+				tamano--;
 				
 			}else {
 				
@@ -119,12 +119,12 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
 			this.cola = cola;
 		}
 
-		public int getTamaño() {
-			return tamaño;
+		public int getTamano() {
+			return tamano;
 		}
 
 		public void setTamaño(int tamaño) {
-			this.tamaño = tamaño;
+			this.tamano = tamaño;
 		}
         /////////////////////////////////////
 		
