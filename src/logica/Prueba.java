@@ -35,7 +35,7 @@ public class Prueba {
 		pantallaMenu.getContenedor().setBackground(new Color(225,237,249)); //Seleccion color fondo (por defecto color tema claro)
 		
 		/*
-		 * Logos de la aplicaci髇
+		 * Logos de la aplicaci贸n
 		 */
 		
 		Imagen logoAppClaro = new Imagen("C:/Users/Andres/eclipse-workspace/MiPyme2/src/Img/LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
@@ -161,7 +161,7 @@ public class Prueba {
 								prodCarrito.setText(String.valueOf(i)); //""
 								
 								JOptionPane.showMessageDialog(Carrito,"Producto eliminado",
-										"Elimacion completada",JOptionPane.INFORMATION_MESSAGE);	//Mensaje informativo						
+										"Elimaci贸n completada",JOptionPane.INFORMATION_MESSAGE);	//Mensaje informativo						
 								
 							}/*else {
 								if(e.getClickCount()==1) { 
@@ -221,7 +221,7 @@ public class Prueba {
 							String producto = list.getSelectedValue().toString().split(" | ")[0]; //Nombre del producto
 							
 							if(JOptionPane.showConfirmDialog(Carrito, "Eliminar "+
-									producto+ "?", "Elimacion completada", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
+									producto+ "?", "Elimaci贸n completada", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
 								/*
 								 * Actualizacion de variables globales
 								 */
@@ -237,7 +237,7 @@ public class Prueba {
 								prodCarrito.setText(String.valueOf(i));
 								
 								JOptionPane.showMessageDialog(Carrito,"Producto eliminado",
-										"Elimacion completada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
+										"Elimaci贸n completada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
 								
 								detalles.desactivar(); //Salida de ventana
 								Carrito.activar();
