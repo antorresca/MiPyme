@@ -38,7 +38,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
     	   
     	} else {
     		
-    		System.out.println("Posición no valida");	
+    		System.out.println("Posiciï¿½n no valida");	
     		
     	    return new Nodo(null);
     	}
@@ -71,7 +71,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
     	      
     	      auxiliar.setSiguiente(nuevo_nodo);
     	      
-    	      this.setTamaño(this.getTamano()+1);
+    	      this.setTamano(this.getTamano()+1);
     	      
         	  }
     	   
@@ -83,7 +83,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
         } else {
         	
         	
-        	System.out.println("Posición no valida");
+        	System.out.println("Posiciï¿½n no valida");
         }
     }
     
@@ -121,7 +121,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
     	    	  
     	         }
     	         
-    	         this.setTamaño(this.getTamano()-1);
+    	         this.setTamano(this.getTamano()-1);
     	         
     	         return nuevo_nodo2;
     	      
@@ -129,7 +129,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
     	   
     	    } else {
     		
-    	    	System.out.print("Lista vacía");
+    	    	System.out.print("Lista vacï¿½a");
     	    	
     	    	return null;
     		
@@ -137,7 +137,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
     	
         } else {
         	
-        	System.out.println("Posición no valida");
+        	System.out.println("Posiciï¿½n no valida");
         	
         	return null;
         }

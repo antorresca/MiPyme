@@ -49,7 +49,7 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
 		protected void eliminar_al_comienzo() {
 			
 			if (this.cabeza == null){
-               System.out.println("No fue posible la eliminación, la "+this.getClass().getSimpleName()+" está vacía");
+               System.out.println("No fue posible la eliminaciï¿½n, la "+this.getClass().getSimpleName()+" estï¿½ vacï¿½a");
             } else {        
                if(this.cabeza == this.cola){
                   this.cola = null;
@@ -67,7 +67,7 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
 			
 			if (this.cabeza == null){
 				
-               System.out.println("No fue posible la eliminación, la "+this.getClass().getSimpleName()+" está vacía");
+               System.out.println("No fue posible la eliminaciï¿½n, la "+this.getClass().getSimpleName()+" estï¿½ vacï¿½a");
             }else{ 
             	
                if(this.cabeza == this.cola){
@@ -100,7 +100,7 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
             	System.out.println(auxiliar.dato);
             } else {
             	
-            	System.out.println(this.getClass().getSimpleName()+" vacía");
+            	System.out.println(this.getClass().getSimpleName()+" vacÃ­a");
             }
 		}
 		
@@ -126,8 +126,8 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
 			return tamano;
 		}
 
-		public void setTamano(int tamaño) {
-			this.tamano = tamaño;
+		public void setTamano(int tamano) {
+			this.tamano = tamano;
 		}
         /////////////////////////////////////
 	

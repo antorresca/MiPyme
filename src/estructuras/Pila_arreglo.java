@@ -3,9 +3,9 @@ package estructuras;
 public class Pila_arreglo<T> extends Metodos_pila_cola_arreglo<T> {
 	
 	
-    public Pila_arreglo(int tamaño_arreglo) {
+    public Pila_arreglo(int tamano_arreglo) {
 		
-		super(tamaño_arreglo);
+		super(tamano_arreglo);
 	}
 	
     public void push(T item) {

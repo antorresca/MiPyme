@@ -63,7 +63,7 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
 			    
 			}else {
 				
-				System.out.println("No fue posible la eliminación, la "+this.getClass().getSimpleName()+" está vacía");
+				System.out.println("No fue posible la eliminaciï¿½n, la "+this.getClass().getSimpleName()+" estï¿½ vacï¿½a");
 			}
 		
 		}
@@ -97,7 +97,7 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
 				
 			}else {
 				
-				System.out.println("No fue posible la eliminación, la "+this.getClass().getSimpleName()+" está vacía");
+				System.out.println("No fue posible la eliminaciï¿½n, la "+this.getClass().getSimpleName()+" estï¿½ vacï¿½a");
 			}
 		}
 		
@@ -123,8 +123,8 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
 			return tamano;
 		}
 
-		public void setTamaño(int tamaño) {
-			this.tamano = tamaño;
+		public void setTamano(int tamano) {
+			this.tamano = tamano;
 		}
         /////////////////////////////////////
 		
@@ -143,7 +143,7 @@ public abstract class Metodos_pila_cola_ref_simple<T>{
             	System.out.println(auxiliar.dato);
             } else {
             	
-            	System.out.println(this.getClass().getSimpleName()+" vacía");
+            	System.out.println(this.getClass().getSimpleName()+" vacï¿½a");
             }
 		}
 		
