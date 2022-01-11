@@ -23,7 +23,7 @@ public class Ventana extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		pack();
-		setBounds(-7,0,450,300);
+		setBounds(-7,0,600,500);
 		setVisible(true);
 		
 		Ventana n = this;

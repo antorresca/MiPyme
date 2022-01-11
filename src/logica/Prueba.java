@@ -29,6 +29,25 @@ public class Prueba {
 			carro1.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es..."+String.valueOf(i),(long) (Math.random()*10000),null,2));
 		}
 		
+		Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
+		Color ModoOscuro = new Color(20,31,59);
+		ImageIcon LogoClaro = new ImageIcon("LogoClaro.png");
+		ImageIcon LogoOscuro = new ImageIcon("LogoOscuro.png");
+		///////////////////////////////////////////////////////////////////////
+		
+		/*
+		 * Pantalla Inicio
+		 */
+		
+		Ventana pantallaInicio = new Ventana("MiPYME");
+		pantallaInicio.activar();
+		pantallaInicio.getContenedor().setBackground(ModoClaro);
+		
+		
+		
+		
+		
+		
 		///////////////////////////////////////////////////////////////////////
 		Ventana pantallaMenu = new Ventana("Menu"); //Pantalla del menu
 		pantallaMenu.activar();
@@ -67,8 +86,8 @@ public class Prueba {
 		
 		Boton btn6 = new Boton("Opcion 6",pantallaMenu,254,156,98,74);
 		
-		JToggleButton btnTema = new JToggleButton("CLARO"); //Boton de seleccion de tema
-		btnTema.setBounds(374, 11, 50, 50);
+		JToggleButton btnTema = new JToggleButton("CLARO"); //Botón de seleccion de tema
+		btnTema.setBounds(374, 11, 80, 80);
 		ImageIcon claro = new ImageIcon("C:\\Users\\Andres\\eclipse-workspace\\MiPyme2\\src\\Img\\sun.png");
 		Icon iconClaro = new ImageIcon(claro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
 		ImageIcon oscuro = new ImageIcon("C:\\Users\\Andres\\eclipse-workspace\\MiPyme2\\src\\Img\\moon (1).png");
@@ -276,7 +295,7 @@ public class Prueba {
 					logoAppClaro.setVisible(false); //Cambio de logo
 					logoAppOscuro.setVisible(true); //""
 					
-					pantallaMenu.getContenedor().setBackground(new Color(20,31,59)); //Cambio de color de fondo
+					pantallaMenu.getContenedor().setBackground(ModoOscuro); //Cambio de color de fondo
 					
 					btnCarrito.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\Andres\\eclipse-workspace\\MiPyme2\\src\\Img\\shopping-cart (3).png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
