@@ -1,6 +1,6 @@
 package estructuras;
 
-public abstract class Metodos_pila_cola_ref_simple<T>{
+public abstract class Metodos_pila_cola_ref_simple<T>{ //Funciona :D
 	
 	private Nodo cabeza;
 	private Nodo cola;
