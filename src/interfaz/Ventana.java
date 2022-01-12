@@ -17,13 +17,15 @@ public class Ventana extends JFrame {
 		
 		super(texto);
 		
+		
 		contenedor = new JPanel(null);
 		add(contenedor);
 		contenedor.setVisible(puerta);
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		pack();
-		setBounds(-7,0,600,500);
+		setBounds(-7,0,600,350);
+		setLocationRelativeTo(null);
 		setVisible(true);
 		
 		Ventana n = this;

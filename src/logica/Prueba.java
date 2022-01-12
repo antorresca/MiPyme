@@ -2,6 +2,8 @@ package logica;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
@@ -10,7 +12,13 @@ import datos.Producto;
 import datos.Usuario;
 import interfaz.*;
 
-public class Prueba {
+public class Prueba implements ActionListener{
+	
+	private static JTextField textoUsuario;
+	private static JTextField textoPassword;
+	private static Ventana pantallaMenu;
+	private static Ventana pantallaInicio;
+	private static Ventana pantallaRegistro;
 	
 	private static int i; //contador de productos en carrito
 	private static long precio = 0 ; //variable para precio total de los productos	
@@ -29,9 +37,10 @@ public class Prueba {
 			carro1.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es..."+String.valueOf(i),(long) (Math.random()*10000),null,2));
 		}
 		
+		
 		Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
 		Color ModoOscuro = new Color(20,31,59);
-		ImageIcon LogoClaro = new ImageIcon("LogoClaro.png");
+		Icon LogoClaro = new ImageIcon("LogoClaro.png");
 		ImageIcon LogoOscuro = new ImageIcon("LogoOscuro.png");
 		///////////////////////////////////////////////////////////////////////
 		
@@ -39,19 +48,51 @@ public class Prueba {
 		 * Pantalla Inicio
 		 */
 		
-		Ventana pantallaInicio = new Ventana("MiPYME");
+		pantallaInicio = new Ventana("MiPYME");
 		pantallaInicio.activar();
 		pantallaInicio.getContenedor().setBackground(ModoClaro);
 		
+		JLabel bienvenida = new JLabel("Bienvenido a MiPYME");
+		bienvenida.setBounds(210, 30, 250, 65);
+		pantallaInicio.getContenedor().add(bienvenida);
 		
 		
+		JLabel userLabel = new JLabel("Usuario", SwingConstants.CENTER);
+		userLabel.setBounds(55, 150, 90, 35);
+		pantallaInicio.getContenedor().add(userLabel);
 		
+		textoUsuario = new JTextField(20);
+		textoUsuario.setBounds(130,155,165,25);
+		pantallaInicio.getContenedor().add(textoUsuario);
+		pantallaInicio.getContenedor().setVisible(false);
+		pantallaInicio.getContenedor().setVisible(true);
 		
+		JLabel passwordLabel = new JLabel("Contraseña");
+		passwordLabel.setBounds(55, 170, 90, 35);
+		pantallaInicio.getContenedor().add(passwordLabel);
 		
+		textoPassword = new JTextField(20);
+		textoPassword.setBounds(130, 175, 165, 25);
+		pantallaInicio.getContenedor().add(textoPassword);
+		
+		/*
+		 * Botones Inicio
+		 */
+		
+		Boton btningreso = new Boton("Ingresar", pantallaInicio, 65, 230, 100, 25);
+		btningreso.addActionListener(new Prueba());
+		
+		JButton btnprueba = 
 		///////////////////////////////////////////////////////////////////////
-		Ventana pantallaMenu = new Ventana("Menu"); //Pantalla del menu
+		
+		/*
+		 * Pantalla Menú
+		 */
+		
+		pantallaMenu = new Ventana("Menu"); 
 		pantallaMenu.activar();
 		pantallaMenu.getContenedor().setBackground(new Color(225,237,249)); //Seleccion color fondo (por defecto color tema claro)
+		pantallaMenu.setVisible(false);
 		
 		/*
 		 * Logos de la aplicación
@@ -66,7 +107,7 @@ public class Prueba {
 		 */
 		
 		Boton btnCarrito = new Boton("Carrito",pantallaMenu,38,71,98,74);
-		ImageIcon carritoIcon =  new ImageIcon("C:\\Users\\Andres\\eclipse-workspace\\MiPyme2\\src\\Img\\shopping-cart (4).png"); //LAs rutas relativas no estan sirviendo
+		ImageIcon carritoIcon =  new ImageIcon("shopping-cart (1).png"); //LAs rutas relativas no estan sirviendo
 		Icon iconCarrito = new ImageIcon(carritoIcon.getImage().getScaledInstance(
 				btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btnCarrito.setIcon(iconCarrito);
@@ -319,5 +360,23 @@ public class Prueba {
 
 			}
 		});
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String user = textoUsuario.getText();
+		String password = textoPassword.getText();
+		if (user.equals("Andres") && password.equals("12345")) {
+			
+			System.out.println("Funciona");
+			pantallaInicio.setVisible(false);
+			pantallaMenu.setVisible(true);
+			
+		}
+		else {
+			System.out.println("No funciona");
+		}
+		System.out.println(user + ", " + password);
+		
 	}
 }
