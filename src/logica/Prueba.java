@@ -80,7 +80,7 @@ public class Prueba implements ActionListener{
 		pantallaInicio.getContenedor().setVisible(false);
 		pantallaInicio.getContenedor().setVisible(true);
 		
-		JLabel passwordLabel = new JLabel("Contraseña");
+		JLabel passwordLabel = new JLabel("Contrasena");
 		passwordLabel.setBounds(110, 185, 90, 35);
 		pantallaInicio.getContenedor().add(passwordLabel);
 		
@@ -151,7 +151,7 @@ public class Prueba implements ActionListener{
 		 */
 		
 		Boton btnCarrito = new Boton("Carrito",pantallaMenu,38,71,98,74);
-		ImageIcon carritoIcon =  new ImageIcon("shopping-cart (1).png"); //LAs rutas relativas no estan sirviendo
+		ImageIcon carritoIcon =  new ImageIcon("src\\Img\\CarritoClaro.png"); //LAs rutas relativas no estan sirviendo
 		Icon iconCarrito = new ImageIcon(carritoIcon.getImage().getScaledInstance(
 				btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btnCarrito.setIcon(iconCarrito);
@@ -173,9 +173,9 @@ public class Prueba implements ActionListener{
 		
 		JToggleButton btnTema = new JToggleButton("CLARO"); //Botón de seleccion de tema
 		btnTema.setBounds(374, 11, 80, 80);
-		ImageIcon claro = new ImageIcon("src\\Img\\sun.png");
+		ImageIcon claro = new ImageIcon("src\\Img\\ModoClaro.png");
 		Icon iconClaro = new ImageIcon(claro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
-		ImageIcon oscuro = new ImageIcon("src\\Img\\moon (1).png");
+		ImageIcon oscuro = new ImageIcon("src\\Img\\ModoOscuro.png");
 		Icon iconOscuro = new ImageIcon(oscuro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
 		btnTema.setIcon(iconClaro);
 		btnTema.setBackground(null);
@@ -382,7 +382,7 @@ public class Prueba implements ActionListener{
 					
 					pantallaMenu.getContenedor().setBackground(ModoOscuro); //Cambio de color de fondo
 					
-					btnCarrito.setIcon(new ImageIcon(new ImageIcon("src\\Img\\shopping-cart (3).png")
+					btnCarrito.setIcon(new ImageIcon(new ImageIcon("src\\Img\\CarritoOscuro.png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 				}else {
 					
@@ -398,7 +398,7 @@ public class Prueba implements ActionListener{
 					
 					pantallaMenu.getContenedor().setBackground(new Color(225,237,249)); //Cambio color de fondo
 					
-					btnCarrito.setIcon(new ImageIcon(new ImageIcon("src\\Img\\shopping-cart (4).png")
+					btnCarrito.setIcon(new ImageIcon(new ImageIcon("src\\Img\\CarritoClaro.png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 				}
 
