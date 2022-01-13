@@ -48,10 +48,10 @@ public class Prueba implements ActionListener{
 		
 		Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
 		Color ModoOscuro = new Color(20,31,59);
-		Icon LogoClaro_ = new ImageIcon("/Users/nickito/git/MiPyme4/src/Img/LogoOscuro.png");
+		Icon LogoClaro_ = new ImageIcon("src\\Img\\LogoOscuro.png");
 		
 		BufferedImage myPicture = ImageIO.read(new File("/Users/nickito/git/MiPyme4/src/Img/LogoOscuro.png"));
-		ImageIcon Imagen1 = new ImageIcon("/Users/nickito/git/MiPyme4/src/Img/LogoOscuro.png");
+		ImageIcon Imagen1 = new ImageIcon("src\\\\Img\\\\LogoOscuro.png");
 		///////////////////////////////////////////////////////////////////////
 		
 		/*
@@ -142,8 +142,8 @@ public class Prueba implements ActionListener{
 		 * Logos de la aplicación
 		 */
 		
-		Imagen logoAppClaro = new Imagen("C:/Users/Andres/eclipse-workspace/MiPyme2/src/Img/LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
-		Imagen logoAppOscuro = new Imagen("C:/Users/Andres/eclipse-workspace/MiPyme2/src/Img/LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
+		Imagen logoAppClaro = new Imagen("src\\Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
+		Imagen logoAppOscuro = new Imagen("src\\Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
 		logoAppOscuro.setVisible(false);
 		
 		/*
@@ -173,9 +173,9 @@ public class Prueba implements ActionListener{
 		
 		JToggleButton btnTema = new JToggleButton("CLARO"); //Botón de seleccion de tema
 		btnTema.setBounds(374, 11, 80, 80);
-		ImageIcon claro = new ImageIcon("C:\\Users\\Andres\\eclipse-workspace\\MiPyme2\\src\\Img\\sun.png");
+		ImageIcon claro = new ImageIcon("src\\Img\\sun.png");
 		Icon iconClaro = new ImageIcon(claro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
-		ImageIcon oscuro = new ImageIcon("C:\\Users\\Andres\\eclipse-workspace\\MiPyme2\\src\\Img\\moon (1).png");
+		ImageIcon oscuro = new ImageIcon("src\\Img\\moon (1).png");
 		Icon iconOscuro = new ImageIcon(oscuro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
 		btnTema.setIcon(iconClaro);
 		btnTema.setBackground(null);
@@ -265,7 +265,7 @@ public class Prueba implements ActionListener{
 								prodCarrito.setText(String.valueOf(i)); //""
 								
 								JOptionPane.showMessageDialog(Carrito,"Producto eliminado",
-										"Elimación completada",JOptionPane.INFORMATION_MESSAGE);	//Mensaje informativo						
+										"Elimacion completada",JOptionPane.INFORMATION_MESSAGE);	//Mensaje informativo						
 								
 							}/*else {
 								if(e.getClickCount()==1) { 
@@ -292,7 +292,7 @@ public class Prueba implements ActionListener{
 						 * Elementos de ventana
 						 */
 						
-						Imagen imgProducto = new Imagen("C:\\\\Users\\\\Andres\\\\eclipse-workspace\\\\MiPyme2\\\\src\\\\Img\\\\shopping-cart (4).png"
+						Imagen imgProducto = new Imagen("src\\Img\\shopping-cart (4).png"
 								,detalles,0,40,345-detalles.getWidth()/2,detalles.getHeight()/2); //Imagen de prueba
 						
 						String nombre = carro1.obtenerProductos().encontrar(list.getSelectedIndex()).getDato().getNo(); //Nombre de producto
@@ -325,7 +325,7 @@ public class Prueba implements ActionListener{
 							String producto = list.getSelectedValue().toString().split(" | ")[0]; //Nombre del producto
 							
 							if(JOptionPane.showConfirmDialog(Carrito, "Eliminar "+
-									producto+ "?", "Elimación completada", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
+									producto+ "?", "Elimacion completada", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
 								/*
 								 * Actualizacion de variables globales
 								 */
@@ -341,7 +341,7 @@ public class Prueba implements ActionListener{
 								prodCarrito.setText(String.valueOf(i));
 								
 								JOptionPane.showMessageDialog(Carrito,"Producto eliminado",
-										"Elimación completada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
+										"Elimacion completada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
 								
 								detalles.desactivar(); //Salida de ventana
 								Carrito.activar();
@@ -382,7 +382,7 @@ public class Prueba implements ActionListener{
 					
 					pantallaMenu.getContenedor().setBackground(ModoOscuro); //Cambio de color de fondo
 					
-					btnCarrito.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\Andres\\eclipse-workspace\\MiPyme2\\src\\Img\\shopping-cart (3).png")
+					btnCarrito.setIcon(new ImageIcon(new ImageIcon("src\\Img\\shopping-cart (3).png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 				}else {
 					
@@ -398,7 +398,7 @@ public class Prueba implements ActionListener{
 					
 					pantallaMenu.getContenedor().setBackground(new Color(225,237,249)); //Cambio color de fondo
 					
-					btnCarrito.setIcon(new ImageIcon(new ImageIcon("C:\\Users\\Andres\\eclipse-workspace\\MiPyme2\\src\\Img\\shopping-cart (4).png")
+					btnCarrito.setIcon(new ImageIcon(new ImageIcon("src\\Img\\shopping-cart (4).png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 				}
 
