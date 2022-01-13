@@ -50,8 +50,8 @@ public class Prueba implements ActionListener{
 		Color ModoOscuro = new Color(20,31,59);
 		Icon LogoClaro_ = new ImageIcon("src\\Img\\LogoOscuro.png");
 		
-		BufferedImage myPicture = ImageIO.read(new File("/Users/nickito/git/MiPyme4/src/Img/LogoOscuro.png"));
-		ImageIcon Imagen1 = new ImageIcon("src\\\\Img\\\\LogoOscuro.png");
+		BufferedImage myPicture = ImageIO.read(new File("src\\Img\\LogoOscuro.png"));
+		ImageIcon Imagen1 = new ImageIcon("src\\Img\\LogoOscuro.png");
 		///////////////////////////////////////////////////////////////////////
 		
 		/*
