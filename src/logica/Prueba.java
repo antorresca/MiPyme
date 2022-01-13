@@ -6,6 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import datos.Carrito;
 import datos.Producto;
@@ -19,12 +26,13 @@ public class Prueba implements ActionListener{
 	private static Ventana pantallaMenu;
 	private static Ventana pantallaInicio;
 	private static Ventana pantallaRegistro;
+	private static JLabel bienvenida;
 	
 	private static int i; //contador de productos en carrito
 	private static long precio = 0 ; //variable para precio total de los productos	
 	
 	@SuppressWarnings({ "unused", "rawtypes" })
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		///////////////////////////////////////////////////////////////////////
 		
 		/*
@@ -40,8 +48,10 @@ public class Prueba implements ActionListener{
 		
 		Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
 		Color ModoOscuro = new Color(20,31,59);
-		Icon LogoClaro = new ImageIcon("LogoClaro.png");
-		ImageIcon LogoOscuro = new ImageIcon("LogoOscuro.png");
+		Icon LogoClaro_ = new ImageIcon("/Users/nickito/git/MiPyme4/src/Img/LogoOscuro.png");
+		
+		BufferedImage myPicture = ImageIO.read(new File("/Users/nickito/git/MiPyme4/src/Img/LogoOscuro.png"));
+		ImageIcon Imagen1 = new ImageIcon("/Users/nickito/git/MiPyme4/src/Img/LogoOscuro.png");
 		///////////////////////////////////////////////////////////////////////
 		
 		/*
@@ -52,37 +62,71 @@ public class Prueba implements ActionListener{
 		pantallaInicio.activar();
 		pantallaInicio.getContenedor().setBackground(ModoClaro);
 		
-		JLabel bienvenida = new JLabel("Bienvenido a MiPYME");
-		bienvenida.setBounds(210, 30, 250, 65);
+		
+		Imagen1.setImage(Imagen1.getImage().getScaledInstance(190,135,Image.SCALE_DEFAULT));
+		bienvenida = new JLabel(Imagen1);	
+		bienvenida.setBounds(140, 0, 200, 160);
 		pantallaInicio.getContenedor().add(bienvenida);
 		
 		
+		
 		JLabel userLabel = new JLabel("Usuario", SwingConstants.CENTER);
-		userLabel.setBounds(55, 150, 90, 35);
+		userLabel.setBounds(110, 165, 90, 35);
 		pantallaInicio.getContenedor().add(userLabel);
 		
 		textoUsuario = new JTextField(20);
-		textoUsuario.setBounds(130,155,165,25);
+		textoUsuario.setBounds(185,170,165,25);
 		pantallaInicio.getContenedor().add(textoUsuario);
 		pantallaInicio.getContenedor().setVisible(false);
 		pantallaInicio.getContenedor().setVisible(true);
 		
 		JLabel passwordLabel = new JLabel("Contraseña");
-		passwordLabel.setBounds(55, 170, 90, 35);
+		passwordLabel.setBounds(110, 185, 90, 35);
 		pantallaInicio.getContenedor().add(passwordLabel);
 		
 		textoPassword = new JTextField(20);
-		textoPassword.setBounds(130, 175, 165, 25);
+		textoPassword.setBounds(185, 190, 165, 25);
 		pantallaInicio.getContenedor().add(textoPassword);
+		
+		pantallaInicio.add(new JLabel(new ImageIcon("")));
+		
 		
 		/*
 		 * Botones Inicio
 		 */
 		
-		Boton btningreso = new Boton("Ingresar", pantallaInicio, 65, 230, 100, 25);
+		Boton btningreso = new Boton("Ingresar", pantallaInicio, 130, 230, 100, 25);
 		btningreso.addActionListener(new Prueba());
 		
-		JButton btnprueba = 
+		Boton btnregistro = new Boton("Registrarme", pantallaInicio, 255, 230, 100, 25);
+		btnregistro.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				pantallaInicio.setVisible(false);
+				pantallaRegistro.setVisible(true);
+					
+			}
+			
+		});
+		
+		
+		/*
+		 * Pantalla Registro
+		 */
+		
+		pantallaRegistro = new Ventana("MiPYME - Registro");
+		pantallaRegistro.activar();
+		pantallaRegistro.getContenedor().setBackground(ModoClaro);
+		pantallaRegistro.setVisible(false);
+		
+		
+		
+		
+		
+		
+		
+		
 		///////////////////////////////////////////////////////////////////////
 		
 		/*
@@ -364,6 +408,7 @@ public class Prueba implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		String user = textoUsuario.getText();
 		String password = textoPassword.getText();
 		if (user.equals("Andres") && password.equals("12345")) {
