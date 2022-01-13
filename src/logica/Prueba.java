@@ -1,6 +1,7 @@
 package logica;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,10 +49,10 @@ public class Prueba implements ActionListener{
 		
 		Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
 		Color ModoOscuro = new Color(20,31,59);
-		Icon LogoClaro_ = new ImageIcon("src\\Img\\LogoOscuro.png");
+		Icon LogoClaro_ = new ImageIcon("Img\\LogoOscuro.png");
 		
-		BufferedImage myPicture = ImageIO.read(new File("src\\Img\\LogoOscuro.png"));
-		ImageIcon Imagen1 = new ImageIcon("src\\Img\\LogoOscuro.png");
+		BufferedImage myPicture = ImageIO.read(new File("Img\\LogoOscuro.png"));
+		ImageIcon Imagen1 = new ImageIcon("Img\\LogoOscuro.png");
 		///////////////////////////////////////////////////////////////////////
 		
 		/*
@@ -142,8 +143,8 @@ public class Prueba implements ActionListener{
 		 * Logos de la aplicación
 		 */
 		
-		Imagen logoAppClaro = new Imagen("src\\Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
-		Imagen logoAppOscuro = new Imagen("src\\Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
+		Imagen logoAppClaro = new Imagen("Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
+		Imagen logoAppOscuro = new Imagen("Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
 		logoAppOscuro.setVisible(false);
 		
 		/*
@@ -151,7 +152,7 @@ public class Prueba implements ActionListener{
 		 */
 		
 		Boton btnCarrito = new Boton("Carrito",pantallaMenu,38,71,98,74);
-		ImageIcon carritoIcon =  new ImageIcon("src\\Img\\CarritoClaro.png"); //LAs rutas relativas no estan sirviendo
+		ImageIcon carritoIcon =  new ImageIcon("Img\\CarritoClaro.png"); //LAs rutas relativas no estan sirviendo
 		Icon iconCarrito = new ImageIcon(carritoIcon.getImage().getScaledInstance(
 				btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btnCarrito.setIcon(iconCarrito);
@@ -173,9 +174,9 @@ public class Prueba implements ActionListener{
 		
 		JToggleButton btnTema = new JToggleButton("CLARO"); //Botón de seleccion de tema
 		btnTema.setBounds(374, 11, 80, 80);
-		ImageIcon claro = new ImageIcon("src\\Img\\ModoClaro.png");
+		ImageIcon claro = new ImageIcon("Img\\ModoClaro.png");
 		Icon iconClaro = new ImageIcon(claro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
-		ImageIcon oscuro = new ImageIcon("src\\Img\\ModoOscuro.png");
+		ImageIcon oscuro = new ImageIcon("Img\\ModoOscuro.png");
 		Icon iconOscuro = new ImageIcon(oscuro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
 		btnTema.setIcon(iconClaro);
 		btnTema.setBackground(null);
@@ -292,7 +293,7 @@ public class Prueba implements ActionListener{
 						 * Elementos de ventana
 						 */
 						
-						Imagen imgProducto = new Imagen("src\\Img\\shopping-cart (4).png"
+						Imagen imgProducto = new Imagen("Img\\shopping-cart (4).png"
 								,detalles,0,40,345-detalles.getWidth()/2,detalles.getHeight()/2); //Imagen de prueba
 						
 						String nombre = carro1.obtenerProductos().encontrar(list.getSelectedIndex()).getDato().getNo(); //Nombre de producto
@@ -362,6 +363,33 @@ public class Prueba implements ActionListener{
 						pantallaMenu.activar();
 					}
 				});
+				
+				pago.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						Ventana Factura = new Ventana("Ventana");
+						Factura.setBounds(100, 100, 268, 534);
+						Factura.setLayout(null);
+						JPanel Botones = new JPanel();
+						Botones.setBounds(0, 0, 252, 61);
+						Botones.setLayout(null);
+						Factura.getContenedor().add(Botones);
+						JButton regresar = new JButton();
+						regresar.setText("Regresar");
+						regresar.setBounds(10, 27, 89, 23);;
+						Botones.add(regresar);
+						JPanel Datos = new JPanel();
+						Datos.setBounds(0, 72, 252, 423);
+						Datos.setLayout(null);
+						Factura.getContenedor().add(Datos);
+						JLabel Titulo = new JLabel();
+						Titulo.setText("Mi Pyme");
+						Titulo.setBounds(0, 0, 252, 25);
+						Titulo.setHorizontalAlignment(SwingConstants.CENTER);
+						Titulo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+						Datos.add(Titulo);
+					}
+				});
 			}
 		});
 
@@ -382,7 +410,7 @@ public class Prueba implements ActionListener{
 					
 					pantallaMenu.getContenedor().setBackground(ModoOscuro); //Cambio de color de fondo
 					
-					btnCarrito.setIcon(new ImageIcon(new ImageIcon("src\\Img\\CarritoOscuro.png")
+					btnCarrito.setIcon(new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 				}else {
 					
@@ -398,7 +426,7 @@ public class Prueba implements ActionListener{
 					
 					pantallaMenu.getContenedor().setBackground(new Color(225,237,249)); //Cambio color de fondo
 					
-					btnCarrito.setIcon(new ImageIcon(new ImageIcon("src\\Img\\CarritoClaro.png")
+					btnCarrito.setIcon(new ImageIcon(new ImageIcon("Img\\CarritoClaro.png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 				}
 
