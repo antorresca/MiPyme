@@ -28,6 +28,14 @@ public class Prueba implements ActionListener{
 	private static Ventana pantallaInicio;
 	private static Ventana pantallaRegistro;
 	private static JLabel bienvenida;
+	private static JTextField registroUsuario;
+	private static JTextField registroContraseña;
+	private static JLabel LabelSuccess;
+	private static JLabel NombreUsuario;
+	private static String registroUsuariotxt;
+	private static String registroPasswordtxt;
+
+	
 	
 	private static int i; //contador de productos en carrito
 	private static long precio = 0 ; //variable para precio total de los productos	
@@ -50,8 +58,8 @@ public class Prueba implements ActionListener{
 		Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
 		Color ModoOscuro = new Color(20,31,59);
 		Icon LogoClaro_ = new ImageIcon("Img\\LogoOscuro.png");
-		
-		BufferedImage myPicture = ImageIO.read(new File("Img\\LogoOscuro.png"));
+		File archivo = new File("Img\\LogoOscuro.png");
+		System.out.println(archivo.exists());
 		ImageIcon Imagen1 = new ImageIcon("Img\\LogoOscuro.png");
 		///////////////////////////////////////////////////////////////////////
 		
@@ -81,7 +89,7 @@ public class Prueba implements ActionListener{
 		pantallaInicio.getContenedor().setVisible(false);
 		pantallaInicio.getContenedor().setVisible(true);
 		
-		JLabel passwordLabel = new JLabel("Contrasena");
+		JLabel passwordLabel = new JLabel("Contraseña");
 		passwordLabel.setBounds(110, 185, 90, 35);
 		pantallaInicio.getContenedor().add(passwordLabel);
 		
@@ -121,6 +129,83 @@ public class Prueba implements ActionListener{
 		pantallaRegistro.getContenedor().setBackground(ModoClaro);
 		pantallaRegistro.setVisible(false);
 		
+		registroUsuario = new JTextField(20);
+		registroUsuario.setBounds(225,120,165,25);
+		pantallaRegistro.getContenedor().add(registroUsuario);
+		
+		registroContraseña = new JTextField(20);
+		registroContraseña.setBounds(225,150,165,25);
+		pantallaRegistro.getContenedor().add(registroContraseña);
+		
+		JLabel LabelRegistroU = new JLabel("Escriba su usuario");
+		LabelRegistroU.setBounds(90, 115, 130, 35);
+		pantallaRegistro.getContenedor().add(LabelRegistroU);
+		
+		JLabel LabelRegistroC = new JLabel("Escriba su contraseña");
+		LabelRegistroC.setBounds(80, 145, 150, 35);
+		pantallaRegistro.getContenedor().add(LabelRegistroC);
+		
+		LabelSuccess = new JLabel("", SwingConstants.CENTER);
+		LabelSuccess.setBounds(90, 245, 300, 35);
+		pantallaRegistro.getContenedor().add(LabelSuccess);
+		
+		
+		/*
+		 * Botones Registro
+		 */
+		
+		
+		Boton BtnRegistrar = new Boton("Registrarme", pantallaRegistro, 255, 200, 100, 25);
+		BtnRegistrar.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				String registroUsuariotxt = registroUsuario.getText();
+				String registroPasswordtxt = registroContraseña.getText();
+				
+				if (registroPasswordtxt.equals("") && registroUsuariotxt.equals("")) {
+					
+					LabelSuccess.setText("Por favor, llene los espacios en blanco");
+					
+				}
+				
+				
+				else if(registroUsuariotxt.equals("")) {
+					
+					LabelSuccess.setText("Por favor ingrese su usuario");
+					
+				}
+				
+				else if (registroPasswordtxt.equals("")) {
+					
+					LabelSuccess.setText("Ingrese la contraseña");
+					
+				}
+				
+				else if(!"".equals(registroUsuariotxt) && !"".equals(registroPasswordtxt)) {
+					
+					pantallaRegistro.setVisible(false);
+					pantallaMenu.setVisible(true);
+					
+				}
+					
+			}
+			
+		});
+		
+		
+		Boton BtnVolver = new Boton("Volver", pantallaRegistro, 130, 200, 100, 25);
+		BtnVolver.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				pantallaRegistro.setVisible(false);
+				pantallaInicio.setVisible(true);
+					
+			}
+			
+		});
+		
 		
 		
 		
@@ -143,13 +228,29 @@ public class Prueba implements ActionListener{
 		 * Logos de la aplicación
 		 */
 		
-		Imagen logoAppClaro = new Imagen("Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
-		Imagen logoAppOscuro = new Imagen("Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
+		Imagen logoAppClaro = new Imagen("src\\Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
+		Imagen logoAppOscuro = new Imagen("src\\Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
 		logoAppOscuro.setVisible(false);
 		
 		/*
 		 * Botones del menu
 		 */
+		
+		Boton BtnCerrarSesion = new Boton("Cerrar Sesión", pantallaMenu, 130, 240, 200, 50);
+		BtnCerrarSesion.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				pantallaMenu.setVisible(false);
+				pantallaInicio.setVisible(true);
+					
+			}
+			
+		});
+		
+		NombreUsuario = new JLabel("Bienvenido, " + registroUsuariotxt);
+		NombreUsuario.setBounds(30, 10, 150,30);
+		pantallaMenu.getContenedor().add(NombreUsuario);
 		
 		Boton btnCarrito = new Boton("Carrito",pantallaMenu,38,71,98,74);
 		ImageIcon carritoIcon =  new ImageIcon("Img\\CarritoClaro.png"); //LAs rutas relativas no estan sirviendo
