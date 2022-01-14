@@ -28,3 +28,4 @@ public class Texto extends JLabel{
 	}
 
 }
+//jsjsjsjsja
