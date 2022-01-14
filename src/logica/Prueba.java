@@ -29,7 +29,7 @@ public class Prueba implements ActionListener{
 	private static Ventana pantallaRegistro;
 	private static JLabel bienvenida;
 	private static JTextField registroUsuario;
-	private static JTextField registroContraseña;
+	private static JTextField registroContrasena;
 	private static JLabel LabelSuccess;
 	private static JLabel NombreUsuario;
 	private static String registroUsuariotxt;
@@ -133,9 +133,9 @@ public class Prueba implements ActionListener{
 		registroUsuario.setBounds(225,120,165,25);
 		pantallaRegistro.getContenedor().add(registroUsuario);
 		
-		registroContraseña = new JTextField(20);
-		registroContraseña.setBounds(225,150,165,25);
-		pantallaRegistro.getContenedor().add(registroContraseña);
+		registroContrasena = new JTextField(20);
+		registroContrasena.setBounds(225,150,165,25);
+		pantallaRegistro.getContenedor().add(registroContrasena);
 		
 		JLabel LabelRegistroU = new JLabel("Escriba su usuario");
 		LabelRegistroU.setBounds(90, 115, 130, 35);
@@ -161,7 +161,7 @@ public class Prueba implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				
 				String registroUsuariotxt = registroUsuario.getText();
-				String registroPasswordtxt = registroContraseña.getText();
+				String registroPasswordtxt = registroContrasena.getText();
 				
 				if (registroPasswordtxt.equals("") && registroUsuariotxt.equals("")) {
 					
@@ -468,32 +468,38 @@ public class Prueba implements ActionListener{
 				pago.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						Ventana Factura = new Ventana("Ventana");
+						Ventana Factura = new Ventana("Factura");
+						Carrito.desactivar();
 						Factura.setBounds(100, 100, 268, 534);
-						Factura.setLayout(null);
-						JPanel Botones = new JPanel();
-						Botones.setBounds(0, 0, 252, 61);
-						Botones.setLayout(null);
-						Factura.getContenedor().add(Botones);
-						JButton regresar = new JButton();
-						regresar.setText("Regresar");
-						regresar.setBounds(10, 27, 89, 23);;
-						Botones.add(regresar);
-						JPanel Datos = new JPanel();
-						Datos.setBounds(0, 72, 252, 423);
-						Datos.setLayout(null);
-						Factura.getContenedor().add(Datos);
-						JLabel Titulo = new JLabel();
-						Titulo.setText("Mi Pyme");
-						Titulo.setBounds(0, 0, 252, 25);
+						Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
+						Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
 						Titulo.setHorizontalAlignment(SwingConstants.CENTER);
 						Titulo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-						Datos.add(Titulo);
+						Texto encabezado = new Texto("Factura de compra",Factura,0, 126, 252, 14);
+						encabezado.setHorizontalAlignment(SwingConstants.CENTER);
+						Texto lblNewLabel_2 = new Texto("------------------------------------------------",Factura,0, 147, 252, 14);
+						JList list = new JList();
+						list.setEnabled(false);
+						list.setModel(modelo);
+						JScrollPane LaFactura = new JScrollPane(list);
+						LaFactura.setBounds(0, 139, 252, 285);
+						Factura.getContenedor().add(LaFactura);
+						Texto lblNewLabel_2_1 = new Texto("----------------------------------------------",Factura,0, 462, 252, 14);
+						Texto lblNewLabel_3 = new Texto("Total a Pagar:",Factura,0, 485, 170, 14);
+						lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
+						Texto lblNewLabel_4 = new Texto(String.valueOf(precio),Factura,99, 496, 143, 38);
+						
+						regresar.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						Factura.desactivar(); 
+						Carrito.activar();
+					}
+				});
 					}
 				});
 			}
 		});
-
 		btnTema.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
