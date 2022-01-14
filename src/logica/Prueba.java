@@ -560,5 +560,5 @@ public class Prueba implements ActionListener{
 		
 	}
 	
-	//marco es infiltrado
+	//marco es infiltrado, es true
 }
