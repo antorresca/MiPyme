@@ -62,7 +62,7 @@ public class Prueba implements ActionListener{
 		System.out.println(archivo.exists());
 		ImageIcon Imagen1 = new ImageIcon("Img\\LogoOscuro.png");
 		///////////////////////////////////////////////////////////////////////
-		
+			
 		/*
 		 * Pantalla Inicio
 		 */
@@ -89,7 +89,7 @@ public class Prueba implements ActionListener{
 		pantallaInicio.getContenedor().setVisible(false);
 		pantallaInicio.getContenedor().setVisible(true);
 		
-		JLabel passwordLabel = new JLabel("Contraseña");
+		JLabel passwordLabel = new JLabel("Contrasena");
 		passwordLabel.setBounds(110, 185, 90, 35);
 		pantallaInicio.getContenedor().add(passwordLabel);
 		
@@ -141,7 +141,7 @@ public class Prueba implements ActionListener{
 		LabelRegistroU.setBounds(90, 115, 130, 35);
 		pantallaRegistro.getContenedor().add(LabelRegistroU);
 		
-		JLabel LabelRegistroC = new JLabel("Escriba su contraseña");
+		JLabel LabelRegistroC = new JLabel("Escriba su contrasena");
 		LabelRegistroC.setBounds(80, 145, 150, 35);
 		pantallaRegistro.getContenedor().add(LabelRegistroC);
 		
@@ -178,7 +178,7 @@ public class Prueba implements ActionListener{
 				
 				else if (registroPasswordtxt.equals("")) {
 					
-					LabelSuccess.setText("Ingrese la contraseña");
+					LabelSuccess.setText("Ingrese la contrasena");
 					
 				}
 				
@@ -236,7 +236,7 @@ public class Prueba implements ActionListener{
 		 * Botones del menu
 		 */
 		
-		Boton BtnCerrarSesion = new Boton("Cerrar Sesión", pantallaMenu, 130, 240, 200, 50);
+		Boton BtnCerrarSesion = new Boton("Cerrar Sesion", pantallaMenu, 130, 240, 200, 50);
 		BtnCerrarSesion.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
