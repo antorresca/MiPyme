@@ -6,6 +6,7 @@ public abstract class Metodos_pila_cola_arreglo <T> {
 	private int tamano;
 	
 	
+	@SuppressWarnings("unchecked")
 	public Metodos_pila_cola_arreglo(int tamano_arreglo) {
 		
 		arreglo = (T[]) new Object[tamano_arreglo];
