@@ -3,24 +3,41 @@ package estructuras;
 public abstract class Metodos_arbol_binario <T> {
 	private Nodo raiz;
 	
-	public class BinaryTree{
-	    
-	    
-	    BinaryTree(T head){
-	    	raiz = new Nodo(head);
-	    }
-	   
-	    BinaryTree(){
-	    	raiz = null;
-	    }
+	Metodos_arbol_binario(){
+		raiz = null;
 	}
 	
 	protected void agregar(T item) {
-		Nodo nodoActual = raiz;
+		
 		Nodo nuevoNodo = new Nodo(item);
-	
-		while (raiz.izquierda==null){
+		
+		Nodo auxiliar = raiz;
+		
+		boolean compuerta = true;
+		
+		while(compuerta) {
+		
+		if((int)item >= (int)auxiliar.dato) {
 			
+			if(auxiliar.derecha == null) {
+			  
+				auxiliar.derecha = nuevoNodo;
+				compuerta = false;
+			}else {
+				auxiliar = auxiliar.derecha;
+			}
+		}else {
+			
+			if(auxiliar.izquierda == null) {
+				  
+				auxiliar.izquierda = nuevoNodo;
+				compuerta = false;
+			}else {
+				auxiliar = auxiliar.izquierda;
+			}
+			
+		}
+	    
 		}
 	}
 /////////////////////////////////////
