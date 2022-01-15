@@ -2,6 +2,9 @@ package estructuras;
 
 public abstract class Metodos_arbol_binario <T> {
 	private Nodo raiz;
+	public Nodo getRaiz() {
+		return raiz;
+	}
 	
 	Metodos_arbol_binario(){
 		raiz = null;
@@ -14,6 +17,12 @@ public abstract class Metodos_arbol_binario <T> {
 		Nodo auxiliar = raiz;
 		
 		boolean compuerta = true;
+		
+		if (raiz==null) {
+			raiz = nuevoNodo;
+			compuerta = false;
+			System.out.print("wtf");
+		}
 		
 		while(compuerta) {
 		
@@ -40,6 +49,8 @@ public abstract class Metodos_arbol_binario <T> {
 	    
 		}
 	}
+	
+	
 /////////////////////////////////////
 
 
