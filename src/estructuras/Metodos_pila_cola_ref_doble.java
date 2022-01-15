@@ -25,7 +25,7 @@ public abstract class Metodos_pila_cola_ref_doble<T>{
                if(this.cabeza.siguiente==null) this.cola = this.cabeza;
                this.cola.siguiente = n;
                n.anterior = this.cola;
-               this.cola = this.cola.anterior;        
+               this.cola = this.cola.siguiente;        
             }
 			tamano++;
 		}
