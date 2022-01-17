@@ -287,7 +287,7 @@ public class Ejecucion {
 		 * Botones Registro 
 		 */
 
-		Boton BtnRegistrar = new Boton("Registrarme", pantallaRegistro, 255, 200, 100, 25);
+		Boton BtnRegistrar = new Boton("Crear", pantallaRegistro, 255, 200, 100, 25);
 
 		Boton BtnVolver = new Boton("Regresar", pantallaRegistro, 130, 200, 100, 25);
 
@@ -882,6 +882,7 @@ public class Ejecucion {
 						btnregistro.setVisible(true);
 						compuerta_filtro = false;
 					}else {
+						
 					/*	Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
 						if (!(usuarios.encontrarN(comparar).getDato().getUsuario().equals("Este dato NO existe en el arbol_binario :c")) && usuarios.encontrarN(comparar).getDato().getContrasena().equals(textoPassword.getText())){
 							pantallaInicio.setVisible(false);
