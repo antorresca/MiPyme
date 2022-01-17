@@ -313,7 +313,16 @@ public class Ejecucion {
 		btnCarrito.setOpaque(false);
 
 		Boton btn_busqueda_factura = new Boton("Opcion 2",pantallaMenu,38,156,98,74);
-
+		ImageIcon facturaIcon =  new ImageIcon("Img\\FacturaClaro.png"); //Las rutas relativas no estan sirviendo
+		Icon iconFactura = new ImageIcon(facturaIcon.getImage().getScaledInstance(
+				btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
+		btn_busqueda_factura.setIcon(iconFactura);
+		btn_busqueda_factura.setToolTipText("Carrito\r\n");
+		btn_busqueda_factura.setBackground(null);
+		btn_busqueda_factura.setBorderPainted(false);
+		btn_busqueda_factura.setContentAreaFilled(false);
+		btn_busqueda_factura.setOpaque(false);
+		
 		Boton btn3 = new Boton("Opcion 3",pantallaMenu,146,71,98,74);
 
 		Boton btn4 = new Boton("Opcion 4",pantallaMenu,146,156,98,74);
@@ -724,6 +733,8 @@ public class Ejecucion {
 
 					btnCarrito.setIcon(new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
+					btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png")
+							.getImage().getScaledInstance(btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
 				}else {
 
 					/*
@@ -740,6 +751,8 @@ public class Ejecucion {
 
 					btnCarrito.setIcon(new ImageIcon(new ImageIcon("Img\\CarritoClaro.png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
+					btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon("Img\\FacturaClaro.png")
+							.getImage().getScaledInstance(btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
 				}
 
 			}
