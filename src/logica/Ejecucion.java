@@ -40,142 +40,7 @@ public class Ejecucion {
 	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 
-		DefaultListModel modelo = new DefaultListModel();
-		DefaultListModel modelo2 = new DefaultListModel();
-
-		Lista_ref_simple<Producto> inventario = new Lista_ref_simple<Producto>();
-		Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
-		Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
-		Lista_ref_simple<Usuario> usuarios = new Lista_ref_simple<Usuario>();
-		//Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>();
-		
-		for(int i = 0; i<100;i++) {
-			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,2));
-		}
-		for(int t=0; t<inventario.getTamano();t++) { //Creacion de datos random para pruebas
-			modelo.addElement(inventario.encontrar(t).getDato().imprimir());
-		}
-
-		//-------------------------------------------PRUEBAS---------------------------------------------------------
-
-		//referencias simples
-
-		Cola_ref_simple<Integer> objeto = new Cola_ref_simple<Integer>();
-
-		objeto.encolar(1);
-		objeto.encolar(2);
-		objeto.encolar(3);
-		objeto.encolar(4);
-		objeto.encolar(5);
-		objeto.encolar(6);
-		objeto.desencolar();
-
-		objeto.imprimir();
-
-		System.out.println();
-
-		Pila_ref_simple<String> objeto2 = new Pila_ref_simple<String>();
-
-		objeto2.push("hola");
-		objeto2.push("cómo");
-		objeto2.push("estás");
-		objeto2.push("bebé");
-		objeto2.pop();
-		objeto2.pop();
-
-		objeto2.imprimir();
-
-		Lista_ref_simple<Integer> objeto5 = new Lista_ref_simple<Integer>();
-
-		objeto5.agregar(1);
-		objeto5.agregar(2);
-		objeto5.agregar(3);
-		objeto5.agregar(4);
-		objeto5.agregar(5);
-
-		System.out.print(objeto5.encontrar(0).getDato()+"\n");
-
-		objeto5.imprimir();
-
-		System.out.println();
-
-		//arreglos dinamicos
-
-		Pila_arreglo_dinamico<Integer> objeto3 = new Pila_arreglo_dinamico<Integer>();
-
-		objeto3.push(1);
-		objeto3.push(2);
-		objeto3.push(3);
-		objeto3.push(4);
-		objeto3.pop();
-
-		objeto3.imprimir();
-
-		System.out.println();
-
-		Cola_arreglo_dinamico<String> objeto4 = new Cola_arreglo_dinamico<String>();
-
-		objeto4.encolar("eres");
-		objeto4.encolar("todo");
-		objeto4.encolar("un");
-		objeto4.encolar("programador");
-		objeto4.desencolar();
-
-
-		objeto4.imprimir();
-
-		System.out.println();
-
-		Lista_arreglo_dinamico<Integer> objeto6 = new Lista_arreglo_dinamico<Integer>();
-
-		objeto6.agregar(1);
-		objeto6.agregar(2);
-		objeto6.agregar(3);
-		objeto6.agregar(4);
-		objeto6.eliminar_en(1);
-
-		objeto6.imprimir();
-
-
-		/*
-		//ANÁLISIS COMPARATIVO
-		Lista_arreglo_dinamico<Integer> lista1 = new Lista_arreglo_dinamico<Integer>();
-		Lista_ref_simple<Integer> lista2 = new Lista_ref_simple<Integer>();
-
-		for(int i=0; i<100*1000000-5; i++) {
-
-			lista1.agregar(i);
-		}
-
-
-		long tiempo_inicial = System.nanoTime();
-
-		lista1.encontrar(100*1000000-7);
-
-		long tiempo_final = System.nanoTime() - tiempo_inicial;
-
-		System.out.print(tiempo_final);
-		 */
-
-
-		//--------------------------------------------INSTANCIACIONES-----------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		//--------------------------------------------EJECUCIÓN DE INTERFAZ-----------------------------------------------------------
-		//PLANTILLAS
+		//--------------------------------------------PLANTILLAS-----------------------------------------------------------
 		/*
 
 		//Ventanas emergentes
@@ -202,40 +67,47 @@ public class Ejecucion {
 		public void mouseClicked(MouseEvent e) {
 		///////////////////////////////////////////////////////////////////////
 
-		  //lo que va a hacer el botón
+		    //lo que va a hacer el botón
 
 		///////////////////////////////////////////////////////////////////////			
 		}
 		});
-		 */
 
-		///////////////////////////////////////////////////////////////////////
+		*/
+		//--------------------------------------------INSTANCIACIONES-----------------------------------------------------------
 
-		/*
-		 * Instancia de elementos de prueba
-		 */
+		DefaultListModel modelo = new DefaultListModel();
+		DefaultListModel modelo2 = new DefaultListModel();
 
+		Lista_ref_simple<Producto> inventario = new Lista_ref_simple<Producto>();
+		Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
+		Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
+		Lista_ref_simple<Usuario> usuarios = new Lista_ref_simple<Usuario>();
+		//Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>();
 
-		/*
-		 * Colores
-		 */
+		for(int i = 0; i<100;i++) {
+			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,2));
+		}
+		for(int t=0; t<inventario.getTamano();t++) { //Creacion de datos random para pruebas
+			modelo.addElement(inventario.encontrar(t).getDato().imprimir());
+		}
+
+		//--------------------------------------------EJECUCIÓN DE INTERFAZ-----------------------------------------------------------
 
 		Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
 		Color ModoOscuro = new Color(20,31,59);
 		Color Tema = ModoClaro;
 
-		/*
-		 * Ventanas
-		 */
+		//Ventanas
 
-		Ventana pantallaInicio = new Ventana("MiPYME");
+		Ventana pantallaInicio = new Ventana("Mi PYME");
 		pantallaInicio.setBackground(Tema);
 
 		Ventana pantallaMenu = new Ventana("Menu"); 
 		pantallaMenu.setBackground(Tema);
 		pantallaMenu.desactivar();
 
-		Ventana pantallaRegistro = new Ventana("MiPYME - Registro");
+		Ventana pantallaRegistro = new Ventana("Mi PYME - Registro");
 		pantallaRegistro.setBackground(Tema);
 		pantallaRegistro.desactivar();
 
@@ -257,13 +129,11 @@ public class Ejecucion {
 		CampoL textoUsuario = new CampoL(pantallaInicio,185,170,165,25);
 		CampoL textoPassword = new CampoL(pantallaInicio,185, 190, 165, 25);
 
-		/*
-		 * Botones Inicio
-		 */
-		
+		//Botones Inicio
+
 		Boton btnregistro = new Boton("Registrar", pantallaMenu, 365, 150, 100, 25);
 		btnregistro.setVisible(false);
-		
+
 
 		Boton btningreso = new Boton("Ingresar", pantallaInicio, 200, 230, 100, 25);
 
@@ -283,9 +153,7 @@ public class Ejecucion {
 
 		Texto LabelSuccess = new Texto("",pantallaRegistro,90, 285, 300, 35);		
 
-		/*
-		 * Botones Registro 
-		 */
+		//Botones Registro 
 
 		Boton BtnRegistrar = new Boton("Crear", pantallaRegistro, 255, 200, 100, 25);
 
@@ -296,10 +164,8 @@ public class Ejecucion {
 		Imagen logoAppClaro = new Imagen("Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
 		Imagen logoAppOscuro = new Imagen("Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
 		logoAppOscuro.setVisible(false);
-
-		/*
-		 * Botones del menu
-		 */
+		
+		//Botones del menu
 
 		Boton BtnCerrarSesion = new Boton("Cerrar Sesion", pantallaMenu, 130, 240, 200, 50);
 
@@ -326,7 +192,7 @@ public class Ejecucion {
 		btn_busqueda_factura.setBorderPainted(false);
 		btn_busqueda_factura.setContentAreaFilled(false);
 		btn_busqueda_factura.setOpaque(false);
-		
+
 		Boton btn3 = new Boton("Opcion 3",pantallaMenu,146,71,98,74);
 
 		Boton btn4 = new Boton("Opcion 4",pantallaMenu,146,156,98,74);
@@ -364,11 +230,11 @@ public class Ejecucion {
 				}
 				try {
 					Factura nuevaFactura = facturas.encontrar(n).getDato();
-					
+
 					for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
 						modelo.addElement(nuevaFactura.getProductos().encontrar(t).getDato().imprimir());
 					}
-					
+
 					Factura.setBounds(100, 100, 268, 600);
 					Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
 					Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
@@ -428,8 +294,6 @@ public class Ejecucion {
 
 		///////////////////////Eventos en botones///////////////////////
 
-
-
 		BtnCerrarSesion.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -438,8 +302,6 @@ public class Ejecucion {
 					 * Actualizacion de variables globales
 					 */
 
-
-
 					JOptionPane.showMessageDialog(pantallaMenu,"Sesi\u00f3n Cerrada",
 							"Sesi\u00f3n Cerrada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
 
@@ -447,20 +309,13 @@ public class Ejecucion {
 					pantallaInicio.activar();
 					btnregistro.setVisible(false);
 
-
-
 				}else {
 					JOptionPane.showMessageDialog(pantallaMenu,"Ke",
 							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error
-					
+
 				}
-
-
 			}
-
 		});
-
-
 
 		btnCarrito.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("unchecked")
@@ -738,8 +593,6 @@ public class Ejecucion {
 
 
 		///////////////////////////////////////////////////////////////////
-
-
 		btnTema.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -794,8 +647,8 @@ public class Ejecucion {
 
 				String registro_usuario = registroUsuario.getText();
 				String registro_contrasenia = registroContrasena.getText();
-				
-				
+
+
 
 				if (registro_contrasenia.equals("") && registro_usuario.equals("")) {
 
@@ -821,10 +674,10 @@ public class Ejecucion {
 					JOptionPane.showMessageDialog(pantallaRegistro,"Creación de usuario exitosa","Exitoso",JOptionPane.INFORMATION_MESSAGE);
 					pantallaRegistro.setVisible(false);
 					pantallaMenu.setVisible(true);
-					
+
 					//usuarios.agregarA(new Usuario(registro_usuario,registro_contrasenia));
 					usuarios.agregar(new Usuario(registro_usuario,registro_contrasenia));
-					
+
 					registroUsuario.setText("");
 					registroContrasena.setText("");
 
@@ -845,81 +698,62 @@ public class Ejecucion {
 		btningreso.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				
-				
+
 				if (textoPassword.getText().equals("") && textoUsuario.getText().equals("")) {
 
 					JOptionPane.showMessageDialog(pantallaInicio,"Por favor, llene los espacios en blanco","¡OJO!",JOptionPane.WARNING_MESSAGE);
-
 				}
-
 
 				else if(textoUsuario.getText().equals("")) {
 
 					JOptionPane.showMessageDialog(pantallaInicio,"Por favor ingrese su usuario","¡OJO!",JOptionPane.WARNING_MESSAGE);
-
 				}
 
 				else if (textoPassword.getText().equals("")) {
-					
-					JOptionPane.showMessageDialog(pantallaInicio,"Ingrese la contrasena","¡OJO!",JOptionPane.WARNING_MESSAGE);
-					
 
+					JOptionPane.showMessageDialog(pantallaInicio,"Ingrese la contrasena","¡OJO!",JOptionPane.WARNING_MESSAGE);
 				}
 
 				else if(!"".equals(textoUsuario.getText()) && !"".equals(textoPassword.getText())) {
 
-					//JOptionPane.showMessageDialog(pantallaRegistro,"Creación de usuario exitosa","Exitoso",JOptionPane.INFORMATION_MESSAGE);
-					System.out.println("ENTRO AQUI");
-					
 					boolean compuerta_filtro = true;
-					
+
 					if(usuario_admin.getUsuario().equals(textoUsuario.getText()) && usuario_admin.getContrasena().equals(textoPassword.getText())) {
-						
+
 						pantallaInicio.setVisible(false);
 						pantallaMenu.setVisible(true);
 						btnregistro.setVisible(true);
 						compuerta_filtro = false;
 					}else {
-						
-					/*	Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
+
+						/*	Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
 						if (!(usuarios.encontrarN(comparar).getDato().getUsuario().equals("Este dato NO existe en el arbol_binario :c")) && usuarios.encontrarN(comparar).getDato().getContrasena().equals(textoPassword.getText())){
 							pantallaInicio.setVisible(false);
 							pantallaMenu.setVisible(true);
 							compuerta_filtro = false;
 						}
-						
-					*/
-					for(int i=0; i < usuarios.getTamano(); i++) {
-						
-						if(usuarios.encontrar(i).getDato().getUsuario().equals(textoUsuario.getText()) && usuarios.encontrar(i).getDato().getContrasena().equals(textoPassword.getText())) {
-							
-							pantallaInicio.setVisible(false);
-							pantallaMenu.setVisible(true);
-							compuerta_filtro = false;
-						    break;
+
+						 */
+						for(int i=0; i < usuarios.getTamano(); i++) {
+
+							if(usuarios.encontrar(i).getDato().getUsuario().equals(textoUsuario.getText()) && usuarios.encontrar(i).getDato().getContrasena().equals(textoPassword.getText())) {
+
+								pantallaInicio.setVisible(false);
+								pantallaMenu.setVisible(true);
+								compuerta_filtro = false;
+								break;
+							}
 						}
 					}
-					}
-					
+
 					if(compuerta_filtro) {
-						
+
 						JOptionPane.showMessageDialog(pantallaRegistro,"Usuario o clave erronea","Error",JOptionPane.ERROR_MESSAGE);
 					}
-					
+
 					//registroUsuario.setText("");
 					//registroContrasena.setText("");
-
 				}
-				
-				
-				
-				
-				
-				
-				
-				
 			}});
 
 		btnregistro.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
