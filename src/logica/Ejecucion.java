@@ -35,7 +35,7 @@ public class Ejecucion {
 	private static String registroUsuariotxt;
 	private static int i; //contador de productos en carrito
 	private static long precio = 0; 
-	private static Usuario user1 = new Usuario("Andres","12345");
+	private static Usuario usuario_admin = new Usuario("Andres","12345");
 
 	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public static void main(String[] args) {
@@ -46,7 +46,8 @@ public class Ejecucion {
 		Lista_ref_simple<Producto> inventario = new Lista_ref_simple<Producto>();
 		Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
 		Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
-
+		Lista_ref_simple<Usuario> usuarios = new Lista_ref_simple<Usuario>();
+		
 		for(int i = 0; i<100;i++) {
 			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es..."+String.valueOf(i),(long) (Math.random()*10000),null,2));
 		}
@@ -317,7 +318,7 @@ public class Ejecucion {
 		Icon iconFactura = new ImageIcon(facturaIcon.getImage().getScaledInstance(
 				btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btn_busqueda_factura.setIcon(iconFactura);
-		btn_busqueda_factura.setToolTipText("Carrito\r\n");
+		btn_busqueda_factura.setToolTipText("Factura\r\n");
 		btn_busqueda_factura.setBackground(null);
 		btn_busqueda_factura.setBorderPainted(false);
 		btn_busqueda_factura.setContentAreaFilled(false);
@@ -383,7 +384,6 @@ public class Ejecucion {
 					JScrollPane LaFactura = new JScrollPane(listProductos);
 					LaFactura.setBounds(0, 139, 252, 200);
 					Factura.getContenedor().add(LaFactura);
-
 					Texto precioProductos = new Texto("<precio>",Factura,0, 414, 240, 38);
 					precioProductos.setHorizontalAlignment(SwingConstants.RIGHT);
 					Texto nombreCliente = new Texto("<Nombre cliente>",Factura,10,420, 170, 14);
@@ -392,7 +392,7 @@ public class Ejecucion {
 					Texto nombreCajero = new Texto("<Cajero>",Factura,50,540, 143,14);
 					Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);
 
-					carrito.desactivar();
+					pantallaMenu.desactivar();
 					Factura.activar();
 					precioProductos.setText(String.valueOf(nuevaFactura.getPrecio()));
 					nombreCliente.setText(nuevaFactura.getNombre());
@@ -412,8 +412,8 @@ public class Ejecucion {
 					});
 				}catch(Exception exp) {
 					Factura.desactivar();
+					pantallaMenu.activar();
 					JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","Factura no encontrada",JOptionPane.ERROR_MESSAGE);
-					
 				}
 
 			}
@@ -608,8 +608,8 @@ public class Ejecucion {
 						String Fecha = dtf.format(LocalDateTime.now());
 
 
-						System.out.print(user1.getUsuario());
-						Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, user1, compra);
+						System.out.print(usuario_admin.getUsuario());
+						Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, usuario_admin, compra);
 						facturas.agregar(nuevaFactura);
 
 						carrito.desactivar();
@@ -766,32 +766,41 @@ public class Ejecucion {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				String registroUsuariotxt = registroUsuario.getText();
-				String registroPasswordtxt = registroContrasena.getText();
+				String registro_usuario = registroUsuario.getText();
+				String registro_contrasenia = registroContrasena.getText();
+				
+				
 
-				if (registroPasswordtxt.equals("") && registroUsuariotxt.equals("")) {
+				if (registro_contrasenia.equals("") && registro_usuario.equals("")) {
 
 					LabelSuccess.setText("Por favor, llene los espacios en blanco");
 
 				}
 
 
-				else if(registroUsuariotxt.equals("")) {
+				else if(registro_usuario.equals("")) {
 
 					LabelSuccess.setText("Por favor ingrese su usuario");
 
 				}
 
-				else if (registroPasswordtxt.equals("")) {
+				else if (registro_contrasenia.equals("")) {
 
 					LabelSuccess.setText("Ingrese la contrasena");
 
 				}
 
-				else if(!"".equals(registroUsuariotxt) && !"".equals(registroPasswordtxt)) {
+				else if(!"".equals(registro_usuario) && !"".equals(registro_contrasenia)) {
 
+					JOptionPane.showMessageDialog(pantallaRegistro,"Creación de usuario exitosa","Exitoso",JOptionPane.INFORMATION_MESSAGE);
 					pantallaRegistro.setVisible(false);
 					pantallaMenu.setVisible(true);
+					
+					usuarios.agregar(new Usuario(registro_usuario,registro_contrasenia));
+                    
+					
+					registroUsuario.setText("");
+					registroContrasena.setText("");
 
 				}
 
@@ -807,8 +816,72 @@ public class Ejecucion {
 		btningreso.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				pantallaInicio.setVisible(false);
-				pantallaMenu.setVisible(true);
+				
+				
+				
+				if (textoPassword.getText().equals("") && textoUsuario.getText().equals("")) {
+
+					JOptionPane.showMessageDialog(pantallaInicio,"Por favor, llene los espacios en blanco","¡OJO!",JOptionPane.WARNING_MESSAGE);
+
+				}
+
+
+				else if(textoUsuario.getText().equals("")) {
+
+					JOptionPane.showMessageDialog(pantallaInicio,"Por favor ingrese su usuario","¡OJO!",JOptionPane.WARNING_MESSAGE);
+
+				}
+
+				else if (textoPassword.getText().equals("")) {
+					
+					JOptionPane.showMessageDialog(pantallaInicio,"Ingrese la contrasena","¡OJO!",JOptionPane.WARNING_MESSAGE);
+					
+
+				}
+
+				else if(!"".equals(textoUsuario.getText()) && !"".equals(textoPassword.getText())) {
+
+					//JOptionPane.showMessageDialog(pantallaRegistro,"Creación de usuario exitosa","Exitoso",JOptionPane.INFORMATION_MESSAGE);
+					System.out.println("ENTRO AQUI");
+					
+					boolean compuerta_filtro = true;
+					
+					if(usuario_admin.getUsuario().equals(textoUsuario.getText()) && usuario_admin.getContrasena().equals(textoPassword.getText())) {
+						
+						pantallaInicio.setVisible(false);
+						pantallaMenu.setVisible(true);
+						compuerta_filtro = false;
+					}else {
+					
+					for(int i=0; i < usuarios.getTamano(); i++) {
+						
+						if(usuarios.encontrar(i).getDato().getUsuario().equals(textoUsuario.getText()) && usuarios.encontrar(i).getDato().getContrasena().equals(textoPassword.getText())) {
+							
+							pantallaInicio.setVisible(false);
+							pantallaMenu.setVisible(true);
+							compuerta_filtro = false;
+						    break;
+						}
+					}
+					}
+					
+					if(compuerta_filtro) {
+						
+						JOptionPane.showMessageDialog(pantallaRegistro,"Usuario no existente","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					//registroUsuario.setText("");
+					//registroContrasena.setText("");
+
+				}
+				
+				
+				
+				
+				
+				
+				
+				
 			}});
 
 		btnregistro.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
