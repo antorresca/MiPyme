@@ -47,9 +47,10 @@ public class Ejecucion {
 		Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
 		Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
 		Lista_ref_simple<Usuario> usuarios = new Lista_ref_simple<Usuario>();
+		//Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>();
 		
 		for(int i = 0; i<100;i++) {
-			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es..."+String.valueOf(i),(long) (Math.random()*10000),null,2));
+			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,2));
 		}
 		for(int t=0; t<inventario.getTamano();t++) { //Creacion de datos random para pruebas
 			modelo.addElement(inventario.encontrar(t).getDato().imprimir());
@@ -260,7 +261,7 @@ public class Ejecucion {
 		 * Botones Inicio
 		 */
 		
-		Boton btnregistro = new Boton("Registrarme", pantallaMenu, 365, 150, 120, 25);
+		Boton btnregistro = new Boton("Registrar", pantallaMenu, 365, 150, 100, 25);
 		btnregistro.setVisible(false);
 		
 
@@ -315,10 +316,10 @@ public class Ejecucion {
 		btnCarrito.setContentAreaFilled(false);
 		btnCarrito.setOpaque(false);
 
-		Boton btn_busqueda_factura = new Boton("Opcion 2",pantallaMenu,38,156,98,74);
+		Boton btn_busqueda_factura = new Boton("",pantallaMenu,0,156,200,74);
 		ImageIcon facturaIcon =  new ImageIcon("Img\\FacturaClaro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconFactura = new ImageIcon(facturaIcon.getImage().getScaledInstance(
-				btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
+				70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btn_busqueda_factura.setIcon(iconFactura);
 		btn_busqueda_factura.setToolTipText("Factura\r\n");
 		btn_busqueda_factura.setBackground(null);
@@ -432,9 +433,28 @@ public class Ejecucion {
 		BtnCerrarSesion.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(pantallaMenu, "¿Seguro que deseas cerrar sesi\u00f3n?", "¿Seguro?", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
+					/*
+					 * Actualizacion de variables globales
+					 */
 
-				pantallaMenu.setVisible(false);
-				pantallaInicio.setVisible(true);
+
+
+					JOptionPane.showMessageDialog(pantallaMenu,"Sesi\u00f3n Cerrada",
+							"Sesi\u00f3n Cerrada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
+
+					pantallaMenu.desactivar(); //Salida de ventana
+					pantallaInicio.activar();
+					btnregistro.setVisible(false);
+
+
+
+				}else {
+					JOptionPane.showMessageDialog(pantallaMenu,"Ke",
+							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error
+					
+				}
+
 
 			}
 
@@ -740,7 +760,7 @@ public class Ejecucion {
 					btnCarrito.setIcon(new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 					btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png")
-							.getImage().getScaledInstance(btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
+							.getImage().getScaledInstance(70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
 				}else {
 
 					/*
@@ -758,7 +778,7 @@ public class Ejecucion {
 					btnCarrito.setIcon(new ImageIcon(new ImageIcon("Img\\CarritoClaro.png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 					btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon("Img\\FacturaClaro.png")
-							.getImage().getScaledInstance(btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
+							.getImage().getScaledInstance(70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
 				}
 
 			}
@@ -802,8 +822,8 @@ public class Ejecucion {
 					pantallaRegistro.setVisible(false);
 					pantallaMenu.setVisible(true);
 					
+					//usuarios.agregarA(new Usuario(registro_usuario,registro_contrasenia));
 					usuarios.agregar(new Usuario(registro_usuario,registro_contrasenia));
-                    
 					
 					registroUsuario.setText("");
 					registroContrasena.setText("");
@@ -816,7 +836,10 @@ public class Ejecucion {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pantallaRegistro.setVisible(false);
-				pantallaInicio.setVisible(true);
+				pantallaMenu.setVisible(true);
+				registroUsuario.setText("");
+				registroContrasena.setText("");
+
 			}});		
 
 		btningreso.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
@@ -859,7 +882,14 @@ public class Ejecucion {
 						btnregistro.setVisible(true);
 						compuerta_filtro = false;
 					}else {
-					
+					/*	Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
+						if (!(usuarios.encontrarN(comparar).getDato().getUsuario().equals("Este dato NO existe en el arbol_binario :c")) && usuarios.encontrarN(comparar).getDato().getContrasena().equals(textoPassword.getText())){
+							pantallaInicio.setVisible(false);
+							pantallaMenu.setVisible(true);
+							compuerta_filtro = false;
+						}
+						
+					*/
 					for(int i=0; i < usuarios.getTamano(); i++) {
 						
 						if(usuarios.encontrar(i).getDato().getUsuario().equals(textoUsuario.getText()) && usuarios.encontrar(i).getDato().getContrasena().equals(textoPassword.getText())) {
@@ -874,7 +904,7 @@ public class Ejecucion {
 					
 					if(compuerta_filtro) {
 						
-						JOptionPane.showMessageDialog(pantallaRegistro,"Usuario no existente","Error",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(pantallaRegistro,"Usuario o clave erronea","Error",JOptionPane.ERROR_MESSAGE);
 					}
 					
 					//registroUsuario.setText("");

@@ -13,6 +13,10 @@ public class Arbol_binario<T> extends Metodos_arbol_binario <T>{
 		}
 	}
 	
+	public int getTamano() {
+		return getTamanoN();
+	}
+	
 	public void agregarA(T item) {
 		agregar(item);
 	}

@@ -1,7 +1,10 @@
 package estructuras;
+import datos.Usuario;
 
 public abstract class Metodos_arbol_binario <T> {
 	private Nodo raiz;
+	private int tamano;
+	
 	public Nodo getRaiz() {
 		return raiz;
 	}
@@ -10,14 +13,22 @@ public abstract class Metodos_arbol_binario <T> {
 		raiz = null;
 	}
 	
+	protected int getTamanoN() {
+		
+		return tamano;
+	}
+	
 	protected void agregar(T item) {
-		String clase = item.getClass().getSimpleName();
 		
 		Nodo nuevoNodo = new Nodo(item);
 		
 		Nodo auxiliar = raiz;
 		
+		tamano++;
+		
 		boolean compuerta = true;
+		
+		int aux = 0;
 		
 		if (raiz==null) {
 			raiz = nuevoNodo;
@@ -25,17 +36,9 @@ public abstract class Metodos_arbol_binario <T> {
 		}
 		
 		while(compuerta) {
-			int aux = 0;
 			
-			if (clase.equals("String")) {
-				aux = ((String) item).toLowerCase().compareTo(((String) auxiliar.dato).toLowerCase());
-				if (aux == 0) {
-					aux = ((String) item).compareTo((String) auxiliar.dato);
-				}
-				
-			}else if (clase.equals("Integer")) {
-				aux = ((int)item >= (int)auxiliar.dato) ? 1 : -1;
-			}
+			
+			aux = comparacion(item, auxiliar.dato);
 			
 			if(aux >= 0) {
 
@@ -61,8 +64,7 @@ public abstract class Metodos_arbol_binario <T> {
 		}
 	}
 	
-	protected Nodo encontrar(T item){
-		String clase = item.getClass().getSimpleName();
+	protected Nodo encontrar(T item) {
 
 		Nodo auxiliar = raiz;
 
@@ -77,14 +79,7 @@ public abstract class Metodos_arbol_binario <T> {
 		
 		while(compuerta) {
 
-			if (clase.equals("String")) {
-				aux = ((String) item).toLowerCase().compareTo(((String) auxiliar.dato).toLowerCase());
-				if (aux == 0) {
-					aux = ((String) item).compareTo((String) auxiliar.dato);
-				}
-			}else if (clase.equals("Integer")) {
-				aux = ((int)item - (int)auxiliar.dato) ;
-			}
+			aux = comparacion(item, auxiliar.dato);
 
 			if(aux > 0) {
 
@@ -115,7 +110,7 @@ public abstract class Metodos_arbol_binario <T> {
 		if (aux == 0) {
 			return auxiliar;
 		}else {
-			Nodo noExiste = new Nodo((T)"No existe :c");
+			Nodo noExiste = new Nodo((T)"Este dato NO existe en el arbol_binario :c");
 			return noExiste;
 		}
 	}
@@ -131,12 +126,16 @@ public abstract class Metodos_arbol_binario <T> {
 			}
 		}else if (clase.equals("Integer")) {
 			es_mayor= ((int)itemA - (int)itemB) ;
+		}else if (clase.equals("Usuario")) {
+			es_mayor = (((Usuario) itemA).getUsuario()).toLowerCase().compareTo((((Usuario) itemB).getUsuario()).toLowerCase());
+			if (es_mayor == 0) {
+				es_mayor = (((Usuario) itemA).getUsuario()).compareTo(((Usuario) itemA).getUsuario());
+			}
 		}
 		return es_mayor;
 	}
 	
 	protected Nodo eliminar(T item){
-		String clase = item.getClass().getSimpleName();
 
 		Nodo auxiliar = raiz;
 		
