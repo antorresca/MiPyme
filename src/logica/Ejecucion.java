@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
@@ -17,7 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
-import datos.Carrito;
+import datos.Factura;
 import datos.Producto;
 import datos.Usuario;
 import estructuras.*;
@@ -33,10 +35,24 @@ public class Ejecucion {
 	private static String registroUsuariotxt;
 	private static int i; //contador de productos en carrito
 	private static long precio = 0; 
+	private static Usuario user1 = new Usuario("Andres","12345");
 
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 
+		DefaultListModel modelo = new DefaultListModel();
+		DefaultListModel modelo2 = new DefaultListModel();
+
+		Lista_ref_simple<Producto> inventario = new Lista_ref_simple<Producto>();
+		Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
+		Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
+
+		for(int i = 0; i<100;i++) {
+			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es..."+String.valueOf(i),(long) (Math.random()*10000),null,2));
+		}
+		for(int t=0; t<inventario.getTamano();t++) { //Creacion de datos random para pruebas
+			modelo.addElement(inventario.encontrar(t).getDato().imprimir());
+		}
 
 		//-------------------------------------------PRUEBAS---------------------------------------------------------
 
@@ -157,7 +173,39 @@ public class Ejecucion {
 
 
 		//--------------------------------------------EJECUCIÓN DE INTERFAZ-----------------------------------------------------------
+		//PLANTILLAS
+		/*
 
+		//Ventanas emergentes
+
+		JOptionPane.showMessageDialog(La_ventana,"mensaje","Título",JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(La_ventana,"mensaje","Título",JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(La_ventana,"mensaje","Título",JOptionPane.ERROR_MESSAGE);
+
+		if(JOptionPane.showConfirmDialog(contentPane, "Mensaje", "Título", JOptionPane.YES_NO_OPTION) == 0) {
+
+		    //Lo que hace en caso de "YES"
+		}
+
+		//Ventana emergente para guardar un usuario o contraseña
+
+		String cadena_texto = JOptionPane.showInputDialog(La_ventana,"mesaje");
+
+		//Botones
+
+		Boton nombre = new Boton("texto del boton", La_ventana, x, y, ancho, largo);
+
+		nombre.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		///////////////////////////////////////////////////////////////////////
+
+		  //lo que va a hacer el botón
+
+		///////////////////////////////////////////////////////////////////////			
+		}
+		});
+		 */
 
 		///////////////////////////////////////////////////////////////////////
 
@@ -165,11 +213,6 @@ public class Ejecucion {
 		 * Instancia de elementos de prueba
 		 */
 
-		Usuario user1 = new Usuario("Andres","12345");
-		Carrito carro1 = new Carrito(user1);
-		for(int i = 0; i<100;i++) {
-			carro1.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es..."+String.valueOf(i),(long) (Math.random()*10000),null,2));
-		}
 
 		/*
 		 * Colores
@@ -246,8 +289,8 @@ public class Ejecucion {
 
 		///////////////////////////////Pantalla Menu////////////////////////////////////////
 
-		Imagen logoAppClaro = new Imagen("src\\Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
-		Imagen logoAppOscuro = new Imagen("src\\Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
+		Imagen logoAppClaro = new Imagen("Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
+		Imagen logoAppOscuro = new Imagen("Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
 		logoAppOscuro.setVisible(false);
 
 		/*
@@ -269,7 +312,7 @@ public class Ejecucion {
 		btnCarrito.setContentAreaFilled(false);
 		btnCarrito.setOpaque(false);
 
-		Boton btn2 = new Boton("Opcion 2",pantallaMenu,38,156,98,74);
+		Boton btn_busqueda_factura = new Boton("Opcion 2",pantallaMenu,38,156,98,74);
 
 		Boton btn3 = new Boton("Opcion 3",pantallaMenu,146,71,98,74);
 
@@ -294,46 +337,82 @@ public class Ejecucion {
 
 		///////////////////////////////Pantalla Carrito////////////////////////////////////////
 
-		Boton detalles = new Boton("Detalles",carrito,319, 139, 89, 23);
 
-		Boton pago = new Boton("Pago",carrito,319, 173, 89, 23);
+		/////////////////////////////////Pantalla Busqueda de Factura//////////////////////////////////////
 
-		Boton regresarCarrito = new Boton("Regresar",carrito,319, 207, 89, 23);
+		btn_busqueda_factura.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int n = -1;
+				Ventana Factura = new Ventana("Factura");
+				Factura.desactivar();
+				while(n == -1) {
+					n = Integer.valueOf(JOptionPane.showInputDialog(pantallaMenu,"Ingrese numero de la factura","Busqueda de Factura"));
+				}
+				try {
+					Factura nuevaFactura = facturas.encontrar(n).getDato();
+					
+					Factura.setBounds(100, 100, 268, 600);
+					Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
+					Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
+					Titulo.setHorizontalAlignment(SwingConstants.CENTER);
+					Texto encabezado = new Texto("Factura de compra # ",Factura,0, 126, 252, 14);
+					encabezado.setHorizontalAlignment(SwingConstants.CENTER);
+					Texto lblNewLabel_2 = new Texto("------------------------------------------------",Factura,0, 147, 252, 14);
+					Texto lblNewLabel_2_1 = new Texto("----------------------------------------------",Factura,0, 379, 252, 14);
+					Texto lblNewLabel_3 = new Texto("Total a Pagar:",Factura,0, 400, 240, 14);
+					Texto tituloNombre = new Texto("Nombre",Factura,10,400,50,14);
+					Texto tituloCedula = new Texto("Cedula",Factura,10,440,50,14);
+					Texto tituloCorreo = new Texto("Correo",Factura,10,480,50,14);
+					Texto separador = new Texto("----------------------------------------------",Factura,0, 520, 252, 14);
+					Texto tituloCajero = new Texto("Cajero:",Factura,10,540,50,14);
+					Texto tituloFecha = new Texto("Fecha:",Factura,10,560,50,14);
+					lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
+					JList listProductos = new JList();
+					listProductos.setEnabled(false);
+					listProductos.setModel(modelo2);
+					JScrollPane LaFactura = new JScrollPane(listProductos);
+					LaFactura.setBounds(0, 139, 252, 200);
+					Factura.getContenedor().add(LaFactura);
 
-		DefaultListModel modelo = new DefaultListModel();
+					Texto precioProductos = new Texto("<precio>",Factura,0, 414, 240, 38);
+					precioProductos.setHorizontalAlignment(SwingConstants.RIGHT);
+					Texto nombreCliente = new Texto("<Nombre cliente>",Factura,10,420, 170, 14);
+					Texto cedulaCliente = new Texto("<Cedula cliente>",Factura,10,460, 143,14);
+					Texto correoCliente = new Texto("<Correo Cliente>",Factura,10,500, 143,14);
+					Texto nombreCajero = new Texto("<Cajero>",Factura,50,540, 143,14);
+					Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);
 
-		for(i=0; i<carro1.obtenerProductos().getTamano();i++) { //Creacion de datos random para pruebas
-			modelo.addElement(carro1.obtenerProductos().encontrar(i).getDato().imprimir());
-			precio += carro1.obtenerProductos().encontrar(i).getDato().getPre();
-		}
+					carrito.desactivar();
+					Factura.activar();
+					precioProductos.setText(String.valueOf(nuevaFactura.getPrecio()));
+					nombreCliente.setText(nuevaFactura.getNombre());
+					cedulaCliente.setText(nuevaFactura.getCedula());
+					correoCliente.setText(nuevaFactura.getCorreo());
+					nombreCajero.setText(nuevaFactura.getVendedor().getUsuario());
+					fechaFactura.setText(nuevaFactura.getFecha());
+					encabezado.setText(encabezado.getText()+String.valueOf(nuevaFactura.getId()));
 
-		JList list = new JList();
-		list.setModel(modelo);
 
-		JScrollPane scroll = new JScrollPane(list);
-		scroll.setBounds(76, 41, 233, 189);
-		carrito.getContenedor().add(scroll);
+					regresar.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							Factura.desactivar(); 
+							carrito.activar();
+						}
+					});
+				}catch(Exception exp) {
+					Factura.desactivar();
+					JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","Factura no encontrada",JOptionPane.ERROR_MESSAGE);
+					
+				}
 
-		Texto cabecera = new Texto("Producto  |  Precio",carrito,76, 68, 233, 14);
-
-		Texto totalCarrito = new Texto("TOTAL",carrito,319, 118, 46, 14);
-
-		Texto productosCarrito = new Texto("No. Productos",carrito,319, 68, 89, 14);
-
-		Texto pagoCarrito = new Texto(String.valueOf(precio),carrito,319, 143, 76, 23); //Muestra precio total de productos
-
-		Texto prodCarrito = new Texto(String.valueOf(i),carrito,319, 93, 46, 14);
-
-		/////////////////////////////////Pantalla Detalles//////////////////////////////////////
+			}
+		});
 
 		///////////////////////Eventos en botones///////////////////////
 
-		regresarCarrito.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				carrito.setVisible(false);
-				pantallaMenu.setVisible(true);
-			}});
+
 
 		BtnCerrarSesion.addActionListener(new ActionListener(){
 
@@ -346,157 +425,285 @@ public class Ejecucion {
 
 		});
 
-		list.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getClickCount()==2) { //Saber si se dio doble clic sobre elemento
-
-					String producto = list.getSelectedValue().toString().split(" | ")[0]; //Obtener nombre del producto
-
-					if(JOptionPane.showConfirmDialog(carrito, "Eliminar "+producto+ "?",
-							"Elimacion completada", JOptionPane.YES_NO_OPTION) == 0) { //Mensaje de dialogo para eliminar productos
-
-						/*
-						 * Actualizacion de variables globales
-						 */
-
-						precio -= carro1.obtenerProductos().encontrar(list.getSelectedIndex()).getDato().getPre(); 
-
-						i -= 1;
-
-						carro1.obtenerProductos().eliminar_en(list.getSelectedIndex()); //Eliminacion de productos del objeto
-
-						modelo.removeElementAt(list.getSelectedIndex()); //Eliminacion de producto en lista
-
-						pagoCarrito.setText(String.valueOf(precio)); //Actualizar informacion mostrada
-						prodCarrito.setText(String.valueOf(i)); //""
-
-						JOptionPane.showMessageDialog(carrito,"Producto eliminado",
-								"Elimacion completada",JOptionPane.INFORMATION_MESSAGE);	//Mensaje informativo						
-
-					}
-				}
-			}
-		});
-
-		detalles.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(list.getSelectedValue() != null) { //Saber si hay seleccionado algun elemento en lista
-					Ventana detalles = new Ventana("Detalles"); //Ventada de detalles de producto
-					carrito.desactivar();
-					detalles.activar();
-
-					/*
-					 * Elementos de ventana
-					 */
-
-					Imagen imgProducto = new Imagen("Img\\shopping-cart (4).png"
-							,detalles,0,40,345-detalles.getWidth()/2,detalles.getHeight()/2); //Imagen de prueba
-
-					String nombre = carro1.obtenerProductos().encontrar(list.getSelectedIndex()).getDato().getNo(); //Nombre de producto
-					Texto nombrePro = new Texto(nombre, detalles,0,40+imgProducto.getHeight(),detalles.getWidth(),15);
-
-					String descripcion = carro1.obtenerProductos().encontrar(list.getSelectedIndex()).getDato().getDes(); //Descripcion de producto
-					Texto desPro = new Texto(descripcion, detalles,0,40+imgProducto.getHeight()+15,detalles.getWidth(),15);
-
-					String precioP = String.valueOf(carro1.obtenerProductos().encontrar(list.getSelectedIndex()).getDato().getPre()); //Precio de producto
-					Texto prePro = new Texto(precioP, detalles,0,40+imgProducto.getHeight()+30,detalles.getWidth(),15);
-
-					Boton regresar = new Boton("Regresar",detalles,80,210, 89, 23);
-					Boton elimarPro = new Boton("Eliminar Producto",detalles,182,210, 150, 23);
-
-					/*
-					 * Evento de botones
-					 */
-
-					regresar.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							detalles.desactivar();
-							carrito.activar();
-						}
-					});
-
-					elimarPro.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							String producto = list.getSelectedValue().toString().split(" | ")[0]; //Nombre del producto
-
-							if(JOptionPane.showConfirmDialog(carrito, "Eliminar "+
-									producto+ "?", "Elimacion completada", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
-								/*
-								 * Actualizacion de variables globales
-								 */
-
-								precio -= carro1.obtenerProductos().encontrar(list.getSelectedIndex()).getDato().getPre();
-								i -= 1;
-								carro1.obtenerProductos().eliminar_en(list.getSelectedIndex());
-
-								modelo.removeElementAt(list.getSelectedIndex());	
-
-								pagoCarrito.setText(String.valueOf(precio));
-
-								prodCarrito.setText(String.valueOf(i));
-
-								JOptionPane.showMessageDialog(carrito,"Producto eliminado",
-										"Elimacion completada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
-
-								detalles.desactivar(); //Salida de ventana
-								carrito.activar();
-							}}});
-
-
-				}else {
-					JOptionPane.showMessageDialog(carrito,"Por favor elija un producto",
-							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error
-				}
-			}});
 
 
 		btnCarrito.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("unchecked")
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				carrito.activar();
 				pantallaMenu.desactivar();
+				Ventana carrito = new Ventana("Carrito");
+				Texto cabecera = new Texto("Producto  |  Precio",carrito,31, 68, 233, 14);
 
-			}
-		});
+				Texto totalCarrito = new Texto("TOTAL",carrito,367, 118, 46, 14);
 
-		pago.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Ventana Factura = new Ventana("Factura");
-				carrito.desactivar();
-				Factura.setBounds(100, 100, 268, 534);
-				Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
-				Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
-				Titulo.setHorizontalAlignment(SwingConstants.CENTER);
-				//Titulo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-				Texto encabezado = new Texto("Factura de compra",Factura,0, 126, 252, 14);
-				encabezado.setHorizontalAlignment(SwingConstants.CENTER);
-				Texto lblNewLabel_2 = new Texto("------------------------------------------------",Factura,0, 147, 252, 14);
+				Texto productosCarrito = new Texto("No. Productos",carrito,367, 68, 89, 14);
+
+				Texto pagoCarrito = new Texto(String.valueOf(precio),carrito,367, 143, 76, 23); //Muestra precio total de productos
+
+				Texto prodCarrito = new Texto(String.valueOf(i),carrito,367, 93, 46, 14);
+
+				Boton detalles = new Boton("Detalles",carrito,367, 139, 89, 23);
+
+				Boton pago = new Boton("Pago",carrito,367, 173, 89, 23);
+
+				Boton regresarCarrito = new Boton("Regresar",carrito,367, 207, 89, 23);
+
 				JList list = new JList();
-				list.setEnabled(false);
 				list.setModel(modelo);
-				JScrollPane LaFactura = new JScrollPane(list);
-				LaFactura.setBounds(0, 139, 252, 285);
-				Factura.getContenedor().add(LaFactura);
-				Texto lblNewLabel_2_1 = new Texto("----------------------------------------------",Factura,0, 462, 252, 14);
-				Texto lblNewLabel_3 = new Texto("Total a Pagar:",Factura,0, 485, 170, 14);
-				lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-				Texto lblNewLabel_4 = new Texto(String.valueOf(precio),Factura,99, 496, 143, 38);
 
-				regresar.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+				JScrollPane scroll = new JScrollPane(list);
+				scroll.setBounds(31, 41, 117, 200);
+				carrito.getContenedor().add(scroll);
+
+				JList list2 = new JList();
+				list2.setModel(modelo2);
+
+				JScrollPane scroll2 = new JScrollPane(list2);
+				scroll2.setBounds(227, 41, 117, 200);
+				carrito.getContenedor().add(scroll2);
+
+				Boton agregar = new Boton("+",carrito,162, 74, 55, 35);
+
+				agregar.addMouseListener(new MouseAdapter() {
+					@SuppressWarnings("unchecked")
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						Factura.desactivar(); 
-						carrito.activar();
+
+						if(list.getSelectedValue() != null) {
+
+							System.out.println(inventario.encontrar(list.getSelectedIndex()).getDato().getPre());
+							precio += inventario.encontrar(list.getSelectedIndex()).getDato().getPre();
+							i += 1;
+							compra.agregar(inventario.encontrar(list.getSelectedIndex()).getDato());
+							modelo2.addElement(compra.encontrar(compra.getTamano()-1).getDato().imprimir());
+							compra.imprimir();
+							pagoCarrito.setText(String.valueOf(precio));
+
+							prodCarrito.setText(String.valueOf(i));
+
+						}
+
 					}
 				});
+
+				Boton eliminar = new Boton("-",carrito,162, 126, 55, 35);
+				eliminar.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+
+						if(list2.getSelectedValue() != null) {
+
+
+							precio -= compra.encontrar(list2.getSelectedIndex()).getDato().getPre();
+							i -= 1;
+
+							compra.eliminar_en(list2.getSelectedIndex());
+							modelo2.removeElementAt(list2.getSelectedIndex());
+							pagoCarrito.setText(String.valueOf(precio));
+
+							prodCarrito.setText(String.valueOf(i));
+						}
+					}
+				});
+
+				regresarCarrito.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						carrito.setVisible(false);
+						pantallaMenu.setVisible(true);
+					}});
+
+				list.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						if(e.getClickCount()==2 && list.getSelectedValue() != null) { //Saber si se dio doble clic sobre elemento
+
+							String producto = list.getSelectedValue().toString().split(" | ")[0]; //Obtener nombre del producto
+
+							if(JOptionPane.showConfirmDialog(carrito, "Eliminar "+producto+ "?",
+									"Elimacion completada", JOptionPane.YES_NO_OPTION) == 0) { //Mensaje de dialogo para eliminar productos
+
+								/*
+								 * Actualizacion de variables globales
+								 */
+
+								inventario.eliminar_en(list.getSelectedIndex()); //Eliminacion de productos del objeto
+
+								modelo.removeElementAt(list.getSelectedIndex()); //Eliminacion de producto en lista
+
+								pagoCarrito.setText(String.valueOf(precio)); //Actualizar informacion mostrada
+								prodCarrito.setText(String.valueOf(i)); //""
+
+								JOptionPane.showMessageDialog(carrito,"Producto eliminado",
+										"Elimacion completada",JOptionPane.INFORMATION_MESSAGE);	//Mensaje informativo						
+
+							}
+						}
+					}
+				});
+
+				pago.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+					@Override
+					public void mouseClicked(MouseEvent e) {
+
+						Ventana Factura = new Ventana("Factura");
+						Factura.desactivar();
+						Factura.setBounds(100, 100, 268, 600);
+						Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
+						Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
+						Titulo.setHorizontalAlignment(SwingConstants.CENTER);
+						Texto encabezado = new Texto("Factura de compra # ",Factura,0, 126, 252, 14);
+						encabezado.setHorizontalAlignment(SwingConstants.CENTER);
+						Texto lblNewLabel_2 = new Texto("------------------------------------------------",Factura,0, 147, 252, 14);
+						Texto lblNewLabel_2_1 = new Texto("----------------------------------------------",Factura,0, 379, 252, 14);
+						Texto lblNewLabel_3 = new Texto("Total a Pagar:",Factura,0, 400, 240, 14);
+						Texto tituloNombre = new Texto("Nombre",Factura,10,400,50,14);
+						Texto tituloCedula = new Texto("Cedula",Factura,10,440,50,14);
+						Texto tituloCorreo = new Texto("Correo",Factura,10,480,50,14);
+						Texto separador = new Texto("----------------------------------------------",Factura,0, 520, 252, 14);
+						Texto tituloCajero = new Texto("Cajero:",Factura,10,540,50,14);
+						Texto tituloFecha = new Texto("Fecha:",Factura,10,560,50,14);
+						lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
+						JList listProductos = new JList();
+						listProductos.setEnabled(false);
+						listProductos.setModel(modelo2);
+						JScrollPane LaFactura = new JScrollPane(listProductos);
+						LaFactura.setBounds(0, 139, 252, 200);
+						Factura.getContenedor().add(LaFactura);
+
+						Texto precioProductos = new Texto("<precio>",Factura,0, 414, 240, 38);
+						precioProductos.setHorizontalAlignment(SwingConstants.RIGHT);
+						Texto nombreCliente = new Texto("<Nombre cliente>",Factura,10,420, 170, 14);
+						Texto cedulaCliente = new Texto("<Cedula cliente>",Factura,10,460, 143,14);
+						Texto correoCliente = new Texto("<Correo Cliente>",Factura,10,500, 143,14);
+						Texto nombreCajero = new Texto("<Cajero>",Factura,50,540, 143,14);
+						Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);
+
+						String nombre = "";
+						String cedula = "";
+						String correo = "";
+
+
+						while(nombre == "") {
+							nombre = JOptionPane.showInputDialog(carrito,"Ingrese nombre del cliente","Nombre cliente");
+						}
+						while(cedula == "") {
+							cedula = JOptionPane.showInputDialog(carrito,"Ingrese cedula del cliente","Cedula cliente");
+						}
+						while(correo == "" || !correo.contains("@") || !correo.contains(".")) {
+							correo = JOptionPane.showInputDialog(carrito,"Ingrese correo del cliente","Correo cliente");
+						}
+
+						DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+						String Fecha = dtf.format(LocalDateTime.now());
+
+
+						System.out.print(user1.getUsuario());
+						Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, user1, compra);
+						facturas.agregar(nuevaFactura);
+
+						carrito.desactivar();
+						Factura.activar();
+						precioProductos.setText(String.valueOf(nuevaFactura.getPrecio()));
+						nombreCliente.setText(nuevaFactura.getNombre());
+						cedulaCliente.setText(nuevaFactura.getCedula());
+						correoCliente.setText(nuevaFactura.getCorreo());
+						nombreCajero.setText(nuevaFactura.getVendedor().getUsuario());
+						fechaFactura.setText(nuevaFactura.getFecha());
+						encabezado.setText(encabezado.getText()+String.valueOf(nuevaFactura.getId()));
+
+
+						regresar.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								Factura.desactivar(); 
+								carrito.activar();
+							}
+						});
+					}
+				});
+
+				detalles.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						if(list.getSelectedValue() != null) { //Saber si hay seleccionado algun elemento en lista
+							Ventana detalles = new Ventana("Detalles"); //Ventada de detalles de producto
+							carrito.desactivar();
+							detalles.activar();
+
+							/*
+							 * Elementos de ventana
+							 */
+
+							Imagen imgProducto = new Imagen("Img\\shopping-cart (4).png"
+									,detalles,0,40,345-detalles.getWidth()/2,detalles.getHeight()/2); //Imagen de prueba
+
+							String nombre = inventario.encontrar(list.getSelectedIndex()).getDato().getNo(); //Nombre de producto
+							Texto nombrePro = new Texto(nombre, detalles,0,40+imgProducto.getHeight(),detalles.getWidth(),15);
+
+							String descripcion = inventario.encontrar(list.getSelectedIndex()).getDato().getDes(); //Descripcion de producto
+							Texto desPro = new Texto(descripcion, detalles,0,40+imgProducto.getHeight()+15,detalles.getWidth(),15);
+
+							String precioP = String.valueOf(inventario.encontrar(list.getSelectedIndex()).getDato().getPre()); //Precio de producto
+							Texto prePro = new Texto(precioP, detalles,0,40+imgProducto.getHeight()+30,detalles.getWidth(),15);
+
+							Boton regresar = new Boton("Regresar",detalles,80,210, 89, 23);
+							Boton elimarPro = new Boton("Eliminar Producto",detalles,182,210, 150, 23);
+
+							/*
+							 * Evento de botones
+							 */
+
+							regresar.addMouseListener(new MouseAdapter() {
+								@Override
+								public void mouseClicked(MouseEvent e) {
+									detalles.desactivar();
+									carrito.activar();
+								}
+							});
+
+							elimarPro.addMouseListener(new MouseAdapter() {
+								@Override
+								public void mouseClicked(MouseEvent e) {
+									String producto = list.getSelectedValue().toString().split(" | ")[0]; //Nombre del producto
+
+									if(JOptionPane.showConfirmDialog(carrito, "Eliminar "+
+											producto+ "?", "Elimacion completada", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
+										/*
+										 * Actualizacion de variables globales
+										 */
+
+										inventario.eliminar_en(list.getSelectedIndex());
+
+										modelo.removeElementAt(list.getSelectedIndex());	
+
+										pagoCarrito.setText(String.valueOf(precio));
+
+										prodCarrito.setText(String.valueOf(i));
+
+										JOptionPane.showMessageDialog(carrito,"Producto eliminado",
+												"Elimacion completada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
+
+										detalles.desactivar(); //Salida de ventana
+										carrito.activar();
+									}}});
+
+
+						}else {
+							JOptionPane.showMessageDialog(carrito,"Por favor elija un producto",
+									"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error
+						}
+					}});
+
 			}
 		});
+
+		/////////////////////////Pantalla Factura///////////////////////////
+
+
+		///////////////////////////////////////////////////////////////////
+
 
 		btnTema.addMouseListener(new MouseAdapter() {
 			@Override

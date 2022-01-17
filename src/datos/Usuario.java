@@ -5,10 +5,47 @@ public class Usuario {
 	private String usuario;
 	private String contrasena;
 	
-	public Usuario(String usuario, String contrasena) {
+	
+	
+	/**
+	 * @return the usuario
+	 */
+	public String getUsuario() {
+		return usuario;
+	}
+
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+
+
+	/**
+	 * @return the contrasena
+	 */
+	public String getContrasena() {
+		return contrasena;
+	}
+
+
+
+	/**
+	 * @param contrasena the contrasena to set
+	 */
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+
+
+	public Usuario(String nombre_usuario, String contrasena_usuario) {
 		
-		usuario = usuario;
-		contrasena = contrasena;
+		usuario = nombre_usuario;
+		contrasena = contrasena_usuario;
 		
 	}
 

@@ -34,7 +34,7 @@ public class Ventana extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
             	
-                if(JOptionPane.showConfirmDialog(n, "¿Seguro que deseas salir?","Confirmación", JOptionPane.YES_NO_OPTION) == 0) {
+                if(JOptionPane.showConfirmDialog(n, "�Seguro que deseas salir?","Confirmacin", JOptionPane.YES_NO_OPTION) == 0) {
 					
                 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
