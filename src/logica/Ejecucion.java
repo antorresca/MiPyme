@@ -35,7 +35,7 @@ public class Ejecucion {
 	private static String registroUsuariotxt;
 	private static int i; //contador de productos en carrito
 	private static long precio = 0; 
-	private static Usuario usuario_admin = new Usuario("Andres","12345");
+	private static Usuario usuario_admin = new Usuario("Juan","12345");
 
 	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public static void main(String[] args) {
@@ -309,11 +309,14 @@ public class Ejecucion {
 					pantallaInicio.activar();
 					btnregistro.setVisible(false);
 
-				}else {
+				}
+				
+				/*else {
 					JOptionPane.showMessageDialog(pantallaMenu,"Ke",
 							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error
 
 				}
+				*/
 			}
 		});
 
