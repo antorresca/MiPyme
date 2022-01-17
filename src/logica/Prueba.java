@@ -61,6 +61,7 @@ public class Prueba implements ActionListener{
 		File archivo = new File("Img\\LogoOscuro.png");
 		System.out.println(archivo.exists());
 		ImageIcon Imagen1 = new ImageIcon("Img\\LogoOscuro.png");
+		
 		///////////////////////////////////////////////////////////////////////
 			
 		/*
