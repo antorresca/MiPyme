@@ -259,10 +259,12 @@ public class Ejecucion {
 		/*
 		 * Botones Inicio
 		 */
+		
+		Boton btnregistro = new Boton("Registrarme", pantallaMenu, 365, 150, 120, 25);
+		btnregistro.setVisible(false);
+		
 
-		Boton btnregistro = new Boton("Registrarme", pantallaInicio, 255, 230, 100, 25);
-
-		Boton btningreso = new Boton("Ingresar", pantallaInicio, 130, 230, 100, 25);
+		Boton btningreso = new Boton("Ingresar", pantallaInicio, 200, 230, 100, 25);
 
 		/////////////////////////////////Pantalla Registro//////////////////////////////////////
 
@@ -362,6 +364,10 @@ public class Ejecucion {
 				try {
 					Factura nuevaFactura = facturas.encontrar(n).getDato();
 					
+					for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
+						modelo.addElement(nuevaFactura.getProductos().encontrar(t).getDato().imprimir());
+					}
+					
 					Factura.setBounds(100, 100, 268, 600);
 					Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
 					Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
@@ -407,7 +413,7 @@ public class Ejecucion {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							Factura.desactivar(); 
-							carrito.activar();
+							pantallaMenu.activar();
 						}
 					});
 				}catch(Exception exp) {
@@ -850,6 +856,7 @@ public class Ejecucion {
 						
 						pantallaInicio.setVisible(false);
 						pantallaMenu.setVisible(true);
+						btnregistro.setVisible(true);
 						compuerta_filtro = false;
 					}else {
 					
@@ -887,7 +894,7 @@ public class Ejecucion {
 		btnregistro.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				pantallaInicio.setVisible(false);
+				pantallaMenu.setVisible(false);
 				pantallaRegistro.setVisible(true);
 			}});
 	}
