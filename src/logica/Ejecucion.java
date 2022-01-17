@@ -100,6 +100,27 @@ public class Ejecucion {
 		objeto6.imprimir();
 		
 		
+		/*
+		//ANÁLISIS COMPARATIVO
+		Lista_arreglo_dinamico<Integer> lista1 = new Lista_arreglo_dinamico<Integer>();
+		Lista_ref_simple<Integer> lista2 = new Lista_ref_simple<Integer>();
+		
+		for(int i=0; i<100*1000000-5; i++) {
+			
+			lista1.agregar(i);
+		}
+		
+		
+		long tiempo_inicial = System.nanoTime();
+		
+		lista1.encontrar(100*1000000-7);
+		
+		long tiempo_final = System.nanoTime() - tiempo_inicial;
+		
+		System.out.print(tiempo_final);
+		 */
+		
+		
 		//--------------------------------------------INSTANCIACIONES-----------------------------------------------------------
 		
 		
@@ -156,7 +177,7 @@ public class Ejecucion {
 		
 		//Ejemplo
 		
-		
+		/*
 		
 		Ventana ventana1= new Ventana("Primera ventana");
 	    
@@ -285,4 +306,3 @@ public class Ejecucion {
 	}
 
 }
-//perico 2
