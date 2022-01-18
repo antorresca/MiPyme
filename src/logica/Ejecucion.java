@@ -82,8 +82,8 @@ public class Ejecucion {
 		Lista_ref_simple<Producto> inventario = new Lista_ref_simple<Producto>();
 		Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
 		Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
-		Lista_ref_simple<Usuario> usuarios = new Lista_ref_simple<Usuario>();
-		//Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>();
+		//Lista_ref_simple<Usuario> usuarios = new Lista_ref_simple<Usuario>();
+		Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>();
 
 		for(int i = 0; i<100;i++) {
 			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,2));
@@ -678,8 +678,8 @@ public class Ejecucion {
 					pantallaRegistro.setVisible(false);
 					pantallaMenu.setVisible(true);
 
-					//usuarios.agregarA(new Usuario(registro_usuario,registro_contrasenia));
-					usuarios.agregar(new Usuario(registro_usuario,registro_contrasenia));
+					usuarios.agregarA(new Usuario(registro_usuario,registro_contrasenia));
+					//usuarios.agregar(new Usuario(registro_usuario,registro_contrasenia));
 
 					registroUsuario.setText("");
 					registroContrasena.setText("");
@@ -729,15 +729,19 @@ public class Ejecucion {
 						compuerta_filtro = false;
 					}else {
 
-						/*	Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
-						if (!(usuarios.encontrarN(comparar).getDato().getUsuario().equals("Este dato NO existe en el arbol_binario :c")) && usuarios.encontrarN(comparar).getDato().getContrasena().equals(textoPassword.getText())){
+						usuarios.agregarA(usuario_admin);
+						Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
+						System.out.print(comparar.getContrasena()+ comparar.getUsuario());
+						if((usuarios.encontrarN(comparar)!=null) && usuarios.encontrarN(comparar).getDato().getContrasena().equals(textoPassword.getText())) {
+							
 							pantallaInicio.setVisible(false);
 							pantallaMenu.setVisible(true);
 							compuerta_filtro = false;
+					
 						}
 
-						 */
-						for(int i=0; i < usuarios.getTamano(); i++) {
+						 
+/*						for(int i=0; i < usuarios.getTamano(); i++) {
 
 							if(usuarios.encontrar(i).getDato().getUsuario().equals(textoUsuario.getText()) && usuarios.encontrar(i).getDato().getContrasena().equals(textoPassword.getText())) {
 
@@ -746,7 +750,7 @@ public class Ejecucion {
 								compuerta_filtro = false;
 								break;
 							}
-						}
+						}*/
 					}
 
 					if(compuerta_filtro) {

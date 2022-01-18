@@ -70,7 +70,7 @@ public abstract class Metodos_arbol_binario <T> {
 
 		boolean compuerta = true;
 		
-		int aux = 0;
+		int aux = 1;
 		
 		if (raiz==null) {
 			System.out.println("Este arbol_binario esta vacío :c");
@@ -110,8 +110,10 @@ public abstract class Metodos_arbol_binario <T> {
 		if (aux == 0) {
 			return auxiliar;
 		}else {
-			Nodo noExiste = new Nodo((T)"Este dato NO existe en el arbol_binario :c");
-			return noExiste;
+			//Nodo noExiste = new Nodo("Este dato NO existe en el arbol_binario :c");
+			System.out.println("No existe :c");
+			//return noExiste;
+			return null;
 		}
 	}
 
@@ -129,7 +131,7 @@ public abstract class Metodos_arbol_binario <T> {
 		}else if (clase.equals("Usuario")) {
 			es_mayor = (((Usuario) itemA).getUsuario()).toLowerCase().compareTo((((Usuario) itemB).getUsuario()).toLowerCase());
 			if (es_mayor == 0) {
-				es_mayor = (((Usuario) itemA).getUsuario()).compareTo(((Usuario) itemA).getUsuario());
+				es_mayor = (((Usuario) itemA).getUsuario()).compareTo(((Usuario) itemB).getUsuario());
 			}
 		}
 		return es_mayor;
@@ -235,9 +237,10 @@ public abstract class Metodos_arbol_binario <T> {
 			}
 			return auxiliar;
 		}else {
-			Nodo noExiste = new Nodo((T)"Este dato NO existe en el arbol_binario :c");
-			//System.out.println("No existe :c");
-			return noExiste;
+			//Nodo noExiste = new Nodo((T)"Este dato NO existe en el arbol_binario :c");
+			System.out.println("No existe :c");
+			//return noExiste;
+			return null;
 		}
 	}
 /////////////////////////////////////
