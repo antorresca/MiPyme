@@ -22,6 +22,8 @@ import logica.Ejecucion;
 
 public class PantallaMenu {
 
+	public static boolean flag = false;
+	
 	public static void main(String[] args) {
 
 		Ventana pantallaMenu = new Ventana("Menu"); 
@@ -31,7 +33,7 @@ public class PantallaMenu {
 		Imagen logoAppOscuro = new Imagen("Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
 		logoAppOscuro.setVisible(false);
 		
-		//Texto NombreUsuario = new Texto("Bienvenido, " + registroUsuariotxt,pantallaMenu,30, 10, 150,30);
+		Texto NombreUsuario = new Texto("Bienvenido, " + PantallaInicio.textoUsuario,pantallaMenu,30, 10, 150,30);
 
 		//Botones del menu
 
@@ -81,7 +83,7 @@ public class PantallaMenu {
 		pantallaMenu.getContenedor().add(btnTema);
 		
 		Boton btnregistro = new Boton("Registrar", pantallaMenu, 365, 150, 100, 25);
-		btnregistro.setVisible(false);
+		btnregistro.setVisible(flag);
 		
 		//Metodo botones
 		

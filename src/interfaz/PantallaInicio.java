@@ -11,6 +11,8 @@ import logica.Ejecucion;
 
 public class PantallaInicio {
 	
+	public static CampoL textoUsuario;
+	
 	public static void main(String[] args) {
 		Ventana pantallaInicio = new Ventana("Mi PYME");
 		pantallaInicio.setBackground(Ejecucion.Tema);
@@ -21,7 +23,7 @@ public class PantallaInicio {
 
 		Texto passwordLabel = new Texto("Contrasena", pantallaInicio,110, 225, 90, 35);
 
-		CampoL textoUsuario = new CampoL(pantallaInicio,185,170,165,25);
+		textoUsuario = new CampoL(pantallaInicio,185,170,165,25);
 		CampoL textoPassword = new CampoL(pantallaInicio,185, 190, 165, 25);
 
 		//Botones Inicio
@@ -55,8 +57,9 @@ public class PantallaInicio {
 							&& Ejecucion.usuario_admin.getContrasena().equals(textoPassword.getText())) {
 
 						pantallaInicio.setVisible(false);
+						PantallaMenu.flag=true;
 						PantallaMenu.main(null);
-						//---->btnregistro.setVisible(true);
+						System.out.print(PantallaMenu.flag);
 						compuerta_filtro = false;
 					}else {
 
@@ -86,11 +89,11 @@ public class PantallaInicio {
 
 					if(compuerta_filtro) {
 
-						//----->JOptionPane.showMessageDialog(PantallaRegistro,"Usuario o clave erronea","Error",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(pantallaInicio,"Usuario o clave erronea","Error",JOptionPane.ERROR_MESSAGE);
 					}
 
-					//registroUsuario.setText("");
-					//registroContrasena.setText("");
+					textoUsuario.setText("");
+					textoPassword.setText("");
 				}
 			}});
 

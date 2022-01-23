@@ -15,7 +15,6 @@ public class PantallaRegistro {
 		
 		Ventana pantallaRegistro = new Ventana("Mi PYME - Registro");
 		pantallaRegistro.setBackground(Ejecucion.Tema);
-		pantallaRegistro.desactivar();
 		
 		JTextField registroUsuario = new JTextField(20);
 		registroUsuario.setBounds(225,120,165,25);
