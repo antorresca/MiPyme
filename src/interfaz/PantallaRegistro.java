@@ -67,16 +67,18 @@ public class PantallaRegistro {
 				}
 
 				else if(!"".equals(registro_usuario) && !"".equals(registro_contrasenia)) {
-
-					JOptionPane.showMessageDialog(pantallaRegistro,"Creación de usuario exitosa","Exitoso",JOptionPane.INFORMATION_MESSAGE);
-					pantallaRegistro.setVisible(false);
-					PantallaMenu.main(null);
-
+					
 					Ejecucion.usuarios.agregarA(new Usuario(registro_usuario,registro_contrasenia));
 					//usuarios.agregar(new Usuario(registro_usuario,registro_contrasenia));
 
 					registroUsuario.setText("");
 					registroContrasena.setText("");
+
+					JOptionPane.showMessageDialog(pantallaRegistro,"Creación de usuario exitosa","Exitoso",JOptionPane.INFORMATION_MESSAGE);
+					pantallaRegistro.setVisible(false);
+					PantallaMenu.main(null);
+
+					
 
 				}
 

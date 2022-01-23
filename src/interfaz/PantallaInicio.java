@@ -52,6 +52,7 @@ public class PantallaInicio {
 				else if(!"".equals(textoUsuario.getText()) && !"".equals(textoPassword.getText())) {
 
 					boolean compuerta_filtro = true;
+					PantallaMenu.flag=false;
 
 					if(Ejecucion.usuario_admin.getUsuario().equals(textoUsuario.getText()) 
 							&& Ejecucion.usuario_admin.getContrasena().equals(textoPassword.getText())) {
