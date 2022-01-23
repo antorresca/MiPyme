@@ -15,10 +15,15 @@ public class PantallaFactura {
 	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	public static void main(String[] args) {
 		int n = -1;
+		String entrada;
+		
 		Ventana pantalla_factura = new Ventana("Factura");
 		pantalla_factura.desactivar();
 		while(n == -1) {
-			n = Integer.valueOf(JOptionPane.showInputDialog(pantalla_factura,"Ingrese numero de la factura","Busqueda de Factura"));
+			entrada = JOptionPane.showInputDialog(pantalla_factura,"Ingrese numero de la factura","Busqueda de Factura");
+			
+			n = (entrada==null)?-2:(entrada.equals("Busqueda de Factura"))?-1:Integer.valueOf(entrada);
+			
 		}
 		try {
 			Factura nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
@@ -77,9 +82,9 @@ public class PantallaFactura {
 		}catch(Exception exp) {
 			pantalla_factura.desactivar();
 			PantallaMenu.main(null);
-			JOptionPane.showMessageDialog(pantalla_factura,"Factura no encontrada","Factura no encontrada",JOptionPane.ERROR_MESSAGE);
+			if(n!=-2)JOptionPane.showMessageDialog(pantalla_factura,"Factura no encontrada","Factura no encontrada",JOptionPane.ERROR_MESSAGE);
 		}
-
+		
 
 	}
 
