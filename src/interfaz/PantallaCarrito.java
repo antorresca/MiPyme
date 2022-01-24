@@ -25,6 +25,7 @@ public class PantallaCarrito {
 	public static JList list = new JList();
 	public static Texto pagoCarrito;
 	public static Texto prodCarrito;
+	public static boolean flag = false;
 
 	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	public static void main(String[] args) {
@@ -33,7 +34,9 @@ public class PantallaCarrito {
 			modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
 		}
 		
-		Ventana carrito = new Ventana("Carrito");
+		Ventana carrito = new Ventana("Carrito");	
+		
+		
 		Texto cabecera = new Texto("Producto  |  Precio",carrito,31, 68, 233, 14);
 
 		pagoCarrito = new Texto(String.valueOf(precio),carrito,367, 143, 76, 23);
@@ -47,6 +50,10 @@ public class PantallaCarrito {
 		Boton detalles = new Boton("Detalles",carrito,367, 139, 89, 23);
 
 		Boton pago = new Boton("Pago",carrito,367, 173, 89, 23);
+		pago.setVisible(!flag);
+		
+		Boton pedir = new Boton("Pedir",carrito,367, 173, 89, 23);
+		pedir.setVisible(flag);
 
 		Boton regresarCarrito = new Boton("Regresar",carrito,367, 207, 89, 23);
 
@@ -110,7 +117,8 @@ public class PantallaCarrito {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				carrito.setVisible(false);
-				PantallaMenu.main(null);
+				if(!flag)PantallaMenu.main(null);
+				else PantallaPedidos.main(null);
 			}});
 
 		list.addMouseListener(new MouseAdapter() {
@@ -143,6 +151,7 @@ public class PantallaCarrito {
 		});
 
 		pago.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+			@SuppressWarnings("static-access")
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
@@ -200,6 +209,8 @@ public class PantallaCarrito {
 
 				//system.out.print(usuario_admin.getUsuario());
 				Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, Ejecucion.usuario_admin, Ejecucion.compra);
+				nuevaFactura.setId(nuevaFactura.getContador());
+				nuevaFactura.setContador(nuevaFactura.getId()+1);
 				Ejecucion.facturas.agregar(nuevaFactura);
 
 				carrito.desactivar();
@@ -223,12 +234,95 @@ public class PantallaCarrito {
 			}
 		});
 
+		pedir.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				Ventana Factura = new Ventana("Factura");
+				Factura.desactivar();
+				Factura.setBounds(100, 100, 268, 600);
+				Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
+				Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
+				Titulo.setHorizontalAlignment(SwingConstants.CENTER);
+				Texto encabezado = new Texto("Pedido de compra # ",Factura,0, 126, 252, 14);
+				encabezado.setHorizontalAlignment(SwingConstants.CENTER);
+				Texto lblNewLabel_2 = new Texto("------------------------------------------------",Factura,0, 147, 252, 14);
+				Texto lblNewLabel_2_1 = new Texto("----------------------------------------------",Factura,0, 379, 252, 14);
+				Texto lblNewLabel_3 = new Texto("Total a Pagar:",Factura,0, 400, 240, 14);
+				Texto tituloNombre = new Texto("Nombre",Factura,10,400,50,14);
+				Texto tituloCedula = new Texto("Cedula",Factura,10,440,50,14);
+				Texto tituloCorreo = new Texto("Correo",Factura,10,480,50,14);
+				Texto separador = new Texto("----------------------------------------------",Factura,0, 520, 252, 14);
+				Texto tituloCajero = new Texto("Cajero:",Factura,10,540,50,14);
+				Texto tituloFecha = new Texto("Fecha:",Factura,10,560,50,14);
+				lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
+				JList listProductos = new JList();
+				listProductos.setEnabled(false);
+				listProductos.setModel(modelo2);
+				
+				
+				JScrollPane LaFactura = new JScrollPane(listProductos);
+				LaFactura.setBounds(0, 139, 252, 200);
+				Factura.getContenedor().add(LaFactura);
+
+				Texto precioProductos = new Texto("<precio>",Factura,0, 414, 240, 38);
+				precioProductos.setHorizontalAlignment(SwingConstants.RIGHT);
+				Texto nombreCliente = new Texto("<Nombre cliente>",Factura,10,420, 170, 14);
+				Texto cedulaCliente = new Texto("<Cedula cliente>",Factura,10,460, 143,14);
+				Texto correoCliente = new Texto("<Correo Cliente>",Factura,10,500, 143,14);
+				Texto nombreCajero = new Texto("<Cajero>",Factura,50,540, 143,14);
+				Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);
+
+				String nombre = "";
+				String cedula = "";
+				String correo = "";
+
+
+				while(nombre == "") {
+					nombre = JOptionPane.showInputDialog(carrito,"Ingrese nombre del cliente","Nombre cliente");
+				}
+				while(cedula == "") {
+					cedula = JOptionPane.showInputDialog(carrito,"Ingrese cedula del cliente","Cedula cliente");
+				}
+				while(correo == "" || !correo.contains("@") || !correo.contains(".")) {
+					correo = JOptionPane.showInputDialog(carrito,"Ingrese correo del cliente","Correo cliente");
+				}
+
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+				String Fecha = dtf.format(LocalDateTime.now());
+
+
+				//system.out.print(usuario_admin.getUsuario());
+				Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, Ejecucion.usuario_admin, Ejecucion.compra);
+				nuevaFactura.setId(nuevaFactura.getContador());
+				Ejecucion.pedidos.encolar(nuevaFactura);
+				PantallaPedidos.i = PantallaPedidos.i+1;
+
+				carrito.desactivar();
+				Factura.activar();
+				precioProductos.setText(String.valueOf(nuevaFactura.getPrecio()));
+				nombreCliente.setText(nuevaFactura.getNombre());
+				cedulaCliente.setText(nuevaFactura.getCedula());
+				correoCliente.setText(nuevaFactura.getCorreo());
+				nombreCajero.setText(nuevaFactura.getVendedor().getUsuario());
+				fechaFactura.setText(nuevaFactura.getFecha());
+
+
+				regresar.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						Factura.desactivar(); 
+						carrito.activar();
+					}
+				});
+			}
+		});
 		detalles.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(list.getSelectedValue() != null) { //Saber si hay seleccionado algun elemento en lista
 					carrito.desactivar();
-					PantallaDetalles.main(args);
+					PantallaDetalles.main(null);
 				}else {
 					JOptionPane.showMessageDialog(carrito,"Por favor elija un producto",
 							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error

@@ -40,6 +40,7 @@ public class Ejecucion {
 	public static Color Tema = ModoClaro;
 	public static Lista_ref_simple<Producto> inventario = new Lista_ref_simple<Producto>();
 	public static Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
+	public static Cola_ref_simple<Factura> pedidos = new Cola_ref_simple<Factura>();
 	public static Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
 	public static Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>();
 	

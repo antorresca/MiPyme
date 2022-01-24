@@ -8,9 +8,9 @@ public class Cola_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
 		agregar_al_final(item);
 	}
 	
-	public void desencolar() {
+	public Nodo desencolar() {
 		
-		eliminar_al_comienzo();
+		return eliminar_al_comienzo();
 	}
 	
 

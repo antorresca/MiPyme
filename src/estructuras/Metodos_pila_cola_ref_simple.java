@@ -52,7 +52,8 @@ public abstract class Metodos_pila_cola_ref_simple<T>{ //Funciona :D
 			
 		}
 		
-		protected void eliminar_al_comienzo() {
+		protected Nodo eliminar_al_comienzo() {
+			Nodo eliminado = cabeza;
 			
 			if(cabeza != null) {
 				
@@ -61,10 +62,12 @@ public abstract class Metodos_pila_cola_ref_simple<T>{ //Funciona :D
 			    
 			    tamano--;
 			    
+			    
 			}else {
 				
 				System.out.println("No fue posible la eliminaci�n, la "+this.getClass().getSimpleName()+" est� vac�a");
 			}
+			return eliminado;
 		
 		}
 		

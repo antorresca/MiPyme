@@ -18,7 +18,7 @@ public class Factura {
 			, Usuario vendedor2, Lista_ref_simple<Producto> productos2){
 		
 		cedula = cedula_cliente;
-		id =  contador++;
+		
 		nombre = nombre_cliente;
 		correo = correo_cliente;
 		fecha = fecha_factura;

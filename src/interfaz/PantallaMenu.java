@@ -61,7 +61,7 @@ public class PantallaMenu {
 		btn_busqueda_factura.setContentAreaFilled(false);
 		btn_busqueda_factura.setOpaque(false);
 
-		Boton btn3 = new Boton("Opcion 3",pantallaMenu,146,71,98,74);
+		Boton btn_pedidos = new Boton("Pedidos",pantallaMenu,146,71,98,74);
 
 		Boton btn4 = new Boton("Opcion 4",pantallaMenu,146,156,98,74);
 
@@ -98,6 +98,7 @@ public class PantallaMenu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pantallaMenu.desactivar();
+				PantallaFactura.flag = false;
 				PantallaFactura.main(null);
 				
 			}
@@ -135,7 +136,17 @@ public class PantallaMenu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pantallaMenu.desactivar();
+				PantallaCarrito.flag = false;
 				PantallaCarrito.main(null);
+			}
+		});
+		
+		btn_pedidos.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("unchecked")
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				pantallaMenu.desactivar();
+				PantallaPedidos.main(null);
 			}
 		});
 
