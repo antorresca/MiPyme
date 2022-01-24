@@ -38,7 +38,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
     	   
     	} else {
     		
-    		System.out.println("Posici�n no valida");	
+    		System.out.println("Posici\u00f3n no valida");	
     		
     	    return new Nodo(null);
     	}
@@ -83,7 +83,7 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
         } else {
         	
         	
-        	System.out.println("Posici�n no valida");
+        	System.out.println("Posici\u00f3n no valida");
         }
     }
     
