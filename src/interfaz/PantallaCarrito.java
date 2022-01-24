@@ -18,11 +18,11 @@ import logica.Ejecucion;
 public class PantallaCarrito {
 	
 	@SuppressWarnings("rawtypes")
-	public static DefaultListModel modelo = new DefaultListModel();
+	public static DefaultListModel modelo ;//= new DefaultListModel();
 	@SuppressWarnings("rawtypes")
-	public static DefaultListModel modelo2 = new DefaultListModel();
+	public static DefaultListModel modelo2; //= new DefaultListModel();
 	public static int i; //contador de productos en carrito
-	public static long precio = 0; 
+	public static long precio ; 
 	@SuppressWarnings("rawtypes")
 	public static JList list = new JList();
 	public static Texto pagoCarrito;
@@ -31,6 +31,10 @@ public class PantallaCarrito {
 
 	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	public static void main(String[] args) {
+		modelo = new DefaultListModel();
+		modelo2 = new DefaultListModel();
+		precio = 0;
+		i=0;
 		
 		for(int t=0; t<Ejecucion.inventario.getTamano();t++) { //Creacion de datos random para pruebas
 			modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
