@@ -10,6 +10,9 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import logica.Ejecucion;
 import datos.Factura;
+import datos.Producto;
+import estructuras.Lista_ref_simple;
+import estructuras.Metodos_pila_cola_ref_simple.Nodo;
 
 public class PantallaFactura {
 	public static boolean flag = false;
@@ -58,22 +61,29 @@ public class PantallaFactura {
 			JList listProductos = new JList();
 			listProductos.setEnabled(false);
 			
-			/*if(!flag)listProductos.setModel(PantallaCarrito.modelo2);
+			Factura nuevaFactura;
+			if(!flag) nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
+			else nuevaFactura = Ejecucion.pedidos.getCabeza().getDato();//lo logico es tener en cuenta la cabeza XD
+			/*
+			if(!flag)listProductos.setModel(PantallaCarrito.modelo2);
 			else {
 				DefaultListModel modeloPedidos = new DefaultListModel();
 				for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
 					modeloPedidos.addElement(nuevaFactura.getProductos().encontrar(t).getDato().imprimir());
 				}
 				listProductos.setModel(modeloPedidos);
-			}*/
-
-			Factura nuevaFactura;
-			if(!flag) nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
-			else nuevaFactura = Ejecucion.pedidos.getCabeza().getDato();//lo logico es tener en cuenta la cabeza XD
+			}
+			*/
+			
 			
 			DefaultListModel modeloPedidos = new DefaultListModel();
-			for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
+			/*for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
 				modeloPedidos.addElement(nuevaFactura.getProductos().encontrar(t).getDato().imprimir());
+			}*/
+			Nodo productos = nuevaFactura.getProductos().getCabeza();
+			while (productos!=null) {
+				modeloPedidos.addElement( ((Producto)productos.getDato()).getNo());
+				productos =productos.getSiguiente();
 			}
 			listProductos.setModel(modeloPedidos);
 			
