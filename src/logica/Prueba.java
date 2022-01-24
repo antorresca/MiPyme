@@ -1,5 +1,7 @@
 package logica;
 
+import datos.Usuario;
+import estructuras.Arbol_binario_juan;
 import estructuras.Cola_arreglo_dinamico;
 import estructuras.Cola_ref_simple;
 import estructuras.Lista_arreglo_dinamico;
@@ -13,7 +15,7 @@ public class Prueba {
 		
 
 		//referencias simples
-
+        /*
 		Cola_ref_simple<Integer> objeto = new Cola_ref_simple<Integer>();
 
 		objeto.encolar(1);
@@ -110,6 +112,30 @@ public class Prueba {
 
 				System.out.print(tiempo_final);
 		 */
+		
+		/*
+		Arbol_binario_juan<Usuario> arbol = new Arbol_binario_juan<Usuario>();
+		
+		arbol.agregar(new Usuario("andres", "12345"));
+		arbol.agregar(new Usuario("pedro", "12345"));
+		arbol.agregar(new Usuario("fabian", "12345"));
+		arbol.agregar(new Usuario("Brayan", "12345"));
+		arbol.agregar(new Usuario("Marco", "12345"));
+		*/
+		
+		Arbol_binario_juan<Integer> arbol = new Arbol_binario_juan<Integer>();
+		
+		arbol.agregar(7);
+		arbol.agregar(13);
+		arbol.agregar(6);
+		arbol.agregar(1);
+		arbol.agregar(3);
+		arbol.agregar(5);
+		arbol.agregar(9);
+		
+		arbol.imprimir();
+		
+		
 
 
 
