@@ -39,7 +39,7 @@ public class PantallaMenu {
 
 		Boton BtnCerrarSesion = new Boton("Cerrar Sesion", pantallaMenu, 130, 240, 200, 50);
 		
-		Boton btnCarrito = new Boton("Carrito",pantallaMenu,38,71,98,74);
+		Boton btnCarrito = new Boton("",pantallaMenu,38,71,98,74);
 		ImageIcon carritoIcon =  new ImageIcon("Img\\CarritoClaro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconCarrito = new ImageIcon(carritoIcon.getImage().getScaledInstance(
 				btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
@@ -61,7 +61,16 @@ public class PantallaMenu {
 		btn_busqueda_factura.setContentAreaFilled(false);
 		btn_busqueda_factura.setOpaque(false);
 
-		Boton btn_pedidos = new Boton("Pedidos",pantallaMenu,146,71,98,74);
+		Boton btn_pedidos = new Boton("",pantallaMenu,146,71,98,74);
+		ImageIcon pedidosIcon =  new ImageIcon("Img\\PedidoClaro.png"); //Las rutas relativas no estan sirviendo
+		Icon iconPedidos = new ImageIcon(pedidosIcon.getImage().getScaledInstance(
+				70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
+		btn_pedidos.setIcon(iconPedidos);
+		btn_pedidos.setToolTipText("Factura\r\n");
+		btn_pedidos.setBackground(null);
+		btn_pedidos.setBorderPainted(false);
+		btn_pedidos.setContentAreaFilled(false);
+		btn_pedidos.setOpaque(false);
 
 		Boton btn4 = new Boton("Opcion 4",pantallaMenu,146,156,98,74);
 
@@ -172,6 +181,8 @@ public class PantallaMenu {
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 					btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png")
 							.getImage().getScaledInstance(70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
+					btn_pedidos.setIcon(new ImageIcon(new ImageIcon("Img\\PedidoOscuro.png")
+							.getImage().getScaledInstance(70, btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
 				}else {
 
 					/*
@@ -191,6 +202,8 @@ public class PantallaMenu {
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 					btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon("Img\\FacturaClaro.png")
 							.getImage().getScaledInstance(70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
+					btn_pedidos.setIcon(new ImageIcon(new ImageIcon("Img\\PedidoClaro.png")
+							.getImage().getScaledInstance(70, btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
 				}
 
 			}
