@@ -65,9 +65,22 @@ public class VerFactura {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Factura.desactivar();
+				String nombre = anterior.toLowerCase();
+				switch(nombre) {
+				case "carrito":
+					PantallaCarrito.main(null);
+					break;
+				case "menu":
+					PantallaMenu.main(null);
+					break;
+				case "pedidos":
+					PantallaPedidos.main(null);
+					break;
+				}
+				/*
 				if(anterior.toLowerCase().contains("carrito")) PantallaCarrito.main(null);
 				else if(anterior.toLowerCase().contains("menu")) PantallaMenu.main(null);
-				else if(anterior.toLowerCase().contains("pedidos")) PantallaPedidos.main(null);
+				else if(anterior.toLowerCase().contains("pedidos")) PantallaPedidos.main(null);*/
 			}
 		});
 		

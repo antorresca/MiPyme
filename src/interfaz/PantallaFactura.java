@@ -51,7 +51,8 @@ public class PantallaFactura {
 			}
 			*/
 			pantalla_factura.desactivar();
-			VerFactura.main("menu",nuevaFactura);
+			if(!flag)VerFactura.main("menu",nuevaFactura);
+			else VerFactura.main("pedidos",nuevaFactura);
 			
 		}catch(Exception exp) {
 			pantalla_factura.desactivar();

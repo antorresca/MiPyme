@@ -209,8 +209,8 @@ public class PantallaCarrito {
 
 				Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, Ejecucion.usuario_admin, Ejecucion.compra);
 				nuevaFactura.setId(nuevaFactura.getContador());
-				nuevaFactura.setContador(nuevaFactura.getId()+1);
-				Ejecucion.facturas.agregar(nuevaFactura);
+				Ejecucion.pedidos.encolar(nuevaFactura);
+				PantallaPedidos.i = PantallaPedidos.i + 1;
 
 				carrito.desactivar();
 				VerFactura.main("carrito",nuevaFactura);
