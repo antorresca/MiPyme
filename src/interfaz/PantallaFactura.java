@@ -33,13 +33,11 @@ public class PantallaFactura {
 			}
 		}
 		try {
-			Factura nuevaFactura;
-			if(!flag) nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
-			else nuevaFactura = Ejecucion.pedidos.getCola().getDato();
 
-			if(!flag)for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
+			
+			/*if(!flag)for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
 				PantallaCarrito.modelo.addElement(nuevaFactura.getProductos().encontrar(t).getDato().imprimir());
-			}
+			}*/
 
 			pantalla_factura.setBounds(100, 100, 268, 600);
 			Boton regresar = new Boton("Regresar",pantalla_factura,10, 17, 89, 23);
@@ -59,14 +57,27 @@ public class PantallaFactura {
 			lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
 			JList listProductos = new JList();
 			listProductos.setEnabled(false);
-			if(!flag)listProductos.setModel(PantallaCarrito.modelo2);
+			
+			/*if(!flag)listProductos.setModel(PantallaCarrito.modelo2);
 			else {
 				DefaultListModel modeloPedidos = new DefaultListModel();
 				for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
 					modeloPedidos.addElement(nuevaFactura.getProductos().encontrar(t).getDato().imprimir());
 				}
 				listProductos.setModel(modeloPedidos);
+			}*/
+
+			Factura nuevaFactura;
+			if(!flag) nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
+			else nuevaFactura = Ejecucion.pedidos.getCabeza().getDato();//lo logico es tener en cuenta la cabeza XD
+			
+			DefaultListModel modeloPedidos = new DefaultListModel();
+			for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
+				modeloPedidos.addElement(nuevaFactura.getProductos().encontrar(t).getDato().imprimir());
 			}
+			listProductos.setModel(modeloPedidos);
+			
+			
 			JScrollPane LaFactura = new JScrollPane(listProductos);
 			LaFactura.setBounds(0, 139, 252, 200);
 			pantalla_factura.getContenedor().add(LaFactura);
