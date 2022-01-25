@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 import datos.Factura;
+import logica.Ejecucion;
 
 public class VerFactura {
 

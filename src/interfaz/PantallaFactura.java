@@ -22,7 +22,7 @@ public class PantallaFactura {
 		int n = -1;
 		String entrada;
 		
-		Ventana pantalla_factura = new Ventana("Factura");
+		Ventana pantalla_factura = new Ventana("Factura" );
 		pantalla_factura.desactivar();
 		if(!flag) {
 			while(n == -1) {

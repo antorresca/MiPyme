@@ -1,11 +1,15 @@
 package interfaz;
 
+import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.text.AttributeSet.ColorAttribute;
+
+import logica.Ejecucion;
 
 @SuppressWarnings("serial")
 
@@ -21,6 +25,7 @@ public class Ventana extends JFrame {
 		contenedor = new JPanel(null);
 		add(contenedor);
 		contenedor.setVisible(puerta);
+		contenedor.setBackground(Ejecucion.Tema);
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		pack();
@@ -34,7 +39,7 @@ public class Ventana extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
             	
-                if(JOptionPane.showConfirmDialog(n, "¿Seguro que deseas salir?","Confirmacin", JOptionPane.YES_NO_OPTION) == 0) {
+                if(JOptionPane.showConfirmDialog(n, "¿Seguro que deseas salir?","Confirmaci\u00f3n", JOptionPane.YES_NO_OPTION) == 0) {
 					
                 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
