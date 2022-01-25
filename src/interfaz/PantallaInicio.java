@@ -15,6 +15,7 @@ public class PantallaInicio {
 	
 	public static void main(String[] args) {
 		Ventana pantallaInicio = new Ventana("Mi PYME");
+		pantallaInicio.desactivar();
 		pantallaInicio.setBackground(Ejecucion.Tema);
 		
 		Imagen bienvenida = new Imagen("Img\\LogoOscuro.png", pantallaInicio,140, 40, 200, 160);
@@ -29,7 +30,7 @@ public class PantallaInicio {
 		//Botones Inicio
 
 		Boton btningreso = new Boton("Ingresar", pantallaInicio, 200, 230, 100, 25);
-
+		pantallaInicio.activar();
 		btningreso.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {
