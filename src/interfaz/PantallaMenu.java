@@ -174,7 +174,7 @@ public class PantallaMenu {
 				
 				
 				pantallaMenu.getContenedor().setBackground(Ejecucion.Tema); //Cambio de color de fondo
-///AQUI IBAAAAAA
+
 				btnCarrito.setIcon(new ImageIcon(new ImageIcon((temaFlag)?"Img\\CarritoOscuro.png":"Img\\CarritoClaro.png")
 						.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 				btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon((temaFlag)?"Img\\FacturaOscuro.png":"Img\\FacturaClaro.png")
