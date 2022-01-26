@@ -1,7 +1,7 @@
 package logica;
 
 import datos.Usuario;
-import estructuras.Arbol_binario_juan;
+import estructuras.Arbol_binario_ref_triple;
 import estructuras.Cola_arreglo_dinamico;
 import estructuras.Cola_ref_simple;
 import estructuras.Lista_arreglo_dinamico;
@@ -123,7 +123,7 @@ public class Prueba {
 		arbol.agregar(new Usuario("Marco", "12345"));
 		*/
 		
-		Arbol_binario_juan<Integer> arbol = new Arbol_binario_juan<Integer>();
+		Arbol_binario_ref_triple<Integer> arbol = new Arbol_binario_ref_triple<Integer>();
 		
 		arbol.agregar(7);
 		arbol.agregar(13);

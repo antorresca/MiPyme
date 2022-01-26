@@ -2,13 +2,13 @@ package estructuras;
 
 import datos.Usuario;
 
-public class Arbol_binario_juan<T> {
+public class Arbol_binario_ref_triple<T> {
 	
 	public Nodo raiz;
 	private int tamano;
 	
 	
-	public Arbol_binario_juan() {
+	public Arbol_binario_ref_triple() {
 		
 		raiz = null;
 		tamano = 0;
