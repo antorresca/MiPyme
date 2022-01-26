@@ -23,6 +23,7 @@ import logica.Ejecucion;
 public class PantallaMenu {
 
 	public static boolean flag = false;
+	public static boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
 	
 	public static void main(String[] args) {
 
@@ -31,7 +32,8 @@ public class PantallaMenu {
 
 		Imagen logoAppClaro = new Imagen("Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
 		Imagen logoAppOscuro = new Imagen("Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
-		logoAppOscuro.setVisible(false);
+		logoAppOscuro.setVisible((temaFlag)?false:true);
+		logoAppClaro.setVisible((temaFlag)?true:false);
 		
 		Texto NombreUsuario = new Texto("Bienvenido, " + PantallaInicio.textoUsuario,pantallaMenu,30, 10, 150,30);
 
@@ -40,7 +42,7 @@ public class PantallaMenu {
 		Boton BtnCerrarSesion = new Boton("Cerrar Sesion", pantallaMenu, 130, 240, 200, 50);
 		
 		Boton btnCarrito = new Boton("",pantallaMenu,38,71,98,74);
-		ImageIcon carritoIcon =  new ImageIcon("Img\\CarritoClaro.png"); //Las rutas relativas no estan sirviendo
+		ImageIcon carritoIcon =  new ImageIcon((temaFlag)?"Img\\CarritoClaro.png":"Img\\CarritoOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconCarrito = new ImageIcon(carritoIcon.getImage().getScaledInstance(
 				btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btnCarrito.setIcon(iconCarrito);
@@ -51,7 +53,7 @@ public class PantallaMenu {
 		btnCarrito.setOpaque(false);
 
 		Boton btn_busqueda_factura = new Boton("",pantallaMenu,0,156,200,74);
-		ImageIcon facturaIcon =  new ImageIcon("Img\\FacturaClaro.png"); //Las rutas relativas no estan sirviendo
+		ImageIcon facturaIcon =  new ImageIcon((temaFlag)?"Img\\FacturaClaro.png":"Img\\FacturaOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconFactura = new ImageIcon(facturaIcon.getImage().getScaledInstance(
 				70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btn_busqueda_factura.setIcon(iconFactura);
@@ -62,7 +64,7 @@ public class PantallaMenu {
 		btn_busqueda_factura.setOpaque(false);
 
 		Boton btn_pedidos = new Boton("",pantallaMenu,146,71,98,74);
-		ImageIcon pedidosIcon =  new ImageIcon("Img\\PedidoClaro.png"); //Las rutas relativas no estan sirviendo
+		ImageIcon pedidosIcon =  new ImageIcon((temaFlag)?"Img\\PedidoClaro.png":"Img\\PedidoOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconPedidos = new ImageIcon(pedidosIcon.getImage().getScaledInstance(
 				70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btn_pedidos.setIcon(iconPedidos);
@@ -84,7 +86,7 @@ public class PantallaMenu {
 		Icon iconClaro = new ImageIcon(claro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
 		ImageIcon oscuro = new ImageIcon("Img\\ModoOscuro.png");
 		Icon iconOscuro = new ImageIcon(oscuro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
-		btnTema.setIcon(iconClaro);
+		btnTema.setIcon((temaFlag)?iconClaro:iconOscuro);
 		btnTema.setBackground(null);
 		btnTema.setBorderPainted(false);
 		btnTema.setContentAreaFilled(false);
@@ -162,21 +164,40 @@ public class PantallaMenu {
 		btnTema.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				btnTema.setText("OSCURO"); //Cambio de bandera de tema
+				Ejecucion.Tema = (temaFlag)?Ejecucion.ModoOscuro:Ejecucion.ModoClaro;
+				
+				btnTema.setIcon((temaFlag)? iconOscuro:iconClaro);
+
+				logoAppClaro.setVisible((temaFlag)?false:true); //Cambio de logo
+				logoAppOscuro.setVisible((temaFlag)?true:false); //""
+				
+				
+				pantallaMenu.getContenedor().setBackground(Ejecucion.Tema); //Cambio de color de fondo
+
+				btnCarrito.setIcon(new ImageIcon(new ImageIcon((temaFlag)?"Img\\CarritoOscuro.png":"Img\\CarritoClaro.png")
+						.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
+				btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon((temaFlag)?"Img\\FacturaOscuro.png":"Img\\FacturaClaro.png")
+						.getImage().getScaledInstance(70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
+				btn_pedidos.setIcon(new ImageIcon(new ImageIcon((temaFlag)?"Img\\PedidoOscuro.png":"Img\\PedidoClaro.png")
+						.getImage().getScaledInstance(70, btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
+				temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
+			/*
 				if (btnTema.getText().contains("CLARO")){ //Verificacion de tema actual de la pantalla
 
-					/*
-					 * Actualizacion de variables
-					 */
+					
+					 // Actualizacion de variables
+					 
 
 					btnTema.setText("OSCURO"); //Cambio de bandera de tema
-					btnTema.setIcon(iconOscuro);
+					btnTema.setIcon((temaFlag)? iconOscuro:iconClaro);
 
-					logoAppClaro.setVisible(false); //Cambio de logo
-					logoAppOscuro.setVisible(true); //""
+					logoAppClaro.setVisible((temaFlag)?false:true); //Cambio de logo
+					logoAppOscuro.setVisible((temaFlag)?true:false); //""
 					
 					Ejecucion.Tema = Ejecucion.ModoOscuro;
 					pantallaMenu.getContenedor().setBackground(Ejecucion.Tema); //Cambio de color de fondo
-
+///AQUI IBAAAAAA
 					btnCarrito.setIcon(new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png")
 							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 					btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png")
@@ -185,15 +206,15 @@ public class PantallaMenu {
 							.getImage().getScaledInstance(70, btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
 				}else {
 
-					/*
-					 * Actualizacion de variables
-					 */
+					
+					 // Actualizacion de variables
+					 
 
 					btnTema.setText("CLARO"); //Cambio de bandera de tema
 					btnTema.setIcon(iconClaro);
 
-					logoAppClaro.setVisible(true); //Cambio de logo
-					logoAppOscuro.setVisible(false); //""
+					logoAppClaro.setVisible((Ejecucion.Tema==Ejecucion.ModoClaro)?true:false); //Cambio de logo
+					logoAppOscuro.setVisible((Ejecucion.Tema==Ejecucion.ModoClaro)?false:true); //""
 					
 					Ejecucion.Tema = Ejecucion.ModoClaro;
 					pantallaMenu.getContenedor().setBackground(Ejecucion.Tema); //Cambio color de fondo
@@ -204,7 +225,7 @@ public class PantallaMenu {
 							.getImage().getScaledInstance(70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
 					btn_pedidos.setIcon(new ImageIcon(new ImageIcon("Img\\PedidoClaro.png")
 							.getImage().getScaledInstance(70, btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
-				}
+				}*/
 
 			}
 		});

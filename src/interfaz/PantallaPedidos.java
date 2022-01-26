@@ -53,9 +53,9 @@ public class PantallaPedidos {
 
 		//pagoCarrito = new Texto(String.valueOf(precio),pedidos,150, 143, 76, 23);
 
-		Texto productosCarrito = new Texto("No. Pedidos",pedidos,170, 68, 89, 14);
+		Texto numPedidos = new Texto("No. Pedidos",pedidos,170, 68, 89, 14);
 
-		prodCarrito = new Texto(String.valueOf(i),pedidos,170, 93, 46, 14);
+		numPedidos = new Texto(String.valueOf(i),pedidos,170, 93, 46, 14);
 
 		Boton agregar = new Boton("Agregar",pedidos,170, 105, 89, 23);
 		
@@ -112,7 +112,7 @@ public class PantallaPedidos {
 			@SuppressWarnings("static-access")
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+/*
 				Ventana Factura = new Ventana("Factura");
 				Factura.desactivar();
 				Factura.setBounds(100, 100, 268, 600);
@@ -145,7 +145,7 @@ public class PantallaPedidos {
 				Texto cedulaCliente = new Texto("<Cedula cliente>",Factura,10,460, 143,14);
 				Texto correoCliente = new Texto("<Correo Cliente>",Factura,10,500, 143,14);
 				Texto nombreCajero = new Texto("<Cajero>",Factura,50,540, 143,14);
-				Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);
+				Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);*/
 
 
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -154,17 +154,19 @@ public class PantallaPedidos {
 				Nodo nuevaFactura = Ejecucion.pedidos.desencolar();
 				//modelo = new DefaultListModel();
 				
-				i--;
+				
 				//no hay facturas para pagar
 				if (nuevaFactura!=null) {
+					i--;
 					Factura siguientePedido = (Factura)nuevaFactura.getDato(); 
 					siguientePedido.setFecha(Fecha);
 					//system.out.print(usuario_admin.getUsuario());
+					/*
 					DefaultListModel modeloPedidos = new DefaultListModel();
 					for(int t=0; t<siguientePedido.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
 						modeloPedidos.addElement(siguientePedido.getProductos().encontrar(t).getDato().imprimir());
 					}
-					listProductos.setModel(modeloPedidos);
+					listProductos.setModel(modeloPedidos);*/
 					
 					siguientePedido.setId(siguientePedido.getContador());
 					siguientePedido.setContador(siguientePedido.getId()+1);
@@ -172,7 +174,8 @@ public class PantallaPedidos {
 					Ejecucion.facturas.agregar(siguientePedido);
 
 					pedidos.desactivar();
-					Factura.activar();
+					VerFactura.main("pedidos",siguientePedido);
+					/* Factura.activar();
 					precioProductos.setText(String.valueOf(siguientePedido.getPrecio()));
 					nombreCliente.setText(siguientePedido.getNombre());
 					cedulaCliente.setText(siguientePedido.getCedula());
@@ -189,7 +192,7 @@ public class PantallaPedidos {
 							//pedidos.activar();
 							PantallaPedidos.main(null);
 						}
-					});
+					});*/
 				}else {
 					JOptionPane.showMessageDialog(pedidos,"No hay pedidos pendientes por pagar",
 							"No hay pedidos",JOptionPane.ERROR_MESSAGE);

@@ -1,5 +1,6 @@
 package interfaz;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -15,9 +16,11 @@ public class PantallaInicio {
 	
 	public static void main(String[] args) {
 		Ventana pantallaInicio = new Ventana("Mi PYME");
-		pantallaInicio.setBackground(Ejecucion.Tema);
 		
-		Imagen bienvenida = new Imagen("Img\\LogoOscuro.png", pantallaInicio,140, 40, 200, 160);
+		pantallaInicio.desactivar();
+		
+		
+		Imagen bienvenida = new Imagen((Ejecucion.Tema==Ejecucion.ModoClaro)?"Img\\LogoOscuro.png":"Img\\LogoClaro.png", pantallaInicio,140, 40, 200, 160);
 
 		Texto userLabel = new Texto("Usuario", pantallaInicio, 110, 205, 90, 35);
 
@@ -29,7 +32,8 @@ public class PantallaInicio {
 		//Botones Inicio
 
 		Boton btningreso = new Boton("Ingresar", pantallaInicio, 200, 230, 100, 25);
-
+		pantallaInicio.activar();
+		
 		btningreso.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {

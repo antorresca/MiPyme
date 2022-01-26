@@ -9,19 +9,21 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
 
 import datos.Factura;
+import datos.Producto;
+import estructuras.Lista_ref_simple;
 import logica.Ejecucion;
 
 public class PantallaCarrito {
 	
 	@SuppressWarnings("rawtypes")
-	public static DefaultListModel modelo = new DefaultListModel();
+	public static DefaultListModel modelo ;//= new DefaultListModel();
 	@SuppressWarnings("rawtypes")
-	public static DefaultListModel modelo2 = new DefaultListModel();
+	public static DefaultListModel modelo2; //= new DefaultListModel();
 	public static int i; //contador de productos en carrito
-	public static long precio = 0; 
+	public static long precio ; 
+	@SuppressWarnings("rawtypes")
 	public static JList list = new JList();
 	public static Texto pagoCarrito;
 	public static Texto prodCarrito;
@@ -29,6 +31,10 @@ public class PantallaCarrito {
 
 	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	public static void main(String[] args) {
+		modelo = new DefaultListModel();
+		modelo2 = new DefaultListModel();
+		precio = 0;
+		i=0;
 		
 		for(int t=0; t<Ejecucion.inventario.getTamano();t++) { //Creacion de datos random para pruebas
 			modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
@@ -36,6 +42,7 @@ public class PantallaCarrito {
 		
 		Ventana carrito = new Ventana("Carrito");	
 		
+		Ejecucion.compra = new Lista_ref_simple<Producto>();
 		
 		Texto cabecera = new Texto("Producto  |  Precio",carrito,31, 68, 233, 14);
 
@@ -154,45 +161,11 @@ public class PantallaCarrito {
 			@SuppressWarnings("static-access")
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				Ventana Factura = new Ventana("Factura");
-				Factura.desactivar();
-				Factura.setBounds(100, 100, 268, 600);
-				Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
-				Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
-				Titulo.setHorizontalAlignment(SwingConstants.CENTER);
-				Texto encabezado = new Texto("Factura de compra # ",Factura,0, 126, 252, 14);
-				encabezado.setHorizontalAlignment(SwingConstants.CENTER);
-				Texto lblNewLabel_2 = new Texto("------------------------------------------------",Factura,0, 147, 252, 14);
-				Texto lblNewLabel_2_1 = new Texto("----------------------------------------------",Factura,0, 379, 252, 14);
-				Texto lblNewLabel_3 = new Texto("Total a Pagar:",Factura,0, 400, 240, 14);
-				Texto tituloNombre = new Texto("Nombre",Factura,10,400,50,14);
-				Texto tituloCedula = new Texto("Cedula",Factura,10,440,50,14);
-				Texto tituloCorreo = new Texto("Correo",Factura,10,480,50,14);
-				Texto separador = new Texto("----------------------------------------------",Factura,0, 520, 252, 14);
-				Texto tituloCajero = new Texto("Cajero:",Factura,10,540,50,14);
-				Texto tituloFecha = new Texto("Fecha:",Factura,10,560,50,14);
-				lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-				JList listProductos = new JList();
-				listProductos.setEnabled(false);
-				listProductos.setModel(modelo2);
-				JScrollPane LaFactura = new JScrollPane(listProductos);
-				LaFactura.setBounds(0, 139, 252, 200);
-				Factura.getContenedor().add(LaFactura);
-
-				Texto precioProductos = new Texto("<precio>",Factura,0, 414, 240, 38);
-				precioProductos.setHorizontalAlignment(SwingConstants.RIGHT);
-				Texto nombreCliente = new Texto("<Nombre cliente>",Factura,10,420, 170, 14);
-				Texto cedulaCliente = new Texto("<Cedula cliente>",Factura,10,460, 143,14);
-				Texto correoCliente = new Texto("<Correo Cliente>",Factura,10,500, 143,14);
-				Texto nombreCajero = new Texto("<Cajero>",Factura,50,540, 143,14);
-				Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);
-
+				
 				String nombre = "";
 				String cedula = "";
 				String correo = "";
-
-
+				
 				while(nombre == "") {
 					nombre = JOptionPane.showInputDialog(carrito,"Ingrese nombre del cliente","Nombre cliente");
 				}
@@ -206,78 +179,25 @@ public class PantallaCarrito {
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 				String Fecha = dtf.format(LocalDateTime.now());
 
-
-				//system.out.print(usuario_admin.getUsuario());
 				Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, Ejecucion.usuario_admin, Ejecucion.compra);
 				nuevaFactura.setId(nuevaFactura.getContador());
 				nuevaFactura.setContador(nuevaFactura.getId()+1);
 				Ejecucion.facturas.agregar(nuevaFactura);
 
 				carrito.desactivar();
-				Factura.activar();
-				precioProductos.setText(String.valueOf(nuevaFactura.getPrecio()));
-				nombreCliente.setText(nuevaFactura.getNombre());
-				cedulaCliente.setText(nuevaFactura.getCedula());
-				correoCliente.setText(nuevaFactura.getCorreo());
-				nombreCajero.setText(nuevaFactura.getVendedor().getUsuario());
-				fechaFactura.setText(nuevaFactura.getFecha());
-				encabezado.setText(encabezado.getText()+String.valueOf(nuevaFactura.getId()));
-
-
-				regresar.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						Factura.desactivar(); 
-						carrito.activar();
-					}
-				});
+				VerFactura.main("carrito",nuevaFactura);
+				
 			}
 		});
 
 		pedir.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+			@SuppressWarnings("static-access")
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				Ventana Factura = new Ventana("Factura");
-				Factura.desactivar();
-				Factura.setBounds(100, 100, 268, 600);
-				Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
-				Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
-				Titulo.setHorizontalAlignment(SwingConstants.CENTER);
-				Texto encabezado = new Texto("Pedido de compra # ",Factura,0, 126, 252, 14);
-				encabezado.setHorizontalAlignment(SwingConstants.CENTER);
-				Texto lblNewLabel_2 = new Texto("------------------------------------------------",Factura,0, 147, 252, 14);
-				Texto lblNewLabel_2_1 = new Texto("----------------------------------------------",Factura,0, 379, 252, 14);
-				Texto lblNewLabel_3 = new Texto("Total a Pagar:",Factura,0, 400, 240, 14);
-				Texto tituloNombre = new Texto("Nombre",Factura,10,400,50,14);
-				Texto tituloCedula = new Texto("Cedula",Factura,10,440,50,14);
-				Texto tituloCorreo = new Texto("Correo",Factura,10,480,50,14);
-				Texto separador = new Texto("----------------------------------------------",Factura,0, 520, 252, 14);
-				Texto tituloCajero = new Texto("Cajero:",Factura,10,540,50,14);
-				Texto tituloFecha = new Texto("Fecha:",Factura,10,560,50,14);
-				lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-				JList listProductos = new JList();
-				listProductos.setEnabled(false);
-				listProductos.setModel(modelo2);
-				
-				
-				JScrollPane LaFactura = new JScrollPane(listProductos);
-				LaFactura.setBounds(0, 139, 252, 200);
-				Factura.getContenedor().add(LaFactura);
-
-				Texto precioProductos = new Texto("<precio>",Factura,0, 414, 240, 38);
-				precioProductos.setHorizontalAlignment(SwingConstants.RIGHT);
-				Texto nombreCliente = new Texto("<Nombre cliente>",Factura,10,420, 170, 14);
-				Texto cedulaCliente = new Texto("<Cedula cliente>",Factura,10,460, 143,14);
-				Texto correoCliente = new Texto("<Correo Cliente>",Factura,10,500, 143,14);
-				Texto nombreCajero = new Texto("<Cajero>",Factura,50,540, 143,14);
-				Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);
-
 				String nombre = "";
 				String cedula = "";
 				String correo = "";
-
-
+				
 				while(nombre == "") {
 					nombre = JOptionPane.showInputDialog(carrito,"Ingrese nombre del cliente","Nombre cliente");
 				}
@@ -291,30 +211,13 @@ public class PantallaCarrito {
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 				String Fecha = dtf.format(LocalDateTime.now());
 
-
-				//system.out.print(usuario_admin.getUsuario());
 				Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, Ejecucion.usuario_admin, Ejecucion.compra);
 				nuevaFactura.setId(nuevaFactura.getContador());
 				Ejecucion.pedidos.encolar(nuevaFactura);
-				PantallaPedidos.i = PantallaPedidos.i+1;
+				PantallaPedidos.i = PantallaPedidos.i + 1;
 
 				carrito.desactivar();
-				Factura.activar();
-				precioProductos.setText(String.valueOf(nuevaFactura.getPrecio()));
-				nombreCliente.setText(nuevaFactura.getNombre());
-				cedulaCliente.setText(nuevaFactura.getCedula());
-				correoCliente.setText(nuevaFactura.getCorreo());
-				nombreCajero.setText(nuevaFactura.getVendedor().getUsuario());
-				fechaFactura.setText(nuevaFactura.getFecha());
-
-
-				regresar.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						Factura.desactivar(); 
-						carrito.activar();
-					}
-				});
+				VerFactura.main("carrito",nuevaFactura);
 			}
 		});
 		detalles.addMouseListener(new MouseAdapter() {
