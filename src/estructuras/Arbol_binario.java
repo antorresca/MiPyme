@@ -1,5 +1,10 @@
 package estructuras;
 
+import javax.swing.DefaultListModel;
+
+import datos.Usuario;
+import estructuras.Metodos_arbol_binario.Nodo;
+
 public class Arbol_binario<T> extends Metodos_arbol_binario <T>{
 	
 	public void imprimir(Nodo actual) {
@@ -12,6 +17,15 @@ public class Arbol_binario<T> extends Metodos_arbol_binario <T>{
 			//System.out.print(" "+actual.getDato()+" ");//
 		}
 	}
+	
+	
+	void usuarioEnOrden(Nodo node, DefaultListModel modelo) {
+        if (node != null) {
+        	usuarioEnOrden(node.getIzquierda(), modelo);
+        	modelo.addElement(((Usuario)node.getDato()).getUsuario());
+        	usuarioEnOrden(node.getDerecha(), modelo);
+        }
+    } 
 	
 	public int getTamano() {
 		return getTamanoN();
