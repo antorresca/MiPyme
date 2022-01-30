@@ -42,6 +42,23 @@ public class PantallaUsuarios {
 
 		Boton detalles = new Boton("Modificar",pantallaUsuarios,260, 139, 89, 23);
 
+		detalles.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			if(listaUsuarios.getSelectedValue()!=null) {
+				if(listaUsuarios.getSelectedValue().equals(Ejecucion.usuario_admin.getUsuario()+" | Administrador")) {
+					JOptionPane.showMessageDialog(pantallaUsuarios,"Es el admin, No se puede eliminar","NO",JOptionPane.ERROR_MESSAGE);					
+				}else {
+					String[] valor = listaUsuarios.getSelectedValue().toString().split(" | ");
+					Usuario temp = new Usuario(valor[0],"");
+					Usuario usuarioEncontrar = Ejecucion.usuarios.encontrarN(temp).getDato();
+					pantallaUsuarios.setVisible(false);
+					PantallaModificarUsuario.main(usuarioEncontrar);
+				}
+
+			}
+		}
+		});
 
 		Boton eliminarUsuario = new Boton("Eliminar",pantallaUsuarios,260, 173, 89, 23);
 
