@@ -80,6 +80,7 @@ public class PantallaMenu {
 		btn4.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {	
+			pantallaMenu.setVisible(false);
 			PantallaUsuarios.main(null);
 		}
 		});
