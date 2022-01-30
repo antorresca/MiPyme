@@ -1,5 +1,7 @@
 package interfaz;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -10,12 +12,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import datos.Usuario;
+import logica.Ejecucion;
 
 public class PantallaModificarUsuario {
 	
 	static void main(Usuario a) {
 		
 		Ventana pantallaModificar = new Ventana("Modificar Usuarios");
+		Toolkit t = Toolkit.getDefaultToolkit();
+		Dimension dimensions = t.getScreenSize();
+		pantallaModificar.setBounds(dimensions.width/2-(283/2),dimensions.height/2-(260/2),283,260);
 		
 		Boton btnAceptar = new Boton("Aceptar",pantallaModificar,77, 141, 89, 23);
 		
@@ -29,6 +35,8 @@ public class PantallaModificarUsuario {
 		comprobarAdmin.setSelected(a.isAdmin());
 		comprobarAdmin.setBounds(153, 106, 86, 23);
 		pantallaModificar.getContenedor().add(comprobarAdmin);
+		comprobarAdmin.setBackground(null);
+		comprobarAdmin.setForeground((Ejecucion.Tema == Ejecucion.ModoClaro)? Ejecucion.ModoOscuro:Ejecucion.ModoClaro);
 			
 		
 		CampoL textField = new CampoL(pantallaModificar,153, 33, 86, 20);

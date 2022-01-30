@@ -1,6 +1,6 @@
 package datos;
 
-import java.awt.Image;
+import interfaz.Imagen;
 
 public class Producto { //Se añadieron getter y funcion Imprimir
 	
@@ -8,7 +8,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	private String no;
 	private String des;
 	private long pre;
-	private Image im;
+	private Imagen im;
 	private int can;
 	
 	
@@ -50,7 +50,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	/**
 	 * @return the im
 	 */
-	public Image getIm() {
+	public Imagen getIm() {
 		return im;
 	}
 
@@ -61,7 +61,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 		return can;
 	}
 	
-	public Producto(String identificacion, String nombre, String descripcion, long precio, Image imagen, int cantidad){
+	public Producto(String identificacion, String nombre, String descripcion, long precio, Imagen imagen, int cantidad){
 		
 		id = identificacion;
 		no = nombre;
