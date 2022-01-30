@@ -13,6 +13,13 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	
 	
 	/**
+	 * @param can the can to set
+	 */
+	public void setCan(int can) {
+		this.can = can;
+	}
+
+	/**
 	 * @return the id
 	 */
 	public String getId() {
@@ -65,7 +72,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	}
 	
 	public String imprimir() {
-		return no+"  |  $"+pre;
+		return no+"  |  $"+pre+" | "+can;
 	}
 
 }

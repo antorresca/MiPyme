@@ -77,23 +77,29 @@ public class PantallaCarrito {
 		scroll2.setBounds(227, 41, 117, 200);
 		carrito.getContenedor().add(scroll2);
 
-		Boton agregar = new Boton("+",carrito,162, 74, 55, 35);
+		CampoL cantidad = new CampoL(carrito,162, 44, 55, 35);
+		cantidad.setText("1");
+		
+		Boton agregar = new Boton("+",carrito,162, 84, 55, 35);
 
 		agregar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
 				if(list.getSelectedValue() != null) {
-
+					
+					int c = Integer.valueOf(cantidad.getText());
 					//system.out.println(inventario.encontrar(list.getSelectedIndex()).getDato().getPre());
-					precio += Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato().getPre();
-					i += 1;
-					Ejecucion.compra.agregar(Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato());
-					modelo2.addElement(Ejecucion.compra.encontrar(Ejecucion.compra.getTamano()-1).getDato().imprimir());
-					Ejecucion.compra.imprimir();
+					precio += c*Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato().getPre();
+					i += c;
+					Producto temp = Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato();
+					Producto a = new Producto(temp.getId(), temp.getNo(), temp.getDes(), temp.getPre(), null, c);
+					Ejecucion.compra.agregar(a);
+					modelo2.addElement(a.imprimir());
 					pagoCarrito.setText("$"+String.valueOf(precio));
-
 					prodCarrito.setText(String.valueOf(i));
+					
+					cantidad.setText("1");
 
 				}
 
@@ -107,15 +113,25 @@ public class PantallaCarrito {
 
 				if(list2.getSelectedValue() != null) {
 
-
-					precio -= Ejecucion.compra.encontrar(list2.getSelectedIndex()).getDato().getPre();
-					i -= 1;
-
-					Ejecucion.compra.eliminar_en(list2.getSelectedIndex());
-					modelo2.removeElementAt(list2.getSelectedIndex());
+					int c = Integer.valueOf(cantidad.getText());
+					Producto temp = Ejecucion.compra.encontrar(list2.getSelectedIndex()).getDato();
+					precio -= c*temp.getPre();
+					i -= c;
+					
+					if(temp.getCan()==c) {
+						Ejecucion.compra.eliminar_en(list2.getSelectedIndex());
+						modelo2.removeElementAt(list2.getSelectedIndex());
+					}else {
+						temp.setCan(temp.getCan()-c);
+						modelo2.removeElementAt(list2.getSelectedIndex());
+						modelo2.addElement(temp.imprimir());
+					}
+					
 					pagoCarrito.setText("$"+String.valueOf(precio));
 
 					prodCarrito.setText(String.valueOf(i));
+					
+					cantidad.setText("1");
 				}
 			}
 		});
