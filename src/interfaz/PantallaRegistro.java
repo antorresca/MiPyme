@@ -75,7 +75,7 @@ public class PantallaRegistro {
 
 						JOptionPane.showMessageDialog(pantallaRegistro,"Creación de usuario exitosa","Exitoso",JOptionPane.INFORMATION_MESSAGE);
 						pantallaRegistro.setVisible(false);
-						PantallaMenu.main(null);
+						PantallaUsuarios.main(null);
 					}
 					
 
