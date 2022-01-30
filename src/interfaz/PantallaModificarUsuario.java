@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import datos.Usuario;
@@ -28,11 +29,23 @@ public class PantallaModificarUsuario {
 		comprobarAdmin.setSelected(a.isAdmin());
 		comprobarAdmin.setBounds(153, 106, 86, 23);
 		pantallaModificar.getContenedor().add(comprobarAdmin);
-				
+			
+		
+		CampoL textField = new CampoL(pantallaModificar,153, 33, 86, 20);
+		textField.setText(a.getUsuario());
+		
+		CampoL textField_1 = new CampoL(pantallaModificar,153, 70, 86, 20);
+		textField_1.setText(a.getContrasena());
+		
 		btnAceptar.addMouseListener(new MouseAdapter() {
 		@Override
-		public void mouseClicked(MouseEvent e) {	
-			
+		public void mouseClicked(MouseEvent e) {
+			a.setUsuario(textField.getText());
+			a.setContrasena(textField_1.getText());
+			a.setAdmin(comprobarAdmin.isSelected());
+			JOptionPane.showMessageDialog(pantallaModificar,"Usuario modificado correctamente","\u00c9xito",JOptionPane.INFORMATION_MESSAGE);
+			pantallaModificar.setVisible(false);
+			PantallaUsuarios.main(null);
 		}
 		});
 		
@@ -44,11 +57,7 @@ public class PantallaModificarUsuario {
 			}
 		});
 		
-		CampoL textField = new CampoL(pantallaModificar,153, 33, 86, 20);
-		textField.setText(a.getUsuario());
 		
-		CampoL textField_1 = new CampoL(pantallaModificar,153, 70, 86, 20);
-		textField_1.setText(a.getContrasena());
 		
 		
 				

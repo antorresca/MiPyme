@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 import datos.Usuario;
+import estructuras.Metodos_arbol_binario.Nodo;
 import logica.Ejecucion;
 
 public class PantallaInicio {
@@ -60,29 +61,20 @@ public class PantallaInicio {
 				else if(!"".equals(textoUsuario.getText()) && !"".equals(textoPassword.getText())) {
 
 					boolean compuerta_filtro = true;
-					PantallaMenu.flag=false;
 
-					if(Ejecucion.usuario_admin.getUsuario().equals(textoUsuario.getText()) 
-							&& Ejecucion.usuario_admin.getContrasena().equals(textoPassword.getText())) {
+					Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
+					//system.out.print(comparar.getContrasena()+ comparar.getUsuario());
+					Nodo usuarioEncontrado = Ejecucion.usuarios.encontrarN(comparar);
+					if((usuarioEncontrado!=null) && ((Usuario)usuarioEncontrado.getDato()).getContrasena().equals(textoPassword.getText())) {
 
 						pantallaInicio.setVisible(false);
-						PantallaMenu.flag=true;
+						PantallaMenu.flag = ((Usuario)usuarioEncontrado.getDato()).isAdmin();
 						PantallaMenu.main(null);
-						System.out.print(PantallaMenu.flag);
 						compuerta_filtro = false;
-					}else {
 
-						Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
-						//system.out.print(comparar.getContrasena()+ comparar.getUsuario());
-						if((Ejecucion.usuarios.encontrarN(comparar)!=null) && Ejecucion.usuarios.encontrarN(comparar).getDato().getContrasena().equals(textoPassword.getText())) {
-							
-							pantallaInicio.setVisible(false);
-							PantallaMenu.main(null);
-							compuerta_filtro = false;
-					
-						}
+					}
 
-						 
+
 /*						for(int i=0; i < usuarios.getTamano(); i++) {
 
 							if(usuarios.encontrar(i).getDato().getUsuario().equals(textoUsuario.getText()) && usuarios.encontrar(i).getDato().getContrasena().equals(textoPassword.getText())) {
@@ -93,7 +85,7 @@ public class PantallaInicio {
 								break;
 							}
 						}*/
-					}
+					
 
 					if(compuerta_filtro) {
 
