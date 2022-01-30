@@ -43,7 +43,7 @@ public class PantallaMenu {
 
 		//Botones del menu
 
-		Boton BtnCerrarSesion = new Boton("Cerrar Sesion", pantallaMenu, 130, 240, 200, 50);
+		Boton btn_cerrar_sesion = new Boton("Cerrar Sesion", pantallaMenu, 130, 240, 200, 50);
 		
 		Boton btnCarrito = new Boton("",pantallaMenu,38,71,98,74);
 		ImageIcon carritoIcon =  new ImageIcon((temaFlag)?"Img\\CarritoClaro.png":"Img\\CarritoOscuro.png"); //Las rutas relativas no estan sirviendo
@@ -80,7 +80,7 @@ public class PantallaMenu {
 		btn_pedidos.setContentAreaFilled(false);
 		btn_pedidos.setOpaque(false);
 
-		Boton btn5 = new Boton("Opcion 5",pantallaMenu,254,71,98,74);
+		Boton btn_inventario = new Boton("Inventario",pantallaMenu,254,71,98,74);
 
 		Boton btn6 = new Boton("Usuarios",pantallaMenu,254,156,98,74);
 		btn6.setVisible(flag);
@@ -99,8 +99,8 @@ public class PantallaMenu {
 		btnTema.setOpaque(false);
 		pantallaMenu.getContenedor().add(btnTema);
 		
-		Boton btnregistro = new Boton("Registrar", pantallaMenu, 365, 150, 100, 25);
-		btnregistro.setVisible(false);
+		Boton btn_registro = new Boton("Registrar", pantallaMenu, 365, 150, 100, 25);
+		btn_registro.setVisible(false);
 		
 		//Metodo botones
 		
@@ -128,7 +128,7 @@ public class PantallaMenu {
 			}
 			});
 		
-		btnregistro.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
+		btn_registro.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pantallaMenu.setVisible(false);
@@ -144,9 +144,16 @@ public class PantallaMenu {
 				
 			}
 		});
+		
+		btn_busqueda_productos.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				pantallaMenu.desactivar();
+				PantallaInventario.main(null);
+				
+			}
+		});
 
-
-		BtnCerrarSesion.addActionListener(new ActionListener(){
+		btn_cerrar_sesion.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(pantallaMenu, "¿Seguro que deseas cerrar sesi\u00f3n?", "¿Seguro?", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
@@ -159,7 +166,7 @@ public class PantallaMenu {
 
 					pantallaMenu.desactivar(); //Salida de ventana
 					PantallaInicio.main(null);
-					btnregistro.setVisible(false);
+					btn_registro.setVisible(false);
 
 				}
 				
