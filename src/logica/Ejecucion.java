@@ -1,35 +1,11 @@
 package logica;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import javax.swing.DefaultListModel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JToggleButton;
-import javax.swing.SwingConstants;
-
 import datos.Factura;
 import datos.Producto;
 import datos.Usuario;
 import estructuras.*;
-import interfaz.Boton;
-import interfaz.CampoP;
-import interfaz.Contenedor;
-import interfaz.Imagen;
 import interfaz.PantallaInicio;
-import interfaz.Texto;
-import interfaz.Ventana;
 
 public class Ejecucion {
 
@@ -102,7 +78,7 @@ public class Ejecucion {
 
 
 		for(int i = 0; i<100;i++) {
-			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,2));
+			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i+1),"Este producto es...",(long) (Math.random()*10000),null,2));
 		}
 
 		//--------------------------------------------EJECUCIÓN DE INTERFAZ-----------------------------------------------------------
