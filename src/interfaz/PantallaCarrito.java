@@ -18,7 +18,7 @@ import estructuras.Lista_ref_simple;
 import logica.Ejecucion;
 
 public class PantallaCarrito {
-	
+
 	@SuppressWarnings("rawtypes")
 	public static DefaultListModel modelo ;//= new DefaultListModel();
 	@SuppressWarnings("rawtypes")
@@ -37,22 +37,22 @@ public class PantallaCarrito {
 		modelo2 = new DefaultListModel();
 		precio = 0;
 		i=0;
-		
+
 		for(int t=0; t<Ejecucion.inventario.getTamano();t++) { //Creacion de datos random para pruebas
 			modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
 		}
-		
+
 		Ventana carrito = new Ventana("Carrito");
 		Toolkit t = Toolkit.getDefaultToolkit();
 		Dimension dimensions = t.getScreenSize();
 		carrito.setBounds(dimensions.width/2-300,dimensions.height/2-(350/2),600,350);
-		
+
 		Ejecucion.compra = new Lista_ref_simple<Producto>();
-		
+
 		Texto cabecera = new Texto("  ID  |  Precio  | Cantidad  ",carrito,31, 68, 233, 14);
 
 		pagoCarrito = new Texto("$"+String.valueOf(precio),carrito,440, 143, 76, 23);
-		
+
 		Texto totalCarrito = new Texto("TOTAL",carrito,440, 118, 46, 14);
 
 		Texto productosCarrito = new Texto("No. Productos",carrito,440, 68, 89, 14);
@@ -63,7 +63,7 @@ public class PantallaCarrito {
 
 		Boton pago = new Boton("Pago",carrito,440, 173, 89, 23);
 		pago.setVisible(!flag);
-		
+
 		Boton pedir = new Boton("Pedir",carrito,440, 173, 89, 23);
 		pedir.setVisible(flag);
 
@@ -84,7 +84,7 @@ public class PantallaCarrito {
 
 		CampoL cantidad = new CampoL(carrito,192, 44, 55, 35);
 		cantidad.setText("1");
-		
+
 		Boton agregar = new Boton("+",carrito,192, 84, 55, 35);
 
 		agregar.addMouseListener(new MouseAdapter() {
@@ -92,20 +92,36 @@ public class PantallaCarrito {
 			public void mouseClicked(MouseEvent e) {
 
 				if(list.getSelectedValue() != null) {
-					
-					int c = Integer.valueOf(cantidad.getText());
-					//system.out.println(inventario.encontrar(list.getSelectedIndex()).getDato().getPre());
-					precio += c*Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato().getPre();
-					i += c;
-					Producto temp = Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato();
-					Producto a = new Producto(temp.getId(), temp.getNo(), temp.getDes(), temp.getPre(), null, c);
-					Ejecucion.compra.agregar(a);
-					modelo2.addElement(a.imprimir());
-					pagoCarrito.setText("$"+String.valueOf(precio));
-					prodCarrito.setText(String.valueOf(i));
-					
-					cantidad.setText("1");
-
+					try {					
+						int c = Integer.valueOf(cantidad.getText());
+						if(c>0) {
+							Producto temp = Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato();
+							if(temp.getCan()<c) {
+								JOptionPane.showMessageDialog(carrito,"No hay suficientes productos en Stock","Faltan productos",JOptionPane.ERROR_MESSAGE);
+							}else {
+								//system.out.println(inventario.encontrar(list.getSelectedIndex()).getDato().getPre());
+								precio += c*temp.getPre();
+								i += c;
+								temp.setCan(temp.getCan()-c);
+								modelo.clear();
+								for(int t=0; t<Ejecucion.inventario.getTamano();t++) { //Creacion de datos random para pruebas
+									modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
+								}
+								Producto a = new Producto(temp.getId(), temp.getNo(), temp.getDes(), temp.getPre(), null, c);
+								Ejecucion.compra.agregar(a);
+								modelo2.addElement(a.imprimir());
+								pagoCarrito.setText("$"+String.valueOf(precio));
+								prodCarrito.setText(String.valueOf(i));
+								cantidad.setText("1");
+							}}
+						else {
+							JOptionPane.showMessageDialog(carrito,"Error en cantidad de productos","Error",JOptionPane.ERROR_MESSAGE);
+							cantidad.setText("1");
+						}
+					}catch(Exception exp) {
+						JOptionPane.showMessageDialog(carrito,"Error en cantidad de productos","Error",JOptionPane.ERROR_MESSAGE);
+						cantidad.setText("1");
+					}
 				}
 
 			}
@@ -122,7 +138,7 @@ public class PantallaCarrito {
 					Producto temp = Ejecucion.compra.encontrar(list2.getSelectedIndex()).getDato();
 					precio -= c*temp.getPre();
 					i -= c;
-					
+
 					if(temp.getCan()==c) {
 						Ejecucion.compra.eliminar_en(list2.getSelectedIndex());
 						modelo2.removeElementAt(list2.getSelectedIndex());
@@ -134,11 +150,18 @@ public class PantallaCarrito {
 							modelo2.addElement(Ejecucion.compra.encontrar(i).getDato().imprimir());
 						}
 					}
+					Producto temp1 = Ejecucion.inventario.encontrar(Integer.valueOf(temp.getId().replace("P", ""))).getDato();
+					temp1.setCan(temp1.getCan()+c);
+					modelo.clear();
+					for(int t=0; t<Ejecucion.inventario.getTamano();t++) { //Creacion de datos random para pruebas
+						modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
+					}
 					
+
 					pagoCarrito.setText("$"+String.valueOf(precio));
 
 					prodCarrito.setText(String.valueOf(i));
-					
+
 					cantidad.setText("1");
 				}
 			}
@@ -185,11 +208,11 @@ public class PantallaCarrito {
 			@SuppressWarnings("static-access")
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				String nombre = "";
 				String cedula = "";
 				String correo = "";
-				
+
 				while(nombre == "") {
 					nombre = JOptionPane.showInputDialog(carrito,"Ingrese nombre del cliente","Nombre cliente");
 				}
@@ -210,7 +233,7 @@ public class PantallaCarrito {
 
 				carrito.desactivar();
 				VerFactura.main("carrito",nuevaFactura);
-				
+
 			}
 		});
 
@@ -221,7 +244,7 @@ public class PantallaCarrito {
 				String nombre = "";
 				String cedula = "";
 				String correo = "";
-				
+
 				while(nombre == "") {
 					nombre = JOptionPane.showInputDialog(carrito,"Ingrese nombre del cliente","Nombre cliente");
 				}
@@ -256,10 +279,10 @@ public class PantallaCarrito {
 				}
 			}});
 
-		
-		
-		
-		
+
+
+
+
 	}
-	
+
 }
