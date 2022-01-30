@@ -22,7 +22,7 @@ public class Arbol_binario<T> extends Metodos_arbol_binario <T>{
 	public void usuarioEnOrden(Nodo node, DefaultListModel modelo) {
         if (node != null) {
         	usuarioEnOrden(node.getIzquierda(), modelo);
-        	modelo.addElement(((Usuario)node.getDato()).getUsuario() + "|" + (((Usuario)node.getDato()).isAdmin()?"Administrador":"Empleado"));
+        	modelo.addElement(((Usuario)node.getDato()).getUsuario() + " | " + (((Usuario)node.getDato()).isAdmin()?"Administrador":"Empleado"));
         	usuarioEnOrden(node.getDerecha(), modelo);
         }
     } 

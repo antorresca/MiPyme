@@ -35,7 +35,7 @@ public class Ejecucion {
 
 	private static String registroUsuariotxt;
 	//public static Usuario usuario_admin = new Usuario("Admin","12345");
-	public static Usuario usuario_admin = new Usuario("A","1");
+	public static Usuario usuario_admin = new Usuario("A","1",true);
 	public static Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
 	public static Color ModoOscuro = new Color(20,31,59);
 	public static Color Tema = ModoClaro;
@@ -43,12 +43,12 @@ public class Ejecucion {
 	public static Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
 	public static Cola_ref_simple<Factura> pedidos = new Cola_ref_simple<Factura>();
 	public static Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
-	public static Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>();
+	public static Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>(); 
 	
 	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public static void main(String[] args) {
-		
-		
+		usuarios.agregarA(usuario_admin);
+				
 		
 		//--------------------------------------------PLANTILLAS-----------------------------------------------------------
 		/*
