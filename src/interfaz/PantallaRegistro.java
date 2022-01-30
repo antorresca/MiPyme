@@ -16,13 +16,9 @@ public class PantallaRegistro {
 		Ventana pantallaRegistro = new Ventana("Mi PYME - Registro");
 		pantallaRegistro.setBackground(Ejecucion.Tema);
 		
-		JTextField registroUsuario = new JTextField(20);
-		registroUsuario.setBounds(225,120,165,25);
-		pantallaRegistro.getContenedor().add(registroUsuario);
+		CampoL registroUsuario = new CampoL(pantallaRegistro,225,120,165,25);
 
-		JTextField registroContrasena = new JTextField(20);
-		registroContrasena.setBounds(225,150,165,25);
-		pantallaRegistro.getContenedor().add(registroContrasena);
+		CampoL registroContrasena = new CampoL(pantallaRegistro,225,150,165,25);
 
 		Texto LabelRegistroU = new Texto("Escriba su usuario",pantallaRegistro,90, 155, 130, 35);
 

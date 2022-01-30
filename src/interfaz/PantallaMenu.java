@@ -1,6 +1,7 @@
 package interfaz;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -68,19 +70,26 @@ public class PantallaMenu {
 		Icon iconPedidos = new ImageIcon(pedidosIcon.getImage().getScaledInstance(
 				70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btn_pedidos.setIcon(iconPedidos);
-		btn_pedidos.setToolTipText("Factura\r\n");
+		btn_pedidos.setToolTipText("Pedidos\r\n");
 		btn_pedidos.setBackground(null);
 		btn_pedidos.setBorderPainted(false);
 		btn_pedidos.setContentAreaFilled(false);
 		btn_pedidos.setOpaque(false);
 
 		Boton btn4 = new Boton("Opcion 4",pantallaMenu,146,156,98,74);
+		btn4.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {	
+			PantallaUsuarios.main(null);
+		}
+		});
 
 		Boton btn5 = new Boton("Opcion 5",pantallaMenu,254,71,98,74);
 
 		Boton btn6 = new Boton("Opcion 6",pantallaMenu,254,156,98,74);
 
-		JToggleButton btnTema = new JToggleButton("CLARO"); //Botón de seleccion de tema
+		JToggleButton btnTema = new JToggleButton(""); //Botón de seleccion de tema
+		btnTema.setCursor(new Cursor(JFrame.HAND_CURSOR));	
 		btnTema.setBounds(374, 11, 80, 80);
 		ImageIcon claro = new ImageIcon("Img\\ModoClaro.png");
 		Icon iconClaro = new ImageIcon(claro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
@@ -164,7 +173,7 @@ public class PantallaMenu {
 		btnTema.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				btnTema.setText("OSCURO"); //Cambio de bandera de tema
+				btnTema.setText(""); //Cambio de bandera de tema
 				Ejecucion.Tema = (temaFlag)?Ejecucion.ModoOscuro:Ejecucion.ModoClaro;
 				
 				btnTema.setIcon((temaFlag)? iconOscuro:iconClaro);

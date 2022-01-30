@@ -65,7 +65,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	}
 	
 	public String imprimir() {
-		return no+"  |  "+pre;
+		return no+"  |  $"+pre;
 	}
 
 }

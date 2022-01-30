@@ -4,6 +4,7 @@ public class Usuario {
 	
 	private String usuario;
 	private String contrasena;
+	private boolean admin = false;
 	
 	
 	
@@ -12,6 +13,22 @@ public class Usuario {
 	 */
 	public String getUsuario() {
 		return usuario;
+	}
+
+
+	/**
+	 * @return the admin
+	 */
+	public boolean isAdmin() {
+		return admin;
+	}
+
+
+	/**
+	 * @param admin the admin to set
+	 */
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 
@@ -39,8 +56,6 @@ public class Usuario {
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
-
-
 
 	public Usuario(String nombre_usuario, String contrasena_usuario) {
 		

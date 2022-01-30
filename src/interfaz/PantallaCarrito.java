@@ -46,7 +46,7 @@ public class PantallaCarrito {
 		
 		Texto cabecera = new Texto("Producto  |  Precio",carrito,31, 68, 233, 14);
 
-		pagoCarrito = new Texto(String.valueOf(precio),carrito,367, 143, 76, 23);
+		pagoCarrito = new Texto("$"+String.valueOf(precio),carrito,367, 143, 76, 23);
 		
 		Texto totalCarrito = new Texto("TOTAL",carrito,367, 118, 46, 14);
 
@@ -91,7 +91,7 @@ public class PantallaCarrito {
 					Ejecucion.compra.agregar(Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato());
 					modelo2.addElement(Ejecucion.compra.encontrar(Ejecucion.compra.getTamano()-1).getDato().imprimir());
 					Ejecucion.compra.imprimir();
-					pagoCarrito.setText(String.valueOf(precio));
+					pagoCarrito.setText("$"+String.valueOf(precio));
 
 					prodCarrito.setText(String.valueOf(i));
 
@@ -113,7 +113,7 @@ public class PantallaCarrito {
 
 					Ejecucion.compra.eliminar_en(list2.getSelectedIndex());
 					modelo2.removeElementAt(list2.getSelectedIndex());
-					pagoCarrito.setText(String.valueOf(precio));
+					pagoCarrito.setText("$"+String.valueOf(precio));
 
 					prodCarrito.setText(String.valueOf(i));
 				}

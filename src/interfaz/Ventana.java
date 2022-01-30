@@ -1,6 +1,8 @@
 package interfaz;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -21,7 +23,8 @@ public class Ventana extends JFrame {
 		
 		super(texto);
 		
-		
+		Toolkit t = Toolkit.getDefaultToolkit();
+		Dimension dimensions = t.getScreenSize();
 		contenedor = new JPanel(null);
 		add(contenedor);
 		contenedor.setVisible(puerta);
@@ -29,6 +32,7 @@ public class Ventana extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		pack();
+		//setBounds(-7,0,dimensions.width, dimensions.height);
 		setBounds(-7,0,500,350);
 		setLocationRelativeTo(null);
 		setVisible(true);

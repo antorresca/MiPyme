@@ -24,7 +24,7 @@ import datos.Producto;
 import datos.Usuario;
 import estructuras.*;
 import interfaz.Boton;
-import interfaz.CampoL;
+import interfaz.CampoP;
 import interfaz.Contenedor;
 import interfaz.Imagen;
 import interfaz.PantallaInicio;
@@ -34,7 +34,7 @@ import interfaz.Ventana;
 public class Ejecucion {
 
 	private static String registroUsuariotxt;
-	public static Usuario usuario_admin = new Usuario("Juan","12345");
+	public static Usuario usuario_admin = new Usuario("Admin","12345");
 	public static Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
 	public static Color ModoOscuro = new Color(20,31,59);
 	public static Color Tema = ModoClaro;
@@ -46,7 +46,9 @@ public class Ejecucion {
 	
 	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public static void main(String[] args) {
-
+		
+		
+		
 		//--------------------------------------------PLANTILLAS-----------------------------------------------------------
 		/*
 

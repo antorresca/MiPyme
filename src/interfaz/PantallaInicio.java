@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 import datos.Usuario;
 import logica.Ejecucion;
@@ -24,10 +25,14 @@ public class PantallaInicio {
 
 		Texto userLabel = new Texto("Usuario", pantallaInicio, 110, 205, 90, 35);
 
-		Texto passwordLabel = new Texto("Contrasena", pantallaInicio,110, 225, 90, 35);
+		Texto passwordLabel = new Texto("Contrase\u00f1a", pantallaInicio,110, 225, 90, 35);
+		
+		//JPasswordField  textoPassword = new JPasswordField();
+		//passwordLabel.setBounds(185, 190, 165, 25);
+		//pantallaInicio.getContenedor().add(passwordLabel);
 
 		textoUsuario = new CampoL(pantallaInicio,185,170,165,25);
-		CampoL textoPassword = new CampoL(pantallaInicio,185, 190, 165, 25);
+		CampoP textoPassword = new CampoP(pantallaInicio,185, 190, 165, 25);
 
 		//Botones Inicio
 
