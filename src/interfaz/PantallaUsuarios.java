@@ -28,19 +28,15 @@ public class PantallaUsuarios {
 		scroll .setBounds(31, 41, 117, 200);
 		pantallaUsuarios.getContenedor().add(scroll);
 		
-		System.out.print("Arboles"+Ejecucion.usuarios==null);
-		
-		System.out.print("Arboles"+Ejecucion.usuarios==null);
-		
 		pantallaUsuarios.update(pantallaUsuarios.getGraphics());
 		
-		Boton agregar = new Boton("Agregar",pantallaUsuarios,170, 105, 189, 23);
+		Boton agregar = new Boton("Agregar",pantallaUsuarios,190, 105, 89, 23);
 
-		Boton detalles = new Boton("Detalles",pantallaUsuarios,170, 139, 189, 23);
+		Boton detalles = new Boton("Modificar",pantallaUsuarios,190, 139, 89, 23);
 
-		Boton pago = new Boton("Pago",pantallaUsuarios,170, 173, 189, 23);
+		Boton pago = new Boton("Eliminar",pantallaUsuarios,190, 173, 89, 23);
 
-		Boton regresarPedidos = new Boton("Regresar",pantallaUsuarios,170, 207, 89, 23);
+		Boton regresarPedidos = new Boton("Regresar",pantallaUsuarios,190, 207, 89, 23);
 		
 		regresarPedidos.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
