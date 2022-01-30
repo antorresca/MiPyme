@@ -87,7 +87,7 @@ public class PantallaRegistro {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pantallaRegistro.setVisible(false);
-				PantallaMenu.main(null);
+				PantallaUsuarios.main(null);
 				registroUsuario.setText("");
 				registroContrasena.setText("");
 
