@@ -34,7 +34,8 @@ import interfaz.Ventana;
 public class Ejecucion {
 
 	private static String registroUsuariotxt;
-	public static Usuario usuario_admin = new Usuario("Admin","12345");
+	//public static Usuario usuario_admin = new Usuario("Admin","12345");
+	public static Usuario usuario_admin = new Usuario("A","1");
 	public static Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
 	public static Color ModoOscuro = new Color(20,31,59);
 	public static Color Tema = ModoClaro;
