@@ -123,17 +123,9 @@ public class Prueba {
 		arbol.agregar(new Usuario("Marco", "12345"));
 		*/
 		
-		Arbol_binario_ref_triple<Integer> arbol = new Arbol_binario_ref_triple<Integer>();
 		
-		arbol.agregar(7);
-		arbol.agregar(13);
-		arbol.agregar(6);
-		arbol.agregar(1);
-		arbol.agregar(3);
-		arbol.agregar(5);
-		arbol.agregar(9);
 		
-		arbol.imprimir();
+		
 		
 		
 
