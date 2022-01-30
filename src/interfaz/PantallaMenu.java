@@ -145,7 +145,7 @@ public class PantallaMenu {
 			}
 		});
 		
-		btn_busqueda_productos.addMouseListener(new MouseAdapter() {
+		btn_inventario.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				pantallaMenu.desactivar();
 				PantallaInventario.main(null);
