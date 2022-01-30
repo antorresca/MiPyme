@@ -3,8 +3,13 @@ package interfaz;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 
+import datos.Producto;
 import logica.Ejecucion;
 
 public class PantallaDetalles {
@@ -12,25 +17,50 @@ public class PantallaDetalles {
 	public static void main(String[] args) {
 		Ventana detalles = new Ventana("Detalles");
 		detalles.activar();
+		detalles.setBounds(-7,0,283,474);
 
 		/*
 		 * Elementos de ventana
 		 */
+		
+		Texto cantidadProducto = new Texto("<Cantidad>",detalles,96, 395, 161, 14);
+				
+		Texto precioProducto = new Texto("<Precio>",detalles,96, 419, 161, 14);
+				
+		Texto nombreProducto = new Texto("<Nombre>",detalles,82, 108, 104, 14);
+				
+		Texto descripcion = new Texto("Descripci\u00F3n:",detalles,10, 313, 161, 14);
+		
+		Texto nombre = new Texto("Nombre:",detalles,10, 108, 50, 14);
+		
+		Texto id = new Texto("ID:",detalles,10, 93, 46, 14);
+		
+		Texto idProducto = new Texto("<Id>",detalles,82, 93, 46, 14);
+		
+		Texto cantidad = new Texto("Cantidad:",detalles,10, 395, 81, 14);
+		
+		Texto lblNewLabel_2_1 = new Texto("Precio:",detalles,10, 419, 81, 14);
+		
+		Producto temp = Ejecucion.inventario.encontrar(PantallaCarrito.list.getSelectedIndex()).getDato();
+		
+		Imagen imgProducto = new Imagen(temp.getIm(),detalles,10, 93, 247, 169); //Imagen de prueba
+		
+		JTextPane descripcionProducto = new JTextPane();
+		descripcionProducto.setBounds(10, 291, 247, 53);
+		JScrollPane scroll = new JScrollPane(descripcionProducto);
+		scroll.setBounds(10, 291, 247, 53);
+		detalles.getContenedor().add(scroll);
+		
+		
+		nombreProducto.setText(temp.getNo());
+		
+		precioProducto.setText("$"+String.valueOf(temp.getPre()));
+		
+		idProducto.setText(temp.getId());
+		
+		cantidadProducto.setText(String.valueOf(temp.getCan()));
 
-		Imagen imgProducto = new Imagen("Img\\shopping-cart (4).png"
-				,detalles,0,40,345-detalles.getWidth()/2,detalles.getHeight()/2); //Imagen de prueba
-
-		String nombre = Ejecucion.inventario.encontrar(PantallaCarrito.list.getSelectedIndex()).getDato().getNo(); //Nombre de producto
-		Texto nombrePro = new Texto(nombre, detalles,0,40+imgProducto.getHeight(),detalles.getWidth(),15);
-
-		String descripcion = Ejecucion.inventario.encontrar(PantallaCarrito.list.getSelectedIndex()).getDato().getDes(); //Descripcion de producto
-		Texto desPro = new Texto(descripcion, detalles,0,40+imgProducto.getHeight()+15,detalles.getWidth(),15);
-
-		String precioP = String.valueOf(Ejecucion.inventario.encontrar(PantallaCarrito.list.getSelectedIndex()).getDato().getPre()); //Precio de producto
-		Texto prePro = new Texto(precioP, detalles,0,40+imgProducto.getHeight()+30,detalles.getWidth(),15);
-
-		Boton regresar = new Boton("Regresar",detalles,80,210, 89, 23);
-		Boton elimarPro = new Boton("Eliminar Producto",detalles,182,210, 150, 23);
+		Boton regresar = new Boton("Regresar",detalles,10, 13, 89, 23);
 
 		/*
 		 * Evento de botones
@@ -43,35 +73,6 @@ public class PantallaDetalles {
 				PantallaCarrito.main(null);
 			}
 		});
-
-		elimarPro.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String producto = PantallaCarrito.list.getSelectedValue().toString().split(" | ")[0]; //Nombre del producto
-
-				if(JOptionPane.showConfirmDialog(detalles, "Eliminar "+
-						producto+ "?", "Elimacion completada", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
-					/*
-					 * Actualizacion de variables globales
-					 */
-
-					Ejecucion.inventario.eliminar_en(PantallaCarrito.list.getSelectedIndex());
-
-					PantallaCarrito.modelo.removeElementAt(PantallaCarrito.list.getSelectedIndex());	
-
-					PantallaCarrito.pagoCarrito.setText(String.valueOf(PantallaCarrito.precio));
-
-					PantallaCarrito.prodCarrito.setText(String.valueOf(PantallaCarrito.i));
-
-					JOptionPane.showMessageDialog(detalles,"Producto eliminado",
-							"Elimacion completada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
-
-					detalles.desactivar(); //Salida de ventana
-					PantallaCarrito.main(null);
-				}}});
-
-
-		
 	}
 	
 }

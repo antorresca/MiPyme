@@ -1,14 +1,12 @@
 package datos;
 
-import interfaz.Imagen;
-
 public class Producto { //Se añadieron getter y funcion Imprimir
 	
 	private String id;
 	private String no;
 	private String des;
 	private long pre;
-	private Imagen im;
+	private String im; //Ruta a la imagen
 	private int can;
 	
 	
@@ -24,6 +22,41 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	 */
 	public String getId() {
 		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param no the no to set
+	 */
+	public void setNo(String no) {
+		this.no = no;
+	}
+
+	/**
+	 * @param des the des to set
+	 */
+	public void setDes(String des) {
+		this.des = des;
+	}
+
+	/**
+	 * @param pre the pre to set
+	 */
+	public void setPre(long pre) {
+		this.pre = pre;
+	}
+
+	/**
+	 * @param im the im to set
+	 */
+	public void setIm(String im) {
+		this.im = im;
 	}
 
 	/**
@@ -50,7 +83,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	/**
 	 * @return the im
 	 */
-	public Imagen getIm() {
+	public String getIm() {
 		return im;
 	}
 
@@ -61,7 +94,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 		return can;
 	}
 	
-	public Producto(String identificacion, String nombre, String descripcion, long precio, Imagen imagen, int cantidad){
+	public Producto(String identificacion, String nombre, String descripcion, long precio, String imagen, int cantidad){
 		
 		id = identificacion;
 		no = nombre;
