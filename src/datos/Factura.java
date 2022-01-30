@@ -45,8 +45,8 @@ public class Factura {
 
 	public void setPrecio() {
 		for(int i = 0; i<productos.getTamano();i++) {
-			productos.encontrar(i).getDato();
-			precio += productos.encontrar(i).getDato().getPre();
+			Producto temp = productos.encontrar(i).getDato();
+			precio += temp.getCan()*temp.getPre();
 		}
 	}
 

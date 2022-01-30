@@ -128,8 +128,11 @@ public class PantallaCarrito {
 						modelo2.removeElementAt(list2.getSelectedIndex());
 					}else {
 						temp.setCan(temp.getCan()-c);
-						modelo2.removeElementAt(list2.getSelectedIndex());
-						modelo2.addElement(temp.imprimir());
+						System.out.print(temp);
+						modelo2.clear();
+						for(int i = 0; i<Ejecucion.compra.getTamano();i++) {
+							modelo2.addElement(Ejecucion.compra.encontrar(i).getDato().imprimir());
+						}
 					}
 					
 					pagoCarrito.setText("$"+String.valueOf(precio));
