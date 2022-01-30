@@ -28,6 +28,8 @@ public class PantallaMenu {
 	public static boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
 	
 	public static void main(String[] args) {
+		
+		Ejecucion.usuarios.imprimir(Ejecucion.usuarios.getRaiz());
 
 		Ventana pantallaMenu = new Ventana("Menu"); 
 		pantallaMenu.setBackground(Ejecucion.Tema);
@@ -53,6 +55,8 @@ public class PantallaMenu {
 		btnCarrito.setBorderPainted(false);
 		btnCarrito.setContentAreaFilled(false);
 		btnCarrito.setOpaque(false);
+		
+		Boton btn4 = new Boton("Opcion 4",pantallaMenu,146,156,98,74);
 
 		Boton btn_busqueda_factura = new Boton("",pantallaMenu,0,156,200,74);
 		ImageIcon facturaIcon =  new ImageIcon((temaFlag)?"Img\\FacturaClaro.png":"Img\\FacturaOscuro.png"); //Las rutas relativas no estan sirviendo
@@ -76,18 +80,10 @@ public class PantallaMenu {
 		btn_pedidos.setContentAreaFilled(false);
 		btn_pedidos.setOpaque(false);
 
-		Boton btn4 = new Boton("Opcion 4",pantallaMenu,146,156,98,74);
-		btn4.addMouseListener(new MouseAdapter() {
-		@Override
-		public void mouseClicked(MouseEvent e) {	
-			pantallaMenu.setVisible(false);
-			PantallaUsuarios.main(null);
-		}
-		});
-
 		Boton btn5 = new Boton("Opcion 5",pantallaMenu,254,71,98,74);
 
-		Boton btn6 = new Boton("Opcion 6",pantallaMenu,254,156,98,74);
+		Boton btn6 = new Boton("Usuarios",pantallaMenu,254,156,98,74);
+		btn6.setVisible(flag);
 
 		JToggleButton btnTema = new JToggleButton(""); //Botón de seleccion de tema
 		btnTema.setCursor(new Cursor(JFrame.HAND_CURSOR));	
@@ -104,9 +100,17 @@ public class PantallaMenu {
 		pantallaMenu.getContenedor().add(btnTema);
 		
 		Boton btnregistro = new Boton("Registrar", pantallaMenu, 365, 150, 100, 25);
-		btnregistro.setVisible(flag);
+		btnregistro.setVisible(false);
 		
 		//Metodo botones
+		
+		btn6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				pantallaMenu.setVisible(false);
+				PantallaUsuarios.main(null);
+			}
+			});
 		
 		btnregistro.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override

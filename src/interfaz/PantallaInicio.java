@@ -20,7 +20,6 @@ public class PantallaInicio {
 		
 		pantallaInicio.desactivar();
 		
-		
 		Imagen bienvenida = new Imagen((Ejecucion.Tema==Ejecucion.ModoClaro)?"Img\\LogoOscuro.png":"Img\\LogoClaro.png", pantallaInicio,140, 40, 200, 160);
 
 		Texto userLabel = new Texto("Usuario", pantallaInicio, 110, 205, 90, 35);
@@ -73,7 +72,6 @@ public class PantallaInicio {
 						compuerta_filtro = false;
 					}else {
 
-						Ejecucion.usuarios.agregarA(Ejecucion.usuario_admin);
 						Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
 						//system.out.print(comparar.getContrasena()+ comparar.getUsuario());
 						if((Ejecucion.usuarios.encontrarN(comparar)!=null) && Ejecucion.usuarios.encontrarN(comparar).getDato().getContrasena().equals(textoPassword.getText())) {
