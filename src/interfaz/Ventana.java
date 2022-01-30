@@ -35,6 +35,7 @@ public class Ventana extends JFrame {
 		setBounds(dimensions.width/2,dimensions.height/2,500, 350);
 		setLocationRelativeTo(null);
 		setVisible(true);
+		setResizable(false);
 		
 		Ventana n = this;
 		

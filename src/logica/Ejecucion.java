@@ -80,6 +80,7 @@ public class Ejecucion {
 		for(int i = 0; i<100;i++) {
 			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i+1),"Este producto es...",(long) (Math.random()*10000),null,(int) (Math.random()*10)));
 		}
+		
 
 		//--------------------------------------------EJECUCIÓN DE INTERFAZ-----------------------------------------------------------
 
