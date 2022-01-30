@@ -32,8 +32,7 @@ public class Ventana extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		pack();
-		//setBounds(-7,0,dimensions.width, dimensions.height);
-		setBounds(-7,0,500,350);
+		setBounds(dimensions.width/2,dimensions.height/2,500, 350);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
@@ -75,6 +74,7 @@ public class Ventana extends JFrame {
 	public void setContenedor(JPanel contenedor) {
 		this.contenedor = contenedor;
 	}
+
 	
 	
 // Esto es una prueba 

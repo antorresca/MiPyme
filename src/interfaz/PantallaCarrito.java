@@ -1,5 +1,7 @@
 package interfaz;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
@@ -40,47 +42,50 @@ public class PantallaCarrito {
 			modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
 		}
 		
-		Ventana carrito = new Ventana("Carrito");	
+		Ventana carrito = new Ventana("Carrito");
+		Toolkit t = Toolkit.getDefaultToolkit();
+		Dimension dimensions = t.getScreenSize();
+		carrito.setBounds(dimensions.width/2-300,dimensions.height/2-(350/2),600,350);
 		
 		Ejecucion.compra = new Lista_ref_simple<Producto>();
 		
-		Texto cabecera = new Texto("Producto  |  Precio",carrito,31, 68, 233, 14);
+		Texto cabecera = new Texto("ID  |  Precio | Cantidad",carrito,31, 68, 233, 14);
 
-		pagoCarrito = new Texto("$"+String.valueOf(precio),carrito,367, 143, 76, 23);
+		pagoCarrito = new Texto("$"+String.valueOf(precio),carrito,440, 143, 76, 23);
 		
-		Texto totalCarrito = new Texto("TOTAL",carrito,367, 118, 46, 14);
+		Texto totalCarrito = new Texto("TOTAL",carrito,440, 118, 46, 14);
 
-		Texto productosCarrito = new Texto("No. Productos",carrito,367, 68, 89, 14);
+		Texto productosCarrito = new Texto("No. Productos",carrito,440, 68, 89, 14);
 
-		prodCarrito = new Texto(String.valueOf(i),carrito,367, 93, 46, 14);
+		prodCarrito = new Texto(String.valueOf(i),carrito,440, 93, 46, 14);
 
-		Boton detalles = new Boton("Detalles",carrito,367, 139, 89, 23);
+		Boton detalles = new Boton("Detalles",carrito,440, 139, 89, 23);
 
-		Boton pago = new Boton("Pago",carrito,367, 173, 89, 23);
+		Boton pago = new Boton("Pago",carrito,440, 173, 89, 23);
 		pago.setVisible(!flag);
 		
-		Boton pedir = new Boton("Pedir",carrito,367, 173, 89, 23);
+		Boton pedir = new Boton("Pedir",carrito,440, 173, 89, 23);
 		pedir.setVisible(flag);
 
-		Boton regresarCarrito = new Boton("Regresar",carrito,367, 207, 89, 23);
+		Boton regresarCarrito = new Boton("Regresar",carrito,440, 207, 89, 23);
 
 		list.setModel(modelo);
 
 		JScrollPane scroll = new JScrollPane(list);
-		scroll.setBounds(31, 41, 117, 200);
+		scroll.setBounds(31, 41, 150, 200);
 		carrito.getContenedor().add(scroll);
 
 		JList list2 = new JList();
 		list2.setModel(modelo2);
 
 		JScrollPane scroll2 = new JScrollPane(list2);
-		scroll2.setBounds(227, 41, 117, 200);
+		scroll2.setBounds(257, 41, 150, 200);
 		carrito.getContenedor().add(scroll2);
 
-		CampoL cantidad = new CampoL(carrito,162, 44, 55, 35);
+		CampoL cantidad = new CampoL(carrito,192, 44, 55, 35);
 		cantidad.setText("1");
 		
-		Boton agregar = new Boton("+",carrito,162, 84, 55, 35);
+		Boton agregar = new Boton("+",carrito,192, 84, 55, 35);
 
 		agregar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -106,7 +111,7 @@ public class PantallaCarrito {
 			}
 		});
 
-		Boton eliminar = new Boton("-",carrito,162, 126, 55, 35);
+		Boton eliminar = new Boton("-",carrito,192, 126, 55, 35);
 		eliminar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
