@@ -19,7 +19,7 @@ public class Arbol_binario<T> extends Metodos_arbol_binario <T>{
 	}
 	
 	
-	void usuarioEnOrden(Nodo node, DefaultListModel modelo) {
+	public void usuarioEnOrden(Nodo node, DefaultListModel modelo) {
         if (node != null) {
         	usuarioEnOrden(node.getIzquierda(), modelo);
         	modelo.addElement(((Usuario)node.getDato()).getUsuario());
