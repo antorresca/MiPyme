@@ -49,7 +49,7 @@ public class PantallaCarrito {
 		
 		Ejecucion.compra = new Lista_ref_simple<Producto>();
 		
-		Texto cabecera = new Texto("ID  |  Precio | Cantidad",carrito,31, 68, 233, 14);
+		Texto cabecera = new Texto("  ID  |  Precio  | Cantidad  ",carrito,31, 68, 233, 14);
 
 		pagoCarrito = new Texto("$"+String.valueOf(precio),carrito,440, 143, 76, 23);
 		
