@@ -1,5 +1,7 @@
 package interfaz;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,10 +16,12 @@ import logica.Ejecucion;
 
 public class PantallaDetalles {
 
-	public static void main(String[] args) {
+	public static void main(Producto temp) {
 		Ventana detalles = new Ventana("Detalles");
 		detalles.activar();
-		detalles.setBounds(-7,0,283,474);
+		Toolkit t = Toolkit.getDefaultToolkit();
+		Dimension dimensions = t.getScreenSize();
+		detalles.setBounds((dimensions.width-283)/2,(dimensions.height-474)/2,283,474);
 
 		/*
 		 * Elementos de ventana
@@ -41,14 +45,17 @@ public class PantallaDetalles {
 		
 		Texto lblNewLabel_2_1 = new Texto("Precio:",detalles,10, 419, 81, 14);
 		
-		Producto temp = Ejecucion.inventario.encontrar(PantallaCarrito.list.getSelectedIndex()).getDato();
-		
-		Imagen imgProducto = new Imagen(temp.getIm(),detalles,10, 93, 247, 169); //Imagen de prueba
+		String ruta = temp.getIm();
+		if(ruta==null)ruta=(Ejecucion.Tema==Ejecucion.ModoClaro)?"Img\\NoImagenOscuro.png":"Img\\NoImagenClaro.png";
+		Imagen imgProducto = new Imagen(ruta,detalles,(283/2)-75, 133, 150, 150); //Imagen de prueba
 		
 		JTextPane descripcionProducto = new JTextPane();
 		descripcionProducto.setBounds(10, 291, 247, 53);
+		descripcionProducto.setText(temp.getDes());
+		descripcionProducto.setEnabled(false);
 		JScrollPane scroll = new JScrollPane(descripcionProducto);
 		scroll.setBounds(10, 291, 247, 53);
+		scroll.setBackground(null);
 		detalles.getContenedor().add(scroll);
 		
 		

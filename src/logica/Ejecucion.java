@@ -77,8 +77,8 @@ public class Ejecucion {
 		//--------------------------------------------INSTANCIACIONES-----------------------------------------------------------
 
 
-		for(int i = 0; i<100;i++) {
-			inventario.agregar(new Producto(String.valueOf(i),"P"+String.valueOf(i+1),"Este producto es...",(long) (Math.random()*10000),null,(int) (Math.random()*10)));
+		for(int i = 0; i<1000;i++) {
+			inventario.agregar(new Producto(String.valueOf(i),"Producto "+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,(int) (Math.random()*10)));
 		}
 		
 

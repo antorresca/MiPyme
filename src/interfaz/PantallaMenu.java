@@ -56,7 +56,7 @@ public class PantallaMenu {
 		btnCarrito.setContentAreaFilled(false);
 		btnCarrito.setOpaque(false);
 		
-		Boton btn4 = new Boton("Opcion 4",pantallaMenu,146,156,98,74);
+		Boton btn_busqueda_productos = new Boton("Busqueda Productos",pantallaMenu,146,71,98,74);
 
 		Boton btn_busqueda_factura = new Boton("",pantallaMenu,0,156,200,74);
 		ImageIcon facturaIcon =  new ImageIcon((temaFlag)?"Img\\FacturaClaro.png":"Img\\FacturaOscuro.png"); //Las rutas relativas no estan sirviendo
@@ -69,7 +69,7 @@ public class PantallaMenu {
 		btn_busqueda_factura.setContentAreaFilled(false);
 		btn_busqueda_factura.setOpaque(false);
 
-		Boton btn_pedidos = new Boton("",pantallaMenu,146,71,98,74);
+		Boton btn_pedidos = new Boton("",pantallaMenu,146,156,98,74);
 		ImageIcon pedidosIcon =  new ImageIcon((temaFlag)?"Img\\PedidoClaro.png":"Img\\PedidoOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconPedidos = new ImageIcon(pedidosIcon.getImage().getScaledInstance(
 				70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
@@ -103,6 +103,22 @@ public class PantallaMenu {
 		btnregistro.setVisible(false);
 		
 		//Metodo botones
+		
+		btn_busqueda_productos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				int n = -1;
+				while(n == -1) {
+					//entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese numero de la factura","Busqueda de Factura");
+					try {
+						//n = (entrada==null)?-2:(entrada.equals("Busqueda de Factura"))?-1:Integer.valueOf(entrada);
+					}catch(Exception except) {
+						JOptionPane.showMessageDialog(pantallaMenu,"Entrada invalida","Solo numeros validos",JOptionPane.ERROR_MESSAGE);
+					}
+
+				}
+			}
+			});
 		
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
@@ -196,50 +212,6 @@ public class PantallaMenu {
 				btn_pedidos.setIcon(new ImageIcon(new ImageIcon((temaFlag)?"Img\\PedidoOscuro.png":"Img\\PedidoClaro.png")
 						.getImage().getScaledInstance(70, btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
 				temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
-			/*
-				if (btnTema.getText().contains("CLARO")){ //Verificacion de tema actual de la pantalla
-
-					
-					 // Actualizacion de variables
-					 
-
-					btnTema.setText("OSCURO"); //Cambio de bandera de tema
-					btnTema.setIcon((temaFlag)? iconOscuro:iconClaro);
-
-					logoAppClaro.setVisible((temaFlag)?false:true); //Cambio de logo
-					logoAppOscuro.setVisible((temaFlag)?true:false); //""
-					
-					Ejecucion.Tema = Ejecucion.ModoOscuro;
-					pantallaMenu.getContenedor().setBackground(Ejecucion.Tema); //Cambio de color de fondo
-///AQUI IBAAAAAA
-					btnCarrito.setIcon(new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png")
-							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
-					btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png")
-							.getImage().getScaledInstance(70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
-					btn_pedidos.setIcon(new ImageIcon(new ImageIcon("Img\\PedidoOscuro.png")
-							.getImage().getScaledInstance(70, btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
-				}else {
-
-					
-					 // Actualizacion de variables
-					 
-
-					btnTema.setText("CLARO"); //Cambio de bandera de tema
-					btnTema.setIcon(iconClaro);
-
-					logoAppClaro.setVisible((Ejecucion.Tema==Ejecucion.ModoClaro)?true:false); //Cambio de logo
-					logoAppOscuro.setVisible((Ejecucion.Tema==Ejecucion.ModoClaro)?false:true); //""
-					
-					Ejecucion.Tema = Ejecucion.ModoClaro;
-					pantallaMenu.getContenedor().setBackground(Ejecucion.Tema); //Cambio color de fondo
-
-					btnCarrito.setIcon(new ImageIcon(new ImageIcon("Img\\CarritoClaro.png")
-							.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
-					btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon("Img\\FacturaClaro.png")
-							.getImage().getScaledInstance(70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
-					btn_pedidos.setIcon(new ImageIcon(new ImageIcon("Img\\PedidoClaro.png")
-							.getImage().getScaledInstance(70, btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
-				}*/
 
 			}
 		});

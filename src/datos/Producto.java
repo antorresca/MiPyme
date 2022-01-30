@@ -105,8 +105,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	}
 	
 	public String imprimir() {
-		String.format("%6s", no);
-		return " "+ String.format("%-6s", no) + " | " + String.format("%-8s",  ("$"+pre))+  " | "+ String.format("%-8s", can);
+		return " P"+ String.format("%-6s", id) + " | " + String.format("%-8s",  ("$"+pre))+  " | "+ String.format("%-8s", can);
 	}
 
 }
