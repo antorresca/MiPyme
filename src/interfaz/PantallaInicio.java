@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 import datos.Usuario;
-import estructuras.Metodos_arbol_binario.Nodo;
+import estructuras.Arbol_avl.Nodo;
 import logica.Ejecucion;
 
 public class PantallaInicio {
@@ -64,7 +64,7 @@ public class PantallaInicio {
 
 					Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
 					//system.out.print(comparar.getContrasena()+ comparar.getUsuario());
-					Nodo usuarioEncontrado = Ejecucion.usuarios.encontrarN(comparar);
+					Nodo usuarioEncontrado = Ejecucion.usuarios.encontrar(comparar);
 					if((usuarioEncontrado!=null) && ((Usuario)usuarioEncontrado.getDato()).getContrasena().equals(textoPassword.getText())) {
 
 						pantallaInicio.setVisible(false);

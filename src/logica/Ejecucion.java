@@ -18,14 +18,16 @@ public class Ejecucion {
 	public static Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
 	public static Cola_ref_simple<Factura> pedidos = new Cola_ref_simple<Factura>();
 	public static Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
-	public static Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>(); 
+	//public static Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>(); 
+	public static Arbol_avl<Usuario> usuarios = new Arbol_avl<Usuario>(); 
 	
 	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 		usuario_admin.setAdmin(true);
-		usuarios.agregarA(usuario_admin);
-		usuarios.agregarA(new Usuario("A","1"));
-		String[] alfabeto = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		usuarios.insertar(usuario_admin);
+		usuarios.insertar(new Usuario("A","1"));
+		//-----------------------------------------------OBTENCION DE DATOS------------------------------------------------------
+		/*String[] alfabeto = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		int j = 0;
 		int k=0;
 		for(k=0;k<10000000;k++) {
@@ -35,6 +37,7 @@ public class Ejecucion {
 		long inicial = System.nanoTime();
 		usuarios.eliminarD(new Usuario(alfabeto[j]+String.valueOf(j),String.valueOf(k)));
 		System.out.print(System.nanoTime()-inicial);
+		*/
 		//--------------------------------------------TILDES--------------------------------------------------------------
 		/*
 		        \u00e1 = á
@@ -94,7 +97,7 @@ public class Ejecucion {
 
 		//--------------------------------------------EJECUCIÓN DE INTERFAZ-----------------------------------------------------------
 
-		//PantallaInicio.main(null);
+		PantallaInicio.main(null);
 
 			
 	}

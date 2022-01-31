@@ -62,7 +62,7 @@ public class PantallaInventario {
 					valor = valor.replace("P","");
 					System.out.println(Ejecucion.inventario.encontrar(Integer.valueOf(valor)));
 					pantallaInventario.desactivar();
-					PantallaModificarProducto.main(Ejecucion.inventario.encontrar(Integer.valueOf(valor.replace("P", ""))).getDato());
+					PantallaModificarProducto.main(Ejecucion.inventario.encontrar(Integer.valueOf(valor)).getDato());
 
 
 				}
@@ -75,15 +75,20 @@ public class PantallaInventario {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(listaProductos.getSelectedValue()!=null) {
-
-					String[] valor = listaProductos.getSelectedValue().toString().split(" | ");
-					Ejecucion.inventario.eliminar_en(Integer.valueOf(valor[0].replace("P", "")));
+					String valor = "";
+					char[] a =listaProductos.getSelectedValue().toString().toCharArray();
+					for(char i : a) {
+						if(i!='|')valor+=i;
+						else break;
+					}			
+					valor = valor.replace(" ","");
+					valor = valor.replace("P","");
+					Ejecucion.inventario.eliminar_en(Integer.valueOf(valor));
 					JOptionPane.showMessageDialog(pantallaInventario,"Eliminacion exitosa","Usuario Eliminado",JOptionPane.INFORMATION_MESSAGE);
 					modelo6.remove(listaProductos.getSelectedIndex());
 
 
 				}
-
 			}
 		});
 

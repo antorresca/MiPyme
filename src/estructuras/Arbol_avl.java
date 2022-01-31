@@ -1,6 +1,9 @@
 package estructuras;
 
+import javax.swing.DefaultListModel;
+
 import datos.Usuario;
+import estructuras.Metodos_arbol_binario.Nodo;
 
 public class Arbol_avl <T>{
 	Nodo raiz;
@@ -14,9 +17,16 @@ public class Arbol_avl <T>{
 	public void setRaiz(Nodo raiz) {
 		this.raiz = raiz;
 	}
-
+	
+	public void usuarioEnOrden(Nodo node, DefaultListModel modelo) {
+        if (node != null) {
+        	usuarioEnOrden(node.getIzquierda(), modelo);
+        	modelo.addElement(((Usuario)node.getDato()).getUsuario() + " | " + (((Usuario)node.getDato()).isAdmin()?"Administrador":"Empleado"));
+        	usuarioEnOrden(node.getDerecha(), modelo);
+        }
+    } 
 	// Create Nodo
-	class Nodo {
+	public class Nodo {
 		int altura;
 		T dato;
 		Nodo izquierda, derecha; //padre;
@@ -25,6 +35,30 @@ public class Arbol_avl <T>{
 			this.dato = dato;
 			altura = 1;
 		}
+		
+		public T getDato() {
+			return dato;
+		}
+
+		public void setDato(T dato) {
+			this.dato = dato;
+		}
+		public Nodo getIzquierda() {
+			return izquierda;
+		}
+
+		public void setIzquierda(Nodo izquierda) {
+			this.izquierda = izquierda;
+		}
+
+		public Nodo getDerecha() {
+			return derecha;
+		}
+
+		public void setDerecha(Nodo derecha) {
+			this.derecha = derecha;
+		}
+
 	}
 
 	// Tree class

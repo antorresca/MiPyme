@@ -64,10 +64,10 @@ public class PantallaRegistro {
 
 				else if(!"".equals(registro_usuario) && !"".equals(registro_contrasenia)) {
 					Usuario nuevo = new Usuario(registro_usuario,registro_contrasenia);
-					if(Ejecucion.usuarios.encontrarN(nuevo)!=null) {
+					if(Ejecucion.usuarios.encontrar(nuevo)!=null) {
 						JOptionPane.showMessageDialog(pantallaRegistro,"Ya existe un usuario con este nombre","Este usuario ya existe",JOptionPane.ERROR_MESSAGE);
 					}else {
-						Ejecucion.usuarios.agregarA(nuevo);
+						Ejecucion.usuarios.insertar(nuevo);
 						//usuarios.agregar(new Usuario(registro_usuario,registro_contrasenia));
 
 						registroUsuario.setText("");

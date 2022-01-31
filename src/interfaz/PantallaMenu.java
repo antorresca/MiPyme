@@ -30,7 +30,7 @@ public class PantallaMenu {
 	
 	public static void main(String[] args) {
 		
-		Ejecucion.usuarios.imprimir(Ejecucion.usuarios.getRaiz());
+		//Ejecucion.usuarios.imprimir(Ejecucion.usuarios.getRaiz());
 
 		Ventana pantallaMenu = new Ventana("Menu"); 
 		pantallaMenu.setBackground(Ejecucion.Tema);
