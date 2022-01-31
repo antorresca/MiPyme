@@ -140,59 +140,59 @@ public class Albol_avl <T>{
 		}
 		return Nodo;
 	}
-	/*
-	Nodo deleteNode(Nodo root, int item) {
+	
+	Nodo deleteNode(Nodo root, T item) {
 
 		// Find the Nodo to be deleted and remove it
 		if (root == null)
 			return root;
-		if (item < root.item)
-			root.izquierdo = deleteNode(root.izquierdo, item);
-		else if (item > root.item)
-			root.derecho = deleteNode(root.derecho, item);
+		if (comparacion(item,  root.dato) < 0)
+			root.izquierda = deleteNode(root.izquierda, item);
+		else if (comparacion(item,  root.dato) > 0)
+			root.derecha = deleteNode(root.derecha, item);
 		else {
-			if ((root.izquierdo == null) || (root.derecho == null)) {
+			if ((root.izquierda == null) || (root.derecha == null)) {
 				Nodo temp = null;
-				if (temp == root.izquierdo)
-					temp = root.derecho;
+				if (temp == root.izquierda)
+					temp = root.derecha;
 				else
-					temp = root.izquierdo;
+					temp = root.izquierda;
 				if (temp == null) {
 					temp = root;
 					root = null;
 				} else
 					root = temp;
 			} else {
-				Nodo temp = nodeWithMimumValue(root.derecho);
-				root.item = temp.item;
-				root.derecho = deleteNode(root.derecho, temp.item);
+				Nodo temp = hijoMenor(root.derecha);
+				root.dato = temp.dato;
+				root.derecha = deleteNode(root.derecha, temp.dato);
 			}
 		}
 		if (root == null)
 			return root;
 
 		// Update the balance factor of each Nodo and balance the tree
-		root.height = max(height(root.izquierdo), height(root.derecho)) + 1;
+		root.altura = maxInt(altura(root.izquierda), altura(root.derecha)) + 1;
 		int balanceFactor = getBalanceFactor(root);
 		if (balanceFactor > 1) {
-			if (getBalanceFactor(root.izquierdo) >= 0) {
-				return rightRotate(root);
+			if (getBalanceFactor(root.izquierda) >= 0) {
+				return rotacionDer(root);
 			} else {
-				root.izquierdo = RotacionIz(root.izquierdo);
-				return rightRotate(root);
+				root.izquierda = rotacionIz(root.izquierda);
+				return rotacionDer(root);
 			}
 		}
 		if (balanceFactor < -1) {
-			if (getBalanceFactor(root.derecho) <= 0) {
-				return RotacionIz(root);
+			if (getBalanceFactor(root.derecha) <= 0) {
+				return rotacionIz(root);
 			} else {
-				root.derecho = rightRotate(root.derecho);
-				return RotacionIz(root);
+				root.derecha = rotacionDer(root.derecha);
+				return rotacionIz(root);
 			}
 		}
 		return root;
 	}
-	*/
+	
 
 	
 	private Nodo encontrarNodo(Nodo Nodo, T nombre){
@@ -208,14 +208,14 @@ public class Albol_avl <T>{
 			return current;
 	}
 
-	public T hijoMenor(Nodo Nodo){
+	public Nodo hijoMenor(Nodo Nodo){
 		if(Nodo.izquierda!=null) return hijoMenor(Nodo.izquierda);
-		else return Nodo.dato;
+		else return Nodo;
 	}
 
-	public T hijoMayor(Nodo Nodo){
+	public Nodo hijoMayor(Nodo Nodo){
 		if(Nodo.derecha!=null) return hijoMayor(Nodo.derecha);
-		else return Nodo.dato;
+		else return Nodo;
 	}
 
 
