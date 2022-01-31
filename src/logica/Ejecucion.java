@@ -11,8 +11,7 @@ public class Ejecucion {
 
 	private static String registroUsuariotxt;
 	public static Usuario usuario_admin = new Usuario("Admin","12345");
-	//public static Usuario usuario_admin = new Usuario("A","1");
-	public static Color ModoClaro = new Color(225,237,249); //Variable de colores (claro y oscuro)
+	public static Color ModoClaro = new Color(225,237,249); 
 	public static Color ModoOscuro = new Color(20,31,59);
 	public static Color Tema = ModoClaro;
 	public static Lista_ref_simple<Producto> inventario = new Lista_ref_simple<Producto>();
@@ -25,6 +24,17 @@ public class Ejecucion {
 	public static void main(String[] args) {
 		usuario_admin.setAdmin(true);
 		usuarios.agregarA(usuario_admin);
+		usuarios.agregarA(new Usuario("A","1"));
+		String[] alfabeto = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		int j = 0;
+		int k=0;
+		for(k=0;k<1000;k++) {
+			j = (int) Math.random()*10;
+			usuarios.agregarA(new Usuario("A"+String.valueOf(k),String.valueOf(k)));
+		}
+		long inicial = System.nanoTime();
+		usuarios.encontrarN(new Usuario(alfabeto[j]+String.valueOf(j),String.valueOf(k)));
+		System.out.print(System.nanoTime()-inicial);
 		//--------------------------------------------TILDES--------------------------------------------------------------
 		/*
 		        \u00e1 = á
@@ -84,7 +94,7 @@ public class Ejecucion {
 
 		//--------------------------------------------EJECUCIÓN DE INTERFAZ-----------------------------------------------------------
 
-		PantallaInicio.main(null);
+		//PantallaInicio.main(null);
 
 			
 	}

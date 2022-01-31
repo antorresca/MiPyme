@@ -60,14 +60,13 @@ public class PantallaInventario {
 					}			
 					valor = valor.replace(" ","");
 					valor = valor.replace("P","");
-					System.out.print(Integer.valueOf(valor)+1);
-					System.out.println(Ejecucion.inventario.encontrar(Integer.valueOf(valor.replace("P", ""))));
+					System.out.println(Ejecucion.inventario.encontrar(Integer.valueOf(valor)));
 					pantallaInventario.desactivar();
 					PantallaModificarProducto.main(Ejecucion.inventario.encontrar(Integer.valueOf(valor.replace("P", ""))).getDato());
 
 
 				}
-			}
+			}	
 		});
 
 		Boton eliminarUsuario = new Boton("Eliminar",pantallaInventario,260, 173, 89, 23);
