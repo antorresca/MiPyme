@@ -2,7 +2,7 @@ package estructuras;
 
 import datos.Usuario;
 
-public class Albol_avl <T>{
+public class Arbol_avl <T>{
 	Nodo raiz;
 
 	// AVL tree implementation in Java
@@ -34,6 +34,10 @@ public class Albol_avl <T>{
 	
 	public Nodo encontrar(T objeto) {
 		return encontrarNodo(raiz, objeto);
+	}
+	
+	public Nodo eliminar(T objeto) {
+		return eliminarNodo(raiz, objeto);
 	}
 	
 	private int comparacion(T itemA, T itemB) {
@@ -141,15 +145,15 @@ public class Albol_avl <T>{
 		return Nodo;
 	}
 	
-	Nodo deleteNode(Nodo root, T item) {
+	private Nodo eliminarNodo(Nodo root, T item) {
 
 		// Find the Nodo to be deleted and remove it
 		if (root == null)
 			return root;
 		if (comparacion(item,  root.dato) < 0)
-			root.izquierda = deleteNode(root.izquierda, item);
+			root.izquierda = eliminarNodo(root.izquierda, item);
 		else if (comparacion(item,  root.dato) > 0)
-			root.derecha = deleteNode(root.derecha, item);
+			root.derecha = eliminarNodo(root.derecha, item);
 		else {
 			if ((root.izquierda == null) || (root.derecha == null)) {
 				Nodo temp = null;
@@ -165,7 +169,7 @@ public class Albol_avl <T>{
 			} else {
 				Nodo temp = hijoMenor(root.derecha);
 				root.dato = temp.dato;
-				root.derecha = deleteNode(root.derecha, temp.dato);
+				root.derecha = eliminarNodo(root.derecha, temp.dato);
 			}
 		}
 		if (root == null)

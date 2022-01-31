@@ -28,12 +28,12 @@ public class Ejecucion {
 		String[] alfabeto = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		int j = 0;
 		int k=0;
-		for(k=0;k<1000;k++) {
-			j = (int) Math.random()*10;
-			usuarios.agregarA(new Usuario("A"+String.valueOf(k),String.valueOf(k)));
+		for(k=0;k<10000000;k++) {
+			j = (int) Math.random()*27;
+			usuarios.agregarA(new Usuario(alfabeto[j]+String.valueOf(k),String.valueOf(k)));
 		}
 		long inicial = System.nanoTime();
-		usuarios.encontrarN(new Usuario(alfabeto[j]+String.valueOf(j),String.valueOf(k)));
+		usuarios.eliminarD(new Usuario(alfabeto[j]+String.valueOf(j),String.valueOf(k)));
 		System.out.print(System.nanoTime()-inicial);
 		//--------------------------------------------TILDES--------------------------------------------------------------
 		/*
