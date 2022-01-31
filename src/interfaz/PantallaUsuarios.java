@@ -28,6 +28,9 @@ public class PantallaUsuarios {
 		JScrollPane scroll = new JScrollPane(listaUsuarios);
 		scroll .setBounds(30, 41, 200, 250);
 		pantallaUsuarios.getContenedor().add(scroll);
+		
+		
+		Texto titulo = new Texto("Usuario | Rol",pantallaUsuarios,30,65, 200, 15);
 
 		pantallaUsuarios.update(pantallaUsuarios.getGraphics());
 
