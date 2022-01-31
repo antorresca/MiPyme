@@ -1,10 +1,14 @@
 package interfaz;
 
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 import datos.Producto;
 
@@ -12,43 +16,49 @@ public class PantallaModificarProducto {
 	static void main(Producto producto) {
 
 		Ventana pantallaModificarP = new Ventana("Modificar Producto");
+		Toolkit t = Toolkit.getDefaultToolkit();
+		Dimension dimensions = t.getScreenSize();
+		pantallaModificarP.setBounds((dimensions.width-378)/2,(dimensions.height-408)/2,378,408);
 
-		Boton btnAceptar = new Boton("Aceptar",pantallaModificarP,77, 141, 89, 23);
+		Boton btnAceptar = new Boton("Aceptar",pantallaModificarP,126, 284, 89, 23);
 
-		Boton btnCancelar = new Boton("Cancelar",pantallaModificarP,77, 175, 89, 23);
+		Boton btnCancelar = new Boton("Cancelar",pantallaModificarP,126, 314, 89, 23);
 		
+		Texto titulo = new Texto("Modificar Producto",pantallaModificarP,27, 25+40, 325, 14);
+		titulo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
-		Texto lblId = new Texto("ID",pantallaModificarP,25, 25+40, 85, 37);
+		Texto lblId = new Texto("ID",pantallaModificarP,27, 74+40, 121, 14);
 
-		Texto lblNombre = new Texto("Nuevo Nombre",pantallaModificarP,25, 63+40, 118, 14);
+		Texto lblNombre = new Texto("Nuevo Nombre",pantallaModificarP,27, 99+40, 121, 14);
 				
-		Texto lblPrecio = new Texto("Actualizar Precio",pantallaModificarP,25, 86+40, 85, 37);
+		Texto lblPrecio = new Texto("Actualizar Precio",pantallaModificarP,27, 124+40, 121, 14);
 
-		Texto lblDescripción = new Texto("Nueva Descripción",pantallaModificarP,25, 124+40, 118, 14);
-		
-		//Texto lblImagen = new Texto("Nueva Imagen",pantallaModificarP,25, 73+40, 118, 14);
-		
-		Texto lblCantidad = new Texto("Actualizar Cantidad",pantallaModificarP,25, 162+40, 118, 14);
-		
+		Texto lblDescripción = new Texto("Nueva Descripción",pantallaModificarP,27, 174+40, 96, 14);
+				
+		Texto lblCantidad = new Texto("Actualizar Cantidad",pantallaModificarP,27, 149+40, 121, 14);
 	
 
-		CampoL textField_Id = new CampoL(pantallaModificarP,153, 33, 86, 20);
+		CampoL textField_Id = new CampoL(pantallaModificarP,158, 71, 194, 20);
 		textField_Id.setText(producto.getId());
 		textField_Id.setEnabled(false);
 		
-		CampoL textField_Nombre = new CampoL(pantallaModificarP,153, 60, 86, 20);
+		CampoL textField_Nombre = new CampoL(pantallaModificarP,158, 96, 194, 20);
 		textField_Nombre.setText(producto.getNo());
 		
-		CampoL textField_Precio  = new CampoL(pantallaModificarP,153, 87, 86, 20);
+		CampoL textField_Precio  = new CampoL(pantallaModificarP,158, 121, 194, 20);
 		textField_Precio.setText(String.valueOf(producto.getPre()));
 		
-		CampoL textField_Descripcion = new CampoL(pantallaModificarP,153, 114, 86, 20);
+		//CampoL textField_Descripcion = new CampoL(pantallaModificarP,153, 114, 86, 20);
+		//textField_Descripcion.setText(producto.getDes());
+		
+		CampoA textField_Descripcion = new CampoA(pantallaModificarP,158, 174, 194, 66);
 		textField_Descripcion.setText(producto.getDes());
 		
 		//CampoL textField_Imagen = new CampoL(pantallaModificar,153, 33, 86, 20);
 		//textField_Imagen.setText(producto.getIm());
 		
-		CampoL textField_Cantidad = new CampoL(pantallaModificarP,153, 141, 86, 20);
+		CampoL textField_Cantidad = new CampoL(pantallaModificarP,158, 146, 194, 20);
 		textField_Cantidad.setText(String.valueOf(producto.getCan()));
 
 		
@@ -62,7 +72,7 @@ public class PantallaModificarProducto {
 				producto.setCan(Integer.valueOf(textField_Cantidad.getText()));
 				JOptionPane.showMessageDialog(pantallaModificarP,"Producto modificado correctamente","\u00c9xito",JOptionPane.INFORMATION_MESSAGE);
 				pantallaModificarP.setVisible(false);
-				PantallaUsuarios.main(null);
+				PantallaInventario.main(null);
 			}
 		});
 
@@ -70,7 +80,7 @@ public class PantallaModificarProducto {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pantallaModificarP.setVisible(false);
-				PantallaUsuarios.main(null);
+				PantallaInventario.main(null);
 			}
 		});
 

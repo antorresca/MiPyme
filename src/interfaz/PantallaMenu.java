@@ -20,6 +20,7 @@ import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
 import datos.Factura;
+import datos.Producto;
 import logica.Ejecucion;
 
 public class PantallaMenu {
@@ -109,13 +110,19 @@ public class PantallaMenu {
 			public void mouseClicked(MouseEvent e) {	
 				int n = -1;
 				while(n == -1) {
-					String entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese numero de la factura","Busqueda de Factura");
+					String entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese id del producto","Busqueda de Productos");
 					try {
-						n = (entrada==null)?-2:(entrada.equals("Busqueda de Factura"))?-1:Integer.valueOf(entrada);
+						n = (entrada==null)?-2:(entrada.equals("Busqueda de Productos"))?-1:Integer.valueOf(entrada);
 					}catch(Exception except) {
 						JOptionPane.showMessageDialog(pantallaMenu,"Entrada invalida","Solo numeros validos",JOptionPane.ERROR_MESSAGE);
 					}
-
+				}
+				Producto productoDetalles = Ejecucion.inventario.encontrar(n).getDato();
+				if(productoDetalles!=null) {
+					pantallaMenu.desactivar();
+					PantallaDetalles.main("menu",productoDetalles);
+				}else {
+					JOptionPane.showMessageDialog(pantallaMenu,"Producto no encontrado","ID no valido",JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			});

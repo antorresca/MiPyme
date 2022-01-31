@@ -39,17 +39,7 @@ public class PantallaFactura {
 			
 			Factura nuevaFactura;
 			if(!flag) nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
-			else nuevaFactura = Ejecucion.pedidos.getCabeza().getDato();//lo logico es tener en cuenta la cabeza XD
-			/*
-			if(!flag)listProductos.setModel(PantallaCarrito.modelo2);
-			else {
-				DefaultListModel modeloPedidos = new DefaultListModel();
-				for(int t=0; t<nuevaFactura.getProductos().getTamano();t++) { //Creacion de datos random para pruebas
-					modeloPedidos.addElement(nuevaFactura.getProductos().encontrar(t).getDato().imprimir());
-				}
-				listProductos.setModel(modeloPedidos);
-			}
-			*/
+			else nuevaFactura = Ejecucion.pedidos.getCabeza().getDato();
 			pantalla_factura.desactivar();
 			if(!flag)VerFactura.main("menu",nuevaFactura);
 			else VerFactura.main("pedidos",nuevaFactura);

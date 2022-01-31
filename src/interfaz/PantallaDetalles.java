@@ -16,7 +16,7 @@ import logica.Ejecucion;
 
 public class PantallaDetalles {
 
-	public static void main(Producto temp) {
+	public static void main(String anterior,Producto temp) {
 		Ventana detalles = new Ventana("Detalles");
 		detalles.activar();
 		Toolkit t = Toolkit.getDefaultToolkit();
@@ -77,7 +77,11 @@ public class PantallaDetalles {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				detalles.desactivar();
-				PantallaCarrito.main(null);
+				if(anterior.contains("menu")) {
+					PantallaMenu.main(null);
+				}else {					
+					PantallaCarrito.main(null);
+				}
 			}
 		});
 	}

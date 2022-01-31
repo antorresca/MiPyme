@@ -52,15 +52,18 @@ public class PantallaInventario {
 			public void mouseClicked(MouseEvent e) {
 				if(listaProductos.getSelectedValue()!=null) {
 
-					String[] valor = listaProductos.getSelectedValue().toString().split("|");
-					//Usuario temp = new Usuario(valor[0].replace("P", ""),"");
-					//pantallaInventario.setVisible(false);
-					System.out.println(listaProductos.getSelectedValue());
-					System.out.println(valor.length +" a");
-					System.out.println();
-					
-					System.out.println(Ejecucion.inventario.encontrar(Integer.valueOf(valor[0].replace("P", ""))));
-					PantallaModificarProducto.main(Ejecucion.inventario.encontrar(Integer.valueOf(valor[0].replace("P", ""))).getDato());
+					String valor = "";
+					char[] a =listaProductos.getSelectedValue().toString().toCharArray();
+					for(char i : a) {
+						if(i!='|')valor+=i;
+						else break;
+					}			
+					valor = valor.replace(" ","");
+					valor = valor.replace("P","");
+					System.out.print(Integer.valueOf(valor)+1);
+					System.out.println(Ejecucion.inventario.encontrar(Integer.valueOf(valor.replace("P", ""))));
+					pantallaInventario.desactivar();
+					PantallaModificarProducto.main(Ejecucion.inventario.encontrar(Integer.valueOf(valor.replace("P", ""))).getDato());
 
 
 				}
