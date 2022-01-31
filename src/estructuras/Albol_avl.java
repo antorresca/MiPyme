@@ -7,6 +7,14 @@ public class Albol_avl <T>{
 
 	// AVL tree implementation in Java
 
+	public Nodo getRaiz() {
+		return raiz;
+	}
+
+	public void setRaiz(Nodo raiz) {
+		this.raiz = raiz;
+	}
+
 	// Create Nodo
 	class Nodo {
 		int altura;
@@ -22,6 +30,10 @@ public class Albol_avl <T>{
 	// Tree class
 	public void insertar(T objeto) {
 		raiz = insertarNodo(raiz, objeto);
+	}
+	
+	public Nodo encontrar(T objeto) {
+		return encontrarNodo(raiz, objeto);
 	}
 	
 	private int comparacion(T itemA, T itemB) {
@@ -166,24 +178,24 @@ public class Albol_avl <T>{
 			if (getBalanceFactor(root.izquierdo) >= 0) {
 				return rightRotate(root);
 			} else {
-				root.izquierdo = leftRotate(root.izquierdo);
+				root.izquierdo = RotacionIz(root.izquierdo);
 				return rightRotate(root);
 			}
 		}
 		if (balanceFactor < -1) {
 			if (getBalanceFactor(root.derecho) <= 0) {
-				return leftRotate(root);
+				return RotacionIz(root);
 			} else {
 				root.derecho = rightRotate(root.derecho);
-				return leftRotate(root);
+				return RotacionIz(root);
 			}
 		}
 		return root;
 	}
+	*/
+
 	
-*/
-	
-	public Nodo encontrarNodo(Nodo Nodo, T nombre){
+	private Nodo encontrarNodo(Nodo Nodo, T nombre){
 		Nodo current = Nodo;
 
 		if (current == null)
