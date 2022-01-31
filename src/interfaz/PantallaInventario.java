@@ -8,7 +8,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
-import datos.Usuario;
+import datos.Producto;
 import logica.Ejecucion;
 
 public class PantallaInventario {
@@ -41,7 +41,9 @@ public class PantallaInventario {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pantallaInventario.setVisible(false);
-				PantallaRegistro.main(null);
+				
+				Producto nuevo = new Producto(String.valueOf(Producto.ultimoId), "Producto "+String.valueOf(Producto.ultimoId+1),"Este producto es...", 0, null, 0 );
+				PantallaModificarProducto.main(nuevo,true);
 			}
 		});
 
@@ -62,9 +64,7 @@ public class PantallaInventario {
 					valor = valor.replace("P","");
 					System.out.println(Ejecucion.inventario.encontrar(Integer.valueOf(valor)));
 					pantallaInventario.desactivar();
-					PantallaModificarProducto.main(Ejecucion.inventario.encontrar(Integer.valueOf(valor)).getDato());
-
-
+					PantallaModificarProducto.main(Ejecucion.inventario.encontrar(Integer.valueOf(valor)).getDato(), false);
 				}
 			}	
 		});

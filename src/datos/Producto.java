@@ -8,6 +8,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	private long pre;
 	private String im; //Ruta a la imagen
 	private int can;
+	public static int ultimoId = 0;
 	
 	
 	/**
@@ -102,6 +103,16 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 		pre = precio;
 		im = imagen;
 		can = cantidad;
+		
+		String valor = "";
+		char[] a =id.toCharArray();
+		for(char i : a) {
+			if(i!='|')valor+=i;
+			else break;
+		}			
+		valor = valor.replace(" ","");
+		valor = valor.replace("P","");
+		ultimoId = (ultimoId>Integer.valueOf(valor))?ultimoId:Integer.valueOf(valor);
 	}
 	
 	public String imprimir() {

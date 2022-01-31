@@ -11,11 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import datos.Producto;
+import logica.Ejecucion;
 
 public class PantallaModificarProducto {
-	static void main(Producto producto) {
+	static void main(Producto producto, boolean anadir) {
 
-		Ventana pantallaModificarP = new Ventana("Modificar Producto");
+		Ventana pantallaModificarP = new Ventana(((anadir)?"Agregar " :"Modificar ")+ "Producto");
 		Toolkit t = Toolkit.getDefaultToolkit();
 		Dimension dimensions = t.getScreenSize();
 		pantallaModificarP.setBounds((dimensions.width-378)/2,(dimensions.height-408)/2,378,408);
@@ -24,23 +25,23 @@ public class PantallaModificarProducto {
 
 		Boton btnCancelar = new Boton("Cancelar",pantallaModificarP,126, 314, 89, 23);
 		
-		Texto titulo = new Texto("Modificar Producto",pantallaModificarP,27, 25+40, 325, 14);
+		Texto titulo = new Texto(((anadir)?"Agregar " :"Modificar ")+ "Producto",pantallaModificarP,27, 25+40, 325, 14);
 		titulo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
 		Texto lblId = new Texto("ID",pantallaModificarP,27, 74+40, 121, 14);
 
-		Texto lblNombre = new Texto("Nuevo Nombre",pantallaModificarP,27, 99+40, 121, 14);
+		Texto lblNombre = new Texto( ((anadir)?"" :"Nuevo ") +"Nombre",pantallaModificarP,27, 99+40, 121, 14);
 				
-		Texto lblPrecio = new Texto("Actualizar Precio",pantallaModificarP,27, 124+40, 121, 14);
+		Texto lblPrecio = new Texto(((anadir)?"" :"Actualizar ")+"Precio",pantallaModificarP,27, 124+40, 121, 14);
 
-		Texto lblDescripción = new Texto("Nueva Descripción",pantallaModificarP,27, 174+40, 96, 14);
+		Texto lblDescripción = new Texto(((anadir)?"" :"Nueva ")+"Descripción",pantallaModificarP,27, 174+40, 96, 14);
 				
-		Texto lblCantidad = new Texto("Actualizar Cantidad",pantallaModificarP,27, 149+40, 121, 14);
+		Texto lblCantidad = new Texto(((anadir)?"" :"Actualizar ")+"Cantidad",pantallaModificarP,27, 149+40, 121, 14);
 	
 
 		CampoL textField_Id = new CampoL(pantallaModificarP,158, 71, 194, 20);
-		textField_Id.setText(producto.getId());
+		textField_Id.setText(((anadir)? String.valueOf(Integer.valueOf(producto.getId())+1) : producto.getId()));
 		textField_Id.setEnabled(false);
 		
 		CampoL textField_Nombre = new CampoL(pantallaModificarP,158, 96, 194, 20);
@@ -69,11 +70,16 @@ public class PantallaModificarProducto {
 		btnAceptar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				producto.setNo(textField_Nombre.getText());
 				producto.setPre(Long.valueOf(textField_Precio.getText()));
 				producto.setDes(textField_Descripcion.getText());
 				producto.setCan(Integer.valueOf(textField_Cantidad.getText()));
-				JOptionPane.showMessageDialog(pantallaModificarP,"Producto modificado correctamente","\u00c9xito",JOptionPane.INFORMATION_MESSAGE);
+				if(anadir) {
+					producto.setId(String.valueOf(++Producto.ultimoId));
+					Ejecucion.inventario.agregar(producto);
+				}
+				JOptionPane.showMessageDialog(pantallaModificarP,"Producto "+ ((anadir)?"a\u00f1adido" :"modificado") +" correctamente","\u00c9xito",JOptionPane.INFORMATION_MESSAGE);
 				pantallaModificarP.setVisible(false);
 				PantallaInventario.main(null);
 			}
