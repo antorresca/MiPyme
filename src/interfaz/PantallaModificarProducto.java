@@ -55,6 +55,9 @@ public class PantallaModificarProducto {
 		CampoA textField_Descripcion = new CampoA(pantallaModificarP,158, 174, 194, 66);
 		textField_Descripcion.setText(producto.getDes());
 		
+		textField_Descripcion.setLineWrap(true);
+		textField_Descripcion.setWrapStyleWord(true);
+		
 		//CampoL textField_Imagen = new CampoL(pantallaModificar,153, 33, 86, 20);
 		//textField_Imagen.setText(producto.getIm());
 		
