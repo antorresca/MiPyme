@@ -46,7 +46,7 @@ public class PantallaMenu {
 
 		Boton btn_cerrar_sesion = new Boton("Cerrar Sesion", pantallaMenu, 110+55, 240+25, 150, 30);
 		
-		Boton btnCarrito = new Boton("",pantallaMenu,40,70,100,75);
+		Boton btnCarrito = new Boton("",pantallaMenu,25+40,70,100,75);
 		ImageIcon carritoIcon =  new ImageIcon((temaFlag) ? "Img\\CarritoClaro.png":"Img\\CarritoOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconCarrito = new ImageIcon(carritoIcon.getImage().getScaledInstance(
 				btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
@@ -68,7 +68,7 @@ public class PantallaMenu {
 		btn_busqueda_productos.setContentAreaFilled(false);
 		btn_busqueda_productos.setOpaque(false);
 
-		Boton btn_busqueda_factura = new Boton("",pantallaMenu,40,170,100,75);
+		Boton btn_busqueda_factura = new Boton("",pantallaMenu,25+40,170,100,75);
 		ImageIcon facturaIcon =  new ImageIcon((temaFlag)?"Img\\FacturaClaro.png":"Img\\FacturaOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconFactura = new ImageIcon(facturaIcon.getImage().getScaledInstance(
 				btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
@@ -90,7 +90,7 @@ public class PantallaMenu {
 		btn_pedidos.setContentAreaFilled(false);
 		btn_pedidos.setOpaque(false);
 
-		Boton btn_inventario = new Boton("",pantallaMenu,40+2*100+2*50,70,100,75);
+		Boton btn_inventario = new Boton("",pantallaMenu,40+2*100+75,70,100,75);
 		//ImageIcon btn_inventario_Icon =  new ImageIcon((temaFlag)?"Img\\InventarioClaro.png":"Img\\InventarioOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon icon_btn_inventario = new ImageIcon((new ImageIcon((temaFlag)?"Img\\InventarioClaro.png":"Img\\InventarioOscuro.png")).getImage().getScaledInstance(
 				btn_inventario.getWidth(), btn_inventario.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
@@ -102,7 +102,7 @@ public class PantallaMenu {
 		btn_inventario.setOpaque(false);
 		
 
-		Boton boton_usuario = new Boton("",pantallaMenu,40+2*100+2*50,170,100,75);
+		Boton boton_usuario = new Boton("",pantallaMenu,40+2*100+75,170,100,75);
 		boton_usuario.setVisible(flag);
 		ImageIcon boton_usuario_Icon =  new ImageIcon((temaFlag)?"Img\\UsuarioClaro.png":"Img\\UsuarioOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon icon_boton_usuario = new ImageIcon(boton_usuario_Icon.getImage().getScaledInstance(
