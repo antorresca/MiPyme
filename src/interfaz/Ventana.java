@@ -3,6 +3,8 @@ package interfaz;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -18,13 +20,16 @@ import logica.Ejecucion;
 public class Ventana extends JFrame {
 	
 	private JPanel contenedor;
+	private static int ancho = 500;
+	private static int largo = 350;
 	
 	public Ventana(String texto, boolean puerta){
 		
 		super(texto);
 		
-		Toolkit t = Toolkit.getDefaultToolkit();
-		Dimension dimensions = t.getScreenSize();
+		Toolkit herramienta = Toolkit.getDefaultToolkit();
+		Dimension pantalla_dimension = herramienta.getScreenSize();
+		
 		contenedor = new JPanel(null);
 		add(contenedor);
 		contenedor.setVisible(puerta);
@@ -32,10 +37,10 @@ public class Ventana extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		pack();
-		setBounds(dimensions.width/2,dimensions.height/2,500, 350);
+		setBounds(pantalla_dimension.width/2,pantalla_dimension.height/2, ancho, largo);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		setResizable(false);
+		//setResizable(false);
 		
 		Ventana n = this;
 		
@@ -49,6 +54,16 @@ public class Ventana extends JFrame {
 				}
             }
         });
+		
+		addComponentListener(new ComponentAdapter() {
+		    public void componentResized(ComponentEvent e) {
+				
+				//ancho = e.getComponent().getBounds().width;
+				//largo = e.getComponent().getBounds().height;
+				
+				System.out.println(e.getComponent().getBounds().width+"  "+e.getComponent().getBounds().height);
+		    }
+		});
         
 	}
 	

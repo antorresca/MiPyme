@@ -25,7 +25,7 @@ import logica.Ejecucion;
 
 public class PantallaMenu {
 
-	public static boolean flag = false;
+	public static boolean flag = true;
 	public static boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
 	
 	public static void main(String[] args) {
@@ -44,10 +44,10 @@ public class PantallaMenu {
 
 		//Botones del menu
 
-		Boton btn_cerrar_sesion = new Boton("Cerrar Sesion", pantallaMenu, 130, 240, 200, 50);
+		Boton btn_cerrar_sesion = new Boton("Cerrar Sesion", pantallaMenu, 110+55, 240+25, 150, 30);
 		
 		Boton btnCarrito = new Boton("",pantallaMenu,38,71,98,74);
-		ImageIcon carritoIcon =  new ImageIcon((temaFlag)?"Img\\CarritoClaro.png":"Img\\CarritoOscuro.png"); //Las rutas relativas no estan sirviendo
+		ImageIcon carritoIcon =  new ImageIcon((temaFlag) ? "Img\\CarritoClaro.png":"Img\\CarritoOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconCarrito = new ImageIcon(carritoIcon.getImage().getScaledInstance(
 				btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btnCarrito.setIcon(iconCarrito);
@@ -57,12 +57,21 @@ public class PantallaMenu {
 		btnCarrito.setContentAreaFilled(false);
 		btnCarrito.setOpaque(false);
 		
-		Boton btn_busqueda_productos = new Boton("Busqueda Productos",pantallaMenu,146,71,98,74);
+		Boton btn_busqueda_productos = new Boton("",pantallaMenu,146+45,71,98,74);
+		ImageIcon btn_busqueda_productos_Icon =  new ImageIcon((temaFlag)?"Img\\BuscarProductoClaro.png":"Img\\BuscarProductoOscuro.png"); //Las rutas relativas no estan sirviendo
+		Icon icon_btn_busqueda_productos = new ImageIcon(btn_busqueda_productos_Icon.getImage().getScaledInstance(
+				btn_busqueda_productos.getWidth(),btn_busqueda_productos.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
+		btn_busqueda_productos.setIcon(icon_btn_busqueda_productos);
+		btn_busqueda_productos.setToolTipText("Buscar Productos\r\n");
+		btn_busqueda_productos.setBackground(null);
+		btn_busqueda_productos.setBorderPainted(false);
+		btn_busqueda_productos.setContentAreaFilled(false);
+		btn_busqueda_productos.setOpaque(false);
 
-		Boton btn_busqueda_factura = new Boton("",pantallaMenu,0,156,200,74);
+		Boton btn_busqueda_factura = new Boton("",pantallaMenu,38,156+10,98,74);
 		ImageIcon facturaIcon =  new ImageIcon((temaFlag)?"Img\\FacturaClaro.png":"Img\\FacturaOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconFactura = new ImageIcon(facturaIcon.getImage().getScaledInstance(
-				70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
+				btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btn_busqueda_factura.setIcon(iconFactura);
 		btn_busqueda_factura.setToolTipText("Factura\r\n");
 		btn_busqueda_factura.setBackground(null);
@@ -70,10 +79,10 @@ public class PantallaMenu {
 		btn_busqueda_factura.setContentAreaFilled(false);
 		btn_busqueda_factura.setOpaque(false);
 
-		Boton btn_pedidos = new Boton("",pantallaMenu,146,156,98,74);
-		ImageIcon pedidosIcon =  new ImageIcon((temaFlag)?"Img\\PedidoClaro.png":"Img\\PedidoOscuro.png"); //Las rutas relativas no estan sirviendo
+		Boton btn_pedidos = new Boton("",pantallaMenu,146+45,156+10,98,74);
+		ImageIcon pedidosIcon =  new ImageIcon((temaFlag) ? "Img\\PedidoClaro.png":"Img\\PedidoOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon iconPedidos = new ImageIcon(pedidosIcon.getImage().getScaledInstance(
-				70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
+				btn_pedidos.getWidth(), btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		btn_pedidos.setIcon(iconPedidos);
 		btn_pedidos.setToolTipText("Pedidos\r\n");
 		btn_pedidos.setBackground(null);
@@ -81,14 +90,33 @@ public class PantallaMenu {
 		btn_pedidos.setContentAreaFilled(false);
 		btn_pedidos.setOpaque(false);
 
-		Boton btn_inventario = new Boton("Inventario",pantallaMenu,254,71,98,74);
+		Boton btn_inventario = new Boton("",pantallaMenu,254+70,71,98,74);
+		//ImageIcon btn_inventario_Icon =  new ImageIcon((temaFlag)?"Img\\InventarioClaro.png":"Img\\InventarioOscuro.png"); //Las rutas relativas no estan sirviendo
+		Icon icon_btn_inventario = new ImageIcon((new ImageIcon((temaFlag)?"Img\\InventarioClaro.png":"Img\\InventarioOscuro.png")).getImage().getScaledInstance(
+				btn_inventario.getWidth(), btn_inventario.getHeight(), Image.SCALE_AREA_AVERAGING)); //Icono Carrito
+		btn_inventario.setIcon(icon_btn_inventario);
+		btn_inventario.setToolTipText("Inventario\r\n");
+		btn_inventario.setBackground(null);
+		btn_inventario.setBorderPainted(false);
+		btn_inventario.setContentAreaFilled(false);
+		btn_inventario.setOpaque(false);
+		
 
-		Boton btn6 = new Boton("Usuarios",pantallaMenu,254,156,98,74);
-		btn6.setVisible(flag);
+		Boton boton_usuario = new Boton("",pantallaMenu,254+70,156+10,98,74);
+		boton_usuario.setVisible(flag);
+		ImageIcon boton_usuario_Icon =  new ImageIcon((temaFlag)?"Img\\UsuarioClaro.png":"Img\\UsuarioOscuro.png"); //Las rutas relativas no estan sirviendo
+		Icon icon_boton_usuario = new ImageIcon(boton_usuario_Icon.getImage().getScaledInstance(
+				boton_usuario.getWidth()-20, boton_usuario.getHeight()-10, Image.SCALE_AREA_AVERAGING)); //Icono Carrito
+		boton_usuario.setIcon(icon_boton_usuario);
+		boton_usuario.setToolTipText("Usuario\r\n");
+		boton_usuario.setBackground(null);
+		boton_usuario.setBorderPainted(false);
+		boton_usuario.setContentAreaFilled(false);
+		boton_usuario.setOpaque(false);
 
 		JToggleButton btnTema = new JToggleButton(""); //Botón de seleccion de tema
 		btnTema.setCursor(new Cursor(JFrame.HAND_CURSOR));	
-		btnTema.setBounds(374, 11, 80, 80);
+		btnTema.setBounds(374+30, -5, 80, 80);
 		ImageIcon claro = new ImageIcon("Img\\ModoClaro.png");
 		Icon iconClaro = new ImageIcon(claro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
 		ImageIcon oscuro = new ImageIcon("Img\\ModoOscuro.png");
@@ -127,7 +155,7 @@ public class PantallaMenu {
 			}
 			});
 		
-		btn6.addMouseListener(new MouseAdapter() {
+		boton_usuario.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {	
 				pantallaMenu.setVisible(false);
@@ -239,9 +267,48 @@ public class PantallaMenu {
 				btnCarrito.setIcon(new ImageIcon(new ImageIcon((temaFlag)?"Img\\CarritoOscuro.png":"Img\\CarritoClaro.png")
 						.getImage().getScaledInstance(btnCarrito.getWidth(), btnCarrito.getHeight(), Image.SCALE_AREA_AVERAGING))); //Cambio icono de carrito
 				btn_busqueda_factura.setIcon(new ImageIcon(new ImageIcon((temaFlag)?"Img\\FacturaOscuro.png":"Img\\FacturaClaro.png")
-						.getImage().getScaledInstance(70, btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
+						.getImage().getScaledInstance(btn_busqueda_factura.getWidth(), btn_busqueda_factura.getHeight(), Image.SCALE_AREA_AVERAGING)));
 				btn_pedidos.setIcon(new ImageIcon(new ImageIcon((temaFlag)?"Img\\PedidoOscuro.png":"Img\\PedidoClaro.png")
-						.getImage().getScaledInstance(70, btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
+						.getImage().getScaledInstance(btn_pedidos.getWidth(), btn_pedidos.getHeight(), Image.SCALE_AREA_AVERAGING)));
+				
+				btn_inventario.setIcon(new ImageIcon((new ImageIcon((!temaFlag)?"Img\\InventarioClaro.png":"Img\\InventarioOscuro.png")).getImage().getScaledInstance(
+						btn_inventario.getWidth(), btn_inventario.getHeight(), Image.SCALE_AREA_AVERAGING)));
+				
+				btn_busqueda_productos.setIcon(new ImageIcon((new ImageIcon((!temaFlag)?"Img\\BuscarProductoClaro.png":"Img\\BuscarProductoOscuro.png")).getImage().getScaledInstance(
+						btn_busqueda_productos.getWidth(), btn_busqueda_productos.getHeight(), Image.SCALE_AREA_AVERAGING)));
+				
+				boton_usuario.setIcon(new ImageIcon((new ImageIcon((!temaFlag)?"Img\\UsuarioClaro.png":"Img\\UsuarioOscuro.png")).getImage().getScaledInstance(
+						boton_usuario.getWidth()-20, boton_usuario.getHeight()-10, Image.SCALE_AREA_AVERAGING)));
+				
+				
+				//btn_inventario_Icon.s
+				
+				
+				//btn_inventario.setIcon(new ImageIcon((temaFlag)?"Img\\InventarioOscuro.png":"Img\\InventarioClaro.png"));
+				
+				//pedidosIcon.setImage((temaFlag) ? "Img\\PedidoClaro.png":"Img\\PedidoOscuro.png");
+				
+				//pedidosIcon.set
+				
+				//((temaFlag) ? "Img\\InventarioClaro.png":"Img\\InventarioOscuro.png");
+				
+				
+				
+				/*
+				ImageIcon pedidosIcon =  new ImageIcon((temaFlag) ? "Img\\PedidoClaro.png":"Img\\PedidoOscuro.png");
+				 
+		        Icon iconPedidos = new ImageIcon(
+		        pedidosIcon.getImage().getScaledInstance(
+		        
+		        btn_pedidos.getWidth()-20, 
+		        btn_pedidos.getHeight(), 
+		        Image.SCALE_AREA_AVERAGING
+		        
+		        )
+		        );
+				
+				*/
+				
 				temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
 
 			}
