@@ -155,7 +155,7 @@ public class PantallaMenu {
 					JOptionPane.showMessageDialog(pantallaMenu,"Producto no encontrado","ID no v\u00e1lido",JOptionPane.ERROR_MESSAGE);
 				}
 			}
-			});
+		});
 		
 		boton_usuario.addMouseListener(new MouseAdapter() {
 			@Override

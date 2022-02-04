@@ -272,7 +272,7 @@ public class PantallaCarrito {
 			public void mouseClicked(MouseEvent e) {
 				if(list.getSelectedValue() != null) { //Saber si hay seleccionado algun elemento en lista
 					carrito.desactivar();
-					PantallaDetalles.main("",Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato());
+					PantallaDetalles.main("carrito",Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato());
 				}else {
 					JOptionPane.showMessageDialog(carrito,"Por favor elija un producto",
 							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error

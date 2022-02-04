@@ -77,10 +77,13 @@ public class PantallaDetalles {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				detalles.desactivar();
-				if(anterior.contains("menu")) {
+				switch(anterior) {
+				case "menu":
 					PantallaMenu.main(null);
-				}else {					
+				case "carrito":				
 					PantallaCarrito.main(null);
+				case "inventario":
+					PantallaInventario.main(null);
 				}
 			}
 		});

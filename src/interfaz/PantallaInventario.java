@@ -31,11 +31,42 @@ public class PantallaInventario {
 		JList listaProductos = new JList();
 		listaProductos.setModel(modelo6);
 		JScrollPane scroll = new JScrollPane(listaProductos);
-		scroll .setBounds(30, 41, 200, 250);
+		scroll.setBounds(30, 71, 200, 250);
 		pantallaInventario.getContenedor().add(scroll);
 
 		pantallaInventario.update(pantallaInventario.getGraphics());
-
+		
+		Texto lblId = new Texto("Ingrese el nombre del producto",pantallaInventario,30, 21+40, 200, 20);
+		CampoL textField_buscar = new CampoL(pantallaInventario,30, 41, 150, 21);
+		//textField_buscar.setText("");
+		
+		Boton buscar = new Boton("Q",pantallaInventario,180, 41, 50, 20);
+		buscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String nombre_producto = textField_buscar.getText();
+				if(!nombre_producto.equals("")) {
+					//try {
+					
+						Producto encontrado = Ejecucion.inventario.encontrar_por_nombre(nombre_producto).getDato();
+						if (encontrado == null) {
+							JOptionPane.showMessageDialog(pantallaInventario,"Producto No Encontrado","No encontrado",JOptionPane.ERROR_MESSAGE);
+						}else {
+							pantallaInventario.setVisible(false);
+							PantallaDetalles.main("inventario",encontrado);
+						}
+					
+				}else {
+					JOptionPane.showMessageDialog(pantallaInventario,"Debe ingresar alg\u00fan nombre","Ingrese un nombre",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
+				
+				
+			}
+		});
+		
+		
 		Boton agregar = new Boton("Agregar",pantallaInventario,260, 105, 89, 23);
 		agregar.addMouseListener(new MouseAdapter() {
 			@Override

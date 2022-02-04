@@ -3,6 +3,7 @@ package estructuras;
 import javax.swing.DefaultListModel;
 
 import datos.Usuario;
+import datos.Producto;
 import estructuras.Metodos_arbol_binario.Nodo;
 
 public class Arbol_avl <T>{
@@ -74,22 +75,28 @@ public class Arbol_avl <T>{
 		return eliminarNodo(raiz, objeto);
 	}
 	
-	private int comparacion(T itemA, T itemB) {
+	public int comparacion(T itemA, T itemB) {
 		String clase = itemA.getClass().getSimpleName();
 		int es_mayor = 0; 
 		
-		if (clase.equals("String")) {
+		switch(clase) {
+		case "String":
 			es_mayor = ((String) itemA).toLowerCase().compareTo(((String) itemB).toLowerCase());
 			if (es_mayor == 0) {
 				es_mayor = ((String) itemA).compareTo((String) itemB);
 			}
-		}else if (clase.equals("Integer")) {
+		case "Integer":
 			es_mayor= ((int)itemA - (int)itemB) ;
-		}else if (clase.equals("Usuario")) {
+		case "Usuario":
 			es_mayor = (((Usuario) itemA).getUsuario()).toLowerCase().compareTo((((Usuario) itemB).getUsuario()).toLowerCase());
 			if (es_mayor == 0) {
 				es_mayor = (((Usuario) itemA).getUsuario()).compareTo(((Usuario) itemB).getUsuario());
 			}
+		/*case "Producto":
+			es_mayor = (((Producto) itemA).getNo()).toLowerCase().compareTo((((Producto) itemB).getNo()).toLowerCase());
+			if (es_mayor == 0) {
+				es_mayor = (((Producto) itemA).getNo()).compareTo(((Producto) itemB).getNo());
+			}*/
 		}
 		return es_mayor;
 	}
