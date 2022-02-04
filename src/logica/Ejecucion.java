@@ -25,7 +25,7 @@ public class Ejecucion {
 	public static void main(String[] args) {
 		usuario_admin.setAdmin(true);
 		usuarios.insertar(usuario_admin);
-		usuarios.insertar(new Usuario("A","1"));
+		usuarios.insertar(new Usuario("A","1", true));
 		//-----------------------------------------------OBTENCION DE DATOS------------------------------------------------------
 		/*String[] alfabeto = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		int j = 0;

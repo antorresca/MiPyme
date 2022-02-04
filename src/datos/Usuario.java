@@ -63,5 +63,10 @@ public class Usuario {
 		contrasena = contrasena_usuario;
 		
 	}
-
+	
+	public Usuario(String nombre_usuario, String contrasena_usuario, boolean is_admin) {
+		usuario = nombre_usuario;
+		contrasena = contrasena_usuario;
+		admin = is_admin;
+	}
 }

@@ -2,6 +2,7 @@ package interfaz;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,7 +45,8 @@ public class PantallaMenu {
 
 		//Botones del menu
 
-		Boton btn_cerrar_sesion = new Boton("Cerrar Sesion", pantallaMenu, 110+55, 240+25, 150, 30);
+		Boton btn_cerrar_sesion = new Boton("Cerrar Sesion", pantallaMenu, 45+55, 240+25, 300, 60);
+		btn_cerrar_sesion.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
 		Boton btnCarrito = new Boton("",pantallaMenu,25+40,70,100,75);
 		ImageIcon carritoIcon =  new ImageIcon((temaFlag) ? "Img\\CarritoClaro.png":"Img\\CarritoOscuro.png"); //Las rutas relativas no estan sirviendo
@@ -106,7 +108,7 @@ public class PantallaMenu {
 		boton_usuario.setVisible(flag);
 		ImageIcon boton_usuario_Icon =  new ImageIcon((temaFlag)?"Img\\UsuarioClaro.png":"Img\\UsuarioOscuro.png"); //Las rutas relativas no estan sirviendo
 		Icon icon_boton_usuario = new ImageIcon(boton_usuario_Icon.getImage().getScaledInstance(
-				boton_usuario.getWidth()-20, boton_usuario.getHeight()-10, Image.SCALE_AREA_AVERAGING)); //Icono Carrito
+				boton_usuario.getWidth()-40, boton_usuario.getHeight()-10, Image.SCALE_AREA_AVERAGING)); //Icono Carrito
 		boton_usuario.setIcon(icon_boton_usuario);
 		boton_usuario.setToolTipText("Usuario\r\n");
 		boton_usuario.setBackground(null);

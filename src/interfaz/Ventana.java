@@ -21,7 +21,7 @@ public class Ventana extends JFrame {
 	
 	private JPanel contenedor;
 	private static int ancho = 500;
-	private static int largo = 350;
+	private static int largo = 375;
 	
 	public Ventana(String texto, boolean puerta){
 		
