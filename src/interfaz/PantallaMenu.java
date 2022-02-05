@@ -147,7 +147,7 @@ public class PantallaMenu {
 						JOptionPane.showMessageDialog(pantallaMenu,"Entrada invalida","Solo numeros validos",JOptionPane.ERROR_MESSAGE);
 					}
 				}
-				Producto productoDetalles = Ejecucion.inventario.encontrar(n).getDato();
+				Producto productoDetalles = Ejecucion.inventario.encontrar( new Producto(n)).getDato();
 				if(productoDetalles!=null) {
 					pantallaMenu.desactivar();
 					PantallaDetalles.main("menu",productoDetalles);

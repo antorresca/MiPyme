@@ -68,6 +68,69 @@ public class Lista_ref_simple<T> extends Metodos_pila_cola_ref_simple<T> {
 		return new Nodo(null);
 
 	}
+	
+	/*public Nodo encontrar_por_id(int id) {
+
+		Nodo auxiliar = this.getCabeza();
+
+		if(id < this.getTamano() && id > -1) {
+
+			for(int i=0; i<id; i++) {
+				String valor = "";
+				char[] a =((Producto) auxiliar.getDato()).getId().toCharArray();
+				for(char b : a) {
+					if(b!='|')valor+=b;
+					else break;
+				}			
+				valor = valor.replace(" ","");
+				valor = valor.replace("P","");
+				//ultimoId = (ultimoId>Integer.valueOf(valor))?ultimoId:Integer.valueOf(valor);
+				if(id < Integer.valueOf(valor)){
+					return new Nodo(null);
+				}
+				auxiliar = auxiliar.getSiguiente();
+			}
+
+			return auxiliar;
+
+		} else {
+
+			System.out.println("Posici\u00f3n no valida");	
+
+			return new Nodo(null);
+		}
+
+	}*/
+	
+	public void eliminar_por_id(int id) {
+
+		Nodo auxiliar = this.getCabeza();
+
+		if(id < this.getTamano() && id > -1) {
+			
+			if(auxiliar != null) {
+				if(id == 0) {
+					eliminar_comienzo();
+
+				} else {
+					for(int i=0; i<id-1; i++) {
+						auxiliar = auxiliar.getSiguiente();
+					}
+
+					Nodo nuevo_nodo2 = auxiliar.getSiguiente();
+					auxiliar.setSiguiente(auxiliar.getSiguiente().getSiguiente());
+					if(id == this.getTamano()-1) {
+						this.setCola(auxiliar);
+					}
+					this.setTamano(this.getTamano()-1);
+				}
+			} else {
+				System.out.print("Lista vac�a");
+			}
+		} else {
+			System.out.println("Posici�n no valida");
+		}
+	}
 
 	public void agregar_despues_de(int u, T item) {
 

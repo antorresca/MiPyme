@@ -63,7 +63,7 @@ public class PantallaDetalles {
 		
 		precioProducto.setText("$"+String.valueOf(temp.getPre()));
 		
-		idProducto.setText(temp.getId());
+		idProducto.setText(String.valueOf(temp.getId()));
 		
 		cantidadProducto.setText(String.valueOf(temp.getCan()));
 
@@ -77,13 +77,17 @@ public class PantallaDetalles {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				detalles.desactivar();
+				
 				switch(anterior) {
 				case "menu":
 					PantallaMenu.main(null);
+					break;
 				case "carrito":				
 					PantallaCarrito.main(null);
+					break;
 				case "inventario":
 					PantallaInventario.main(null);
+					break;
 				}
 			}
 		});

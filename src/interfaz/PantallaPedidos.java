@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 import datos.Factura;
+import datos.Producto;
 import estructuras.Metodos_pila_cola_ref_simple.Nodo;
 import logica.Ejecucion;
 // recordar nuevaFactura.setContador(nuevaFactura.getId()+1);
@@ -92,9 +93,15 @@ public class PantallaPedidos {
 						/*
 						 * Actualizacion de variables globales
 						 */
-
-						Ejecucion.inventario.eliminar_en(list.getSelectedIndex()); //Eliminacion de productos del objeto
-
+						String valor = "";
+						char[] a =list.getSelectedValue().toString().toCharArray();
+						for(char i : a) {
+							if(i!='|')valor+=i;
+							else break;
+						}			
+						valor = valor.replace(" ","");
+						valor = valor.replace("P","");
+						Ejecucion.inventario.eliminar(new Producto(Integer.valueOf(valor))); 
 						modelo.removeElementAt(list.getSelectedIndex()); //Eliminacion de producto en lista
 
 						pagoCarrito.setText(String.valueOf(precio)); //Actualizar informacion mostrada

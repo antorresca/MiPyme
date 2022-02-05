@@ -41,7 +41,7 @@ public class PantallaModificarProducto {
 	
 
 		CampoL textField_Id = new CampoL(pantallaModificarP,158, 71, 194, 20);
-		textField_Id.setText(((anadir)? String.valueOf(Integer.valueOf(producto.getId())+1) : producto.getId()));
+		textField_Id.setText(((anadir)? String.valueOf(producto.getId()+1) : String.valueOf(producto.getId())));
 		textField_Id.setEnabled(false);
 		
 		CampoL textField_Nombre = new CampoL(pantallaModificarP,158, 96, 194, 20);
@@ -76,8 +76,8 @@ public class PantallaModificarProducto {
 				producto.setDes(textField_Descripcion.getText());
 				producto.setCan(Integer.valueOf(textField_Cantidad.getText()));
 				if(anadir) {
-					producto.setId(String.valueOf(++Producto.ultimoId));
-					Ejecucion.inventario.agregar(producto);
+					producto.setId(++Producto.ultimoId);
+					Ejecucion.inventario.insertar(producto);
 				}
 				JOptionPane.showMessageDialog(pantallaModificarP,"Producto "+ ((anadir)?"a\u00f1adido" :"modificado") +" correctamente","\u00c9xito",JOptionPane.INFORMATION_MESSAGE);
 				pantallaModificarP.setVisible(false);

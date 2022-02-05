@@ -5,6 +5,7 @@ import javax.swing.DefaultListModel;
 import datos.Usuario;
 import datos.Producto;
 import estructuras.Metodos_arbol_binario.Nodo;
+import logica.Ejecucion;
 
 public class Arbol_avl <T>{
 	Nodo raiz;
@@ -19,13 +20,49 @@ public class Arbol_avl <T>{
 		this.raiz = raiz;
 	}
 	
+	public void imprimirEnOrden(Nodo node) {
+        if (node != null) {
+        	imprimirEnOrden(node.getIzquierda());
+        	System.out.println(node.getDato());
+        	imprimirEnOrden(node.getDerecha());
+        }
+    }
+	
 	public void usuarioEnOrden(Nodo node, DefaultListModel modelo) {
         if (node != null) {
         	usuarioEnOrden(node.getIzquierda(), modelo);
         	modelo.addElement(((Usuario)node.getDato()).getUsuario() + " | " + (((Usuario)node.getDato()).isAdmin()?"Administrador":"Empleado"));
         	usuarioEnOrden(node.getDerecha(), modelo);
         }
+    }
+	
+	public void productoEnOrden(Nodo node, DefaultListModel modelo) {
+        if (node != null) {
+        	productoEnOrden(node.getIzquierda(), modelo);
+        	modelo.addElement(((Producto)node.getDato()).imprimir());
+        	productoEnOrden(node.getDerecha(), modelo);
+        }
     } 
+	Nodo salida;
+	private Nodo obtenerIdProductoPorNombre(Nodo node, String nombre) {
+		
+		
+        if (node != null) {
+        	obtenerIdProductoPorNombre(node.getIzquierda(), nombre);
+        	if(((Producto)node.getDato()).getNo().equals(nombre)) {
+        		System.out.println(((Producto)node.getDato()).getNo());
+        		salida =  node;
+        		return salida;
+        	}
+        	obtenerIdProductoPorNombre(node.getDerecha(), nombre);
+        	
+        }else {
+        	return null;
+        }
+        
+        return salida;
+    } 
+	
 	// Create Nodo
 	public class Nodo {
 		int altura;
@@ -71,6 +108,16 @@ public class Arbol_avl <T>{
 		return encontrarNodo(raiz, objeto);
 	}
 	
+	public Nodo encontrar_por_nombre(String nombre) { //Esta pensado para ser usado con productos
+		salida = null;
+		if (obtenerIdProductoPorNombre(raiz, nombre)!=null) {
+			System.out.println(obtenerIdProductoPorNombre(raiz, nombre));
+			
+			return encontrarNodo(raiz, obtenerIdProductoPorNombre(raiz, nombre).getDato());
+		}else
+			return null;
+	}
+	
 	public Nodo eliminar(T objeto) {
 		return eliminarNodo(raiz, objeto);
 	}
@@ -78,7 +125,22 @@ public class Arbol_avl <T>{
 	public int comparacion(T itemA, T itemB) {
 		String clase = itemA.getClass().getSimpleName();
 		int es_mayor = 0; 
-		
+		if (clase.equals("String")) {
+			es_mayor = ((String) itemA).toLowerCase().compareTo(((String) itemB).toLowerCase());
+			if (es_mayor == 0) {
+				es_mayor = ((String) itemA).compareTo((String) itemB);
+			}
+		}else if (clase.equals("Integer")) {
+			es_mayor= ((int)itemA - (int)itemB) ;
+		}else if (clase.equals("Usuario")) {
+			es_mayor = (((Usuario) itemA).getUsuario()).toLowerCase().compareTo((((Usuario) itemB).getUsuario()).toLowerCase());
+			if (es_mayor == 0) {
+				es_mayor = (((Usuario) itemA).getUsuario()).compareTo(((Usuario) itemB).getUsuario());
+			}
+		}else if (clase.equals("Producto")) {
+			es_mayor = ((Producto) itemA).getId() - ((Producto) itemB).getId();
+		}
+		/*
 		switch(clase) {
 		case "String":
 			es_mayor = ((String) itemA).toLowerCase().compareTo(((String) itemB).toLowerCase());
@@ -87,19 +149,19 @@ public class Arbol_avl <T>{
 			}
 		case "Integer":
 			es_mayor= ((int)itemA - (int)itemB) ;
-		case "Usuario":
+		case "Usuario ":
 			es_mayor = (((Usuario) itemA).getUsuario()).toLowerCase().compareTo((((Usuario) itemB).getUsuario()).toLowerCase());
 			if (es_mayor == 0) {
 				es_mayor = (((Usuario) itemA).getUsuario()).compareTo(((Usuario) itemB).getUsuario());
 			}
-		/*case "Producto":
-			es_mayor = (((Producto) itemA).getNo()).toLowerCase().compareTo((((Producto) itemB).getNo()).toLowerCase());
-			if (es_mayor == 0) {
-				es_mayor = (((Producto) itemA).getNo()).compareTo(((Producto) itemB).getNo());
-			}*/
-		}
+		case "Producto ":
+			es_mayor = ((Producto) itemA).getId() - ((Producto) itemB).getId();
+			
+		}*/
 		return es_mayor;
 	}
+	
+	
 
 	private int altura(Nodo N) {
 		if (N == null)
@@ -241,6 +303,19 @@ public class Arbol_avl <T>{
 
 	
 	private Nodo encontrarNodo(Nodo Nodo, T nombre){
+		Nodo current = Nodo;
+
+		if (current == null)
+			return null;//esto toca cambiarlo
+		if (comparacion(nombre,  current.dato) < 0 ){
+			return encontrarNodo(current.izquierda, nombre);
+		}else if (comparacion(nombre,  current.dato) > 0){
+			return encontrarNodo(current.derecha, nombre);
+		}else
+			return current;
+	}
+	
+	private Nodo encontrarNodo_por_id(Nodo Nodo, T nombre){
 		Nodo current = Nodo;
 
 		if (current == null)

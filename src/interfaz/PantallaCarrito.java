@@ -38,9 +38,7 @@ public class PantallaCarrito {
 		precio = 0;
 		i=0;
 
-		for(int t=0; t<Ejecucion.inventario.getTamano();t++) { //Creacion de datos random para pruebas
-			modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
-		}
+		Ejecucion.inventario.productoEnOrden(Ejecucion.inventario.getRaiz(),modelo);
 
 		Ventana carrito = new Ventana("Carrito");
 		Toolkit t = Toolkit.getDefaultToolkit();
@@ -95,7 +93,15 @@ public class PantallaCarrito {
 					try {					
 						int c = Integer.valueOf(cantidad.getText());
 						if(c>0) {
-							Producto temp = Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato();
+							String valor = "";
+							char[] cadena =list.getSelectedValue().toString().toCharArray();
+							for(char i : cadena) {
+								if(i!='|')valor+=i;
+								else break;
+							}			
+							valor = valor.replace(" ","");
+							valor = valor.replace("P","");
+							Producto temp = (Ejecucion.inventario.encontrar(new Producto(Integer.valueOf(valor))).getDato());
 							if(temp.getCan()<c) {
 								JOptionPane.showMessageDialog(carrito,"No hay suficientes productos en Stock","Faltan productos",JOptionPane.ERROR_MESSAGE);
 							}else {
@@ -104,9 +110,9 @@ public class PantallaCarrito {
 								i += c;
 								temp.setCan(temp.getCan()-c);
 								modelo.clear();
-								for(int t=0; t<Ejecucion.inventario.getTamano();t++) { //Creacion de datos random para pruebas
-									modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
-								}
+								
+								Ejecucion.inventario.productoEnOrden(Ejecucion.inventario.getRaiz(),modelo);
+								
 								Producto a = new Producto(temp.getId(), temp.getNo(), temp.getDes(), temp.getPre(), null, c);
 								Ejecucion.compra.agregar(a);
 								modelo2.addElement(a.imprimir());
@@ -150,12 +156,10 @@ public class PantallaCarrito {
 							modelo2.addElement(Ejecucion.compra.encontrar(i).getDato().imprimir());
 						}
 					}
-					Producto temp1 = Ejecucion.inventario.encontrar(Integer.valueOf(temp.getId().replace("P", ""))).getDato();
+					Producto temp1 = Ejecucion.inventario.encontrar(new Producto(Integer.valueOf(temp.getId()))).getDato();
 					temp1.setCan(temp1.getCan()+c);
 					modelo.clear();
-					for(int t=0; t<Ejecucion.inventario.getTamano();t++) { //Creacion de datos random para pruebas
-						modelo.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
-					}
+					Ejecucion.inventario.productoEnOrden(Ejecucion.inventario.getRaiz(),modelo);
 					
 
 					pagoCarrito.setText("$"+String.valueOf(precio));
@@ -188,8 +192,15 @@ public class PantallaCarrito {
 						/*
 						 * Actualizacion de variables globales
 						 */
-
-						Ejecucion.inventario.eliminar_en(list.getSelectedIndex()); //Eliminacion de productos del objeto
+						String valor = "";
+						char[] a =list.getSelectedValue().toString().toCharArray();
+						for(char i : a) {
+							if(i!='|')valor+=i;
+							else break;
+						}			
+						valor = valor.replace(" ","");
+						valor = valor.replace("P","");
+						Ejecucion.inventario.eliminar(new Producto(Integer.valueOf(valor))); //Eliminacion de productos del objeto
 
 						modelo.removeElementAt(list.getSelectedIndex()); //Eliminacion de producto en lista
 
@@ -272,7 +283,15 @@ public class PantallaCarrito {
 			public void mouseClicked(MouseEvent e) {
 				if(list.getSelectedValue() != null) { //Saber si hay seleccionado algun elemento en lista
 					carrito.desactivar();
-					PantallaDetalles.main("carrito",Ejecucion.inventario.encontrar(list.getSelectedIndex()).getDato());
+					String valor = "";
+					char[] a =list.getSelectedValue().toString().toCharArray();
+					for(char i : a) {
+						if(i!='|')valor+=i;
+						else break;
+					}			
+					valor = valor.replace(" ","");
+					valor = valor.replace("P","");
+					PantallaDetalles.main("carrito",Ejecucion.inventario.encontrar(new Producto(Integer.valueOf(valor))).getDato());
 				}else {
 					JOptionPane.showMessageDialog(carrito,"Por favor elija un producto",
 							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error

@@ -14,7 +14,7 @@ public class Ejecucion {
 	public static Color ModoClaro = new Color(225,237,249); 
 	public static Color ModoOscuro = new Color(20,31,59);
 	public static Color Tema = ModoClaro;
-	public static Lista_ref_simple<Producto> inventario = new Lista_ref_simple<Producto>();
+	public static Arbol_avl<Producto> inventario = new Arbol_avl<Producto>();
 	public static Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
 	public static Cola_ref_simple<Factura> pedidos = new Cola_ref_simple<Factura>();
 	public static Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
@@ -26,6 +26,7 @@ public class Ejecucion {
 		usuario_admin.setAdmin(true);
 		usuarios.insertar(usuario_admin);
 		usuarios.insertar(new Usuario("A","1", true));
+		usuarios.imprimirEnOrden(usuarios.getRaiz());
 		//-----------------------------------------------OBTENCION DE DATOS------------------------------------------------------
 		/*String[] alfabeto = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		int j = 0;
@@ -91,7 +92,7 @@ public class Ejecucion {
 
 
 		for(int i = 0; i<1000;i++) {
-			inventario.agregar(new Producto(String.valueOf(i),"Producto "+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,(int) (Math.random()*10)));
+			inventario.insertar(new Producto(i,"Producto "+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,(int) (Math.random()*10)));
 		}
 		
 

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import datos.Producto;
+import estructuras.Arbol_avl.Nodo;
 import logica.Ejecucion;
 
 public class PantallaInventario {
@@ -18,9 +19,8 @@ public class PantallaInventario {
 
 		DefaultListModel modelo6 = new DefaultListModel();
 		
-		for(int t=0; t<Ejecucion.inventario.getTamano();t++) { 
-			modelo6.addElement(Ejecucion.inventario.encontrar(t).getDato().imprimir());
-		}
+		
+		Ejecucion.inventario.productoEnOrden(Ejecucion.inventario.getRaiz(),modelo6);
 		
 		Ventana pantallaInventario = new Ventana("Inventario");
 		pantallaInventario.setBounds(550, 180, 400, 400);
@@ -47,11 +47,11 @@ public class PantallaInventario {
 				String nombre_producto = textField_buscar.getText();
 				if(!nombre_producto.equals("")) {
 					//try {
-					
-						Producto encontrado = Ejecucion.inventario.encontrar_por_nombre(nombre_producto).getDato();
-						if (encontrado == null) {
+					    Nodo comprobante =  Ejecucion.inventario.encontrar_por_nombre(nombre_producto);
+					    if(comprobante == null) {
 							JOptionPane.showMessageDialog(pantallaInventario,"Producto No Encontrado","No encontrado",JOptionPane.ERROR_MESSAGE);
 						}else {
+							Producto encontrado = (Producto)comprobante.getDato();
 							pantallaInventario.setVisible(false);
 							PantallaDetalles.main("inventario",encontrado);
 						}
@@ -59,9 +59,6 @@ public class PantallaInventario {
 				}else {
 					JOptionPane.showMessageDialog(pantallaInventario,"Debe ingresar alg\u00fan nombre","Ingrese un nombre",JOptionPane.INFORMATION_MESSAGE);
 				}
-				
-				
-				
 				
 			}
 		});
@@ -73,7 +70,7 @@ public class PantallaInventario {
 			public void mouseClicked(MouseEvent e) {
 				pantallaInventario.setVisible(false);
 				
-				Producto nuevo = new Producto(String.valueOf(Producto.ultimoId), "Producto "+String.valueOf(Producto.ultimoId+1),"Este producto es...", 0, null, 0 );
+				Producto nuevo = new Producto(Producto.ultimoId, "Producto "+String.valueOf(Producto.ultimoId+1),"Este producto es...", 0, null, 0 );
 				PantallaModificarProducto.main(nuevo,true);
 			}
 		});
@@ -93,9 +90,9 @@ public class PantallaInventario {
 					}			
 					valor = valor.replace(" ","");
 					valor = valor.replace("P","");
-					System.out.println(Ejecucion.inventario.encontrar(Integer.valueOf(valor)));
+					System.out.println(Ejecucion.inventario.encontrar( new Producto(Integer.valueOf(valor))));
 					pantallaInventario.desactivar();
-					PantallaModificarProducto.main(Ejecucion.inventario.encontrar(Integer.valueOf(valor)).getDato(), false);
+					PantallaModificarProducto.main(Ejecucion.inventario.encontrar( new Producto(Integer.valueOf(valor))).getDato(), false);
 				}
 			}	
 		});
@@ -114,7 +111,7 @@ public class PantallaInventario {
 					}			
 					valor = valor.replace(" ","");
 					valor = valor.replace("P","");
-					Ejecucion.inventario.eliminar_en(Integer.valueOf(valor));
+					Ejecucion.inventario.eliminar( new Producto(Integer.valueOf(valor)));
 					JOptionPane.showMessageDialog(pantallaInventario,"Eliminacion exitosa","Usuario Eliminado",JOptionPane.INFORMATION_MESSAGE);
 					modelo6.remove(listaProductos.getSelectedIndex());
 

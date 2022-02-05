@@ -2,7 +2,7 @@ package datos;
 
 public class Producto { //Se añadieron getter y funcion Imprimir
 	
-	private String id;
+	private int id;
 	private String no;
 	private String des;
 	private long pre;
@@ -21,14 +21,14 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -95,7 +95,7 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 		return can;
 	}
 	
-	public Producto(String identificacion, String nombre, String descripcion, long precio, String imagen, int cantidad){
+	public Producto(int identificacion, String nombre, String descripcion, long precio, String imagen, int cantidad){
 		
 		id = identificacion;
 		no = nombre;
@@ -104,16 +104,16 @@ public class Producto { //Se añadieron getter y funcion Imprimir
 		im = imagen;
 		can = cantidad;
 		
-		String valor = "";
-		char[] a =id.toCharArray();
-		for(char i : a) {
-			if(i!='|')valor+=i;
-			else break;
-		}			
-		valor = valor.replace(" ","");
-		valor = valor.replace("P","");
-		ultimoId = (ultimoId>Integer.valueOf(valor))?ultimoId:Integer.valueOf(valor);
+		
+		ultimoId = (ultimoId>Integer.valueOf(id))?ultimoId:Integer.valueOf(id);
 	}
+	
+	public Producto(int identificacion){
+
+		id = identificacion;
+		no = "buscador";
+	}
+	
 	
 	public String imprimir() {
 		return " P"+ String.format("%-6s", id) + " | " + String.format("%-8s",  ("$"+pre))+  " | "+ String.format("%-8s", can);
