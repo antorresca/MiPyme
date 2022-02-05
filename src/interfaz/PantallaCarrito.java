@@ -57,16 +57,19 @@ public class PantallaCarrito {
 
 		prodCarrito = new Texto(String.valueOf(i),carrito,440, 93, 46, 14);
 
-		Boton detalles = new Boton("Detalles",carrito,440, 139, 89, 23);
+		Boton detalles = new Boton("",carrito,440, 149, 89, 28);
+		detalles.volverIcono("detalles\r\n","Img\\ModificarClaro.png","Img\\ModificarOscuro.png");
 
-		Boton pago = new Boton("Pago",carrito,440, 173, 89, 23);
+		Boton pago = new Boton("",carrito,440, 193, 89, 28);
+		pago.volverIcono("pago\r\n","Img\\PagarClaro.png","Img\\PagarOscuro.png");
 		pago.setVisible(!flag);
 
-		Boton pedir = new Boton("Pedir",carrito,440, 173, 89, 23);
+		Boton pedir = new Boton("",carrito,440, 193, 89, 28);
+		pedir.volverIcono("pedir\r\n","Img\\PagarClaro.png","Img\\PagarOscuro.png");
 		pedir.setVisible(flag);
 
-		Boton regresarCarrito = new Boton("Regresar",carrito,440, 207, 89, 23);
-
+		Boton regresarCarrito = new Boton("",carrito,465, 237, 35, 35);
+		regresarCarrito.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
 		list.setModel(modelo);
 
 		JScrollPane scroll = new JScrollPane(list);
@@ -83,8 +86,8 @@ public class PantallaCarrito {
 		CampoL cantidad = new CampoL(carrito,192, 44, 55, 35);
 		cantidad.setText("1");
 
-		Boton agregar = new Boton("+",carrito,192, 84, 55, 35);
-
+		Boton agregar = new Boton("",carrito,205, 89, 30, 30);
+		agregar.volverIcono("añadir\r\n","Img\\MasClaro.png","Img\\MasOscuro.png");
 		agregar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -132,8 +135,9 @@ public class PantallaCarrito {
 
 			}
 		});
-
-		Boton eliminar = new Boton("-",carrito,192, 126, 55, 35);
+		
+		Boton eliminar = new Boton("",carrito,205, 126, 30, 30);
+		eliminar.volverIcono("quitar\r\n","Img\\MenosClaro.png","Img\\MenosOscuro.png",eliminar.getWidth(),eliminar.getHeight()/4);
 		eliminar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

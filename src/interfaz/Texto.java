@@ -23,7 +23,7 @@ public class Texto extends JLabel{
     public Texto(String texto, Ventana ventana, int x, int y, int ancho, int largo) {
 		
 		this(texto, x, y, ancho, largo);
-		System.out.print(Ventana.HEIGHT);
+		//System.out.print(Ventana.HEIGHT);
 		ventana.getContenedor().add(this);
 	}
     

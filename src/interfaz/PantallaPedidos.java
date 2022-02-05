@@ -58,14 +58,17 @@ public class PantallaPedidos {
 
 		numPedidos = new Texto(String.valueOf(i),pedidos,170, 93, 46, 14);
 
-		Boton agregar = new Boton("Agregar",pedidos,170, 105, 89, 23);
+		Boton agregar = new Boton("",pedidos,170, 95, 89, 32);
+		agregar.volverIcono("añadir\r\n","Img\\AgregarClaro.png","Img\\AgregarOscuro.png");
 		
-		Boton detalles = new Boton("Detalles",pedidos,170, 139, 89, 23);
+		Boton detalles = new Boton("Detalles",pedidos,170, 139, 89, 32);
 
-		Boton pago = new Boton("Pago",pedidos,170, 173, 89, 23); //poner en otra ventana
-
-		Boton regresarPedidos = new Boton("Regresar",pedidos,170, 207, 89, 23);
-
+		Boton pago = new Boton("",pedidos,170, 183, 89, 32); //poner en otra ventana
+		pago.volverIcono("pago\r\n","Img\\PagarClaro.png","Img\\PagarOscuro.png");
+		
+		Boton regresarPedidos = new Boton("",pedidos,170, 227, 89, 28);
+		regresarPedidos.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
+		
 		list.setModel(modelo);
 
 		JScrollPane scroll = new JScrollPane(list);

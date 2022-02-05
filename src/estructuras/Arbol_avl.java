@@ -50,7 +50,7 @@ public class Arbol_avl <T>{
         if (node != null) {
         	obtenerIdProductoPorNombre(node.getIzquierda(), nombre);
         	if(((Producto)node.getDato()).getNo().equals(nombre)) {
-        		System.out.println(((Producto)node.getDato()).getNo());
+        		//System.out.println(((Producto)node.getDato()).getNo());
         		salida =  node;
         		return salida;
         	}
@@ -111,7 +111,7 @@ public class Arbol_avl <T>{
 	public Nodo encontrar_por_nombre(String nombre) { //Esta pensado para ser usado con productos
 		salida = null;
 		if (obtenerIdProductoPorNombre(raiz, nombre)!=null) {
-			System.out.println(obtenerIdProductoPorNombre(raiz, nombre));
+			//System.out.println(obtenerIdProductoPorNombre(raiz, nombre));
 			
 			return encontrarNodo(raiz, obtenerIdProductoPorNombre(raiz, nombre).getDato());
 		}else

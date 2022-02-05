@@ -41,6 +41,7 @@ public class PantallaInventario {
 		//textField_buscar.setText("");
 		
 		Boton buscar = new Boton("Q",pantallaInventario,180, 41, 50, 20);
+		//buscar.volverIcono("buscar\r\n","Img\\MasClaro.png","Img\\MasOscuro.png");
 		buscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -64,7 +65,9 @@ public class PantallaInventario {
 		});
 		
 		
-		Boton agregar = new Boton("Agregar",pantallaInventario,260, 105, 89, 23);
+		Boton agregar = new Boton("",pantallaInventario,260, 95, 89, 32);
+		agregar.volverIcono("añadir\r\n","Img\\AgregarClaro.png","Img\\AgregarOscuro.png");
+		
 		agregar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -75,9 +78,9 @@ public class PantallaInventario {
 			}
 		});
 
-		Boton detalles = new Boton("Modificar",pantallaInventario,260, 139, 89, 23);
-
-		detalles.addMouseListener(new MouseAdapter() {
+		Boton modificar = new Boton("",pantallaInventario,260, 139, 89, 32);
+		modificar.volverIcono("modificar\r\n","Img\\ModificarClaro.png","Img\\ModificarOscuro.png");
+		modificar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(listaProductos.getSelectedValue()!=null) {
@@ -97,8 +100,8 @@ public class PantallaInventario {
 			}	
 		});
 
-		Boton eliminarUsuario = new Boton("Eliminar",pantallaInventario,260, 173, 89, 23);
-
+		Boton eliminarUsuario = new Boton("",pantallaInventario,260, 183, 89, 32);
+		eliminarUsuario.volverIcono("eliminar\r\n","Img\\EliminarClaro.png","Img\\EliminarOscuro.png");
 		eliminarUsuario.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -120,8 +123,8 @@ public class PantallaInventario {
 			}
 		});
 
-		Boton regresarPedidos = new Boton("Regresar",pantallaInventario,260, 207, 89, 23);
-
+		Boton regresarPedidos = new Boton("",pantallaInventario,285, 247, 40, 40);
+		regresarPedidos.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
 		regresarPedidos.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {

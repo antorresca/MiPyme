@@ -23,7 +23,9 @@ public class VerFactura {
 		
 		Ventana Factura = new Ventana("Factura");
 		Factura.setBounds(100, 100, 268, 600);
-		Boton regresar = new Boton("Regresar",Factura,10, 17, 89, 23);
+		Boton regresar = new Boton("",Factura,5, 5, 30,30);
+		regresar.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
+		
 		Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
 		Titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		Texto encabezado = new Texto("Factura de compra # ",Factura,0, 126, 252, 14);

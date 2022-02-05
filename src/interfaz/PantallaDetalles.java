@@ -67,8 +67,8 @@ public class PantallaDetalles {
 		
 		cantidadProducto.setText(String.valueOf(temp.getCan()));
 
-		Boton regresar = new Boton("Regresar",detalles,10, 13, 89, 23);
-
+		Boton regresar = new Boton("",detalles,5, 5, 30,30);
+		regresar.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
 		/*
 		 * Evento de botones
 		 */

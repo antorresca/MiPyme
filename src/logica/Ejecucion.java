@@ -1,6 +1,9 @@
 package logica;
 
 import java.awt.Color;
+
+import javax.swing.ImageIcon;
+
 import datos.Factura;
 import datos.Producto;
 import datos.Usuario;
@@ -8,7 +11,8 @@ import estructuras.*;
 import interfaz.PantallaInicio;
 
 public class Ejecucion {
-
+	
+	public static boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
 	private static String registroUsuariotxt;
 	public static Usuario usuario_admin = new Usuario("Admin","12345");
 	public static Color ModoClaro = new Color(225,237,249); 
@@ -20,13 +24,15 @@ public class Ejecucion {
 	public static Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
 	//public static Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>(); 
 	public static Arbol_avl<Usuario> usuarios = new Arbol_avl<Usuario>(); 
+	//-------------------------------------------------------ICONOS------------------------------------------------
 	
 	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 		usuario_admin.setAdmin(true);
 		usuarios.insertar(usuario_admin);
 		usuarios.insertar(new Usuario("A","1", true));
-		usuarios.imprimirEnOrden(usuarios.getRaiz());
+		
+		
 		//-----------------------------------------------OBTENCION DE DATOS------------------------------------------------------
 		/*String[] alfabeto = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		int j = 0;

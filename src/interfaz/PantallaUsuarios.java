@@ -34,7 +34,9 @@ public class PantallaUsuarios {
 
 		pantallaUsuarios.update(pantallaUsuarios.getGraphics());
 
-		Boton agregar = new Boton("Agregar",pantallaUsuarios,260, 105, 89, 23);
+		Boton agregar = new Boton("",pantallaUsuarios,260, 105, 89, 32);
+		agregar.volverIcono("agregar\r\n","Img\\AgregarClaro.png","Img\\AgregarOscuro.png");
+		
 		agregar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -43,7 +45,7 @@ public class PantallaUsuarios {
 			}
 		});
 
-		Boton detalles = new Boton("Modificar",pantallaUsuarios,260, 139, 89, 23);
+		Boton detalles = new Boton("Modificar",pantallaUsuarios,260, 149, 89, 32);
 
 		detalles.addMouseListener(new MouseAdapter() {
 		@Override
@@ -63,8 +65,9 @@ public class PantallaUsuarios {
 		}
 		});
 
-		Boton eliminarUsuario = new Boton("Eliminar",pantallaUsuarios,260, 173, 89, 23);
-
+		Boton eliminarUsuario = new Boton("",pantallaUsuarios,260, 193, 89, 32);
+		eliminarUsuario.volverIcono("volver\r\n","Img\\EliminarClaro.png","Img\\EliminarOscuro.png");
+		
 		eliminarUsuario.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -85,8 +88,9 @@ public class PantallaUsuarios {
 			}
 		});
 
-		Boton regresarPedidos = new Boton("Regresar",pantallaUsuarios,260, 207, 89, 23);
-
+		Boton regresarPedidos = new Boton("",pantallaUsuarios,285, 257, 40, 40);
+		regresarPedidos.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
+		
 		regresarPedidos.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {

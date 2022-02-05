@@ -61,7 +61,7 @@ public class Ventana extends JFrame {
 				//ancho = e.getComponent().getBounds().width;
 				//largo = e.getComponent().getBounds().height;
 				
-				System.out.println(e.getComponent().getBounds().width+"  "+e.getComponent().getBounds().height);
+				//System.out.println(e.getComponent().getBounds().width+"  "+e.getComponent().getBounds().height);
 		    }
 		});
         
