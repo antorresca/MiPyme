@@ -1,7 +1,6 @@
 package logica;
 
 import datos.Usuario;
-import estructuras.Arbol_binario_ref_triple;
 import estructuras.Cola_arreglo_dinamico;
 import estructuras.Cola_ref_simple;
 import estructuras.Lista_arreglo_dinamico;
