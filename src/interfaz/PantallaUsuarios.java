@@ -33,10 +33,12 @@ public class PantallaUsuarios {
 		Texto titulo = new Texto("Usuario | Rol",pantallaUsuarios,30,65, 200, 15);
 
 		pantallaUsuarios.update(pantallaUsuarios.getGraphics());
-
+/*
 		Boton agregar = new Boton("",pantallaUsuarios,260, 105, 89, 32);
 		agregar.volverIcono("agregar\r\n","Img\\AgregarClaro.png","Img\\AgregarOscuro.png");
-		
+		*/
+		Boton agregar = new Boton("",pantallaUsuarios,280, 45, 45, 45);
+		agregar.volverIcono("agregar\r\n","Img\\AgregarUsuarioClaro.png","Img\\AgregarUsuarioOscuro.png");
 		agregar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -44,15 +46,18 @@ public class PantallaUsuarios {
 				PantallaRegistro.main(null);
 			}
 		});
-
-		Boton detalles = new Boton("Modificar",pantallaUsuarios,260, 149, 89, 32);
-
-		detalles.addMouseListener(new MouseAdapter() {
+		/*
+		Boton modificar = new Boton("",pantallaUsuarios,260, 149, 89, 32);
+		modificar.volverIcono("agregar\r\n","Img\\ModificarClaro.png","Img\\ModificarOscuro.png");
+		*/
+		Boton modificar = new Boton("",pantallaUsuarios,280, 112, 45, 45);
+		modificar.volverIcono("modificar\r\n","Img\\EditarUsuarioClaro.png","Img\\EditarUsuarioOscuro.png");
+		modificar.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if(listaUsuarios.getSelectedValue()!=null) {
 				if(listaUsuarios.getSelectedValue().equals(Ejecucion.usuario_admin.getUsuario()+" | Administrador")) {
-					JOptionPane.showMessageDialog(pantallaUsuarios,"Es el admin, No se puede eliminar","NO",JOptionPane.ERROR_MESSAGE);					
+					JOptionPane.showMessageDialog(pantallaUsuarios,"Es el admin, No se puede modificar","NO",JOptionPane.ERROR_MESSAGE);					
 				}else {
 					String[] valor = listaUsuarios.getSelectedValue().toString().split(" | ");
 					Usuario temp = new Usuario(valor[0],"");
@@ -64,10 +69,12 @@ public class PantallaUsuarios {
 			}
 		}
 		});
-
+/*
 		Boton eliminarUsuario = new Boton("",pantallaUsuarios,260, 193, 89, 32);
 		eliminarUsuario.volverIcono("volver\r\n","Img\\EliminarClaro.png","Img\\EliminarOscuro.png");
-		
+		*/
+		Boton eliminarUsuario = new Boton("",pantallaUsuarios,280, 170, 45, 45);
+		eliminarUsuario.volverIcono("eliminar\r\n","Img\\EliminarUsuarioClaro.png","Img\\EliminarUsuarioOscuro.png");
 		eliminarUsuario.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
