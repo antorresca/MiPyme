@@ -1,17 +1,21 @@
 package estructuras;
 
-
+@SuppressWarnings("unchecked")
 public abstract class Metodos_pila_cola_arreglo_dinamico<T> {
 	
 	private T[] arreglo;
 	private int tamano;
 	
 	
-	public Metodos_pila_cola_arreglo_dinamico() {
+	
+	public Metodos_pila_cola_arreglo_dinamico(int a) {
 		
-		arreglo = (T[]) new Object[1];
-		
+		arreglo = (T[]) new Object[a];
 		tamano = 0;
+	}
+	
+	public Metodos_pila_cola_arreglo_dinamico() {
+		this(1);
 	}
 	
 	
