@@ -242,7 +242,7 @@ public class PantallaCarrito {
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 				String Fecha = dtf.format(LocalDateTime.now());
 
-				Factura nuevaFactura = new Factura(nombre, Integer.parseInt(cedula), correo, Fecha, PantallaInicio.actual, Ejecucion.compra);
+				Factura nuevaFactura = new Factura(nombre, Integer.valueOf(cedula), correo, Fecha, PantallaInicio.actual, Ejecucion.compra);
 				nuevaFactura.setId(nuevaFactura.getContador());
 				nuevaFactura.setContador(nuevaFactura.getId()+1);
 				Ejecucion.facturas.agregar(nuevaFactura);

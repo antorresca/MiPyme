@@ -79,13 +79,14 @@ public class PantallaInicio {
 					}
 					Thread nuevohilo = new Thread(new Runnable() {
 						public void run() {
-							pantallaInicio.setVisible(false);
+							
 							PantallaMenu.main(null);
+							pantallaInicio.setVisible(false);
+							textoUsuario.setText("");
+							textoPassword.setText("");
 						}
 					});
 					nuevohilo.start();
-					textoUsuario.setText("");
-					textoPassword.setText("");
 				}
 			}});
 
