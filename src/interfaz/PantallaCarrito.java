@@ -232,6 +232,7 @@ public class PantallaCarrito {
 					nombre = JOptionPane.showInputDialog(carrito,"Ingrese nombre del cliente","Nombre cliente");
 				}
 				while(cedula == "") {
+					
 					cedula = JOptionPane.showInputDialog(carrito,"Ingrese cedula del cliente","Cedula cliente");
 				}
 				while(correo == "" || !correo.contains("@") || !correo.contains(".")) {
@@ -241,7 +242,7 @@ public class PantallaCarrito {
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 				String Fecha = dtf.format(LocalDateTime.now());
 
-				Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, Ejecucion.usuario_admin, Ejecucion.compra);
+				Factura nuevaFactura = new Factura(nombre, Integer.parseInt(cedula), correo, Fecha, PantallaInicio.actual, Ejecucion.compra);
 				nuevaFactura.setId(nuevaFactura.getContador());
 				nuevaFactura.setContador(nuevaFactura.getId()+1);
 				Ejecucion.facturas.agregar(nuevaFactura);
@@ -273,7 +274,7 @@ public class PantallaCarrito {
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 				String Fecha = dtf.format(LocalDateTime.now());
 
-				Factura nuevaFactura = new Factura(nombre,cedula, correo, Fecha, Ejecucion.usuario_admin, Ejecucion.compra);
+				Factura nuevaFactura = new Factura(nombre, Integer.parseInt(cedula), correo, Fecha, Ejecucion.usuario_admin, Ejecucion.compra);
 				nuevaFactura.setId(nuevaFactura.getContador());
 				Ejecucion.pedidos.encolar(nuevaFactura);
 				PantallaPedidos.i = PantallaPedidos.i + 1;

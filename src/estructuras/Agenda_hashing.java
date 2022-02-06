@@ -49,7 +49,7 @@ public class Agenda_hashing {
 
 	public void agregar(Factura a) {
 
-		int i = hash(Integer.parseInt(a.getCedula()));
+		int i = hash(a.getCedula());
 
 		if(this.arreglo.obtener(i) == null) {
 
@@ -84,7 +84,7 @@ public class Agenda_hashing {
 				
 				for(int j=0; j < this.arreglo.obtener(i).getTamano(); j++) {
 					
-					if(Integer.parseInt(this.arreglo.obtener(i).encontrar(j).getDato().getCedula()) == x){
+					if(this.arreglo.obtener(i).encontrar(j).getDato().getCedula() == x){
 						return this.arreglo.obtener(i).encontrar(j).getDato();
 					}
 				}
@@ -113,7 +113,7 @@ public class Agenda_hashing {
 				
 				if(this.arreglo.obtener(i) != null) {
 					
-					int t = hash(Integer.parseInt(this.arreglo.obtener(i).encontrar(0).getDato().getCedula()));
+					int t = hash(this.arreglo.obtener(i).encontrar(0).getDato().getCedula());
 					
 					nuevo.adicionar(t, this.arreglo.obtener(i));
 				}

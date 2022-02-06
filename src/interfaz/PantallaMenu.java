@@ -127,25 +127,35 @@ public class PantallaMenu {
 		btn_busqueda_factura.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				/*
 				int n = -1;
 				String entrada;
 
 				while(n == -1) {
 					entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese numero de la factura","Busqueda de Factura");
 					try {
-						n = (entrada==null)?-2:(entrada.equals("Busqueda de Factura"))?-1:Integer.valueOf(entrada);
+						n = (entrada == null)?-2:(entrada.equals("Busqueda de Factura"))?-1:Integer.valueOf(entrada);
 					}catch(Exception ex) {
 						JOptionPane.showMessageDialog(pantallaMenu,"Entrada inv\u00e1lida","Solo n\u00fameros p\u00f3sitivos v\u00e1lidos",JOptionPane.ERROR_MESSAGE);
 					}
 
 				}
+				*/
+				
+				String entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","Busqueda de Factura");
 
-				Factura nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
+				//Factura nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
+				Factura nuevaFactura = Ejecucion.facturas.buscar(Integer.parseInt(entrada));
+				
 				if(nuevaFactura!=null) {
+					
 					pantallaMenu.desactivar();
 					VerFactura.main("menu",nuevaFactura);
 				}else {
-					if(n!=-2)JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","ID no v\u00e1lido",JOptionPane.ERROR_MESSAGE);
+					//if(n!=-2)JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","ID no v\u00e1lido",JOptionPane.ERROR_MESSAGE);
+					
+					JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","Error",JOptionPane.ERROR_MESSAGE);
 				}
 
 			}

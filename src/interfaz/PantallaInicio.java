@@ -15,6 +15,7 @@ import logica.Ejecucion;
 public class PantallaInicio {
 	
 	public static CampoL textoUsuario;
+	public static Usuario actual;
 	
 	public static void main(String[] args) {
 		Ventana pantallaInicio = new Ventana("Mi PYME");
@@ -55,7 +56,7 @@ public class PantallaInicio {
 
 				else if (textoPassword.getText().equals("")) {
 
-					JOptionPane.showMessageDialog(pantallaInicio,"Ingrese la contrasena","¡OJO!",JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(pantallaInicio,"Ingrese la contraseña","¡OJO!",JOptionPane.WARNING_MESSAGE);
 				}
 
 				else if(!"".equals(textoUsuario.getText()) && !"".equals(textoPassword.getText())) {
@@ -66,26 +67,14 @@ public class PantallaInicio {
 					//system.out.print(comparar.getContrasena()+ comparar.getUsuario());
 					Nodo usuarioEncontrado = Ejecucion.usuarios.encontrar(comparar);
 					if((usuarioEncontrado!=null) && ((Usuario)usuarioEncontrado.getDato()).getContrasena().equals(textoPassword.getText())) {
-
+						
+						actual = (Usuario) usuarioEncontrado.getDato();
 						pantallaInicio.setVisible(false);
 						PantallaMenu.flag = ((Usuario)usuarioEncontrado.getDato()).isAdmin();
 						PantallaMenu.main(null);
 						compuerta_filtro = false;
 
 					}
-
-
-/*						for(int i=0; i < usuarios.getTamano(); i++) {
-
-							if(usuarios.encontrar(i).getDato().getUsuario().equals(textoUsuario.getText()) && usuarios.encontrar(i).getDato().getContrasena().equals(textoPassword.getText())) {
-
-								pantallaInicio.setVisible(false);
-								pantallaMenu.setVisible(true);
-								compuerta_filtro = false;
-								break;
-							}
-						}*/
-					
 
 					if(compuerta_filtro) {
 

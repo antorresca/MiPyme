@@ -19,7 +19,8 @@ public class Ejecucion {
 	public static Color ModoOscuro = new Color(20,31,59);
 	public static Color Tema = ModoClaro;
 	public static Arbol_avl<Producto> inventario = new Arbol_avl<Producto>();
-	public static Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
+	//public static Lista_ref_simple<Factura> facturas = new Lista_ref_simple<Factura>();
+	public static Agenda_hashing facturas = new Agenda_hashing();
 	public static Cola_ref_simple<Factura> pedidos = new Cola_ref_simple<Factura>();
 	public static Lista_ref_simple<Producto> compra = new Lista_ref_simple<Producto>();
 	//public static Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>(); 
@@ -76,7 +77,7 @@ public class Ejecucion {
 
 		//Ventana emergente para guardar un usuario o contraseña
 
-		String cadena_texto = JOptionPane.showInputDialog(La_ventana,"mesaje");
+		String cadena_texto = JOptionPane.showInputDialog(La_ventana,"mesaje", "titulo");
 
 		//Botones
 

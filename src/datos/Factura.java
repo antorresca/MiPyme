@@ -6,7 +6,7 @@ public class Factura {
 
 	private int id;
 	private String nombre;
-	private String cedula;
+	private long cedula;
 	private String correo;
 	public String fecha;
 	public Usuario vendedor;
@@ -14,7 +14,7 @@ public class Factura {
 	private static int contador = 0;
 	private long precio = 0;
 
-	public Factura(String nombre_cliente, String cedula_cliente, String correo_cliente, String fecha_factura
+	public Factura(String nombre_cliente, long cedula_cliente, String correo_cliente, String fecha_factura
 			, Usuario vendedor2, Lista_ref_simple<Producto> productos2){
 		
 		cedula = cedula_cliente;
@@ -28,12 +28,12 @@ public class Factura {
 	}
 	
 	
-	public String getCedula() {
+	public long getCedula() {
 		return cedula;
 	}
 
 
-	public void setCedula(String cedula) {
+	public void setCedula(long cedula) {
 		this.cedula = cedula;
 	}
 

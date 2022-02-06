@@ -33,11 +33,11 @@ public class VerFactura {
 		Texto lblNewLabel_2 = new Texto("------------------------------------------------",Factura,0, 147, 252, 14);
 		Texto lblNewLabel_2_1 = new Texto("----------------------------------------------",Factura,0, 379, 252, 14);
 		Texto lblNewLabel_3 = new Texto("Total a Pagar:",Factura,0, 400, 240, 14);
-		Texto tituloNombre = new Texto("Nombre",Factura,10,400,50,14);
-		Texto tituloCedula = new Texto("Cedula",Factura,10,440,50,14);
-		Texto tituloCorreo = new Texto("Correo",Factura,10,480,50,14);
+		Texto tituloNombre = new Texto("Nombre:",Factura,10,400,50,14);
+		Texto tituloCedula = new Texto("Cedula:",Factura,10,440,50,14);
+		Texto tituloCorreo = new Texto("Correo:",Factura,10,480,50,14);
 		Texto separador = new Texto("----------------------------------------------",Factura,0, 520, 252, 14);
-		Texto tituloCajero = new Texto("Cajero:",Factura,10,540,50,14);
+		Texto tituloCajero = new Texto("Cajero: ",Factura,10,540,50,14);
 		Texto tituloFecha = new Texto("Fecha:",Factura,10,560,50,14);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		JList listProductos = new JList();
@@ -57,7 +57,7 @@ public class VerFactura {
 		
 		precioProductos.setText(String.valueOf(nuevaFactura.getPrecio()));
 		nombreCliente.setText(nuevaFactura.getNombre());
-		cedulaCliente.setText(nuevaFactura.getCedula());
+		cedulaCliente.setText(""+nuevaFactura.getCedula());
 		correoCliente.setText(nuevaFactura.getCorreo());
 		nombreCajero.setText(nuevaFactura.getVendedor().getUsuario());
 		fechaFactura.setText(nuevaFactura.getFecha());

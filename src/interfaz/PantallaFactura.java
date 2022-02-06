@@ -23,7 +23,7 @@ public class PantallaFactura {
 		int n = -1;
 		String entrada;
 		
-		Ventana pantalla_factura = new Ventana("Factura" );
+		Ventana pantalla_factura = new Ventana("Factura");
 		pantalla_factura.desactivar();
 		if(!flag) {
 			while(n == -1) {
@@ -39,11 +39,21 @@ public class PantallaFactura {
 		try {
 			
 			Factura nuevaFactura;
-			if(!flag) nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
-			else nuevaFactura = Ejecucion.pedidos.getCabeza().getDato();
+			//if(!flag) nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
+			
+			if(!flag) { 
+				nuevaFactura = Ejecucion.facturas.buscar(n);
+			}else {
+				nuevaFactura = Ejecucion.pedidos.getCabeza().getDato();
+			}
+			
 			pantalla_factura.desactivar();
-			if(!flag)VerFactura.main("menu",nuevaFactura);
-			else VerFactura.main("pedidos",nuevaFactura);
+			
+			if(!flag) {
+				VerFactura.main("menu",nuevaFactura);
+			}else {
+				VerFactura.main("pedidos",nuevaFactura);
+			}
 			
 		}catch(Exception exp) {
 			pantalla_factura.desactivar();
