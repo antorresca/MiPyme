@@ -50,7 +50,7 @@ public class PantallaInicio {
 					}
 				};
 				Thread hilo = new Thread (mirun);
-			      hilo.start();
+			      //hilo.start();
 
 				if (textoPassword.getText().equals("") && textoUsuario.getText().equals("")) {
 
@@ -79,6 +79,8 @@ public class PantallaInicio {
 						actual = (Usuario) usuarioEncontrado.getDato();
 						PantallaMenu.flag = ((Usuario)usuarioEncontrado.getDato()).isAdmin();
 						compuerta_filtro = false;
+						pantallaInicio.setVisible(false);
+						PantallaMenu.main(null);
 
 					}
 
