@@ -104,7 +104,6 @@ public class Ejecucion {
 		
 
 		//--------------------------------------------EJECUCIÓN DE INTERFAZ-----------------------------------------------------------
-
 		PantallaInicio.main(null);
 
 			

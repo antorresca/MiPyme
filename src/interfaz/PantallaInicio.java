@@ -43,6 +43,14 @@ public class PantallaInicio {
 		btningreso.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Runnable mirun = new Runnable() {
+					public void run() {
+						pantallaInicio.setVisible(false);
+						PantallaMenu.main(null);
+					}
+				};
+				Thread hilo = new Thread (mirun);
+			      hilo.start();
 
 				if (textoPassword.getText().equals("") && textoUsuario.getText().equals("")) {
 
@@ -69,9 +77,7 @@ public class PantallaInicio {
 					if((usuarioEncontrado!=null) && ((Usuario)usuarioEncontrado.getDato()).getContrasena().equals(textoPassword.getText())) {
 						
 						actual = (Usuario) usuarioEncontrado.getDato();
-						pantallaInicio.setVisible(false);
 						PantallaMenu.flag = ((Usuario)usuarioEncontrado.getDato()).isAdmin();
-						PantallaMenu.main(null);
 						compuerta_filtro = false;
 
 					}

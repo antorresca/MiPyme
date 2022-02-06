@@ -15,17 +15,17 @@ public class VerFactura {
 
 	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	public static void main(String anterior,Factura nuevaFactura) {
-		
+
 		DefaultListModel modelo3 = new DefaultListModel();
 		for(int i = 0;i<nuevaFactura.productos.getTamano();i++) {
 			modelo3.addElement(nuevaFactura.productos.encontrar(i).getDato().imprimir());
 		}
-		
+
 		Ventana Factura = new Ventana("Factura");
 		Factura.setBounds(100, 100, 268, 600);
 		Boton regresar = new Boton("",Factura,5, 5, 30,30);
 		regresar.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
-		
+
 		Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
 		Titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		Texto encabezado = new Texto("Factura de compra # ",Factura,0, 126, 252, 14);
@@ -54,7 +54,7 @@ public class VerFactura {
 		Texto correoCliente = new Texto("<Correo Cliente>",Factura,10,500, 143,14);
 		Texto nombreCajero = new Texto("<Cajero>",Factura,50,540, 143,14);
 		Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);
-		
+
 		precioProductos.setText(String.valueOf(nuevaFactura.getPrecio()));
 		nombreCliente.setText(nuevaFactura.getNombre());
 		cedulaCliente.setText(""+nuevaFactura.getCedula());
@@ -62,8 +62,8 @@ public class VerFactura {
 		nombreCajero.setText(nuevaFactura.getVendedor().getUsuario());
 		fechaFactura.setText(nuevaFactura.getFecha());
 		encabezado.setText(encabezado.getText()+String.valueOf(nuevaFactura.getId()));
-		
-		
+
+
 		regresar.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -86,7 +86,7 @@ public class VerFactura {
 				else if(anterior.toLowerCase().contains("pedidos")) PantallaPedidos.main(null);*/
 			}
 		});
-		
+
 	}
-	
+
 }

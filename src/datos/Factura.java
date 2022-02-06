@@ -11,7 +11,7 @@ public class Factura {
 	public String fecha;
 	public Usuario vendedor;
 	public Lista_ref_simple<Producto> productos;
-	private static int contador = 0;
+	private static int contador = 1;
 	private long precio = 0;
 
 	public Factura(String nombre_cliente, long cedula_cliente, String correo_cliente, String fecha_factura
