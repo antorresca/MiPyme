@@ -43,52 +43,47 @@ public class PantallaInicio {
 		btningreso.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Runnable mirun = new Runnable() {
-					public void run() {
-						pantallaInicio.setVisible(false);
-						PantallaMenu.main(null);
-					}
-				};
-				Thread hilo = new Thread (mirun);
-			      //hilo.start();
-
-				if (textoPassword.getText().equals("") && textoUsuario.getText().equals("")) {
+				String usuario = textoUsuario.getText();
+				String password = textoPassword.getText();
+				System.out.print(password);
+				if (password.equals("") && usuario.equals("")) {
 
 					JOptionPane.showMessageDialog(pantallaInicio,"Por favor, llene los espacios en blanco","¡OJO!",JOptionPane.WARNING_MESSAGE);
 				}
 
-				else if(textoUsuario.getText().equals("")) {
+				else if(usuario.equals("")) {
 
 					JOptionPane.showMessageDialog(pantallaInicio,"Por favor ingrese su usuario","¡OJO!",JOptionPane.WARNING_MESSAGE);
 				}
 
-				else if (textoPassword.getText().equals("")) {
+				else if (password.equals("")) {
 
 					JOptionPane.showMessageDialog(pantallaInicio,"Ingrese la contraseña","¡OJO!",JOptionPane.WARNING_MESSAGE);
 				}
 
-				else if(!"".equals(textoUsuario.getText()) && !"".equals(textoPassword.getText())) {
+				else if(!"".equals(usuario) && !"".equals(password)) {
 
-					boolean compuerta_filtro = true;
-
-					Usuario comparar = new Usuario(textoUsuario.getText(),textoPassword.getText());
+					Usuario comparar = new Usuario(usuario,password);
 					//system.out.print(comparar.getContrasena()+ comparar.getUsuario());
 					Nodo usuarioEncontrado = Ejecucion.usuarios.encontrar(comparar);
+					//Nodo usuarioEncontrado = Ejecucion.usuarios.encontrar_por_nombre(textoUsuario.getText());
 					if((usuarioEncontrado!=null) && ((Usuario)usuarioEncontrado.getDato()).getContrasena().equals(textoPassword.getText())) {
 						
 						actual = (Usuario) usuarioEncontrado.getDato();
 						PantallaMenu.flag = ((Usuario)usuarioEncontrado.getDato()).isAdmin();
-						compuerta_filtro = false;
-						pantallaInicio.setVisible(false);
-						PantallaMenu.main(null);
+						//pantallaInicio.setVisible(false);
+						//PantallaMenu.main(null);
 
-					}
-
-					if(compuerta_filtro) {
-
+					}else{
 						JOptionPane.showMessageDialog(pantallaInicio,"Usuario o clave erronea","Error",JOptionPane.ERROR_MESSAGE);
 					}
-
+					Thread nuevohilo = new Thread(new Runnable() {
+						public void run() {
+							pantallaInicio.setVisible(false);
+							PantallaMenu.main(null);
+						}
+					});
+					nuevohilo.start();
 					textoUsuario.setText("");
 					textoPassword.setText("");
 				}

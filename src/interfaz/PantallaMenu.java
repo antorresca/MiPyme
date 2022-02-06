@@ -182,21 +182,6 @@ public class PantallaMenu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				/*
-				int n = -1;
-				String entrada;
-
-				while(n == -1) {
-					entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese numero de la factura","Busqueda de Factura");
-					try {
-						n = (entrada == null)?-2:(entrada.equals("Busqueda de Factura"))?-1:Integer.valueOf(entrada);
-					}catch(Exception ex) {
-						JOptionPane.showMessageDialog(pantallaMenu,"Entrada inv\u00e1lida","Solo n\u00fameros p\u00f3sitivos v\u00e1lidos",JOptionPane.ERROR_MESSAGE);
-					}
-
-				}
-				 */
-
 				String entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","Busqueda de Factura");
 
 				//Factura nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
