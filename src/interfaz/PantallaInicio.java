@@ -45,7 +45,6 @@ public class PantallaInicio {
 			public void mouseClicked(MouseEvent e) {
 				String usuario = textoUsuario.getText();
 				String password = textoPassword.getText();
-				System.out.print(password);
 				if (password.equals("") && usuario.equals("")) {
 
 					JOptionPane.showMessageDialog(pantallaInicio,"Por favor, llene los espacios en blanco","¡OJO!",JOptionPane.WARNING_MESSAGE);
@@ -71,22 +70,15 @@ public class PantallaInicio {
 						
 						actual = (Usuario) usuarioEncontrado.getDato();
 						PantallaMenu.flag = ((Usuario)usuarioEncontrado.getDato()).isAdmin();
-						//pantallaInicio.setVisible(false);
-						//PantallaMenu.main(null);
+						pantallaInicio.setVisible(false);
+						PantallaMenu.main(null);
 
 					}else{
 						JOptionPane.showMessageDialog(pantallaInicio,"Usuario o clave erronea","Error",JOptionPane.ERROR_MESSAGE);
 					}
-					Thread nuevohilo = new Thread(new Runnable() {
-						public void run() {
 							
-							PantallaMenu.main(null);
-							pantallaInicio.setVisible(false);
-							textoUsuario.setText("");
-							textoPassword.setText("");
-						}
-					});
-					nuevohilo.start();
+					textoUsuario.setText("");
+					textoPassword.setText("");
 				}
 			}});
 

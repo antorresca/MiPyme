@@ -64,8 +64,9 @@ public class PantallaTarea {
 		pantallaTarea.getContenedor().add(scroll2);
 		
 		
-		Boton mas = new Boton("+", pantallaTarea, 190, 155, 50, 50);
-
+		Boton mas = new Boton("", pantallaTarea, 190, 155, 50, 50);
+		mas.volverIcono("añadir\r\n","Img\\MasClaro.png","Img\\MasOscuro.png");
+		
 		mas.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -82,7 +83,8 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton menos = new Boton("-", pantallaTarea, 190+70, 155, 50, 50);
+		Boton menos = new Boton("", pantallaTarea, 190+70, 155, 50, 50);
+		menos.volverIcono("quitar\r\n","Img\\MenosClaro.png","Img\\MenosOscuro.png",menos.getWidth(),menos.getHeight()/4);
 
 		menos.addMouseListener(new MouseAdapter() {
 		@Override
@@ -101,7 +103,9 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton detalles = new Boton("Detalles", pantallaTarea, 360, 100, 100, 50);
+		Boton detalles = new Boton("", pantallaTarea, 360, 100, 100, 50);
+		detalles.volverIcono("Detalle\r\n");
+		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
 
 		detalles.addMouseListener(new MouseAdapter() {
 		@Override
@@ -141,7 +145,9 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton agregar_tarea = new Boton("Agregar Tarea", pantallaTarea, 360-12, 150+25, 125, 50);
+		Boton agregar_tarea = new Boton("", pantallaTarea, 360-12, 150+25, 125, 50);
+		agregar_tarea.volverIcono("Nueva Tarea\r\n");
+		agregar_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AgregarO:PantallaMenu.AgregarC);
 
 		agregar_tarea.addMouseListener(new MouseAdapter() {
 		@Override
@@ -179,7 +185,9 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton atras_tarea = new Boton("Atrás", pantallaTarea2, 250, 250, 100, 50);
+		Boton atras_tarea = new Boton("", pantallaTarea2, 250, 250, 35,35);
+		atras_tarea.volverIcono("Regresar");
+		atras_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
 
 		atras_tarea.addMouseListener(new MouseAdapter() {
 		@Override
@@ -194,8 +202,11 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton atras2 = new Boton("Atrás", pantallaTarea3, 300, 250, 100, 50);
-
+		Boton atras2 = new Boton("", pantallaTarea3, 300, 250, 35,35);
+		
+		atras2.volverIcono("Regresar");
+		atras2.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
+		
 		atras2.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -209,8 +220,11 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton atras_menu = new Boton("Atrás", pantallaTarea,  360, 150+100, 100, 50);
-
+		Boton atras_menu = new Boton("", pantallaTarea,  360, 150+100,35,35);
+		atras_menu.volverIcono("Regresar");
+		atras_menu.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
+		
+		
 		atras_menu.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {

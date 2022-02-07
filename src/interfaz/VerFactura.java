@@ -23,7 +23,7 @@ public class VerFactura {
 
 		Ventana Factura = new Ventana("Factura");
 		Factura.setBounds(100, 100, 268, 600);
-		Boton regresar = new Boton("",Factura,5, 5, 30,30);
+		Boton regresar = new Boton("",Factura,5, 5, 35,35);
 		regresar.volverIcono("volver\r\n");
 		regresar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
 
