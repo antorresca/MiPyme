@@ -2,6 +2,8 @@ package interfaz;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -178,7 +180,10 @@ public class PantallaTarea {
 		public void mouseClicked(MouseEvent e) {
 		///////////////////////////////////////////////////////////////////////
             
-			modelo.addElement(new Tarea(campo_titulo.getText(), campo_descripcion.getText(), PantallaInicio.actual));
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+			String fecha = dtf.format(LocalDateTime.now());
+			
+			modelo.addElement(new Tarea(campo_titulo.getText(), campo_descripcion.getText(), PantallaInicio.actual, fecha));
 			
 			pantallaTarea.getContenedor().activar();
 			pantallaTarea2.desactivar();
