@@ -207,22 +207,9 @@ public class PantallaMenu {
 		btn_busqueda_productos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {	
-				int n = -1;
-				while(n == -1) {
-					String entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese id del producto","Busqueda de Productos");
-					try {
-						n = (entrada==null)?-2:(entrada.equals("Busqueda de Productos"))?-1:Integer.valueOf(entrada);
-					}catch(Exception except) {
-						JOptionPane.showMessageDialog(pantallaMenu,"Entrada invalida","Solo numeros validos",JOptionPane.ERROR_MESSAGE);
-					}
-				}
-				Producto productoDetalles = Ejecucion.inventario.encontrar( new Producto(n)).getDato();
-				if(productoDetalles!=null) {
-					pantallaMenu.desactivar();
-					PantallaDetalles.main("menu",productoDetalles);
-				}else {
-					JOptionPane.showMessageDialog(pantallaMenu,"Producto no encontrado","ID no v\u00e1lido",JOptionPane.ERROR_MESSAGE);
-				}
+				
+				PantallaTarea.main(args);
+				pantallaMenu.desactivar();
 			}
 		});
 
@@ -244,25 +231,26 @@ public class PantallaMenu {
 		btn_busqueda_factura.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String entrada = "";
+				String entrada;
 				
-				while(entrada==""){
-					entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","numer");
-				}
-
+				entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","jelou");
 				
+				try {
+					
+					Factura nuevaFactura = Ejecucion.facturas.buscar(Integer.parseInt(entrada));
+					
+					if(nuevaFactura!=null) {
 
-				//Factura nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
-				Factura nuevaFactura = Ejecucion.facturas.buscar(Integer.parseInt(entrada));
+						pantallaMenu.desactivar();
+						VerFactura.main("menu",nuevaFactura);
+					}else {
 
-				if(nuevaFactura!=null) {
-
-					pantallaMenu.desactivar();
-					VerFactura.main("menu",nuevaFactura);
-				}else {
-					//if(n!=-2)JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","ID no v\u00e1lido",JOptionPane.ERROR_MESSAGE);
-
-					JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","Error",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+				} catch(Exception exc){
+					
+					JOptionPane.showMessageDialog(pantallaMenu,"Valor introducido no valido","Error",JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
