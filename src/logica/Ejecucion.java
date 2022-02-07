@@ -1,9 +1,11 @@
 package logica;
 
 import java.awt.Color;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import interfaz.PantallaCargando;
 import datos.Factura;
 import datos.Producto;
 import datos.Usuario;
@@ -28,6 +30,22 @@ public class Ejecucion {
 	public static Arbol_avl<Usuario> usuarios = new Arbol_avl<Usuario>(); 
 	//-------------------------------------------------------ICONOS------------------------------------------------
 
+	static PantallaCargando screen;
+
+	  public static void Cargando() {
+	    inicioPantalla();
+		screen.velocidadDeCarga();
+	  }
+
+	  private static void inicioPantalla() {
+	    ImageIcon myImage = new ImageIcon(new ImageIcon(
+	    		"Img\\LogoOscuro.png").getImage().getScaledInstance( 300, 200, Image.SCALE_AREA_AVERAGING));
+	    screen = new PantallaCargando(myImage);
+	    screen.setLocationRelativeTo(null);
+	    screen.setProgresoMax(100);
+	    screen.setVisible(true);
+	  }
+	
 	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
 	public static void main(String[] args) throws InterruptedException {
 		Thread hilo = new Thread(new Runnable() {
@@ -36,7 +54,7 @@ public class Ejecucion {
 			}
 		});
 		hilo.start();
-		Thread.sleep(5000);	
+		Cargando();	
 		usuario_admin.setAdmin(true);
 		usuarios.insertar(usuario_admin);
 		usuarios.insertar(new Usuario("A","1", true));

@@ -195,7 +195,7 @@ public class PantallaMenu {
 		Icon iconClaro = new ImageIcon(claro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
 		ImageIcon oscuro = new ImageIcon("Img\\ModoOscuro.png");
 		Icon iconOscuro = new ImageIcon(oscuro.getImage().getScaledInstance(btnTema.getWidth()/2,btnTema.getHeight()/2, Image.SCALE_DEFAULT));
-		btnTema.setIcon(iconClaro);
+		btnTema.setIcon((temaFlag)?iconClaro:iconOscuro);
 		btnTema.setBackground(null);
 		btnTema.setBorderPainted(false);
 		btnTema.setContentAreaFilled(false);
