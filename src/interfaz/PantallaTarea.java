@@ -64,7 +64,7 @@ public class PantallaTarea {
 		pantallaTarea.getContenedor().add(scroll2);
 		
 		
-		Boton mas = new Boton("+", pantallaTarea, 360+25, 150-120, 50, 50);
+		Boton mas = new Boton("+", pantallaTarea, 190, 155, 50, 50);
 
 		mas.addMouseListener(new MouseAdapter() {
 		@Override
@@ -82,7 +82,7 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton menos = new Boton("-", pantallaTarea, 360+25, 150-40, 50, 50);
+		Boton menos = new Boton("-", pantallaTarea, 190+70, 155, 50, 50);
 
 		menos.addMouseListener(new MouseAdapter() {
 		@Override
@@ -101,7 +101,7 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton detalles = new Boton("Detalles", pantallaTarea, 360, 150+30, 100, 50);
+		Boton detalles = new Boton("Detalles", pantallaTarea, 360, 100, 100, 50);
 
 		detalles.addMouseListener(new MouseAdapter() {
 		@Override
@@ -141,7 +141,7 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton agregar_tarea = new Boton("Agregar Tarea", pantallaTarea, 360-12, 150+100, 125, 50);
+		Boton agregar_tarea = new Boton("Agregar Tarea", pantallaTarea, 360-12, 150+25, 125, 50);
 
 		agregar_tarea.addMouseListener(new MouseAdapter() {
 		@Override
@@ -203,6 +203,21 @@ public class PantallaTarea {
              
 			pantallaTarea.activar();
 			pantallaTarea3.desactivar();
+		    //lo que va a hacer el botón
+
+		///////////////////////////////////////////////////////////////////////			
+		}
+		});
+		
+		Boton atras_menu = new Boton("Atrás", pantallaTarea,  360, 150+100, 100, 50);
+
+		atras_menu.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		///////////////////////////////////////////////////////////////////////
+			
+			PantallaMenu.main(args);
+			pantallaTarea.desactivar();
 		    //lo que va a hacer el botón
 
 		///////////////////////////////////////////////////////////////////////			
