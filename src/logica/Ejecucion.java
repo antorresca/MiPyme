@@ -32,9 +32,7 @@ public class Ejecucion {
 	public static void main(String[] args) throws InterruptedException {
 		Thread hilo = new Thread(new Runnable() {
 			public void run() {
-				long inicial = System.currentTimeMillis();
 				PantallaMenu.cargar();
-				System.out.print(System.currentTimeMillis()-inicial);
 			}
 		});
 		hilo.start();

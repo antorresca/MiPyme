@@ -60,7 +60,6 @@ public class PantallaMenu {
 	public static ImageIcon QUsuarioC;
 
 	public static void cargar() {
-		long inicial = System.currentTimeMillis();
 		cerrarO = new ImageIcon(new ImageIcon("Img\\CerrarOscuro.png").getImage().getScaledInstance( 300, 60, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		carritoO = new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		busqueda_facturaO =  new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png").getImage().getScaledInstance(75,75, Image.SCALE_AREA_AVERAGING));
@@ -77,7 +76,6 @@ public class PantallaMenu {
 		EUsuarioO = new ImageIcon(new ImageIcon("Img\\ModificarUsuarioOscuro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
 		QUsuarioO = new ImageIcon(new ImageIcon("Img\\EliminarUsuarioOscuro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING)); 
 		
-		System.out.print(System.currentTimeMillis()-inicial);
 		
 		cerrarC = new ImageIcon(new ImageIcon("Img\\CerrarClaro.png").getImage().getScaledInstance( 300, 60, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		carritoC = new ImageIcon(new ImageIcon("Img\\CarritoClaro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
