@@ -18,7 +18,6 @@ import logica.Ejecucion;
 public class Ventana extends JFrame {
 	
 	private Contenedor contenedor;
-	//private JPalen contenedor;
 	private static int ancho = 500;
 	private static int largo = 375;
 	
@@ -29,8 +28,6 @@ public class Ventana extends JFrame {
 		Toolkit herramienta = Toolkit.getDefaultToolkit();
 		Dimension pantalla_dimension = herramienta.getScreenSize();
 		
-		//contenedor = new JPanel(null);
-		//add(contenedor);
 		contenedor = new Contenedor(this);
 		
 		contenedor.setBackground(Ejecucion.Tema);
@@ -40,7 +37,7 @@ public class Ventana extends JFrame {
 		setBounds(pantalla_dimension.width/2,pantalla_dimension.height/2, ancho, largo);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		//setResizable(false);
+		setResizable(false);
 		
 		Ventana n = this;
 		
@@ -85,12 +82,4 @@ public class Ventana extends JFrame {
 	public void setContenedor(Contenedor contenedor) {
 		this.contenedor = contenedor;
 	}
-
-	
-	
-// Esto es una prueba 
-	
-
-	
-
 }
