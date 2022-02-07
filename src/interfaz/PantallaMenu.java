@@ -40,6 +40,8 @@ public class PantallaMenu {
 	private static ImageIcon busqueda_productosC;		
 	private static ImageIcon usuarioC;		
 	private static ImageIcon usuarioO;	
+	private static ImageIcon cerrarC;		
+	private static ImageIcon cerrarO;	
 	public static ImageIcon DetallesO;
 	public static ImageIcon DetallesC;
 	public static ImageIcon PagoO;
@@ -59,6 +61,7 @@ public class PantallaMenu {
 
 	public static void cargar() {
 		long inicial = System.currentTimeMillis();
+		cerrarO = new ImageIcon(new ImageIcon("Img\\CerrarOscuro.png").getImage().getScaledInstance( 300, 60, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		carritoO = new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		busqueda_facturaO =  new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png").getImage().getScaledInstance(75,75, Image.SCALE_AREA_AVERAGING));
 		pedidosO = new ImageIcon(new ImageIcon("Img\\PedidosOscuro.png").getImage().getScaledInstance(80,75, Image.SCALE_AREA_AVERAGING));
@@ -76,6 +79,7 @@ public class PantallaMenu {
 		
 		System.out.print(System.currentTimeMillis()-inicial);
 		
+		cerrarC = new ImageIcon(new ImageIcon("Img\\CerrarClaro.png").getImage().getScaledInstance( 300, 60, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		carritoC = new ImageIcon(new ImageIcon("Img\\CarritoClaro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		busqueda_facturaC =  new ImageIcon(new ImageIcon("Img\\FacturaClaro.png").getImage().getScaledInstance(75,75, Image.SCALE_AREA_AVERAGING));
 		pedidosC = new ImageIcon(new ImageIcon("Img\\PedidosClaro.png").getImage().getScaledInstance(80,75, Image.SCALE_AREA_AVERAGING));
@@ -131,7 +135,8 @@ public class PantallaMenu {
 
 		Boton btn_cerrar_sesion = new Boton("", pantallaMenu, 45+55, 240+25, 300, 60);
 		btn_cerrar_sesion.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btn_cerrar_sesion.volverIcono("Cerrar Sesion\r\n","Img\\CerrarClaro","Img\\CerrarOscuro");
+		btn_cerrar_sesion.volverIcono("Cerrar Sesion\r\n");
+		btn_cerrar_sesion.setIcon((!temaFlag)?cerrarO:cerrarC);
 
 		Boton btnCarrito = new Boton("",pantallaMenu,25+40,70,100,75);
 		btnCarrito.setBackground(null);
@@ -323,14 +328,14 @@ public class PantallaMenu {
 
 
 				pantallaMenu.getContenedor().setBackground(Ejecucion.Tema); //Cambio de color de fondo
-
+				
+				btn_cerrar_sesion.setIcon((temaFlag)?cerrarO:cerrarC);
 				btnCarrito.setIcon((temaFlag)?carritoO:carritoC);
 				boton_usuario.setIcon((temaFlag)?usuarioO:usuarioC);
 				btn_inventario.setIcon((temaFlag)?inventarioO:inventarioC);
 				btn_busqueda_productos.setIcon((temaFlag)?busqueda_productosO:busqueda_productosC);
 				btn_pedidos.setIcon((temaFlag)?pedidosO:pedidosC);
 				btn_busqueda_factura.setIcon((temaFlag)?busqueda_facturaO:busqueda_facturaC);
-
 				temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
 
 			}
