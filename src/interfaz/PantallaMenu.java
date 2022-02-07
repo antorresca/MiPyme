@@ -239,24 +239,28 @@ public class PantallaMenu {
 				
 				entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","Cedula");
 				
-				try {
+				System.out.println(entrada);
+				
+				if(entrada != null) {
 					
-					Factura nuevaFactura = Ejecucion.facturas.buscar(Integer.parseInt(entrada));
-					
-					if(nuevaFactura!=null) {
+					try {
 
-						pantallaMenu.desactivar();
-						VerFactura.main("menu",nuevaFactura);
-					}else {
+						Factura nuevaFactura = Ejecucion.facturas.buscar(Integer.parseInt(entrada));
 
-						JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","Error",JOptionPane.ERROR_MESSAGE);
+						if(nuevaFactura!=null) {
+
+							pantallaMenu.desactivar();
+							VerFactura.main("menu",nuevaFactura);
+						}else {
+
+							JOptionPane.showMessageDialog(pantallaMenu,"Factura no encontrada","Mensaje",JOptionPane.INFORMATION_MESSAGE);
+						}
+
+					} catch(Exception exc){
+
+						JOptionPane.showMessageDialog(pantallaMenu,"Valor introducido no valido","Error",JOptionPane.ERROR_MESSAGE);
 					}
-					
-				} catch(Exception exc){
-					
-					JOptionPane.showMessageDialog(pantallaMenu,"Valor introducido no valido","Error",JOptionPane.ERROR_MESSAGE);
 				}
-
 			}
 		});
 
