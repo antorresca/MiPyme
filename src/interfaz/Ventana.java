@@ -1,6 +1,5 @@
 package interfaz;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
@@ -11,7 +10,6 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.text.AttributeSet.ColorAttribute;
 
 import logica.Ejecucion;
 
@@ -19,20 +17,22 @@ import logica.Ejecucion;
 
 public class Ventana extends JFrame {
 	
-	private JPanel contenedor;
+	private Contenedor contenedor;
+	//private JPalen contenedor;
 	private static int ancho = 500;
 	private static int largo = 375;
 	
-	public Ventana(String texto, boolean puerta){
+	public Ventana(String texto){
 		
 		super(texto);
 		
 		Toolkit herramienta = Toolkit.getDefaultToolkit();
 		Dimension pantalla_dimension = herramienta.getScreenSize();
 		
-		contenedor = new JPanel(null);
-		add(contenedor);
-		contenedor.setVisible(puerta);
+		//contenedor = new JPanel(null);
+		//add(contenedor);
+		contenedor = new Contenedor(this);
+		
 		contenedor.setBackground(Ejecucion.Tema);
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -67,11 +67,6 @@ public class Ventana extends JFrame {
         
 	}
 	
-    public Ventana(String texto){
-        
-		this(texto, true);
-	}
-	
     public void activar() {
     	
     	this.setVisible(true);
@@ -83,11 +78,11 @@ public class Ventana extends JFrame {
 		this.setVisible(false);	
 	}
 
-	public JPanel getContenedor() {
+	public Contenedor getContenedor() {
 		return contenedor;
 	}
 
-	public void setContenedor(JPanel contenedor) {
+	public void setContenedor(Contenedor contenedor) {
 		this.contenedor = contenedor;
 	}
 
