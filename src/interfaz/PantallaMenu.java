@@ -237,7 +237,7 @@ public class PantallaMenu {
 			public void mouseClicked(MouseEvent e) {
 				String entrada;
 				
-				entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","jelou");
+				entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","Cedula");
 				
 				try {
 					

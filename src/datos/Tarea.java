@@ -39,7 +39,7 @@ public class Tarea {
 
 	@Override
 	public String toString() {
-		return this.titulo+" | "+"no hay mas";
+		return this.titulo;
 	}
 	
 	
