@@ -21,15 +21,16 @@ public class PantallaFactura {
 	public static void main(String[] args) {
 		
 		int n = -1;
-		String entrada;
+		String entrada = "";
 		
 		Ventana pantalla_factura = new Ventana("Factura");
 		pantalla_factura.desactivar();
 		if(!flag) {
 			while(n == -1) {
+				System.out.println(entrada);
 				entrada = JOptionPane.showInputDialog(pantalla_factura,"Ingrese numero de la factura","Busqueda de Factura");
 				try {
-					n = (entrada==null)?-2:(entrada.equals("Busqueda de Factura"))?-1:Integer.valueOf(entrada);
+					n = (entrada=="")?-2:(entrada.equals("Busqueda de Factura"))?-1:Integer.valueOf(entrada);
 				}catch(Exception e) {
 					JOptionPane.showMessageDialog(pantalla_factura,"Entrada invalida","Solo numeros validos",JOptionPane.ERROR_MESSAGE);
 				}

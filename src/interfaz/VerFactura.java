@@ -24,7 +24,8 @@ public class VerFactura {
 		Ventana Factura = new Ventana("Factura");
 		Factura.setBounds(100, 100, 268, 600);
 		Boton regresar = new Boton("",Factura,5, 5, 30,30);
-		regresar.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
+		regresar.volverIcono("volver\r\n");
+		regresar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
 
 		Texto Titulo = new Texto("Mi Pyme",Factura,0, 102, 252, 25);
 		Titulo.setHorizontalAlignment(SwingConstants.CENTER);

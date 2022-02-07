@@ -124,7 +124,8 @@ public class PantallaInventario {
 		});
 
 		Boton regresarPedidos = new Boton("",pantallaInventario,285, 247, 40, 40);
-		regresarPedidos.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
+		regresarPedidos.volverIcono("volver\r\n");
+		regresarPedidos.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
 		regresarPedidos.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {

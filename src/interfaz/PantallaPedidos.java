@@ -61,13 +61,17 @@ public class PantallaPedidos {
 		Boton agregar = new Boton("",pedidos,170, 95, 89, 32);
 		agregar.volverIcono("añadir\r\n","Img\\AgregarClaro.png","Img\\AgregarOscuro.png");
 		
-		Boton detalles = new Boton("Detalles",pedidos,170, 139, 89, 32);
+		Boton detalles = new Boton("",pedidos,170, 139, 89, 32);
+		detalles.volverIcono("Detalles\r\n");
+		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
 
 		Boton pago = new Boton("",pedidos,170, 183, 89, 32); //poner en otra ventana
-		pago.volverIcono("pago\r\n","Img\\PagarClaro.png","Img\\PagarOscuro.png");
+		pago.volverIcono("pago\r\n");
+		pago.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.PagoO:PantallaMenu.PagoC);
 		
-		Boton regresarPedidos = new Boton("",pedidos,170, 227, 89, 28);
-		regresarPedidos.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
+		Boton regresarPedidos = new Boton("",pedidos,170, 227, 35,35);
+		regresarPedidos.volverIcono("volver\r\n");
+		regresarPedidos.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
 		
 		list.setModel(modelo);
 

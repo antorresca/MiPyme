@@ -50,6 +50,15 @@ public class Boton extends JButton {
 		this.setOpaque(false);
     }
     
+    public void volverIcono( String nombre) {
+    	boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
+		this.setToolTipText(nombre);
+		this.setBackground(null);
+		this.setBorderPainted(false);
+		this.setContentAreaFilled(false);
+		this.setOpaque(false);
+    }
+    
     public void volverIcono( String nombre, String rutaImgClaro,String rutaImgOscuro, int ancho, int largo) {
     	boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
     	ImageIcon img =  new ImageIcon((temaFlag) ? rutaImgClaro:rutaImgOscuro);

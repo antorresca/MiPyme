@@ -9,9 +9,10 @@ import datos.Producto;
 import datos.Usuario;
 import estructuras.*;
 import interfaz.PantallaInicio;
+import interfaz.PantallaMenu;
 
 public class Ejecucion {
-	
+
 	public static boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
 	private static String registroUsuariotxt;
 	public static Usuario usuario_admin = new Usuario("Admin","12345");
@@ -26,26 +27,36 @@ public class Ejecucion {
 	//public static Arbol_binario<Usuario> usuarios = new Arbol_binario<Usuario>(); 
 	public static Arbol_avl<Usuario> usuarios = new Arbol_avl<Usuario>(); 
 	//-------------------------------------------------------ICONOS------------------------------------------------
-	
+
 	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
+		Thread hilo = new Thread(new Runnable() {
+			public void run() {
+				long inicial = System.currentTimeMillis();
+				PantallaMenu.cargar();
+				System.out.print(System.currentTimeMillis()-inicial);
+			}
+		});
+		hilo.start();
+		Thread.sleep(5000);	
 		usuario_admin.setAdmin(true);
 		usuarios.insertar(usuario_admin);
 		usuarios.insertar(new Usuario("A","1", true));
-		
-		
+
+
 		//-----------------------------------------------OBTENCION DE DATOS------------------------------------------------------
 		/*String[] alfabeto = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		compra.agregar(new Producto(0, "", "", 0, "", 0));
 		int j = 0;
 		int k=0;
-		for(k=0;k<10000000;k++) {
-			j = (int) Math.random()*27;
-			usuarios.agregarA(new Usuario(alfabeto[j]+String.valueOf(k),String.valueOf(k)));
+		for(k=0;k<100000000;k++) {
+			j = (int) (Math.random()*26);
+			facturas.agregar(new Factura(alfabeto[j], j*k, alfabeto[j]+alfabeto[j], registroUsuariotxt, new Usuario(alfabeto[j]+String.valueOf(k),String.valueOf(k)), compra));
 		}
 		long inicial = System.nanoTime();
-		usuarios.eliminarD(new Usuario(alfabeto[j]+String.valueOf(j),String.valueOf(k)));
+		facturas.buscar(j*k);
 		System.out.print(System.nanoTime()-inicial);
-		*/
+		 */
 		//--------------------------------------------TILDES--------------------------------------------------------------
 		/*
 		        \u00e1 = á
@@ -60,7 +71,7 @@ public class Ejecucion {
 				\u00da = Ú
 				\u00f1 = ñ
 				\u00d1 = Ñ
-        */
+		 */
 		//--------------------------------------------PLANTILLAS-----------------------------------------------------------
 		/*
 
@@ -94,19 +105,22 @@ public class Ejecucion {
 		}
 		});
 
-		*/
+		 */
 		//--------------------------------------------INSTANCIACIONES-----------------------------------------------------------
 
+		Thread hilo2 = new Thread(new Runnable() {
+			public void run() {
+				for(int i = 0; i<1000;i++) {
+					inventario.insertar(new Producto(i,"Producto "+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,(int) (Math.random()*10)));
+				}
+			}
+		});
+		hilo2.start();
 
-		for(int i = 0; i<1000;i++) {
-			inventario.insertar(new Producto(i,"Producto "+String.valueOf(i),"Este producto es...",(long) (Math.random()*10000),null,(int) (Math.random()*10)));
-		}
-		
 
 		//--------------------------------------------EJECUCIÓN DE INTERFAZ-----------------------------------------------------------
-		PantallaInicio.main(null);
+		PantallaInicio.main(null);	
 
-			
 	}
-	}
+}
 

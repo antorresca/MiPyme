@@ -38,7 +38,8 @@ public class PantallaUsuarios {
 		agregar.volverIcono("agregar\r\n","Img\\AgregarClaro.png","Img\\AgregarOscuro.png");
 		*/
 		Boton agregar = new Boton("",pantallaUsuarios,280, 45, 45, 45);
-		agregar.volverIcono("agregar\r\n","Img\\AgregarUsuarioClaro.png","Img\\AgregarUsuarioOscuro.png");
+		agregar.volverIcono("agregar\r\n");
+		agregar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AUsuarioO:PantallaMenu.AUsuarioC);
 		agregar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -52,6 +53,7 @@ public class PantallaUsuarios {
 		*/
 		Boton modificar = new Boton("",pantallaUsuarios,280, 112, 45, 45);
 		modificar.volverIcono("modificar\r\n","Img\\EditarUsuarioClaro.png","Img\\EditarUsuarioOscuro.png");
+		modificar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.EUsuarioO:PantallaMenu.EUsuarioC);
 		modificar.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -75,6 +77,7 @@ public class PantallaUsuarios {
 		*/
 		Boton eliminarUsuario = new Boton("",pantallaUsuarios,280, 170, 45, 45);
 		eliminarUsuario.volverIcono("eliminar\r\n","Img\\EliminarUsuarioClaro.png","Img\\EliminarUsuarioOscuro.png");
+		eliminarUsuario.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.QUsuarioO:PantallaMenu.QUsuarioC);
 		eliminarUsuario.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -96,7 +99,8 @@ public class PantallaUsuarios {
 		});
 
 		Boton regresarPedidos = new Boton("",pantallaUsuarios,285, 257, 40, 40);
-		regresarPedidos.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
+		regresarPedidos.volverIcono("volver\r\n");
+		regresarPedidos.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
 		
 		regresarPedidos.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override

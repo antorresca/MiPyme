@@ -39,7 +39,7 @@ public class PantallaInicio {
 
 		Boton btningreso = new Boton("Ingresar", pantallaInicio, 200, 230, 100, 25);
 		pantallaInicio.activar();
-		
+				
 		btningreso.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
 			@Override
 			public void mouseClicked(MouseEvent e) {

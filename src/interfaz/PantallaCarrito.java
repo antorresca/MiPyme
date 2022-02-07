@@ -8,10 +8,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-
+import interfaz.PantallaMenu.*;
 import datos.Factura;
 import datos.Producto;
 import estructuras.Lista_ref_simple;
@@ -58,18 +59,22 @@ public class PantallaCarrito {
 		prodCarrito = new Texto(String.valueOf(i),carrito,440, 93, 46, 14);
 
 		Boton detalles = new Boton("",carrito,440, 149, 89, 28);
-		detalles.volverIcono("detalles\r\n","Img\\ModificarClaro.png","Img\\ModificarOscuro.png");
+		detalles.volverIcono("detalles\r\n");
+		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
 
 		Boton pago = new Boton("",carrito,440, 193, 89, 28);
-		pago.volverIcono("pago\r\n","Img\\PagarClaro.png","Img\\PagarOscuro.png");
+		pago.volverIcono("pago\r\n");
+		pago.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.PagoO:PantallaMenu.PagoC);
 		pago.setVisible(!flag);
 
 		Boton pedir = new Boton("",carrito,440, 193, 89, 28);
-		pedir.volverIcono("pedir\r\n","Img\\PagarClaro.png","Img\\PagarOscuro.png");
+		pedir.volverIcono("pedir\r\n");
+		pedir.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.PedirO:PantallaMenu.PedirC);
 		pedir.setVisible(flag);
 
 		Boton regresarCarrito = new Boton("",carrito,465, 237, 35, 35);
-		regresarCarrito.volverIcono("volver\r\n","Img\\VolverClaro.png","Img\\VolverOscuro.png");
+		regresarCarrito.volverIcono("volver\r\n");
+		regresarCarrito.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
 		list.setModel(modelo);
 
 		JScrollPane scroll = new JScrollPane(list);

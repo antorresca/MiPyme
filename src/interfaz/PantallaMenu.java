@@ -28,34 +28,97 @@ public class PantallaMenu {
 
 	public static boolean flag = true;
 	public static boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
+	private static ImageIcon carritoO;
+	private static ImageIcon carritoC;
+	private static ImageIcon busqueda_facturaC;
+	private static ImageIcon busqueda_facturaO;
+	private static ImageIcon pedidosC; 
+	private static ImageIcon pedidosO;		
+	private static ImageIcon inventarioO;		
+	private static ImageIcon inventarioC;		
+	private static ImageIcon busqueda_productosO;		
+	private static ImageIcon busqueda_productosC;		
+	private static ImageIcon usuarioC;		
+	private static ImageIcon usuarioO;	
+	public static ImageIcon DetallesO;
+	public static ImageIcon DetallesC;
+	public static ImageIcon PagoO;
+	public static ImageIcon PagoC;
+	public static ImageIcon PedirO;
+	public static ImageIcon PedirC;
+	public static ImageIcon RegresarO;
+	public static ImageIcon RegresarC;
+	public static ImageIcon AgregarO;
+	public static ImageIcon AgregarC;
+	public static ImageIcon AUsuarioO;
+	public static ImageIcon AUsuarioC;
+	public static ImageIcon EUsuarioO;
+	public static ImageIcon EUsuarioC;
+	public static ImageIcon QUsuarioO;
+	public static ImageIcon QUsuarioC;
+
+	public static void cargar() {
+		long inicial = System.currentTimeMillis();
+		carritoO = new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
+		busqueda_facturaO =  new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png").getImage().getScaledInstance(75,75, Image.SCALE_AREA_AVERAGING));
+		pedidosO = new ImageIcon(new ImageIcon("Img\\PedidoOscuro.png").getImage().getScaledInstance(80,75, Image.SCALE_AREA_AVERAGING));
+		inventarioO = new ImageIcon((new ImageIcon("Img\\InventarioOscuro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));		
+		busqueda_productosO = new ImageIcon((new ImageIcon(("Img\\BuscarProductoOscuro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)));		
+		usuarioO = new ImageIcon((new ImageIcon("Img\\UsuarioOscuro.png")).getImage().getScaledInstance(75,75, Image.SCALE_AREA_AVERAGING));		
+		DetallesO = new ImageIcon(new ImageIcon("Img\\ModificarOscuro.png").getImage().getScaledInstance(89,28, Image.SCALE_AREA_AVERAGING));
+		PagoO = new ImageIcon(new ImageIcon("Img\\PagarOscuro.png").getImage().getScaledInstance(89,28, Image.SCALE_AREA_AVERAGING));
+		PedirO = new ImageIcon(new ImageIcon("Img\\PagarOscuro.png").getImage().getScaledInstance(89,28, Image.SCALE_AREA_AVERAGING));
+		RegresarO = new ImageIcon(new ImageIcon("Img\\VolverOscuro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
+		AgregarO = new ImageIcon(new ImageIcon("Img\\AgregarOscuro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
+		AUsuarioO = new ImageIcon(new ImageIcon("Img\\AgregarUsuarioOscuro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
+		EUsuarioO = new ImageIcon(new ImageIcon("Img\\EditarUsuarioOscuro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
+		QUsuarioO = new ImageIcon(new ImageIcon("Img\\EliminarUsuarioOscuro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING)); 
+		
+		System.out.print(System.currentTimeMillis()-inicial);
+		
+		carritoC = new ImageIcon(new ImageIcon("Img\\CarritoClaro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
+		busqueda_facturaC =  new ImageIcon(new ImageIcon("Img\\FacturaClaro.png").getImage().getScaledInstance(75,75, Image.SCALE_AREA_AVERAGING));
+		pedidosC = new ImageIcon(new ImageIcon("Img\\PedidoClaro.png").getImage().getScaledInstance(80,75, Image.SCALE_AREA_AVERAGING));
+		inventarioC = new ImageIcon((new ImageIcon("Img\\InventarioClaro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));		
+		busqueda_productosC = new ImageIcon((new ImageIcon("Img\\BuscarProductoClaro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));		
+		usuarioC = new ImageIcon((new ImageIcon("Img\\UsuarioClaro.png")).getImage().getScaledInstance(75,75, Image.SCALE_AREA_AVERAGING));		
+		DetallesC = new ImageIcon(new ImageIcon("Img\\ModificarClaro.png").getImage().getScaledInstance(89,28, Image.SCALE_AREA_AVERAGING));
+		PagoC = new ImageIcon(new ImageIcon("Img\\PagarClaro.png").getImage().getScaledInstance(89,28, Image.SCALE_AREA_AVERAGING));
+		PedirC = new ImageIcon(new ImageIcon("Img\\PagarClaro.png").getImage().getScaledInstance(89,28, Image.SCALE_AREA_AVERAGING));
+		RegresarC = new ImageIcon(new ImageIcon("Img\\VolverClaro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
+		AgregarC = new ImageIcon(new ImageIcon("Img\\AgregarClaro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
+		AUsuarioC = new ImageIcon(new ImageIcon("Img\\AgregarUsuarioClaro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
+		EUsuarioC = new ImageIcon(new ImageIcon("Img\\EditarUsuarioClaro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
+		QUsuarioC = new ImageIcon(new ImageIcon("Img\\EliminarUsuarioClaro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING)); 
+		
+	}
 
 	public static void main(String[] args) {
 
+		Ventana pantallaMenu = new Ventana("Menu"); 
+		pantallaMenu.setBackground(Ejecucion.Tema);
+
 		//----------------- Iconos botones ----------------//
-
-
+		/*
 		ImageIcon carritoO = new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		ImageIcon carritoC = new ImageIcon(new ImageIcon("Img\\CarritoClaro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 
-		ImageIcon busqueda_facturaO =  new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));
-		ImageIcon busqueda_facturaC =  new ImageIcon(new ImageIcon("Img\\FacturaClaro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));
+		ImageIcon busqueda_facturaO =  new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png").getImage().getScaledInstance(70,75, Image.SCALE_AREA_AVERAGING));
+		ImageIcon busqueda_facturaC =  new ImageIcon(new ImageIcon("Img\\FacturaClaro.png").getImage().getScaledInstance(70,75, Image.SCALE_AREA_AVERAGING));
 
-		ImageIcon pedidosO = new ImageIcon(new ImageIcon("Img\\PedidoOscuro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));
-		ImageIcon pedidosC = new ImageIcon(new ImageIcon("Img\\PedidoClaro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));
+		ImageIcon pedidosO = new ImageIcon(new ImageIcon("Img\\PedidoOscuro.png").getImage().getScaledInstance(65,75, Image.SCALE_AREA_AVERAGING));
+		ImageIcon pedidosC = new ImageIcon(new ImageIcon("Img\\PedidoClaro.png").getImage().getScaledInstance(65,75, Image.SCALE_AREA_AVERAGING));
 
-		ImageIcon inventarioC = new ImageIcon((new ImageIcon("Img\\InventarioClaro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));		
-		ImageIcon inventarioO = new ImageIcon((new ImageIcon("Img\\InventarioOscuro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));		
+		ImageIcon inventarioC = new ImageIcon((new ImageIcon("Img\\InventarioClaro.png")).getImage().getScaledInstance(95,75, Image.SCALE_AREA_AVERAGING));		
+		ImageIcon inventarioO = new ImageIcon((new ImageIcon("Img\\InventarioOscuro.png")).getImage().getScaledInstance(95,75, Image.SCALE_AREA_AVERAGING));		
 
 		ImageIcon busqueda_productosC = new ImageIcon((new ImageIcon("Img\\BuscarProductoClaro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));		
 		ImageIcon busqueda_productosO = new ImageIcon((new ImageIcon(("Img\\BuscarProductoOscuro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)));		
 
-		ImageIcon usuarioC = new ImageIcon((new ImageIcon("Img\\UsuarioClaro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));		
-		ImageIcon usuarioO = new ImageIcon((new ImageIcon("Img\\UsuarioOscuro.png")).getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING));		
-
+		ImageIcon usuarioC = new ImageIcon((new ImageIcon("Img\\UsuarioClaro.png")).getImage().getScaledInstance(65,65, Image.SCALE_AREA_AVERAGING));		
+		ImageIcon usuarioO = new ImageIcon((new ImageIcon("Img\\UsuarioOscuro.png")).getImage().getScaledInstance(65,65, Image.SCALE_AREA_AVERAGING));		
+		 */
 		//Ejecucion.usuarios.imprimir(Ejecucion.usuarios.getRaiz());
-
-		Ventana pantallaMenu = new Ventana("Menu"); 
-		pantallaMenu.setBackground(Ejecucion.Tema);
 
 		Imagen logoAppClaro = new Imagen("Img\\LogoClaro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo claro
 		Imagen logoAppOscuro = new Imagen("Img\\LogoOscuro.jpeg",pantallaMenu,0,40,1280/15,927/15); //Logo Oscuro
@@ -120,7 +183,7 @@ public class PantallaMenu {
 		btn_busqueda_productos.setIcon((!temaFlag)?busqueda_productosO:busqueda_productosC);
 		btn_pedidos.setIcon((!temaFlag)?pedidosO:pedidosC);
 		btn_busqueda_factura.setIcon((!temaFlag)?busqueda_facturaO:busqueda_facturaC);
-		
+
 		JToggleButton btnTema = new JToggleButton(""); //BotÃ³n de seleccion de tema
 		btnTema.setCursor(new Cursor(JFrame.HAND_CURSOR));	
 		btnTema.setBounds(374+30, -5, 80, 80);
@@ -181,8 +244,13 @@ public class PantallaMenu {
 		btn_busqueda_factura.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				String entrada = "";
+				
+				while(entrada==""){
+					entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","numer");
+				}
 
-				String entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","Busqueda de Factura");
+				
 
 				//Factura nuevaFactura = Ejecucion.facturas.encontrar(n).getDato();
 				Factura nuevaFactura = Ejecucion.facturas.buscar(Integer.parseInt(entrada));
