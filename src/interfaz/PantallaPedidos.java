@@ -63,7 +63,7 @@ public class PantallaPedidos {
 		
 		Boton detalles = new Boton("",pedidos,170, 139, 89, 32);
 		detalles.volverIcono("Detalles\r\n");
-		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
+		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.modificarO:PantallaMenu.modificarC);
 
 		Boton pago = new Boton("",pedidos,170, 183, 89, 32); //poner en otra ventana
 		pago.volverIcono("pago\r\n");

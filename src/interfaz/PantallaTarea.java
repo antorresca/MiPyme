@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import datos.Tarea;
@@ -22,10 +23,6 @@ public class PantallaTarea {
 		
 		Ventana pantallaTarea3 = new Ventana("");
 		pantallaTarea3.desactivar();
-		
-		/*
-		
-		*/
 		
 		Texto pendiente = new Texto("Pendiente",pantallaTarea, 30,40,100,50);
 		Texto realizado = new Texto("Realizado",pantallaTarea, 30,40+100+50+30,100,50);
@@ -121,7 +118,6 @@ public class PantallaTarea {
 			if(seleccionada != null) {
 				
 				sele = seleccionada;
-				
 			}else {
 				if(seleccionada2 != null) {
 					
@@ -138,16 +134,23 @@ public class PantallaTarea {
 				pantallaTarea.desactivar();
 				
 				System.out.println("ENTRO rtx");
+			}else {
+				
+				JOptionPane.showMessageDialog(pantallaTarea,"Seleccione una tarea","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		    //lo que va a hacer el botón
 
 		///////////////////////////////////////////////////////////////////////			
 		}
 		});
-		
-		Boton agregar_tarea = new Boton("", pantallaTarea, 360-12, 150+25, 125, 50);
+		/*
+		Boton agregar_tarea = new Boton("", pantallaTarea, 360-12, 150+25, 100, 50);
 		agregar_tarea.volverIcono("Nueva Tarea\r\n");
 		agregar_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AgregarO:PantallaMenu.AgregarC);
+		*/
+		
+		Boton agregar_tarea = new Boton("",pantallaTarea,360+5, 150+25, 89, 32);
+		agregar_tarea.volverIcono("Nueva Tarea\r\n","Img\\AgregarClaro.png","Img\\AgregarOscuro.png");
 
 		agregar_tarea.addMouseListener(new MouseAdapter() {
 		@Override
@@ -166,6 +169,9 @@ public class PantallaTarea {
 		});
 		
 		Boton crear_tarea = new Boton("Crear", pantallaTarea2, 100, 250, 100, 50);
+		
+		//Boton crear_tarea = new Boton("",pantallaTarea2, 100, 250, 89, 32);
+		//crear_tarea.volverIcono("Crear\r\n","Img\\AceptarClaro.png","Img\\AceptarOscuro.png");
 
 		crear_tarea.addMouseListener(new MouseAdapter() {
 		@Override
@@ -185,10 +191,18 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton atras_tarea = new Boton("", pantallaTarea2, 250, 250, 35,35);
+		
+		Boton atras_tarea = new Boton("Cancelar", pantallaTarea2, 250, 250, 100,50);
+		
+		/*
 		atras_tarea.volverIcono("Regresar");
-		atras_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
-
+		atras_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.cancelarO:PantallaMenu.cancelarC);
+		
+		
+		//Boton atras_tarea = new Boton("",pantallaTarea2, 250, 250, 89, 32);
+		//atras_tarea.volverIcono("Cancelar\r\n","Img\\CancelarClaro.png","Img\\CancelarOscuro.png");
+        */
+		
 		atras_tarea.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -220,9 +234,11 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton atras_menu = new Boton("", pantallaTarea,  360, 150+100,35,35);
+		Boton atras_menu = new Boton("", pantallaTarea,  360+30, 150+100,35,35);
 		atras_menu.volverIcono("Regresar");
 		atras_menu.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
+		
+		
 		
 		
 		atras_menu.addMouseListener(new MouseAdapter() {

@@ -60,7 +60,7 @@ public class PantallaCarrito {
 
 		Boton detalles = new Boton("",carrito,440, 149, 89, 28);
 		detalles.volverIcono("detalles\r\n");
-		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
+		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.modificarO:PantallaMenu.modificarC);
 
 		Boton pago = new Boton("",carrito,440, 193, 89, 28);
 		pago.volverIcono("pago\r\n");
