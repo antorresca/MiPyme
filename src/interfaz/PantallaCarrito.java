@@ -58,16 +58,16 @@ public class PantallaCarrito {
 
 		prodCarrito = new Texto(String.valueOf(i),carrito,440, 93, 46, 14);
 
-		Boton detalles = new Boton("",carrito,440, 149, 89, 28);
+		Boton detalles = new Boton("",carrito,440, 149, 89, 32);
 		detalles.volverIcono("detalles\r\n");
 		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
 
-		Boton pago = new Boton("",carrito,440, 193, 89, 28);
+		Boton pago = new Boton("",carrito,440, 193, 89, 32);
 		pago.volverIcono("pago\r\n");
 		pago.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.PagoO:PantallaMenu.PagoC);
 		pago.setVisible(!flag);
 
-		Boton pedir = new Boton("",carrito,440, 193, 89, 28);
+		Boton pedir = new Boton("",carrito,440, 193, 89,32);
 		pedir.volverIcono("pedir\r\n");
 		pedir.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.PedirO:PantallaMenu.PedirC);
 		pedir.setVisible(flag);

@@ -32,11 +32,6 @@ public class Ejecucion {
 
 	static PantallaCargando screen;
 
-	  public static void Cargando() {
-	    inicioPantalla();
-		screen.velocidadDeCarga();
-	  }
-
 	  private static void inicioPantalla() {
 	    ImageIcon myImage = new ImageIcon(new ImageIcon(
 	    		"Img\\LogoOscuro.png").getImage().getScaledInstance( 300, 200, Image.SCALE_AREA_AVERAGING));
@@ -54,7 +49,8 @@ public class Ejecucion {
 			}
 		});
 		hilo.start();
-		Cargando();	
+		inicioPantalla();
+		screen.velocidadDeCarga();	
 		usuario_admin.setAdmin(true);
 		usuarios.insertar(usuario_admin);
 		usuarios.insertar(new Usuario("A","1", true));

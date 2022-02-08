@@ -21,9 +21,13 @@ public class PantallaModificarProducto {
 		Dimension dimensions = t.getScreenSize();
 		pantallaModificarP.setBounds((dimensions.width-378)/2,(dimensions.height-408)/2,378,408);
 
-		Boton btnAceptar = new Boton("Aceptar",pantallaModificarP,126, 284, 89, 23);
+		Boton btnAceptar = new Boton("",pantallaModificarP,126, 284, 89, 32);
+		btnAceptar.volverIcono("Aceptar\r\n");
+		btnAceptar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AceptarO:PantallaMenu.AceptarC);
 
-		Boton btnCancelar = new Boton("Cancelar",pantallaModificarP,126, 314, 89, 23);
+		Boton btnCancelar = new Boton("",pantallaModificarP,126, 314, 89, 32);
+		btnCancelar.volverIcono("Cancelar\r\n");
+		btnCancelar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.CancelarO:PantallaMenu.CancelarC);
 		
 		Texto titulo = new Texto(((anadir)?"Agregar " :"Modificar ")+ "Producto",pantallaModificarP,27, 25+40, 325, 14);
 		titulo.setFont(new Font("Tahoma", Font.BOLD, 11));

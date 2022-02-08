@@ -40,8 +40,9 @@ public class PantallaInventario {
 		CampoL textField_buscar = new CampoL(pantallaInventario,30, 41, 150, 21);
 		//textField_buscar.setText("");
 		
-		Boton buscar = new Boton("Q",pantallaInventario,180, 41, 50, 20);
-		//buscar.volverIcono("buscar\r\n","Img\\MasClaro.png","Img\\MasOscuro.png");
+		Boton buscar = new Boton("",pantallaInventario,180, 41, 50, 20);
+		buscar.volverIcono("buscar\r\n");
+		buscar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.LupaO:PantallaMenu.LupaC);
 		buscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -66,7 +67,8 @@ public class PantallaInventario {
 		
 		
 		Boton agregar = new Boton("",pantallaInventario,260, 95, 89, 32);
-		agregar.volverIcono("añadir\r\n","Img\\AgregarClaro.png","Img\\AgregarOscuro.png");
+		agregar.volverIcono("añadir\r\n");
+		agregar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AgregarO:PantallaMenu.AgregarC);
 		
 		agregar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -78,8 +80,9 @@ public class PantallaInventario {
 			}
 		});
 
-		Boton modificar = new Boton("",pantallaInventario,260, 139, 89, 32);
-		modificar.volverIcono("modificar\r\n","Img\\ModificarClaro.png","Img\\ModificarOscuro.png");
+		Boton modificar = new Boton("",pantallaInventario,260, 139, 89,32);
+		modificar.volverIcono("modificar\r\n");
+		modificar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
 		modificar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -101,7 +104,8 @@ public class PantallaInventario {
 		});
 
 		Boton eliminarUsuario = new Boton("",pantallaInventario,260, 183, 89, 32);
-		eliminarUsuario.volverIcono("eliminar\r\n","Img\\EliminarClaro.png","Img\\EliminarOscuro.png");
+		eliminarUsuario.volverIcono("Eliminar\r\n");
+		eliminarUsuario.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.EliminarO:PantallaMenu.EliminarC);
 		eliminarUsuario.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

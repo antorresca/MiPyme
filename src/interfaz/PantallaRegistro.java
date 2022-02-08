@@ -28,9 +28,13 @@ public class PantallaRegistro {
 
 		//Botones Registro 
 
-		Boton BtnRegistrar = new Boton("Crear", pantallaRegistro, 255, 200, 100, 25);
+		Boton BtnRegistrar = new Boton("", pantallaRegistro, 255, 200, 89,32);
+		BtnRegistrar.volverIcono("Aceptar\r\n");
+		BtnRegistrar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AceptarO:PantallaMenu.AceptarC);
 
-		Boton BtnVolver = new Boton("Regresar", pantallaRegistro, 130, 200, 100, 25);
+		Boton BtnVolver = new Boton("", pantallaRegistro, 130, 200, 89,32);
+		BtnVolver.volverIcono("Cancelar\r\n");
+		BtnVolver.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.CancelarO:PantallaMenu.CancelarC);
 		
 		//Metodos Botones
 		

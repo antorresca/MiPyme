@@ -23,10 +23,14 @@ public class PantallaModificarUsuario {
 		Dimension dimensions = t.getScreenSize();
 		pantallaModificar.setBounds(dimensions.width/2-(283/2),dimensions.height/2-(260/2),283,260);
 
-		Boton btnAceptar = new Boton("Aceptar",pantallaModificar,77, 141, 89, 23);
+		Boton btnAceptar = new Boton("",pantallaModificar,77, 141, 89, 32);
+		btnAceptar.volverIcono("Aceptar\r\n");
+		btnAceptar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AceptarO:PantallaMenu.AceptarC);
 
-		Boton btnCancelar = new Boton("Cancelar",pantallaModificar,77, 175, 89, 23);
-
+		Boton btnCancelar = new Boton("",pantallaModificar,77, 175, 89, 32);
+		btnCancelar.volverIcono("Cancelar\r\n");
+		btnCancelar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.CancelarO:PantallaMenu.CancelarC);
+		
 		Texto lblNewLabel = new Texto("Nuevo Usuario",pantallaModificar,25, 25+40, 85, 37);
 
 		Texto lblNewLabel_1 = new Texto("Nuevo Contrasena",pantallaModificar,25, 73+40, 118, 14);

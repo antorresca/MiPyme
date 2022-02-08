@@ -68,6 +68,8 @@ public class PantallaUsuarios {
 					PantallaModificarUsuario.main(usuarioEncontrar);
 				}
 
+			}else {
+				JOptionPane.showMessageDialog(pantallaUsuarios,"Debe seleccionar un Usuario","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		});
@@ -93,6 +95,8 @@ public class PantallaUsuarios {
 						modelo4.remove(listaUsuarios.getSelectedIndex());
 					}
 
+				}else {
+					JOptionPane.showMessageDialog(pantallaUsuarios,"Debe seleccionar un Usuario","Error",JOptionPane.ERROR_MESSAGE);
 				}
 
 			}

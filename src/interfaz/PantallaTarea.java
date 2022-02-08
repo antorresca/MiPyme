@@ -27,7 +27,7 @@ public class PantallaTarea {
 		pantallaTarea3.desactivar();
 		
 		Texto pendiente = new Texto("Pendiente",pantallaTarea, 30,40,100,50);
-		Texto realizado = new Texto("Realizado",pantallaTarea, 30,40+100+50+30,100,50);
+		Texto realizado = new Texto("Realizado",pantallaTarea, 30,40+100+55,100,50);
 		
 		Texto titulo = new Texto("Titulo:",pantallaTarea2, 40,40,100,50);
 		
@@ -59,11 +59,11 @@ public class PantallaTarea {
 		pantallaTarea.getContenedor().add(scroll);
 		
 		JScrollPane scroll2 = new JScrollPane(interior2);
-		scroll2.setBounds(30, 40+100+50+30, 300, 100);
+		scroll2.setBounds(30, 40+100+55, 300, 100);
 		pantallaTarea.getContenedor().add(scroll2);
 		
 		
-		Boton mas = new Boton("", pantallaTarea, 190, 155, 50, 50);
+		Boton mas = new Boton("", pantallaTarea, 190, 155, 30, 30);
 		mas.volverIcono("añadir\r\n","Img\\MasClaro.png","Img\\MasOscuro.png");
 		
 		mas.addMouseListener(new MouseAdapter() {
@@ -82,9 +82,9 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton menos = new Boton("", pantallaTarea, 190+70, 155, 50, 50);
+		Boton menos = new Boton("", pantallaTarea, 190+70, 155, 30, 30);
 		menos.volverIcono("quitar\r\n","Img\\MenosClaro.png","Img\\MenosOscuro.png",menos.getWidth(),menos.getHeight()/4);
-
+		
 		menos.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -152,7 +152,8 @@ public class PantallaTarea {
 		*/
 		
 		Boton agregar_tarea = new Boton("",pantallaTarea,360+5, 150+25, 89, 32);
-		agregar_tarea.volverIcono("Nueva Tarea\r\n","Img\\AgregarClaro.png","Img\\AgregarOscuro.png");
+		agregar_tarea.volverIcono("Nueva Tarea\r\n");
+		agregar_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AgregarO:PantallaMenu.AgregarC);
 
 		agregar_tarea.addMouseListener(new MouseAdapter() {
 		@Override
@@ -170,7 +171,10 @@ public class PantallaTarea {
 		}
 		});
 		
-		Boton crear_tarea = new Boton("Crear", pantallaTarea2, 100, 250, 100, 50);
+		Boton crear_tarea = new Boton("", pantallaTarea2, 100, 250, 100, 50);
+
+		crear_tarea.volverIcono("Acepatar\r\n");
+		crear_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AceptarO:PantallaMenu.AceptarC);
 		
 		//Boton crear_tarea = new Boton("",pantallaTarea2, 100, 250, 89, 32);
 		//crear_tarea.volverIcono("Crear\r\n","Img\\AceptarClaro.png","Img\\AceptarOscuro.png");
@@ -197,7 +201,9 @@ public class PantallaTarea {
 		});
 		
 		
-		Boton atras_tarea = new Boton("Cancelar", pantallaTarea2, 250, 250, 100,50);
+		Boton atras_tarea = new Boton("", pantallaTarea2, 250, 250, 100,50);
+		atras_tarea.volverIcono("Cancelar\r\n");
+		atras_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.CancelarO:PantallaMenu.CancelarC);
 		
 		/*
 		atras_tarea.volverIcono("Regresar");
