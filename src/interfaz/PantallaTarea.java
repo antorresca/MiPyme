@@ -13,12 +13,12 @@ import javax.swing.JScrollPane;
 import datos.Tarea;
 import logica.Ejecucion;
 
-public class PantallaTarea {
-	
-	private static Ventana pantallaTarea = new Ventana("Tareas");
+public abstract class PantallaTarea {
+	/*
+	private static Ventana pantallaTarea = new Ventana("Tareas",false);
     private static Ventana pantallaTarea2 = new Ventana("",false);
 	private static Ventana pantallaTarea3 = new Ventana("",false);
-	
+
 	private static Boton mas = new Boton("", pantallaTarea, 190, 155, 30, 30);
 	private static Boton menos = new Boton("", pantallaTarea, 190+70, 155, 30, 30);
 	private static Boton detalles = new Boton("", pantallaTarea, 360, 100, 100, 50);
@@ -27,36 +27,76 @@ public class PantallaTarea {
 	private static Boton atras_tarea = new Boton("", pantallaTarea2, 250, 250, 100,50);
 	private static Boton atras2 = new Boton("", pantallaTarea3, 50, 250, 35,35);
 	private static Boton atras_menu = new Boton("", pantallaTarea,  360+30, 150+100,35,35);
-	
+
 	private static Texto pendiente = new Texto("Pendiente",pantallaTarea, 30,40,100,50);
 	private static Texto realizado = new Texto("Realizado",pantallaTarea, 30,40+100+55,100,50);
 	private static Texto titulo = new Texto("Titulo:",pantallaTarea2, 40,40,100,50);
 	private static CampoL campo_titulo = new CampoL(pantallaTarea2, 40,40,300,25);
-	private static Texto descripcion = new Texto("Descripcion:",pantallaTarea2, 40,120,100,50);
-	private static CampoA campo_descripcion = new CampoA(pantallaTarea2, 40,40+70,300,100);
+	private static Texto descripcion = new Texto("Descripcion:",pantallaTarea2, 40,115,100,50);
+	private static CampoA campo_descripcion = new CampoA(pantallaTarea2, 40,120,300,100);
 	private static Texto titulo3 = new Texto("Titulo:",pantallaTarea3, 40,40,100,50);
 	private static Texto titulo3_descripcion = new Texto("",pantallaTarea3, 40+1,40+25,100,50);
 	private static Texto descripcion3 = new Texto("Descripcion:",pantallaTarea3, 40,120,100,50);
 	private static Texto descripcion3_descripcion = new Texto("",pantallaTarea3, 40+1,120,300,100);
 	
+	private static DefaultListModel<Tarea> modelo = new DefaultListModel<Tarea>();
+	private static DefaultListModel<Tarea> modelo2 = new DefaultListModel<Tarea>();
+	
+	private static JList<Tarea> interior = new JList<Tarea>();
+	private static JList<Tarea> interior2 = new JList<Tarea>();
+	
+	private static JScrollPane scroll = new JScrollPane(interior);
+	private static JScrollPane scroll2 = new JScrollPane(interior2);
+	
+	public static boolean inicializado = false;
+	*/
+	
+	private static DefaultListModel<Tarea> modelo = new DefaultListModel<Tarea>();
+	private static DefaultListModel<Tarea> modelo2 = new DefaultListModel<Tarea>();
+	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
+		Ventana pantallaTarea = new Ventana("Tareas",true);
+	    Ventana pantallaTarea2 = new Ventana("",false);
+		Ventana pantallaTarea3 = new Ventana("",false);
 		
-		DefaultListModel<Tarea> modelo = new DefaultListModel<Tarea>();
-		DefaultListModel<Tarea> modelo2 = new DefaultListModel<Tarea>();
+		Texto pendiente = new Texto("Pendiente",pantallaTarea, 30,40,100,50);
+		Texto realizado = new Texto("Realizado",pantallaTarea, 30,40+100+55,100,50);
+		Texto titulo = new Texto("Titulo:",pantallaTarea2, 40,40,100,50);
+		CampoL campo_titulo = new CampoL(pantallaTarea2, 40,40,300,25);
+		Texto descripcion = new Texto("Descripcion:",pantallaTarea2, 40,120,100,50);
+		CampoA campo_descripcion = new CampoA(pantallaTarea2, 40,120,300,100);
+		Texto titulo3 = new Texto("Titulo:",pantallaTarea3, 40,40,100,50);
+		Texto titulo3_descripcion = new Texto("",pantallaTarea3, 40+1,40+25,100,50);
+		Texto descripcion3 = new Texto("Descripcion:",pantallaTarea3, 40,120,100,50);
+		Texto descripcion3_descripcion = new Texto("",pantallaTarea3, 40+1,120,300,100);
+		
+		//DefaultListModel<Tarea> modelo = new DefaultListModel<Tarea>();
+		//DefaultListModel<Tarea> modelo2 = new DefaultListModel<Tarea>();
 		
 		JList<Tarea> interior = new JList<Tarea>();
-		interior.setModel(modelo);
-		
 		JList<Tarea> interior2 = new JList<Tarea>();
-		interior2.setModel(modelo2);
 		
 		JScrollPane scroll = new JScrollPane(interior);
+		JScrollPane scroll2 = new JScrollPane(interior2);
+		
+		Boton mas = new Boton("", pantallaTarea, 190, 155, 30, 30);
+		Boton menos = new Boton("", pantallaTarea, 190+70, 155, 30, 30);
+		Boton detalles = new Boton("", pantallaTarea, 360, 100, 100, 50);
+		Boton agregar_tarea = new Boton("",pantallaTarea,360+5, 150+25, 89, 32);
+		Boton crear_tarea = new Boton("", pantallaTarea2, 100, 250, 100, 50);
+		Boton atras_tarea = new Boton("", pantallaTarea2, 250, 250, 100,50);
+		Boton atras2 = new Boton("", pantallaTarea3, 50, 250, 35,35);
+		Boton atras_menu = new Boton("", pantallaTarea,  360+30, 150+100,35,35);
+		
+		
+		interior.setModel(modelo);
+		interior2.setModel(modelo2);
+		
 		scroll.setBounds(30, 40, 300, 100);
 		pantallaTarea.getContenedor().add(scroll);
-		
-		JScrollPane scroll2 = new JScrollPane(interior2);
+
 		scroll2.setBounds(30, 40+100+55, 300, 100);
 		pantallaTarea.getContenedor().add(scroll2);
 		
@@ -67,7 +107,26 @@ public class PantallaTarea {
 		atras2.volverIcono("Regresar\\r\\n");
 		atras_menu.volverIcono("Regresar Menu\\r\\n");
 		
-		configurar_iconos();
+		mas.volverIcono("añadir\r\n","Img\\MasClaro.png","Img\\MasOscuro.png");
+		menos.volverIcono("quitar\r\n","Img\\MenosClaro.png","Img\\MenosOscuro.png",menos.getWidth(),menos.getHeight()/4);
+		
+		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
+		agregar_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AgregarO:PantallaMenu.AgregarC);
+		crear_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AceptarO:PantallaMenu.AceptarC);
+		atras_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.CancelarO:PantallaMenu.CancelarC);
+		atras2.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
+		atras_menu.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
+		
+		/*
+		pendiente.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
+		realizado.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
+		titulo.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
+		descripcion.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
+		titulo3.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
+		titulo3_descripcion.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
+		descripcion3.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
+		descripcion3_descripcion.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
+		*/
 		
 		//------------------------------------------------------------------------------------------------------------
 		
@@ -84,7 +143,6 @@ public class PantallaTarea {
 		///////////////////////////////////////////////////////////////////////			
 		}
 		});
-		
 		
 		menos.addMouseListener(new MouseAdapter() {
 		@Override
@@ -136,7 +194,6 @@ public class PantallaTarea {
 		}
 		});
 		
-
 		agregar_tarea.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -201,52 +258,16 @@ public class PantallaTarea {
 		public void mouseClicked(MouseEvent e) {
 		///////////////////////////////////////////////////////////////////////
 			
-			PantallaMenu.main(args);
+			PantallaMenu.main(null);
 			pantallaTarea.desactivar();
-
+			
+			System.out.println("Es este botón");
+			
 		///////////////////////////////////////////////////////////////////////			
 		}
 		});
 		
-		PantallaMenu.inicializado = true;
-		
-	}
-	
-	public static void configurar_iconos() {
-		
-		mas.volverIcono("añadir\r\n","Img\\MasClaro.png","Img\\MasOscuro.png");
-		menos.volverIcono("quitar\r\n","Img\\MenosClaro.png","Img\\MenosOscuro.png",menos.getWidth(),menos.getHeight()/4);
-		
-		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
-		agregar_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AgregarO:PantallaMenu.AgregarC);
-		crear_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AceptarO:PantallaMenu.AceptarC);
-		atras_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.CancelarO:PantallaMenu.CancelarC);
-		atras2.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
-		atras_menu.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.RegresarO:PantallaMenu.RegresarC);
-	}
-	
-    public static void cambiar_modo() {
-
-    	pendiente.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
-		realizado.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
-		titulo.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
-		descripcion.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
-		titulo3.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
-		titulo3_descripcion.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
-		descripcion3.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
-		descripcion3_descripcion.setForeground((PantallaMenu.temaFlag) ? Ejecucion.ModoOscuro : Ejecucion.ModoClaro);
-		configurar_iconos();
-    	pantallaTarea.activar();
-		
-	}
-	
-
-	public static Ventana getPantallaTarea() {
-		return pantallaTarea;
-	}
-
-	public static void setPantallaTarea(Ventana pantallaTarea) {
-		PantallaTarea.pantallaTarea = pantallaTarea;
+		//inicializado = true;
 	}
 
 }

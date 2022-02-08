@@ -28,7 +28,7 @@ public class PantallaMenu {
 
 	public static boolean flag = true;
 	public static boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
-	public static boolean inicializado = false;
+	//public static boolean inicializado = false;
 	private static ImageIcon carritoO;
 	private static ImageIcon carritoC;
 	private static ImageIcon busqueda_facturaC;
@@ -227,23 +227,16 @@ public class PantallaMenu {
 			@Override
 			public void mouseClicked(MouseEvent e) {	
 				
-				if(inicializado) {
-					
-					PantallaTarea.getPantallaTarea().activar();
-					PantallaTarea.cambiar_modo();
-					
-				}else {
-					
-				    PantallaTarea.main(args);
-				}
-				
 				pantallaMenu.desactivar();
+				PantallaTarea.main(null);
+				
 			}
 		});
 
 		boton_usuario.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {	
+			public void mouseClicked(MouseEvent e) {
+				
 				pantallaMenu.setVisible(false);
 				PantallaUsuarios.main(null);
 			}
