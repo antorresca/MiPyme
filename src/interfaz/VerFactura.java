@@ -38,7 +38,7 @@ public class VerFactura {
 		Texto tituloCedula = new Texto("Cedula:",Factura,10,440,50,14);
 		Texto tituloCorreo = new Texto("Correo:",Factura,10,480,50,14);
 		Texto separador = new Texto("----------------------------------------------",Factura,0, 520, 252, 14);
-		Texto tituloCajero = new Texto("Cajero: ",Factura,10,540,50,14);
+		Texto tituloCajero = new Texto("Cajero:",Factura,10,540,50,14);
 		Texto tituloFecha = new Texto("Fecha:",Factura,10,560,50,14);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		JList listProductos = new JList();
@@ -53,14 +53,14 @@ public class VerFactura {
 		Texto nombreCliente = new Texto("<Nombre cliente>",Factura,10,420, 170, 14);
 		Texto cedulaCliente = new Texto("<Cedula cliente>",Factura,10,460, 143,14);
 		Texto correoCliente = new Texto("<Correo Cliente>",Factura,10,500, 143,14);
-		Texto nombreCajero = new Texto("<Cajero>",Factura,50,540, 143,14);
+		Texto nombreCajero = new Texto("<Cajero>",Factura,55,540, 143,14);
 		Texto fechaFactura = new Texto("<Fecha>",Factura,50,560, 143,14);
 
 		precioProductos.setText(String.valueOf(nuevaFactura.getPrecio()));
 		nombreCliente.setText(nuevaFactura.getNombre());
 		cedulaCliente.setText(""+nuevaFactura.getCedula());
 		correoCliente.setText(nuevaFactura.getCorreo());
-		nombreCajero.setText(nuevaFactura.getVendedor().getUsuario());
+		nombreCajero.setText(PantallaInicio.actual.getUsuario());
 		fechaFactura.setText(nuevaFactura.getFecha());
 		encabezado.setText(encabezado.getText()+String.valueOf(nuevaFactura.getId()));
 
@@ -81,10 +81,6 @@ public class VerFactura {
 					PantallaPedidos.main(null);
 					break;
 				}
-				/*
-				if(anterior.toLowerCase().contains("carrito")) PantallaCarrito.main(null);
-				else if(anterior.toLowerCase().contains("menu")) PantallaMenu.main(null);
-				else if(anterior.toLowerCase().contains("pedidos")) PantallaPedidos.main(null);*/
 			}
 		});
 

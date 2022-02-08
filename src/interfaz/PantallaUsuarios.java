@@ -59,7 +59,7 @@ public class PantallaUsuarios {
 		public void mouseClicked(MouseEvent e) {
 			if(listaUsuarios.getSelectedValue()!=null) {
 				if(listaUsuarios.getSelectedValue().equals(Ejecucion.usuario_admin.getUsuario()+" | Administrador")) {
-					JOptionPane.showMessageDialog(pantallaUsuarios,"Es el admin, No se puede modificar","NO",JOptionPane.ERROR_MESSAGE);					
+					JOptionPane.showMessageDialog(pantallaUsuarios,"El Administrador principal no se puede modificar","NO",JOptionPane.ERROR_MESSAGE);					
 				}else {
 					String[] valor = listaUsuarios.getSelectedValue().toString().split(" | ");
 					Usuario temp = new Usuario(valor[0],"");

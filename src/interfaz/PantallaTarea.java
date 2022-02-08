@@ -110,7 +110,7 @@ public abstract class PantallaTarea {
 		mas.volverIcono("añadir\r\n","Img\\MasClaro.png","Img\\MasOscuro.png");
 		menos.volverIcono("quitar\r\n","Img\\MenosClaro.png","Img\\MenosOscuro.png",menos.getWidth(),menos.getHeight()/4);
 		
-		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
+		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.detallesO:PantallaMenu.detallesC);
 		agregar_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AgregarO:PantallaMenu.AgregarC);
 		crear_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.AceptarO:PantallaMenu.AceptarC);
 		atras_tarea.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.CancelarO:PantallaMenu.CancelarC);

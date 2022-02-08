@@ -63,7 +63,7 @@ public class PantallaPedidos {
 		
 		Boton detalles = new Boton("",pedidos,170, 139, 89, 32);
 		detalles.volverIcono("Detalles\r\n");
-		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
+		detalles.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.detallesO:PantallaMenu.detallesC);
 
 		Boton pago = new Boton("",pedidos,170, 183, 89, 32); //poner en otra ventana
 		pago.volverIcono("pago\r\n");
@@ -222,7 +222,7 @@ public class PantallaPedidos {
 					PantallaFactura.flag = true;
 					PantallaFactura.main(null);
 				}else {
-					JOptionPane.showMessageDialog(pedidos,"Por favor elija seleccione el primer pedido",
+					JOptionPane.showMessageDialog(pedidos,"Por favor seleccione un pedido",
 							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error
 				}
 			}}

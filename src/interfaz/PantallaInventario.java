@@ -82,7 +82,7 @@ public class PantallaInventario {
 
 		Boton modificar = new Boton("",pantallaInventario,260, 139, 89,32);
 		modificar.volverIcono("modificar\r\n");
-		modificar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.DetallesO:PantallaMenu.DetallesC);
+		modificar.setIcon((!PantallaMenu.temaFlag)?PantallaMenu.modificarO:PantallaMenu.modificarC);
 		modificar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
