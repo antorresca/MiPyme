@@ -18,11 +18,6 @@ public class CampoL extends JTextField {
 		this(x, y, ancho, largo);
 		ventana.getContenedor().add(this);
 	}
-	    
-	public CampoL(Contenedor contenedor, int x, int y, int ancho, int largo) {
-			
-	    this(x, y, ancho, largo);
-		contenedor.add(this);	
-	}
+	
 
 }

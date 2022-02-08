@@ -27,11 +27,5 @@ public class Texto extends JLabel{
 		ventana.getContenedor().add(this);
 	}
     
-    public Texto(String texto, Contenedor contenedor, int x, int y, int ancho, int largo) {
-		
-    	this(texto, x, y, ancho, largo);
-		contenedor.add(this);	
-	}
 
 }
-//jsjsjsjsja

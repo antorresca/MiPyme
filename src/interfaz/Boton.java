@@ -25,11 +25,6 @@ public class Boton extends JButton {
 
 	}
 	
-    public Boton(String texto, Contenedor contenedor, int x, int y, int ancho, int largo) {
-		
-		this(texto, x, y, ancho, largo);
-		contenedor.add(this);
-	}
     
     public Boton(String texto, Ventana ventana, int x, int y, int ancho, int largo) {
 		

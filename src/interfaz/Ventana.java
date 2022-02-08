@@ -17,7 +17,7 @@ import logica.Ejecucion;
 
 public class Ventana extends JFrame {
 	
-	private Contenedor contenedor;
+	private JPanel contenedor;
 	private static int ancho = 500;
 	private static int largo = 375;
 	
@@ -28,8 +28,11 @@ public class Ventana extends JFrame {
 		Toolkit herramienta = Toolkit.getDefaultToolkit();
 		Dimension pantalla_dimension = herramienta.getScreenSize();
 		
-		contenedor = new Contenedor(this);
+		//contenedor = new Contenedor(this);
+		contenedor = new JPanel(null);
 		contenedor.setBackground(Ejecucion.Tema);
+		
+		this.add(contenedor);
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		pack();
@@ -70,7 +73,7 @@ public class Ventana extends JFrame {
 	
     public void activar() {
     	
-    	this.getContenedor().setBackground(Ejecucion.Tema);
+    	this.contenedor.setBackground(Ejecucion.Tema);
     	this.setVisible(true);
 		
 	}
@@ -80,11 +83,14 @@ public class Ventana extends JFrame {
 		this.setVisible(false);	
 	}
 
-	public Contenedor getContenedor() {
+	public JPanel getContenedor() {
 		return contenedor;
 	}
 
-	public void setContenedor(Contenedor contenedor) {
+	public void setContenedor(JPanel contenedor) {
 		this.contenedor = contenedor;
 	}
+	
+	
+
 }

@@ -18,11 +18,6 @@ public class CampoP extends JPasswordField {
 		this(x, y, ancho, largo);
 		ventana.getContenedor().add(this);
 	}
-	    
-	public CampoP(Contenedor contenedor, int x, int y, int ancho, int largo) {
-			
-	    this(x, y, ancho, largo);
-		contenedor.add(this);	
-	}
+	
 
 }
