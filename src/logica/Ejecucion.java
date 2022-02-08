@@ -34,7 +34,7 @@ public class Ejecucion {
 
 	  private static void inicioPantalla() {
 	    ImageIcon myImage = new ImageIcon(new ImageIcon(
-	    		"Img\\LogoOscuro.png").getImage().getScaledInstance( 300, 200, Image.SCALE_AREA_AVERAGING));
+	    		"Img\\LogoOscuro.jpeg").getImage().getScaledInstance( 300, 200, Image.SCALE_AREA_AVERAGING));
 	    screen = new PantallaCargando(myImage);
 	    screen.setLocationRelativeTo(null);
 	    screen.setProgresoMax(100);
