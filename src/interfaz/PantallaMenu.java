@@ -43,6 +43,8 @@ public class PantallaMenu {
 	private static ImageIcon usuarioO;	
 	private static ImageIcon cerrarC;		
 	private static ImageIcon cerrarO;	
+	public static ImageIcon ingresarC;		
+	public static ImageIcon ingresarO;
 	public static ImageIcon DetallesO;
 	public static ImageIcon DetallesC;
 	public static ImageIcon PagoO;
@@ -70,6 +72,7 @@ public class PantallaMenu {
 
 	public static void cargar() {
 		cerrarO = new ImageIcon(new ImageIcon("Img\\CerrarOscuro.png").getImage().getScaledInstance( 300, 60, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
+		ingresarO = new ImageIcon(new ImageIcon("Img\\IngresarOscuro.png").getImage().getScaledInstance( 200, 50, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		carritoO = new ImageIcon(new ImageIcon("Img\\CarritoOscuro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		busqueda_facturaO =  new ImageIcon(new ImageIcon("Img\\FacturaOscuro.png").getImage().getScaledInstance(75,75, Image.SCALE_AREA_AVERAGING));
 		pedidosO = new ImageIcon(new ImageIcon("Img\\PedidosOscuro.png").getImage().getScaledInstance(70,75, Image.SCALE_AREA_AVERAGING));
@@ -91,6 +94,7 @@ public class PantallaMenu {
 		
 
 		cerrarC = new ImageIcon(new ImageIcon("Img\\CerrarClaro.png").getImage().getScaledInstance( 300, 60, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
+		ingresarC = new ImageIcon(new ImageIcon("Img\\IngresarClaro.png").getImage().getScaledInstance( 200, 50, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		carritoC = new ImageIcon(new ImageIcon("Img\\CarritoClaro.png").getImage().getScaledInstance(100,75, Image.SCALE_AREA_AVERAGING)); //Cambio icono de carrito
 		busqueda_facturaC =  new ImageIcon(new ImageIcon("Img\\FacturaClaro.png").getImage().getScaledInstance(75,75, Image.SCALE_AREA_AVERAGING));
 		pedidosC = new ImageIcon(new ImageIcon("Img\\PedidosClaro.png").getImage().getScaledInstance(70,75, Image.SCALE_AREA_AVERAGING));
@@ -293,12 +297,8 @@ public class PantallaMenu {
 
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(pantallaMenu, "¿Seguro que deseas cerrar sesi\u00f3n?", "¿Seguro?", JOptionPane.YES_NO_OPTION) == 0) { //Eliminacion de producto
-					/*
-					 * Actualizacion de variables globales
-					 */
 
-					JOptionPane.showMessageDialog(pantallaMenu,"Sesi\u00f3n Cerrada",
-							"Sesi\u00f3n Cerrada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
+					JOptionPane.showMessageDialog(pantallaMenu,"Sesi\u00f3n Cerrada","Sesi\u00f3n Cerrada",JOptionPane.INFORMATION_MESSAGE); //Mensaje informativo
 
 					pantallaMenu.desactivar(); //Salida de ventana
 					PantallaInicio.main(null);
@@ -306,12 +306,6 @@ public class PantallaMenu {
 
 				}
 
-				/*else {
-					JOptionPane.showMessageDialog(pantallaMenu,"Ke",
-							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error
-
-				}
-				 */
 			}
 		});
 

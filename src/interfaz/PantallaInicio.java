@@ -37,7 +37,10 @@ public class PantallaInicio {
 
 		//Botones Inicio
 
-		Boton btningreso = new Boton("Ingresar", pantallaInicio, 200, 230, 100, 25);
+		Boton btningreso = new Boton("", pantallaInicio, 150, 240, 200, 50);
+		btningreso.volverIcono("iniciar Sesion\r\n");
+		btningreso.setIcon((!PantallaMenu.temaFlag)? PantallaMenu.ingresarO: PantallaMenu.ingresarC);
+		
 		pantallaInicio.activar();
 				
 		btningreso.addMouseListener(new MouseAdapter() { //regresar a pantalla anterior
