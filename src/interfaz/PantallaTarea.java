@@ -261,8 +261,6 @@ public abstract class PantallaTarea {
 			PantallaMenu.main(null);
 			pantallaTarea.desactivar();
 			
-			System.out.println("Es este botón");
-			
 		///////////////////////////////////////////////////////////////////////			
 		}
 		});

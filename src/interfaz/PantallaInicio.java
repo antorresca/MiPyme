@@ -66,7 +66,6 @@ public class PantallaInicio {
 				else if(!"".equals(usuario) && !"".equals(password)) {
 
 					Usuario comparar = new Usuario(usuario,password);
-					//system.out.print(comparar.getContrasena()+ comparar.getUsuario());
 					Nodo usuarioEncontrado = Ejecucion.usuarios.encontrar(comparar);
 					//Nodo usuarioEncontrado = Ejecucion.usuarios.encontrar_por_nombre(textoUsuario.getText());
 					if((usuarioEncontrado!=null) && ((Usuario)usuarioEncontrado.getDato()).getContrasena().equals(textoPassword.getText())) {

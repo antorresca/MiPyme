@@ -264,8 +264,6 @@ public class PantallaMenu {
 
 				entrada = JOptionPane.showInputDialog(pantallaMenu,"Ingrese número de cédula","Cedula");
 
-				System.out.println(entrada);
-
 				if(entrada != null) {
 
 					try {

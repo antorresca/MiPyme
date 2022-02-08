@@ -42,7 +42,7 @@ public class PantallaPedidos {
 		//----------------------IMPRIMIR-------------------------
 		Nodo auxiliare = Ejecucion.pedidos.getCabeza();
 		for(int t=0; t<Ejecucion.pedidos.getTamano();t++) {
-			System.out.println(((Factura)auxiliare.getDato()).getNombre() + ((Factura)auxiliare.getDato()).getProductos().getCabeza().getDato().getPre()+ "nodoXD");
+            
 			auxiliare = auxiliare.getSiguiente();
 		}
 		//-----------------------------------------------------------
@@ -174,7 +174,6 @@ public class PantallaPedidos {
 					i--;
 					Factura siguientePedido = (Factura)nuevaFactura.getDato(); 
 					siguientePedido.setFecha(Fecha);
-					//system.out.print(usuario_admin.getUsuario());
 					/*
 					DefaultListModel modeloPedidos = new DefaultListModel();
 					for(int t=0; t<siguientePedido.getProductos().getTamano();t++) { //Creacion de datos random para pruebas

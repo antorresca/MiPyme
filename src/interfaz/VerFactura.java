@@ -81,7 +81,6 @@ public class VerFactura {
 					PantallaPedidos.main(null);
 					break;
 				}
-				System.out.println("tercero");
 			}
 		});
 

@@ -113,7 +113,7 @@ public class PantallaCarrito {
 							if(temp.getCan()<c) {
 								JOptionPane.showMessageDialog(carrito,"No hay suficientes productos en Stock","Faltan productos",JOptionPane.ERROR_MESSAGE);
 							}else {
-								//system.out.println(inventario.encontrar(list.getSelectedIndex()).getDato().getPre());
+								
 								precio += c*temp.getPre();
 								i += c;
 								temp.setCan(temp.getCan()-c);
@@ -159,7 +159,6 @@ public class PantallaCarrito {
 						modelo2.removeElementAt(list2.getSelectedIndex());
 					}else {
 						temp.setCan(temp.getCan()-c);
-						System.out.print(temp);
 						modelo2.clear();
 						for(int i = 0; i<Ejecucion.compra.getTamano();i++) {
 							modelo2.addElement(Ejecucion.compra.encontrar(i).getDato().imprimir());

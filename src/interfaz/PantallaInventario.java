@@ -96,7 +96,6 @@ public class PantallaInventario {
 					}			
 					valor = valor.replace(" ","");
 					valor = valor.replace("P","");
-					System.out.println(Ejecucion.inventario.encontrar( new Producto(Integer.valueOf(valor))));
 					pantallaInventario.desactivar();
 					PantallaModificarProducto.main(Ejecucion.inventario.encontrar( new Producto(Integer.valueOf(valor))).getDato(), false);
 				}

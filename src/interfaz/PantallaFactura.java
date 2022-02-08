@@ -27,7 +27,6 @@ public class PantallaFactura {
 		pantalla_factura.desactivar();
 		if(!flag) {
 			while(n == -1) {
-				System.out.println(entrada);
 				entrada = JOptionPane.showInputDialog(pantalla_factura,"Ingrese numero de la factura","Busqueda de Factura");
 				try {
 					n = (entrada=="")?-2:(entrada.equals("Busqueda de Factura"))?-1:Integer.valueOf(entrada);

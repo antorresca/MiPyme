@@ -89,7 +89,6 @@ public class PantallaUsuarios {
 					}else {
 						String[] valor = listaUsuarios.getSelectedValue().toString().split(" | ");
 						Usuario temp = new Usuario(valor[0],"");
-						//System.out.print((Ejecucion.usuarios.encontrarN(temp)).getDato().getContrasena());
 						Ejecucion.usuarios.eliminar(temp);
 						JOptionPane.showMessageDialog(pantallaUsuarios,"Eliminacion exitosa","Usuario Eliminado",JOptionPane.INFORMATION_MESSAGE);
 						modelo4.remove(listaUsuarios.getSelectedIndex());
