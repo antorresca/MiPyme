@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 /*DEMO POR INFORUX*/
 public class PantallaCargando extends JWindow {
+	
   BorderLayout borderLayout1 = new BorderLayout();
   JLabel imageLabel = new JLabel();
   JPanel southPanel = new JPanel();

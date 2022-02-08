@@ -21,7 +21,7 @@ public class Ventana extends JFrame {
 	private static int ancho = 500;
 	private static int largo = 375;
 	
-	public Ventana(String texto){
+	public Ventana(String texto, boolean activada){
 		
 		super(texto);
 		
@@ -29,14 +29,13 @@ public class Ventana extends JFrame {
 		Dimension pantalla_dimension = herramienta.getScreenSize();
 		
 		contenedor = new Contenedor(this);
-		
 		contenedor.setBackground(Ejecucion.Tema);
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		pack();
 		setBounds(pantalla_dimension.width/2,pantalla_dimension.height/2, ancho, largo);
 		setLocationRelativeTo(null);
-		setVisible(true);
+		setVisible(activada);
 		setResizable(false);
 		
 		Ventana n = this;
@@ -64,8 +63,14 @@ public class Ventana extends JFrame {
         
 	}
 	
+	public Ventana(String texto){
+		
+		this(texto, true);
+	}
+	
     public void activar() {
     	
+    	this.getContenedor().setBackground(Ejecucion.Tema);
     	this.setVisible(true);
 		
 	}

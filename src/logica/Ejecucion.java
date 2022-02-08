@@ -15,7 +15,7 @@ import interfaz.PantallaMenu;
 
 public class Ejecucion {
 
-	public static boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
+	public static boolean temaFlag = (Ejecucion.Tema == Ejecucion.ModoClaro);
 	private static String registroUsuariotxt;
 	public static Usuario usuario_admin = new Usuario("Admin","12345");
 	public static Color ModoClaro = new Color(225,237,249); 

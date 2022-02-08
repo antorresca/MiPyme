@@ -28,6 +28,7 @@ public class PantallaMenu {
 
 	public static boolean flag = true;
 	public static boolean temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);
+	public static boolean inicializado = false;
 	private static ImageIcon carritoO;
 	private static ImageIcon carritoC;
 	private static ImageIcon busqueda_facturaC;
@@ -160,8 +161,8 @@ public class PantallaMenu {
 		btnCarrito.setOpaque(false);
 		//btnCarrito.volverIcono("Carrito\r\n","Img\\CarritoClaro.png","Img\\CarritoOscuro.png");
 
-		Boton btn_busqueda_productos = new Boton("",pantallaMenu,40+100+50,70,100,75);
-		btn_busqueda_productos.volverIcono("Tareas\r\n");
+		Boton boton_tarea = new Boton("",pantallaMenu,40+100+50,70,100,75);
+		boton_tarea.volverIcono("Tareas\r\n");
 		//btn_busqueda_productos.volverIcono("Buscar Productos\r\n","Img\\BuscarProductoClaro.png","Img\\BuscarProductoOscuro.png");
 
 		Boton btn_busqueda_factura = new Boton("",pantallaMenu,35+40,170,100,75);
@@ -198,7 +199,7 @@ public class PantallaMenu {
 		btnCarrito.setIcon((!temaFlag)?carritoO:carritoC);
 		boton_usuario.setIcon((!temaFlag)?usuarioO:usuarioC);
 		btn_inventario.setIcon((!temaFlag)?inventarioO:inventarioC);
-		btn_busqueda_productos.setIcon((!temaFlag)?busqueda_productosO:busqueda_productosC);
+		boton_tarea.setIcon((!temaFlag)?busqueda_productosO:busqueda_productosC);
 		btn_pedidos.setIcon((!temaFlag)?pedidosO:pedidosC);
 		btn_busqueda_factura.setIcon((!temaFlag)?busqueda_facturaO:busqueda_facturaC);
 
@@ -222,11 +223,20 @@ public class PantallaMenu {
 
 		//Metodo botones
 
-		btn_busqueda_productos.addMouseListener(new MouseAdapter() {
+		boton_tarea.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {	
-
-				PantallaTarea.main(args);
+				
+				if(inicializado) {
+					
+					PantallaTarea.getPantallaTarea().activar();
+					PantallaTarea.cambiar_modo();
+					
+				}else {
+					
+				    PantallaTarea.main(args);
+				}
+				
 				pantallaMenu.desactivar();
 			}
 		});
@@ -349,7 +359,7 @@ public class PantallaMenu {
 				btnCarrito.setIcon((temaFlag)?carritoO:carritoC);
 				boton_usuario.setIcon((temaFlag)?usuarioO:usuarioC);
 				btn_inventario.setIcon((temaFlag)?inventarioO:inventarioC);
-				btn_busqueda_productos.setIcon((temaFlag)?busqueda_productosO:busqueda_productosC);
+				boton_tarea.setIcon((temaFlag)?busqueda_productosO:busqueda_productosC);
 				btn_pedidos.setIcon((temaFlag)?pedidosO:pedidosC);
 				btn_busqueda_factura.setIcon((temaFlag)?busqueda_facturaO:busqueda_facturaC);
 				temaFlag = (Ejecucion.Tema==Ejecucion.ModoClaro);

@@ -16,7 +16,7 @@ public class Texto extends JLabel{
 		//this.setText("\u001B[33m"+texto);
 		setFont(new Font("Tahoma", Font.BOLD, 11));
 		setBounds(x,y-40,ancho,largo);
-		setForeground((Ejecucion.Tema == Ejecucion.ModoClaro)? Ejecucion.ModoOscuro:Ejecucion.ModoClaro);
+		setForeground((Ejecucion.Tema == Ejecucion.ModoClaro) ? Ejecucion.ModoOscuro:Ejecucion.ModoClaro);
 		
 	}
 	
