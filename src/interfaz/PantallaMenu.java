@@ -84,7 +84,7 @@ public class PantallaMenu {
 		modificarO = new ImageIcon(new ImageIcon("Img\\ModificarOscuro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
 		detallesO = new ImageIcon(new ImageIcon("Img\\DetallesOscuro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
 		PagoO = new ImageIcon(new ImageIcon("Img\\PagarOscuro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
-		PedirO = new ImageIcon(new ImageIcon("Img\\PagarOscuro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
+		PedirO = new ImageIcon(new ImageIcon("Img\\PedirOscuro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
 		RegresarO = new ImageIcon(new ImageIcon("Img\\RegresarOscuro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
 		AgregarO = new ImageIcon(new ImageIcon("Img\\AgregarOscuro.png").getImage().getScaledInstance(89, 32, Image.SCALE_AREA_AVERAGING));
 		AUsuarioO = new ImageIcon(new ImageIcon("Img\\AgregarUsuarioOscuro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
@@ -107,7 +107,7 @@ public class PantallaMenu {
 		modificarC = new ImageIcon(new ImageIcon("Img\\ModificarClaro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
 		detallesC = new ImageIcon(new ImageIcon("Img\\DetallesClaro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
 		PagoC = new ImageIcon(new ImageIcon("Img\\PagarClaro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
-		PedirC = new ImageIcon(new ImageIcon("Img\\PagarClaro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
+		PedirC = new ImageIcon(new ImageIcon("Img\\PedirClaro.png").getImage().getScaledInstance(89,32, Image.SCALE_AREA_AVERAGING));
 		RegresarC = new ImageIcon(new ImageIcon("Img\\RegresarClaro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));
 		AgregarC = new ImageIcon(new ImageIcon("Img\\AgregarClaro.png").getImage().getScaledInstance(89, 32, Image.SCALE_AREA_AVERAGING));
 		AUsuarioC = new ImageIcon(new ImageIcon("Img\\AgregarUsuarioClaro.png").getImage().getScaledInstance(35,35, Image.SCALE_AREA_AVERAGING));

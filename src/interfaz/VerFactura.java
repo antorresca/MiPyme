@@ -72,7 +72,7 @@ public class VerFactura {
 				String nombre = anterior.toLowerCase();
 				switch(nombre) {
 				case "carrito":
-					PantallaCarrito.main(null);
+					PantallaMenu.main(null);
 					break;
 				case "menu":
 					PantallaMenu.main(null);
@@ -81,6 +81,7 @@ public class VerFactura {
 					PantallaPedidos.main(null);
 					break;
 				}
+				System.out.println("tercero");
 			}
 		});
 

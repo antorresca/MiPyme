@@ -253,6 +253,7 @@ public class PantallaCarrito {
 				Ejecucion.facturas.agregar(nuevaFactura);
 
 				carrito.desactivar();
+				
 				VerFactura.main("carrito",nuevaFactura);
 
 			}
@@ -285,7 +286,7 @@ public class PantallaCarrito {
 				PantallaPedidos.i = PantallaPedidos.i + 1;
 
 				carrito.desactivar();
-				VerFactura.main("carrito",nuevaFactura);
+				VerFactura.main("pedidos",nuevaFactura);
 			}
 		});
 		detalles.addMouseListener(new MouseAdapter() {
@@ -307,10 +308,6 @@ public class PantallaCarrito {
 							"Error",JOptionPane.ERROR_MESSAGE); //Mensaje de error
 				}
 			}});
-
-
-
-
 
 	}
 
